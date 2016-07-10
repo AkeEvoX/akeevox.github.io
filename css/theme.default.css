@@ -1,0 +1,12 @@
+body
+{
+	margin:0px;
+}
+
+.logobar{
+	position: absolute;
+    z-index: 2;
+    top: 0px;
+    height: 70px;
+    margin: 0px auto 0 auto;
+}
