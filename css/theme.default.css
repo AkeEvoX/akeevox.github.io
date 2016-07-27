@@ -1,32 +1,38 @@
 body
 {
-	margin:0px;
+	margin-top:90px;
 }
 
-.logobar{
-	position: absolute;
-    z-index: 2;
-    top: 0px;
-    height: 70px;
-    margin: 0px auto 0 auto;
+.logobar {
+	position:absolute;
+	top:20px;
 }
 
-.menulist,.topbar {
-	padding-top:30px;
+.languagebar {
+	position:relative;
+	right:0;
 }
 
-.mainmenu{
-	color:orange;
+.iconbar{ padding-top:10px; }
+.menulist,.topbar { padding-top:30px; }
+.mainmenu{ color:orange; }
+.submenu { color:red; padding-left:15px;}
+.submenu ul { padding-left:15px; }
+
+
+/*pc*/
+@media(min-width:1200px) {
+	#searchbar { background-color:transparent; }
 }
-
-.submenu {
-	color:red;
-}
-
-
-/*default*/
-
 
 /* tables */
+@media(min-width:600px) and (max-width:1200px){
 
+	#searchbar { background-color:red;  }
+}
 /* mobile */
+@media(max-width:600px) {
+
+	#searchbar { display:none; }
+
+} 

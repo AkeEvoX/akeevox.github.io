@@ -6,7 +6,7 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/bootstraps/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />
+	<!--<link href="plugin/bootstraps/css/bootstrap-combined.min.css" rel="stylesheet" type="text/css" />-->
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
 	
@@ -15,51 +15,77 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />	
 </head>
 <body>
-<nav class="navbar navbar-default"  style="margin-bottom:0px;" >
+<nav class="navbar navbar-default navbar-fixed-top" >
         <div class="container-fluid">
-			<!-- Single button -->
-		<div class='text-right' style='padding-right:100p;x'>
-			<div class="btn-group" >
-			  <button type="button" class="btn btn-default btn-xs dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-				Language <span class="caret"></span>
-			  </button>
-			  <ul class="dropdown-menu">
-				<li><a href="#">THAI</a></li>
-				<li><a href="#">ENGLISH</a></li>
-			  </ul>
-			</div>
-		</div>
-          <div class="navbar-header">
+		<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
+            <a class='navbar-band'><img src='images/logos/icon-fb-circle' class='iconbar' alt='facebook' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-tw-circle' class='iconbar' alt='twitter' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-gp-circle' class='iconbar' alt='google+' /></a>
+			<a class='navbar-band' href="login.php" style='padding-right:80px;'><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-		   <ul class="nav navbar-nav navbar-left">
-				<li><a href="login.php"><span class="glyphicon glyphicon-ok-sign" ></span></a></li>
-				<li><a href="login.php"><span class="glyphicon glyphicon-question-sign" ></span></a></li>
-				<li><a href="login.php"><span class="glyphicon glyphicon-info-sign" ></span></a></li>
-				<li><a href="login.php"><img src='images/logos/logo_temp.png' class='logobar' ></a></li>
-		   </ul>
-			<form class="navbar-form navbar-right" role="search">
-				<div class="form-group">
-				  <input type="text" class="form-control" placeholder="Search">
+			<ul class="nav navbar-nav">
+			<li ><a href="index.html" id="mainmenu">HOME</a></li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+				aria-expanded="false">PRODUCTS<span class="caret"></span>
+				</a>
+				<ul class="dropdown-menu">
+					<li><a href="category.html">CATEGORY</a></li>
+					<li><a href="series.html">SERIES</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+				aria-expanded="false" >COMPANY<span class="caret"/></a>
+				<ul class="dropdown-menu">
+					<li><a href="about.html">ABOUT US</a></li>
+					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
+					<li><a href="profile.html">AWARD & STANDARD</a></li>
+					<li><a href="faq.html">FAQ</a></li>
+				</ul>
+			</li>
+			<li ><a href="#" >PRESS</a></li>
+			<li class='dropdown'>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
+				<ul class="dropdown-menu">
+					<li><a href="gallery.html">GALLERY</a></li>
+					<li><a href="video.html">VIDEO</a></li>
+					<li><a href="download.html">DOWNLOAD</a></li>
+					<li><a href="catalog.html">CATALOG ONLINE</a></li>
+				</ul>
+			</li>
+			<li class="dropdown">
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
+				<ul class="dropdown-menu">
+					<li><a href="map.html">Map</a></li>
+					<li><a href="message.html">Messages</a></li>
+				</ul>
+			</li>
+
+            </ul>
+		    <form class="navbar-form navbar-right" id='searchbar' role="search">
+				<div class="form-group" >
+				  	<span class="glyphicon glyphicon-search" ></span>
+				  	<input type="text" class="form-control" placeholder="Search" />
+				  	<div class="btn-group languagebar" >
+					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+						Language <span class="caret"></span>
+					  </button>
+					  <ul class="dropdown-menu">
+						<li><a href="#">THAI</a></li>
+						<li><a href="#">ENGLISH</a></li>
+					  </ul>
+					</div>
 				</div>        
 			</form>
-            <ul class="nav navbar-nav navbar-right">
-			<li ><a href="#" id="mainmenu">HOME</a></li>
-			<li ><a href="#" id="mainmenu">PRODUCTS</a></li>
-			<li ><a href="#" id="mainmenu">COMPANY</a></li>
-			<li ><a href="#" id="mainmenu">PRESS</a></li>
-			<li ><a href="#" id="mainmenu">DEALER</a></li>
-			<li ><a href="#" id="mainmenu">ACRHIVE</a></li>
-			<li ><a href="#" id="mainmenu">CONTACT</a></li>
-            <li><a href="login.php"><span class="glyphicon glyphicon-search" ></span></a></li>
-            </ul>
-		    
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>  
@@ -72,7 +98,7 @@
 						<ul class='nav nav-list tree'>
 							<li><a href='#' >WATRE CLOSET</a></li>
 							<li><label class="tree-toggle nav-header submenu">WASH BASIN</label>
-								<ul class='nav nav-list tree '>
+								<ul class='nav nav-list tree submenu' >
 									<li><a href='#'>BASIN Above-Counter</a></li>
 									<li><a href='#'>BASIN Counter-Top</a></li>
 									<li><a href='#'>BASIN Under-Counter</a></li>
