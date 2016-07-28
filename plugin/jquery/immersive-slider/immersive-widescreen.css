@@ -219,11 +219,11 @@
     .immersive_slider .is-slide .content h2{
       line-height: 140%;
       font-weight: 100;
-      color: white;
+      color: black;
       font-weight: 100;
     }
     .immersive_slider .is-slide .content a {
-      color: white;
+      color: black;  /*change font color*/
     }
 
   .immersive_slider .is-slide .content p{
@@ -232,4 +232,5 @@
     width: 100%;
     font-size: 17px;
     margin-top: 5px;
+    color:black;
   }	

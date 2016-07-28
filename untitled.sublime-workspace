@@ -16,21 +16,43 @@
 	"buffers":
 	[
 		{
+			"contents": "",
 			"file": "index.php",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 2771,
+				"buffer_size": 0,
 				"line_ending": "Unix",
 				"name": "<xhtml/>"
 			}
 		},
 		{
+			"contents": "",
 			"file": "css/master.css",
+			"file_size": -1,
+			"file_write_time": -1,
 			"settings":
 			{
-				"buffer_size": 963,
+				"buffer_size": 0,
 				"line_ending": "Unix",
 				"name": "body {"
+			}
+		},
+		{
+			"file": "productdetail.php",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "visitor.php",
+			"settings":
+			{
+				"buffer_size": 0,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -233,7 +255,7 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -241,15 +263,15 @@
 					"file": "index.php",
 					"settings":
 					{
-						"buffer_size": 2771,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1382,
-								1382
+								0,
+								0
 							]
 						],
 						"settings":
@@ -261,7 +283,7 @@
 							"translate_tabs_to_spaces": true
 						},
 						"translation.x": 0.0,
-						"translation.y": 180.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
@@ -271,7 +293,7 @@
 					"file": "css/master.css",
 					"settings":
 					{
-						"buffer_size": 963,
+						"buffer_size": 0,
 						"regions":
 						{
 						},
@@ -286,6 +308,62 @@
 						{
 							"auto_name": "body {",
 							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "productdetail.php",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "visitor.php",
+					"settings":
+					{
+						"buffer_size": 0,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								0,
+								0
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,

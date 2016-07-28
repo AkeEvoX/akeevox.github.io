@@ -8,7 +8,10 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	
+
+
+	<link href="plugin/jquery/immersive-slider/immersive-slider.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/immersive-slider/immersive-widescreen.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 
@@ -83,46 +86,81 @@
 				</div>       
 			</form>
           </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+        </div><!--/.container -->
       </nav>
-
+<!-- body -->
 <div class='container'>
-	<h3>Abount US</h3>
-	<div class='row'>
-		<div class='col-md-6'>
-			<img data-src='holder.js/600x300' class='img-responsive' />
-		</div>
-		<div class='col-md-6'>
-			<h4 style='color:orange'>TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT</h4>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-		</div>
-	</div>
+	<h3>AWARDS</h3>
 	<div class='row'>
 		<div class='col-md-12'>
-			<div class='columnies'>
-				<p>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</p>
-				<p>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</p>
+			<ol class="breadcrumb">
+			  <li><a href="#">Home</a></li>
+			  <li><a href="#">Company</a></li>
+			  <li class="active">AWARD & STANDARD</li>
+			</ol>
+		</div>
+	</div>
+	<!--new row-->
+	<div class='row'>
+		<div class='col-md-12'>
+			<div class="main">
+			  <!--<div class="page_container">-->
+				<div id="immersive_slider">
+				  <div class="slide" data-blurred="">
+					<div class="content">
+					  <h2><a href="http://www.bucketlistly.com" target="_blank">BucketListly</a></h2>
+					  <p>It’s never been easier to watch YouTube on the big screen
+					  Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+					</div>
+					<div class="image">
+					  <a href="http://www.bucketlistly.com" target="_blank">
+						<img src="images/referance/slide1.jpg" alt="Slider 1">
+					  </a>
+					</div>
+				  </div>
+				  <div class="slide" data-blurred="images/referance/slide2_blurred.jpg">
+					<div class="content">
+					  <h2><a href="http://www.bucketlistly.com/apps" target="_blank">BucketListly Apps</a></h2>
+					  <p>It’s never been easier to watch YouTube on the big screen
+					  Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+					</div>
+					<div class="image">
+					 <a href="http://www.bucketlistly.com/apps" target="_blank"> <img src="images/referance/slide2.jpg" alt="Slider 1"></a>
+					</div>
+				  </div>
+				  <div class="slide" data-blurred="images/referance/slide3_blurred.jpg">
+					<div class="content">
+					  <h2><a href="http://www.thepetedesign.com" target="_blank">The Pete Design</a></h2>
+					  <p>It’s never been easier to watch YouTube on the big screen
+					  Send your favorite YouTube videos from your Android phone or tablet to TV with the touch of a button. It’s easy. No wires, no setup, no nothing. Find out more here.</p>
+					</div>
+					<div class="image">
+					  <a href="http://www.thepetedesign.com" target="_blank"><img src="images/referance/slide3.jpg" alt="Slider 1"></a>
+					</div>
+				  </div>
+
+				  <a href="#" class="is-prev">&laquo;</a>
+				  <a href="#" class="is-next">&raquo;</a>
+				</div>
+			  <!--</div>--><!-- end page_container-->
 			</div>
 		</div>
 	</div>
-
+	<!--new row-->
 </div> <!--end container fluid-->
 <script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-/*
-example tree menu
-http://www.bootply.com/lE2NPpERdt
-*/
+<script>
+	$(document).ready(function(){
+		 $("#immersive_slider").immersive_slider({
+			animation: "slide",
+			container: ".main",
+			loop:true,
+			cssBlur:false,
+			autoStart:0
+  	    });
+	});
+</script>
 </body>

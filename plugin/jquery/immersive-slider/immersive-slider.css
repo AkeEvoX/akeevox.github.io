@@ -3,7 +3,7 @@ Class Definitions
 =================================================*/
 
 .immersive_slider {
-  background: #161923;
+  background: #FFF;/*default #161923*/
   max-width: 100%;
   height: 480px;
   opacity: .9;

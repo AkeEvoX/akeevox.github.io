@@ -1,0 +1,9 @@
+<?php
+
+
+$result = "";
+
+
+echo $result;
+
+?>
