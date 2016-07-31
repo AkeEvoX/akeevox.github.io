@@ -26,6 +26,16 @@ body
 .submenu ul { padding-left:15px; }
 
 
+/*override media */
+.media, { padding-bottom:5px; }
+.media-detail { overflow:hidden;height:200px; }
+.media-link , .media-link:hover { text-decoration: none; color:orange; }
+.fluid {
+	padding-bottom:5px;
+	padding-left:5px;
+}
+
+
 /*pc*/
 @media(min-width:1200px) {
 	#searchbar { background-color:transparent; }
