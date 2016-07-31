@@ -199,14 +199,28 @@
         return false
       });
     }
+
+    el.find(".is-next").click(function(){
+      el.moveNext();
+      return false;
+    });
+
+    el.find(".is-prev").click(function(){
+      el.movePrev();
+      return false;
+    });
+  /* #default next/pre 
    $(".is-next").click(function() {
      el.moveNext();
      return false;
    });
+
    $(".is-prev").click(function() {
      el.movePrev();
      return false;
    });
+
+   */
     
     $.fn.moveSlider = function(settings, page_index) {
       var el = $(this),

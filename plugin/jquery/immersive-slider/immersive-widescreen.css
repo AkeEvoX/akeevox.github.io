@@ -1,11 +1,9 @@
+/*override class*/
+.immersive_slider {
 
+height:600px;
 
-    .wrapper {
-    	height: auto !important;
-    	height: 100%;
-    	margin: 0 auto;
-    	overflow: hidden;
-    }
+}
 
     a {
       text-decoration: none;
@@ -114,19 +112,7 @@
     .reload:hover{
       background: #A2261E;
     }
-    /*
-    .btn {
-      width: 200px;
-      color: #fff;
-      border: none;
-      margin-left: 10px;
-      background: black;
-    }
-
-    .btn:hover, .btn:hover {
-      background: rgba(0,0,0,0.8);
-    } 
-    */
+    
     .clear {
       width: auto;
     }
@@ -135,21 +121,7 @@
       width: 410px;
       margin: 50px auto;
     }
-    .credit {
-      text-align: center;
-      color: #444;
-      padding: 10px;
-      margin: 0 0 0 0;
-      background: #161923;
-      color: #FFF;
-      float: left;
-      width: 100%;
-    }
-    .credit a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-    }
+    
 
     .back {
       position: absolute;
@@ -171,6 +143,7 @@
       -o-transition: all 200ms ease-out;
       transition: all 200ms ease-out;
     }
+
     .back:hover {
       color: black;
       background: rgba(255, 255, 255, 0.5);
@@ -194,26 +167,6 @@
 
     .header .menu {
       padding-bottom: 10px;
-    }
-
-    .benefits {
-      color: black;
-      height: 100px;
-      background: #FFF;
-      position: relative;
-      width: 100%;
-      padding: 25px;
-      font-size: 40px;
-      font-weight: 100;
-      float: left;
-      box-sizing: border-box;
-      -moz-box-sizing: border-box;
-      -webkit-box-sizing: border-box;
-    }
-
-    .benefits .page_container{
-      margin-bottom: 50px;
-      margin-top: 0;
     }
 
     .immersive_slider .is-slide .content h2{

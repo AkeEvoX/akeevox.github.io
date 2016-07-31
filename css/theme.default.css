@@ -9,7 +9,7 @@ body
 
 .logobar {
 	position:absolute;
-	top:20px;
+	top:5px;
 	left:130px;
 }
 
@@ -19,6 +19,7 @@ body
 }
 
 .iconbar{ padding-top:10px; }
+.rowspan {padding-bottom:10px;}
 .menulist,.topbar { padding-top:30px; }
 .mainmenu{ color:orange; }
 .submenu { color:red; padding-left:15px;}

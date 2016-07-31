@@ -4,6 +4,10 @@
 		"selected_items":
 		[
 			[
+				"back",
+				"background-color"
+			],
+			[
 				"s",
 				"cursive"
 			],
@@ -16,30 +20,27 @@
 	"buffers":
 	[
 		{
-			"file": "index.php",
+			"file": "css/theme.default.css",
 			"settings":
 			{
-				"buffer_size": 2771,
-				"line_ending": "Unix",
-				"name": "<xhtml/>"
+				"buffer_size": 660,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "queues.php",
+			"file": "faq.html",
 			"settings":
 			{
-				"buffer_size": 29,
-				"line_ending": "Unix",
-				"name": "<?"
+				"buffer_size": 7526,
+				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/master.css",
+			"file": "plugin/jquery/immersive-slider/immersive-widescreen.css",
 			"settings":
 			{
-				"buffer_size": 963,
-				"line_ending": "Unix",
-				"name": "body {"
+				"buffer_size": 3564,
+				"line_ending": "Unix"
 			}
 		}
 	],
@@ -75,6 +76,27 @@
 	},
 	"file_history":
 	[
+		"/Users/iake.air/Sites/starsanitaryware/profile.html",
+		"/Users/iake.air/Sites/starsanitaryware/js/profile.js",
+		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-widescreen.css",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-slider.css",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/jquery.immersive-slider.js",
+		"/Users/iake.air/Sites/starsanitaryware/category.html",
+		"/Users/iake.air/Sites/register/js/validator.js",
+		"/Users/iake.air/Sites/register/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/series.html",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/visitor.php",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/reference.php",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/about.php",
+		"/Users/iake.air/Sites/starsanitaryware/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/jquery.tree.layout.css",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-custom.css",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/css/master.css",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/series.php",
+		"/Users/iake.air/Sites/starsanitaryware/css/master.css",
+		"/Users/iake.air/Sites/starsanitaryware/queues.php",
+		"/Users/iake.air/Sites/starsanitaryware/index.php",
 		"/Users/iake.air/Sites/prakongmitt/home.php",
 		"/Users/iake.air/Sites/starsanitaryware/images/home/rangitoto-3072x200.jpg",
 		"/Users/iake.air/Sites/starsanitaryware/images/bg/rangitoto-3072x200.jpg",
@@ -196,6 +218,16 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"pagination",
+			"is-page",
+			"page",
+			"is-page",
+			"color",
+			"is-prev",
+			"slide is-slide",
+			"tree-toggle",
+			"nav-header",
+			"btn",
 			"30px",
 			"inputindex",
 			"saveitem",
@@ -242,59 +274,29 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 2,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "index.php",
+					"file": "css/theme.default.css",
 					"settings":
 					{
-						"buffer_size": 2771,
+						"buffer_size": 660,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								1489,
-								1489
+								158,
+								158
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
-							"auto_name": "<xhtml/>",
-							"syntax": "Packages/PHP/PHP.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
-						},
-						"translation.x": 0.0,
-						"translation.y": 116.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 1,
-					"file": "queues.php",
-					"settings":
-					{
-						"buffer_size": 29,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								29,
-								29
-							]
-						],
-						"settings":
-						{
-							"auto_name": "<?",
-							"syntax": "Packages/PHP/PHP.tmLanguage"
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -303,29 +305,57 @@
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "css/master.css",
+					"buffer": 1,
+					"file": "faq.html",
 					"settings":
 					{
-						"buffer_size": 963,
+						"buffer_size": 7526,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								451,
-								451
+								4393,
+								4393
 							]
 						],
 						"settings":
 						{
-							"auto_name": "body {",
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 60.0,
+						"translation.y": 962.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "plugin/jquery/immersive-slider/immersive-widescreen.css",
+					"settings":
+					{
+						"buffer_size": 3564,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								290,
+								290
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"tab_size": 2,
+							"translate_tabs_to_spaces": true
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
