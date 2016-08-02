@@ -1,0 +1,14 @@
+.textarea-addon{
+  border-bottom-left-radius: 0px !important;
+  border-top-right-radius: 4px !important;
+  border:1px solid #ccc !important;
+}
+textarea{
+  border-top-left-radius:0px !important;
+  border-top-right-radius:0px !important;
+}
+
+.input-group-addon {
+    min-width:200px;// if you want width please write here //
+    text-align:left;
+}

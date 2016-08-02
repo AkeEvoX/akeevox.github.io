@@ -1,0 +1,13 @@
+
+.photoGrid { padding: 6px; /* Spacing arround grid */ }
+
+.photoGrid .item {
+  float: left;
+  margin: 2px; /* Spacing between images */
+}
+
+.photoGrid .item img {
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+}

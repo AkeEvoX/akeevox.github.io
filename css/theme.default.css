@@ -26,6 +26,10 @@ body
 .submenu ul { padding-left:15px; }
 
 
+/*iframe responsive*/
+iframe, object, embed{max-width: 100%;}
+
+
 /*override media */
 .media, { padding-bottom:5px; }
 .media-detail { overflow:hidden;height:200px; }

@@ -6,8 +6,9 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/photogrid/photogrid.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/custom.control.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
@@ -90,47 +91,81 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">Acrhive</a></li>
-					  <li class="active" >Gallery</li>
+					  <li><a href="index">Home</a></li>
+					  <li><a href="#">Contact</a></li>
+					  <li class="active">Message</li>
 					</ol>
 				</div>
 			</div>
-	<h3>GALLERY</h3>
 	<div class='row'>
-		<div class='col-md-12'>
-			<div class='photoGrid clearfix'>
-				<a class='item' href='#'><img src='images/gallery/cat1.jpg' class='img-responsive' /></a>
-				<a class='item' href='#'><img src='images/gallery/cat2.jpg' class='img-responsive' /></a>
-				<a class='item' href='#'><img src='images/gallery/cat3.jpg' class='img-responsive' /></a>
-				<a class='item' href='#'><img src='images/gallery/cat4.jpg' class='img-responsive' /></a>
-				<a class='item' href='#'><img src='images/gallery/cat5.jpg' class='img-responsive' /></a>
-				<a class='item' href='#'><img src='images/gallery/cat6.jpg' class='img-responsive' /></a>
+		<div class='col-md-4'>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'>ADDRESS</h4>
+							<ul>
+								<li>410/7-9 Ratchadapisek 22 Rd., Huaykwang, Bangkok, 10310, Thailand.</li>
+							</ul>
+					</div>
+				</div>
+				<hr/>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'>PHONE</h4>
+						<ul>
+							<li>66 (0) 2541-5068-70</li>
+							<li>66 (0) 2541-5873-6</li>
+							<li>Fax : 66 (0) 2541-5877</li>
+						</ul>
+					</div>
+				</div>
+				<hr/>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'>EMAIL</h4>
+						<ul>
+							<li>sales@starsanitaryware.com.com</li>
+							<li>export@starsanitaryware.com.com</li>
+						</ul>
+					</div>
+				</div>
+				<hr/>
+		</div>
+		<div class='col-md-8'>
+			<div class='container'>
+				<h3>FEEDBACK</h3>
+				<div class='row col-md-8'>
+				<form role='form' id='frmRegister' name='frmRegister' method='post'>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-addon">NAME</span>
+					  <input type="text" class="form-control" placeholder="fullname" id='name' aria-describedby="name-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="email-addon">EMAIL</span>
+					  <input type="text" class="form-control" placeholder="customer@email.com" id='email' aria-describedby="email-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="phone-addon">PHONE</span>
+					  <input type="text" class="form-control" placeholder="66+(0) xxx-xxxx" id='phone' aria-describedby="phone-addon">
+					</div>
+					<div class="input-group">
+					  <div class="input-group-addon textarea-addon" > Description </div>
+						<textarea class="form-control" rows="5"></textarea>
+					</div><br/>
+					<button type='submit' class='btn btn-warning' >Sumbit</button>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-12'>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15498.787934161357!2d100.5749505!3d13.7971315!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f799ab57268432!2z4Liq4LiV4Liy4Lij4LmMIOC4i-C4suC4meC4tOC4l-C4suC4o-C4teC5geC4p-C4o-C5jA!5e0!3m2!1sth!2sth!4v1470099354382" width="1240" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</div>
 </div> <!--end container fluid-->
+<br />
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-<script src='plugin/jquery/photogrid/jquery.photogrid.js' ></script>
-<script >
-
-var defaults = {
-	itemSelector: ".item", // item selecor
-	resize: true, // automatic reload grid on window size change
-	rowHeight: $(window).height() / 2, // looks best, but needs highres thumbs
-	callback: function() {} // fires when layouting grid is done
-};
-
-
-  $(window).load(function() { // or use https://github.com/desandro/imagesloaded
-    $('.photoGrid').photoGrid({
-      //rowHeight: "200"
-    });
-  });
-</script>
-/*
-http://www.jqueryscript.net/gallery/jQuery-Responsive-Justified-Image-Gallery-Plugin-Photogrid-js.html
-*/
+/*http://stackoverflow.com/questions/14370115/quick-and-easy-way-to-make-google-maps-iframe-embed-responsive*/
 </body>
