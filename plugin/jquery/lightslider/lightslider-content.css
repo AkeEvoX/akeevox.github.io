@@ -1,0 +1,40 @@
+ul{
+	list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+}
+
+.lightslider-main {
+	width: 100%;
+}
+
+.lightslider-main .item{
+    margin-bottom: 90px;
+}
+
+.lightslider-desc{
+	border-right:1px solid orange;
+	border-bottom:1px solid orange;
+}
+
+
+.content-slider li{
+    background-color: white;
+    text-align: center;
+    color: orange;
+}
+.content-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+}
+
+/*mobile*/
+
+@media(max-width:600px) {
+
+}
+
+/*
+reference : http://sachinchoolur.github.io/lightslider/;
+thankyou.
+*/
