@@ -9,5 +9,5 @@ $('.tree-toggle').click(function () {
 });
 
 $(function(){
-$('.tree-toggle').parent().children('ul.tree').toggle(200);
+	$('.tree-toggle').parent().children('ul.tree').toggle(200);
 })

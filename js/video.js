@@ -18,22 +18,5 @@ $('#video-slider').find('li').click(function(){
 		//var url = link.replace("watch?v=", "v/");
 		
 		$('#mediaplayer').attr('src',link);
-		//$('#mediacontent').html("<iframe id='mediaplayer' frameborder='0' wmode='Opaque' allowfullscreen='true' src='"+link+"' ></iframe>");
-		//	<meta http-equiv="X-Frame-Options" content="SAMEORIGIN">
 	}	
 });
-
-
-
-/*
-$('a').click(function(){
-
-	var link = $(this).attr('data-link');
-
-	if(link != undefined ){
-		console.log('link to ' + link);	
-		return false;
-	}
- 	
-});
-*/
