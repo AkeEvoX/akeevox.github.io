@@ -4,6 +4,18 @@
 		"selected_items":
 		[
 			[
+				"style",
+				"list-style"
+			],
+			[
+				"siz",
+				"font-size"
+			],
+			[
+				"text",
+				"text-decoration"
+			],
+			[
 				"back",
 				"background-color"
 			],
@@ -23,23 +35,32 @@
 			"file": "css/theme.default.css",
 			"settings":
 			{
-				"buffer_size": 660,
+				"buffer_size": 1003,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "faq.html",
+			"file": "css/icon.css",
 			"settings":
 			{
-				"buffer_size": 7526,
+				"buffer_size": 165,
+				"line_ending": "Unix",
+				"name": ".blue {"
+			}
+		},
+		{
+			"file": "productdetail.html",
+			"settings":
+			{
+				"buffer_size": 10287,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "plugin/jquery/immersive-slider/immersive-widescreen.css",
+			"file": "css/product.css",
 			"settings":
 			{
-				"buffer_size": 3564,
+				"buffer_size": 61,
 				"line_ending": "Unix"
 			}
 		}
@@ -76,20 +97,58 @@
 	},
 	"file_history":
 	[
-		"/Users/iake.air/Sites/starsanitaryware/profile.html",
+		"/Users/iake.air/OneDrive/SourceCode/command/mac.sh",
+		"/Users/iake.air/OneDrive/SourceCode/command/mac-change.sh",
+		"/Users/iake.air/Sites/starsanitaryware/productdetail.html.bak",
+		"/Users/iake.air/Sites/feature/elevatezoom-master/gallery.html",
+		"/Users/iake.air/Sites/feature/iziModal/demo.html",
+		"/Users/iake.air/Sites/feature/iziModal/index.html",
+		"/Users/iake.air/Sites/feature/Responsive-CSS3-Animated-jQuery-Modal-Plugin-iziModal/index.html",
+		"/Users/iake.air/Sites/readme.md",
+		"/Users/iake.air/Sites/feature/Responsive-CSS3-Animated-jQuery-Modal-Plugin-iziModal/README.md",
+		"/Users/iake.air/Sites/starsanitaryware/js/productdetail.js",
+		"/Users/iake.air/Sites/imagelightbox/readme.txt",
+		"/Users/iake.air/Sites/feature/simplemodal/Demos/index.html",
+		"/Users/iake.air/Sites/feature/simplemodal/Demos/assets/javascript/demo.js",
+		"/Users/iake.air/Sites/feature/simplemodal/Source/simple-modal.js",
+		"/Users/iake.air/Sites/feature/lightGallery-master/demo/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/catalog.html",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/lightslider/lightslider.js",
+		"/Users/iake.air/Sites/starsanitaryware/category.html",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/productdetail.php",
+		"/Users/iake.air/Sites/starsanitaryware/js/video.js",
+		"/Users/iake.air/OneDrive/SourceCode/php/feature/ultimate-image-hover-effects/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/css/category.css",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/css/hover-effects.css",
+		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/category.php",
+		"/Users/iake.air/Sites/starsanitaryware/video.html",
+		"/Users/iake.air/Sites/starsanitaryware/js/index.js",
 		"/Users/iake.air/Sites/starsanitaryware/js/profile.js",
-		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/lightslider/lightslider-content.css",
+		"/Users/iake.air/Sites/starsanitaryware/js/catalog.js",
+		"/Users/iake.air/Sites/starsanitaryware/press.html",
+		"/Users/iake.air/Downloads/lightslider-master/demo/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/lightslider/lightslider.css",
+		"/Users/iake.air/Sites/starsanitaryware/message.html",
+		"/Users/iake.air/Downloads/lightslider-master/dist/js/lightslider.js",
+		"/Users/iake.air/Sites/feature/CircularContentCarousel/test.html",
+		"/Users/iake.air/Sites/starsanitaryware/css/custom.control.css",
+		"/Users/iake.air/Sites/starsanitaryware/gallery.html",
+		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/photogrid/photogrid.css",
+		"/Users/iake.air/Sites/starsanitaryware/index.html",
+		"/Users/iake.air/Sites/starsanitaryware/about.html",
+		"/Users/iake.air/Sites/starsanitaryware/faq.html",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-widescreen.css",
+		"/Users/iake.air/Sites/starsanitaryware/profile.html",
+		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-slider.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/jquery.immersive-slider.js",
-		"/Users/iake.air/Sites/starsanitaryware/category.html",
 		"/Users/iake.air/Sites/register/js/validator.js",
 		"/Users/iake.air/Sites/register/index.html",
 		"/Users/iake.air/Sites/starsanitaryware/series.html",
 		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/visitor.php",
 		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/reference.php",
 		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/about.php",
-		"/Users/iake.air/Sites/starsanitaryware/index.html",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/jquery.tree.layout.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-custom.css",
 		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/css/master.css",
@@ -165,42 +224,7 @@
 		"/Users/iake.air/Sites/prakongmitt/controller/menus.php",
 		"/Users/iake.air/Sites/prakongmitt/controller/connect_procedure.php",
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/connect_carwash.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/css/carwash.css",
-		"/Users/iake.air/Sites/prakongmitt/js/restaurant_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/css/prakongmitt.css",
-		"/Users/iake.air/Sites/prakongmitt/pos.php",
-		"/Users/iake.air/Sites/prakongmitt/js/pos_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/js/category_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/category_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/connect.php",
-		"/Users/iake.air/Sites/prakongmitt/js/product_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/pages/restaurant/logs/info_2016-03-15.log",
-		"/Users/iake.air/Sites/prakongmitt/restaurant.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/order_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/ordersave_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/restaurant_data.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/loggin.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/product_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/report_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/js/product_manage.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/product_manage.php",
-		"/Users/iake.air/Sites/cakeDemo/<?.php",
-		"/private/etc/apache2/users/iake.air.conf",
-		"/Users/iake.air/Sites/prakongmitt/js/productgroup_manage.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/productgroup_manage.php",
-		"/Users/iake.air/Sites/prakongmitt/product.php",
-		"/Users/iake.air/Sites/prakongmitt/productgroup.php",
-		"/Users/iake.air/Sites/prakongmitt/controller/productgroup_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/pricelist.php",
-		"/Users/iake.air/Sites/prakongmitt/js/pricelist_manage.js",
-		"/Users/iake.air/Sites/prakongmitt/js/prakongmitt_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/login.php",
-		"/Users/iake.air/Sites/prakongmitt/js/jquery.min.js",
-		"/Users/iake.air/Sites/prakongmitt/verifylogin.php",
-		"/Users/iake.air/Sites/prakongmitt/.htaccess",
-		"/Users/iake.air/Library/Application Support/Sublime Text 2/Packages/User/Preferences.sublime-settings",
-		"/Users/iake.air/Sites/prakongmitt/js/bootstrap.min.js",
-		"/Users/iake.air/Sites/webapp1/login.php"
+		"/Users/iake.air/Sites/prakongmitt/pages/carwash/css/carwash.css"
 	],
 	"find":
 	{
@@ -211,6 +235,8 @@
 		"height": 0.0,
 		"where_history":
 		[
+			"/Users/iake.air/Sites/starsanitaryware/plugin/css",
+			""
 		]
 	},
 	"find_state":
@@ -218,6 +244,9 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			".text-desc",
+			"images",
+			"img",
 			"pagination",
 			"is-page",
 			"page",
@@ -264,6 +293,7 @@
 		"regex": true,
 		"replace_history":
 		[
+			".hover-desc"
 		],
 		"reverse": false,
 		"show_context": true,
@@ -282,15 +312,15 @@
 					"file": "css/theme.default.css",
 					"settings":
 					{
-						"buffer_size": 660,
+						"buffer_size": 1003,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								158,
-								158
+								97,
+								97
 							]
 						],
 						"settings":
@@ -299,25 +329,52 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 135.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "faq.html",
+					"file": "css/icon.css",
 					"settings":
 					{
-						"buffer_size": 7526,
+						"buffer_size": 165,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4393,
-								4393
+								74,
+								74
+							]
+						],
+						"settings":
+						{
+							"auto_name": ".blue {",
+							"syntax": "Packages/CSS/CSS.tmLanguage"
+						},
+						"translation.x": 0.0,
+						"translation.y": 0.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "productdetail.html",
+					"settings":
+					{
+						"buffer_size": 10287,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6345,
+								6345
 							]
 						],
 						"settings":
@@ -327,32 +384,30 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 962.0,
+						"translation.y": 2011.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
-					"buffer": 2,
-					"file": "plugin/jquery/immersive-slider/immersive-widescreen.css",
+					"buffer": 3,
+					"file": "css/product.css",
 					"settings":
 					{
-						"buffer_size": 3564,
+						"buffer_size": 61,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								290,
-								290
+								34,
+								34
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 2,
-							"translate_tabs_to_spaces": true
+							"syntax": "Packages/CSS/CSS.tmLanguage"
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -419,6 +474,6 @@
 	"show_open_files": true,
 	"show_tabs": true,
 	"side_bar_visible": true,
-	"side_bar_width": 391.0,
+	"side_bar_width": 223.0,
 	"status_bar_visible": true
 }

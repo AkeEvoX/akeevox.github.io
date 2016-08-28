@@ -12,8 +12,6 @@
 	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
 
-	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />
-
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" >
@@ -138,30 +136,57 @@
 			</div><!--end tree menu-->
 		</div>
 		<div class='col-md-9' id='view-content' >
+
 			<div class='container-fluid'>
-				<div class='row'><!--product gallery-->
-					<div id="productgallery" style="display:none;">
-					
-						<img alt="Preview Image 1"
-							 src="images/products/FAUCET/product1.thumb.jpg"
-							 data-image="images/products/FAUCET/product1.jpg"
-							 data-description="">
-						
-						<img alt="Preview Image 2"
-							 src="images/products/FAUCET/product2.thumb.jpg"
-							 data-image="images/products/FAUCET/product2.jpg"
-							 data-description="">
-							 
-						<img alt="Preview Image 3"
-							 src="images/products/FAUCET/product3.thumb.jpg"
-							 data-image="images/products/FAUCET/product3.jpg"
-							 data-description="">
-							
-						<img alt="Preview Image 4"
-							 src="images/products/FAUCET/product4.thumb.jpg"
-							 data-image="images/products/FAUCET/product4.jpg"
-							 data-description="">
+				<div class='col-md-6'>
+					<div class='thumbnail'>
+						<img data-src="holder.js/430x400" alt="">
 					</div>
+				</div>
+				<div class='col-md-6'>
+					<form class='form-horizontal'>
+						<div class='form-group'>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Categorys </b></span>
+								<div class='col-md-9'>WATER CLOSED</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Code </b></span>
+								<div class='col-md-9'>A003451</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Name </b></span>
+								<div class='col-md-9'>NEW GEN</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Type </b></span>
+								<div class='col-md-9'>WITH FULL</div>
+							</div>
+							<div class='row'>
+								<div class='col-md-12'>
+									<img src='images/products/water_closed/wc001.png' class='img-responsive' alt="">	
+								</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Size </b></span>
+								<div class='col-md-9'>100 x 47 x 200 pm</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Detail </b></span>
+								<div class='col-md-9'>Hello world's</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>Color</b></span>
+								<div class='col-md-9'>
+									<div class='col-md-1' style='background-color:red;' >&nbsp;</div><div class='col-md-1' style='background-color:blue;' >&nbsp;</div>
+								</div>
+							</div>
+							<div class='row'>
+								<span class='col-md-3 text-right'><b>SPECIFICATION </b></span>
+								<div class='col-md-9'>Unknow.</div>
+							</div>
+						</div>
+					</form>
 				</div>
 				<div class='row'>
 					<div class='col-md-12'>
@@ -170,7 +195,7 @@
 			        		<div class="item" >    
 							<ul id="product-slider" class="content-slider">
 				                <li>
-				                	<img data-src='images/products/FAUCET/product1.jpg' />
+				                	<img data-src='holder.js/250x200' class='img-responsive' />
 				                    <div class='lightslider-desc'>
 				                    	<label>
 				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
@@ -178,7 +203,7 @@
 				                    </div>
 				                </li>
 				                <li>
-				                	<img data-src='images/products/FAUCET/product2.jpg' class='img-responsive' />
+				                	<img data-src='holder.js/250x200' class='img-responsive' />
 				                    <div class='lightslider-desc'>
 				                    	<label>
 				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
@@ -186,7 +211,7 @@
 				                    </div>
 				                </li>
 				                <li>
-				                	<img data-src='images/products/FAUCET/product3.jpg' class='img-responsive' />
+				                	<img data-src='holder.js/250x200' class='img-responsive' />
 				                    <div class='lightslider-desc'>
 				                    	<label>
 				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
@@ -194,7 +219,31 @@
 				                    </div>
 				                </li>
 				                <li>
-				                	<img src='images/products/FAUCET/product4.jpg' class='img-responsive' />
+				                	<img src='holder.js/250x200' class='img-responsive' />
+				                    <div class='lightslider-desc'>
+				                    	<label>
+				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
+				                    	</label>
+				                    </div>
+				                </li>
+				                <li>
+				                	<img src='holder.js/250x200' class='img-responsive' />
+				                    <div class='lightslider-desc'>
+				                    	<label>
+				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
+				                    	</label>
+				                    </div>
+				                </li>
+				                <li>
+				                	<img src='holder.js/250x200' class='img-responsive' />
+				                    <div class='lightslider-desc'>
+				                    	<label>
+				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
+				                    	</label>
+				                    </div>
+				                </li>
+				                <li>
+				                	<img src='holder.js/250x200' class='img-responsive' />
 				                    <div class='lightslider-desc'>
 				                    	<label>
 				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
@@ -214,8 +263,6 @@
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/jquery/lightslider/lightslider.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-<script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>
-<script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/productdetail.js' ></script>
 </body>
