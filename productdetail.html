@@ -5,14 +5,18 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
-	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
-
 	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />
+	
+	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/product.css" rel="stylesheet" type="text/css" />
+	
+	
 
 </head>
 <body>
@@ -163,6 +167,57 @@
 							 data-description="">
 					</div>
 				</div>
+				<div class='row well well-sm'>
+					<form class="form-inline">
+								<label class='col-xs-2 control-label' >Name 1</label>
+								<div class='col-xs-4'>
+									<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>
+								<label class='col-xs-2 control-label' >Name 2</label>
+								<div class='col-xs-4'>
+									<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>
+								<label class='col-xs-2 control-label' >Name 3</label>
+								<div class='col-xs-4'>
+									<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>
+								<label class='col-xs-2 control-label' >Name 4</label>
+								<div class='col-xs-4'>
+										<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>	
+								<label class='col-xs-2 control-label' >Name 5</label>
+								<div class='col-xs-4'>
+										<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>	
+								<label class='col-xs-2 control-label' >Name 6</label>
+								<div class='col-xs-4'>
+										<p class='form-control-static'>HELLO WORLD'S </p>
+								</div>	
+					</form>
+				</div>
+				<div class='row'>
+					<div class='col-md-12'>
+					<hr>{productname}</hr>
+					<img src='images/products/WATER_CLOSED/wc001.png' class='img-responsive'/>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-12 text-right'>
+						<div class='share-popup'>
+							<a href="http://www.facebook.com/sharer/sharer.php?u=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&t=link popup" target="_blank" >
+							 <img src='images\logos\share_facebook.png' /> <span>Share on Facebook<span>
+							 </a>
+						 </div>
+						 <div class='share-popup'>
+							<a href="http://www.twitter.com/intent/tweet?url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&via=TWITTER_HANDLE_HERE&text=product good" target="_blank" >
+								<img src='images\logos\share_twitter.png' /> <span >Share on Twitter</span></a>
+						</div>
+						<div class='share-popup'>
+							<a href="http://plus.google.com/share?url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript" target="_blank" >
+							<img src='images\logos\share_google.png' /><span>Share on Googleplus</span></a>
+						</div>
+					</div>
+				</div>
 				<div class='row'>
 					<div class='col-md-12'>
 						<h3>Product Releated</h3>
@@ -218,5 +273,17 @@
 <script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/productdetail.js' ></script>
+<script>
+
+(function(d, s, id) {
+	  var js, fjs = d.getElementsByTagName(s)[0];
+	  if (d.getElementById(id)) return;
+	  js = d.createElement(s); js.id = id;
+	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
+	  fjs.parentNode.insertBefore(js, fjs);
+	}(document, 'script', 'facebook-jssdk'));
+	</script>
+	
+	
 </body>
 <!--www.bootply.com/lE2NPpERdt-->

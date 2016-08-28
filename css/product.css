@@ -12,3 +12,21 @@
 {
 	
 }
+
+.share-popup {
+	
+}
+
+.share-popup img {
+	position: relative; 
+	left: 0;
+	top: 0;
+}
+
+.share-popup span {
+	position: absolute; 
+	  text-align: center;
+	  width: 100%;
+	  height: 0%;
+	  margin: auto;
+}
