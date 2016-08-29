@@ -21,26 +21,31 @@
 .thumbnail-desc span{
 	font-size: 11px;
 }
-
+/*desktop*/
 @media(min-width:1200px) {
 
 	.img-fluid {max-width: 100%;}
 
 }
 
+/* laptop */
 @media(min-width:600px) and (max-width:1200px){
 
 	.product-list .col-md-* { padding:5px;margin:5px; }
 	.img-fluid {max-width: 100%;}
-
 	#menutree { display:none; }
 	#view-content {width:100%;}
+	
 
 }
 
+/*mobile*/
 @media(max-width:600px) {
 
 	.img-fluid{ min-width:100%;  }
-	
 	#menutree { display:none; }
+	
+	#logo-category{ max-height:250px;  }
+	.image-box { max-height:250px;  }
+	
 }
