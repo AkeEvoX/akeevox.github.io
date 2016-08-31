@@ -1,33 +1,4 @@
 
-.share-popup {
-	float:right;
-	border:0px solid;
-	height:32px;
-	width: 185px;
-	position: relative;
-	/*
-
-	position:relative;
-	*/
-}
-
-.share-popup img {
-	position: absolute;
-	left: 0;
-	top: 0;
-	
-}
-
-.share-popup span {
-	z-index: 100;
-	position: absolute;
-	color: white;
-	font-size: 12px;
-	font-weight: bold;
-	left: 50px;
-	top: 5px;
-}
-
 ul{
 	list-style: none outside none;
     padding-left: 0;
@@ -50,9 +21,8 @@ ul{
 
 .lightslider-desc{
 	float:left;
-
+    
 }
-
 
 .content-slider li{
     background-color: white;
