@@ -2,8 +2,6 @@ body
 {
 	margin-top:80px;
 }
-/*override class*/
-#navbar ul{	padding-left:90px; } /*adjust menu*/
 
 .logobar {
 	position:absolute;
@@ -43,6 +41,8 @@ label {
 /*pc*/
 @media(min-width:1200px) {
 	#searchbar { background-color:transparent; }
+	/*override class*/
+	#navbar ul.nav.navbar-nav { padding-left:90px; } /*adjust menu*/
 }
 
 /* tables */
@@ -50,12 +50,14 @@ label {
 
 	#searchbar { display:none;  }
 	.navbar-header { padding-left:5px; }
+	/*override class*/
+	#navbar ul.nav.navbar-nav { padding-left:90px; } /*adjust menu*/
 }
 /* mobile */
 @media(max-width:600px) {
 
 	#searchbar { display:none; }
 	.navbar-header { padding-left:10px; }
-	#navbar ul{	padding-left:0px; } /*adjust menu*/
+	#navbar ul.nav.navbar-nav { padding-left:จpx; } /*adjust menu*/
 
 } 
