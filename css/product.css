@@ -3,7 +3,7 @@
 	float:right;
 	border:0px solid;
 	height:32px;
-	width: 185px;
+	width: 130px;
 	position: relative;
 	/*
 
@@ -22,10 +22,10 @@
 	z-index: 100;
 	position: absolute;
 	color: white;
-	font-size: 12px;
+	font-size: 10px;
 	font-weight: bold;
-	left: 50px;
-	top: 5px;
+	left: 40px;
+	top: 3px;
 }
 
 ul{

@@ -32,21 +32,34 @@
 	"buffers":
 	[
 		{
-			"contents": "<!DOCTYPE html PUBLIC \"-//W3C//DTD XHTML 1.0 Transitional//EN\" \"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd\">\n<html xmlns=\"http://www.w3.org/1999/xhtml\"><!-- InstanceBegin template=\"/Templates/home.dwt.php\" codeOutsideHTMLIsLocked=\"false\" -->\n<head>\n<title>Welcome to Starsanitaryware</title>\n	<meta http-equiv=\"Content-Type\" content=\"text/html; charset=utf-8\" />\n	<meta http-equiv='X-UA-Compatible' content='IE=edge'>\n	<meta name='viewport' content='width=device-width, initial-scale=1'>\n	\n	<link href=\"plugin/bootstraps/css/bootstrap.css\" rel=\"stylesheet\" type=\"text/css\" />\n	<link href=\"plugin/jquery/jquery.mThumbnailScroller.css\" rel=\"stylesheet\" type=\"text/css\" />\n	<link href=\"plugin/jquery/jquery.tree.layout.css\" rel=\"stylesheet\" type=\"text/css\" />\n	<link href=\"plugin/jquery/lightslider/lightslider.css\" rel=\"stylesheet\" type=\"text/css\" />\n	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />\n	\n	<link href=\"css/theme.default.css\" rel=\"stylesheet\" type=\"text/css\" />\n	<link href=\"css/compare.css\" rel=\"stylesheet\" type=\"text/css\" />\n	\n</head>\n<body>\n<nav class=\"navbar navbar-default navbar-fixed-top\" >\n        <div class=\"container-fluid\">\n		<div class=\"navbar-header\">\n            <button type=\"button\" class=\"navbar-toggle collapsed\" data-toggle=\"collapse\" data-target=\"#navbar\" aria-expanded=\"false\" aria-controls=\"navbar\">\n              <span class=\"sr-only\">Toggle navigation</span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n              <span class=\"icon-bar\"></span>\n            </button>\n            <a class='navbar-band'><img src='images/logos/icon-fb-circle' class='iconbar' alt='facebook' /></a>\n            <a class='navbar-band'><img src='images/logos/icon-tw-circle' class='iconbar' alt='twitter' /></a>\n            <a class='navbar-band'><img src='images/logos/icon-gp-circle' class='iconbar' alt='google+' /></a>\n			<a class='navbar-band' href=\"login.php\" ><img src='images/logos/logo_temp.png' class='logobar' ></a>\n          </div>\n          <div id=\"navbar\" class=\"navbar-collapse collapse\">\n			<ul class=\"nav navbar-nav\">\n			<li ><a href=\"index.html\" id=\"mainmenu\">HOME</a></li>\n			<li class=\"dropdown\">\n				<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" \n				aria-expanded=\"false\">PRODUCTS<span class=\"caret\"></span>\n				</a>\n				<ul class=\"dropdown-menu\">\n					<li><a href=\"category.html\">CATEGORY</a></li>\n					<li><a href=\"series.html\">SERIES</a></li>\n				</ul>\n			</li>\n			<li class=\"dropdown\">\n\n				<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" \n				aria-expanded=\"false\" >COMPANY<span class=\"caret\"/></a>\n				<ul class=\"dropdown-menu\">\n					<li><a href=\"about.html\">ABOUT US</a></li>\n					<li><a href=\"reference.html\">PROJECTS REFERENCE</a></li>\n					<li><a href=\"profile.html\">AWARD & STANDARD</a></li>\n					<li><a href=\"faq.html\">FAQ</a></li>\n				</ul>\n			</li>\n			<li ><a href=\"#\" >PRESS</a></li>\n			<li class='dropdown'>\n				<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\" >ACRHIVE<span class=\"caret\"></a>\n				<ul class=\"dropdown-menu\">\n					<li><a href=\"gallery.html\">GALLERY</a></li>\n					<li><a href=\"video.html\">VIDEO</a></li>\n					<li><a href=\"download.html\">DOWNLOAD</a></li>\n					<li><a href=\"catalog.html\">CATALOG ONLINE</a></li>\n				</ul>\n			</li>\n			<li class=\"dropdown\">\n				<a href=\"#\" class=\"dropdown-toggle\" data-toggle=\"dropdown\" role=\"button\" aria-haspopup=\"true\" aria-expanded=\"false\">CONTACT<span class=\"caret\"/></a>\n				<ul class=\"dropdown-menu\">\n					<li><a href=\"map.html\">Map</a></li>\n					<li><a href=\"message.html\">Messages</a></li>\n				</ul>\n			</li>\n\n            </ul>\n		    <form class=\"navbar-form navbar-right\" id='searchbar' role=\"search\">\n				<div class=\"form-group\" >\n				  	<span class=\"glyphicon glyphicon-search\" ></span>\n				  	<input type=\"text\" class=\"form-control\" placeholder=\"Search\" />\n				  	<div class=\"btn-group languagebar\" >\n					  <button type=\"button\" class=\"btn btn-default dropdown-toggle\" data-toggle=\"dropdown\" aria-haspopup=\"true\" aria-expanded=\"false\">\n						Language <span class=\"caret\"></span>\n					  </button>\n					  <ul class=\"dropdown-menu\">\n						<li><a href=\"#\">THAI</a></li>\n						<li><a href=\"#\">ENGLISH</a></li>\n					  </ul>\n					</div>\n				</div>        \n			</form> \n          </div><!--/.nav-collapse -->\n        </div><!--/.container-fluid -->\n      </nav>  \n	  <!--end navigator-->\n\n	  <div class='container-fluid'>\n	  		<div class='row'>\n					<div class='col-md-12'>\n						<ol class=\"breadcrumb\">\n						  <li><a href=\"index.html\">Home</a></li>\n						  <li><a href=\"#\">Product</a></li>\n						  <li><a href=\"category.html\">Category</a></li>\n						  <li class=\"active\">WATER CLOSED</li>\n						</ol>\n					</div>\n				</div>\n		<div class='col-md-3' id='menutree'>\n			<div class='span3'>\n				<ul  class='nav nav-list menulist'>\n					<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>\n						<ul class='nav nav-list tree'>\n							<li><a href='#' >WATRE CLOSET</a></li>\n							<li><label class=\"tree-toggle nav-header submenu\">WASH BASIN</label>\n								<ul class='nav nav-list tree submenu' >\n									<li><a href='#'>BASIN Above-Counter</a></li>\n									<li><a href='#'>BASIN Counter-Top</a></li>\n									<li><a href='#'>BASIN Under-Counter</a></li>\n									<li><a href='#'>BASIN Half-Counter</a></li>\n									<li><a href='#'>BASIN Wall Hung</a></li>\n								</ul>\n							</li>\n							<li><a href='#' >URINAL /BIDET</a></li>\n							<li><a href='#' >ACCESSORIES</a></li>\n						</ul>\n					</li>\n					 <li><label class=\"tree-toggle nav-header mainmenu\">SERIES</label>\n						<ul class=\"nav nav-list tree\">\n							<li><a href=\"#\">INNOCENCE SUITE</a></li>\n							<li><a href=\"#\">CURVE SUITE</a></li>\n							<li><a href=\"#\">ANGULAR SUITE</a></li>\n							<li><a href=\"#\">FOCUS SUITE</a></li>\n							<li><a href=\"#\">LOFTY SUITE</a></li>\n							<li><a href=\"#\">SPIRIT SUITE</a></li>\n							<li><a href=\"#\">CURVE B&W SUITE</a></li>\n							<li><a href=\"#\">JUNIPER SUITE</a></li>\n						</ul>\n					</li>\n				</ul>\n			</div><!--end tree menu-->\n		</div>\n		<div class='col-md-9' id='view-content' >\n			<div class='container-fluid'>\n				\n				\n				<div class='row'>\n					<div class='col-md-12'>\n						<h3>Compare Product</h3>\n						<div class=\"lightslider-main\">\n			        		<div class=\"item\" >    \n							<ul id=\"product-slider\" class=\"content-slider\">\n				                <li>\n				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />\n				                    <div class='lightslider-title'>\n				                    	<label>\n				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT\n				                    	</label>\n				                    </div>\n				                    <ul class='lightslider-desc'>\n			                    		<li >1.)aaaaaaaaaa<hr/></li>\n			                    		<li>2.)aaaaaaaaaa<hr/></li>\n			                    		<li>3.)aaaaaaaaaa<hr/></li>\n			                    		<li>4.)aaaaaaaaaa<hr/></li>\n			                    		<li>5.)aaaaaaaaaa<hr/></li>\n			                    		<li>6.)aaaaaaaaaa<hr/></li>\n			                    	</ul>\n				                </li>\n				                <li>\n				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />\n				                    <div class='lightslider-title'>\n				                    	<label>\n				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT\n				                    	</label>\n				                    </div>\n			                    	<ul class='lightslider-desc'>\n			                    		<li>1.)aaaaaaaaaa<hr/></li>\n			                    		<li>2.)aaaaaaaaaa<hr/></li>\n			                    		<li>3.)aaaaaaaaaa<hr/></li>\n			                    		<li>4.)aaaaaaaaaa<hr/></li>\n			                    		<li>5.)aaaaaaaaaa<hr/></li>\n			                    		<li>6.)aaaaaaaaaa<hr/></li>\n			                    	</ul>\n				                </li>\n				            </ul>\n			        		</div>\n			        	</div><!--end lightslider-->\n					</div>\n				</div>\n			</div> <!--end productdetail container-->\n		</div>\n	</div><!--end conatiner-->\n<script src='plugin/jquery/jquery.min.js' ></script>\n<script src='plugin/jquery/jquery-ui.min.js' ></script>\n<script src='plugin/jquery/holder.js' ></script>\n<script src='plugin/jquery/lightslider/lightslider.js' ></script>\n<script src='plugin/bootstraps/js/bootstrap.js' ></script>\n<script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>\n<script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>\n<script src='js/utility.js' ></script>\n<script src='js/productdetail.js' ></script>\n<script>\n\n(function(d, s, id) {\n	  var js, fjs = d.getElementsByTagName(s)[0];\n	  if (d.getElementById(id)) return;\n	  js = d.createElement(s); js.id = id;\n	  js.src = \"//connect.facebook.net/en_US/sdk.js#xfbml=1\";\n	  fjs.parentNode.insertBefore(js, fjs);\n	}(document, 'script', 'facebook-jssdk'));\n	</script>\n	\n	\n</body>\n<!--www.bootply.com/lE2NPpERdt-->",
-			"file": "compares.html",
-			"file_size": 9181,
-			"file_write_time": 1472572139000000,
+			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 9170,
+				"buffer_size": 7358,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/compare.css",
+			"file": "css/theme.default.css",
 			"settings":
 			{
-				"buffer_size": 444,
+				"buffer_size": 1248,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "organization.html",
+			"settings":
+			{
+				"buffer_size": 6822,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "productdetail.html",
+			"settings":
+			{
+				"buffer_size": 13530,
 				"line_ending": "Unix"
 			}
 		},
@@ -91,7 +104,12 @@
 	},
 	"file_history":
 	[
+		"/Users/iake.air/Sites/starsanitaryware/about.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/theme.default.css",
+		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
+		"/Users/iake.air/Sites/starsanitaryware/css/compare.css",
+		"/Users/iake.air/Sites/starsanitaryware/compares.html",
+		"/Users/iake.air/Sites/starsanitaryware/css/product.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/lightslider/lightslider-content.css",
 		"/Users/iake.air/Sites/starsanitaryware/css/icon.css",
 		"/Users/iake.air/Sites/starsanitaryware/js/productdetail.js",
@@ -133,11 +151,9 @@
 		"/Users/iake.air/Sites/starsanitaryware/gallery.html",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/photogrid/photogrid.css",
 		"/Users/iake.air/Sites/starsanitaryware/index.html",
-		"/Users/iake.air/Sites/starsanitaryware/about.html",
 		"/Users/iake.air/Sites/starsanitaryware/faq.html",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-widescreen.css",
 		"/Users/iake.air/Sites/starsanitaryware/profile.html",
-		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-slider.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/jquery.immersive-slider.js",
 		"/Users/iake.air/Sites/register/js/validator.js",
@@ -215,10 +231,7 @@
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/order_ctrl.php",
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/connecter.php",
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/js/carwash_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/pricelist_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/js/menus.js",
-		"/Users/iake.air/Sites/prakongmitt/js/menus.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/menus.php"
+		"/Users/iake.air/Sites/prakongmitt/controller/pricelist_ctrl.php"
 	],
 	"find":
 	{
@@ -299,23 +312,23 @@
 	"groups":
 	[
 		{
-			"selected": 0,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "compares.html",
+					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 9170,
+						"buffer_size": 7358,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6977,
-								6977
+								6484,
+								6484
 							]
 						],
 						"settings":
@@ -325,33 +338,31 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2137.0,
+						"translation.y": 2100.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "css/compare.css",
+					"file": "css/theme.default.css",
 					"settings":
 					{
-						"buffer_size": 444,
+						"buffer_size": 1248,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								291,
-								291
+								165,
+								172
 							]
 						],
 						"settings":
 						{
-							"auto_name": "",
 							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"tab_size": 4,
-							"translate_tabs_to_spaces": true
+							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
 						"translation.y": 0.0,
@@ -361,6 +372,62 @@
 				},
 				{
 					"buffer": 2,
+					"file": "organization.html",
+					"settings":
+					{
+						"buffer_size": 6822,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								5379,
+								5379
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1290.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "productdetail.html",
+					"settings":
+					{
+						"buffer_size": 13530,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								6480,
+								6480
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 1940.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
 					"file": "css/product.css",
 					"settings":
 					{
@@ -371,17 +438,16 @@
 						"selection":
 						[
 							[
-								330,
-								771
+								74,
+								74
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
-							"translate_tabs_to_spaces": false
+							"syntax": "Packages/CSS/CSS.tmLanguage"
 						},
 						"translation.x": 0.0,
-						"translation.y": 195.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

@@ -138,11 +138,50 @@
 		</div>
 	</div>
 </div>
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+	<p>
+		<div class='container'>	
+		 	<div class='col-md-4'>
+
+		 		<label>{sitemap.title}</label>
+		 		<hr style='margin:0;'/>
+		 		<ul>
+		 			<li>{sitemap.home}</li>
+		 			<li>{sitemap.product}</li>
+		 			<li>{sitemap.company}</li>
+		 			<li>{sitemap.media}</li>
+		 			<li>{sitemap.services}</li>
+		 			<li>{sitemap.contact}</li>
+		 		</ul>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div class='rowspan'>
+					<label>{address.title}</label>
+			 		<hr style='margin:0;'/>
+					{address.detail}
+				</div>
+				<div class='rowspan'>
+					<label>{channel.title}</label>
+			 		<hr style='margin:0;'/>
+					{channel.detail}
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div class='rowspan'>
+				<label >{social.title}</label>
+		 		<hr style='margin:0;'/>
+				{social.facebook},{social.youtube}
+				</div>
+				<div class='rowspan'>
+					<label>{contact.title}</label>
+			 		<hr style='margin:0;'/>
+					{contact.detail}
+				</div>
+		 	</div>
+		</div>
+	</p>
+</div>
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-/*
-example tree menu
-http://www.bootply.com/lE2NPpERdt
-*/
 </body>
