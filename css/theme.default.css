@@ -13,6 +13,10 @@ body
 	position:relative;
 	right:0;
 }
+.contactseller {
+padding:2px 33px;
+margin-right:48px;
+}
 
 .iconbar { padding-top:10px; }
 .rowspan { padding-bottom:10px;}
@@ -20,10 +24,6 @@ body
 .mainmenu{ color:orange; }
 .submenu { color:red; padding-left:15px;}
 .submenu ul { padding-left:15px; }
-
-/*iframe responsive*/
-iframe, object, embed{ max-width: 100%;}
-
 
 /*override media */
 .media, { padding-bottom:5px; }
@@ -33,16 +33,30 @@ iframe, object, embed{ max-width: 100%;}
 	padding-bottom:5px;
 	padding-left:5px;
 }
+/*-----custom control--------*/
+iframe, object, embed{ max-width: 100%;}
 
 label {
     white-space: normal; /*word wrap*/
 }
 
+.input-xs {
+  height: 23px;
+  max-width:150px;
+  font-size: 12px;
+  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+  border-radius: 3px;
+}
+/*-----custom control--------*/
+
 /*pc*/
 @media(min-width:1200px) {
 	#searchbar { background-color:transparent; }
 	/*override class*/
-	#navbar ul.nav.navbar-nav { padding-left:90px; } /*adjust menu*/
+	#navbar ul.nav.navbar-nav { padding-left:80px; } /*adjust menu*/
+	.navbar { height:60px; } 
+	#navbar {padding-top:0px;}
+	
 }
 
 /* tables */

@@ -19,7 +19,7 @@
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>	
               <span class="icon-bar"></span>
             </button>
             <a class='navbar-band'><img src='images/logos/icon-fb-circle' class='iconbar' alt='facebook' /></a>
@@ -29,65 +29,60 @@
           </div>
           <div id="navbar" class="navbar-collapse collapse">
 			<ul class="nav navbar-nav">
-			<li ><a href="index.html" id="mainmenu">HOME</a></li>
+			<li ><a href="index.html" id="mainmenu">{menu.home}</a></li>
 			<li class="dropdown">
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false">PRODUCTS<span class="caret"></span>
+				aria-expanded="false">{menu.product}<span class="caret"></span>
 				</a>
 				<ul class="dropdown-menu">
-					<li><a href="category.html">CATEGORY</a></li>
-					<li><a href="series.html">SERIES</a></li>
+					<li><a href="category.html">{menu.product.category}</a></li>
+					<li><a href="series.html">{menu.product.series}</a></li>
+					<li><a href="series.html">{menu.product.showroom}</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
-
 				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >COMPANY<span class="caret"/></a>
+				aria-expanded="false" >{menu.company}<span class="caret"/></a>
 				<ul class="dropdown-menu">
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="organization.html">ORGANIZATION</a></li>
-					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
-					<li><a href="profile.html">AWARD & STANDARD</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
-			</li>
-			<li ><a href="press.html" >PRESS</a></li>
-			<li class='dropdown'>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
-				<ul class="dropdown-menu">
-					<li><a href="gallery.html">GALLERY</a></li>
-					<li><a href="video.html">VIDEO</a></li>
-					<li><a href="download.html">DOWNLOAD</a></li>
-					<li><a href="catalog.html">CATALOG ONLINE</a></li>
+					<li><a href="about.html">{menu.company.about}</a></li>
+					<li><a href="governance.html">{menu.company.governance}</a></li>
+					<li><a href="organization.html">{menu.company.organization}</a></li>
+					<li><a href="reference.html">{menu.company.reference}</a></li>
+					<li><a href="international.html">{menu.company.international}</a></li>
+					<li><a href="profile.html">{menu.company.award}</a></li>
 				</ul>
 			</li>
 			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
+				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
+				aria-expanded="false" >{menu.media}<span class="caret"/></a>
 				<ul class="dropdown-menu">
-					<li><a href="map.html">Map</a></li>
-					<li><a href="message.html">Messages</a></li>
+					<li><a href="press.html">{menu.media.press}</a></li>
+					<li><a href="organization.html">{menu.media.gallery}</a></li>
+					<li><a href="reference.html">{menu.media.video}</a></li>
+					<li><a href="faq.html">{menu.media.faq}</a></li>
 				</ul>
 			</li>
-
+			<li ><a href="download.html" >{menu.download}</a></li>
+			<li ><a href="contact.html" >{menu.contact}</a></li>
             </ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<div class="form-group" >
-				  	<span class="glyphicon glyphicon-search" ></span>
-				  	<input type="text" class="form-control" placeholder="Search" />
-				  	<div class="btn-group languagebar" >
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Language <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a href="#">THAI</a></li>
-						<li><a href="#">ENGLISH</a></li>
-					  </ul>
+			<span class="glyphicon glyphicon-search" ></span>
+				<div class='input-group'>
+					<input type='text' class='form-control input-xs' area-label=''   />
+					<div class='input-group-btn'>
+						<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Thai </button>
+						<ul  class='dropdown-menu dropdown-menu-right' >
+							<li ><a href='?lang=th&word=Thai'>Thai</a></li>
+							<li ><a href='?lang=en&word=English'>English</a></li>
+						</ul>
 					</div>
-				</div>       
+				</div><br/>
+				<button type='button'  class='btn pull-right btn-default btn-xs text-center contactseller'>Contact Seller</button>	
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
+
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-12'>
@@ -184,4 +179,20 @@
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='js/utility.js'></script>
+<script src='js/index.js'></script>
+
+<script>
+$(document).ready(function(){
+
+	var lang = getParameterByName('word');
+	if(lang==undefined)//default thai
+	{
+		lang="Thai";
+	}
+	$('#lang').html(lang+" <span class='caret'></span>");
+	
+});
+
+</script>
 </body>
