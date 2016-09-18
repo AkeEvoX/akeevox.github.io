@@ -50,7 +50,7 @@ function selectLang(lang){
 		type:'POST',
 		dataType:'json',
 		data:{select:lang}
-		contentType : 'content=utf-8',
+		//contentType : 'content=utf-8',
 		success:function(data){
 			generateMenu();
 		},

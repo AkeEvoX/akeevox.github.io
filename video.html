@@ -100,76 +100,18 @@
 	<h3>VIDEO</h3>
 	<div class='row'>
 		<div class='col-md-offset-2 col-md-8'>
-			<h4 class='media-heading' style='color:orange'>Press of startsanitaryware</h4>
-			<!--<img data-src='holder.js/1240x500' class='img-responsive' />-->
+			<h4 id='title' class='media-heading' style='color:orange'></h4>
 			<div id='mediacontent' class="embed-responsive embed-responsive-16by9" ><!--16by9 or 4by3 -->
   				<iframe id='mediaplayer' frameborder="0" wmode="Opaque" allowfullscreen="true" 
-  				src="https://www.youtube.com/embed/oqDRPoPDehE" ></iframe>
+  				src="" ></iframe>
 			</div>
-					<!--https://www.youtube.com/watch?v=3shMD13Y2uU-->
 		</div>
 	</div>
 	<div class='row'>
 		<div class='col-md-12'>
 				<div class="lightslider-main">
         		<div class="item" >    
-				<ul id="video-slider" class="content-slider" >
-	                <li data-link='http://www.youtube.com/embed/Th3STX3gKX0'>
-	                	<img data-src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="http://www.youtube.com/embed/yJlsobg524E">
-	                	<img data-src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="http://www.youtube.com/embed/uLKFm_1ARPE">
-	                	<img data-src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="item 4">
-	                	<img src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="item 5">
-	                	<img src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="item 6">
-	                	<img src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
-	                <li data-link="item 7">
-	                	<img src='holder.js/250x200' class='img-responsive' />
-	                    <div class='lightslider-desc'>
-	                    	<label>
-	                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-	                    	</label>
-	                    </div>
-	                </li>
+				<ul id="list" class="content-slider" >
 	            </ul>
         		</div>
         	</div><!--end lightslider-->
@@ -182,4 +124,11 @@
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/video.js' ></script>
+<script>
+$(document).ready(function(){
+
+	loadList();
+	
+});
+</script>
 </body>

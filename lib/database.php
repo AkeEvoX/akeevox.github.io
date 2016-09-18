@@ -12,7 +12,7 @@ class database {
 
 	function __construct(){
 
-		$config = parse_ini_file("config.ini");
+		$config = parse_ini_file("../config/datasource.ini");
 		
 		$this->host = $config["host"];
 		$this->port = $config["port"];

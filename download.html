@@ -6,11 +6,17 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/photogrid/photogrid.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/hover/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/hover/css/secondeffect.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-
+		<style>
+	.view .mask, .view .content{
+		height:270px;
+	}
+	.second-effect:hover .mask {
+		border:135px solid rgba(0,0,0,0.7);
+	}
+	</style>
 </head>
 <body>
 
@@ -93,36 +99,18 @@
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
 					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">Acrhive</a></li>
-					  <li class="active" >Gallery</li>
+					  <li class="active" >{nav.download}</li>
 					</ol>
 				</div>
 			</div>
-	<h3>GALLERY</h3>
-	<div class='row'>
-		<div class='col-md-12'>
-			<div id='list' class='photoGrid clearfix'>
-			</div>
-		</div>
+	<h3>{title.download}</h3>
+	<div id='list'>
 	</div>
 </div> <!--end container fluid-->
+
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-<script src='plugin/jquery/photogrid/jquery.photogrid.js' ></script>
-<script src='js/gallery.js' ></script>
-<script >
-
-var defaults = {
-	itemSelector: ".item", // item selecor
-	resize: true, // automatic reload grid on window size change
-	rowHeight: $(window).height() / 2, // looks best, but needs highres thumbs
-	callback: function() {} // fires when layouting grid is done
-};
-
-  $(window).load(function() { // or use https://github.com/desandro/imagesloaded
-	loadList();
-  });
-</script>
-
+<script src='js/utility.js'></script>
+<script src='js/download.js'></script>
 </body>

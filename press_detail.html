@@ -6,9 +6,15 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	
+	<style>
+	.img-responsive {
+		margin: 0 auto;
+		box-shadow: 0px 0px 5px #aaa;
+	}
+	.media-heading {padding-bottom:10px;}
+	.media-body {padding-top:15px;}
+	</style>
 </head>
 <body>
 
@@ -91,28 +97,25 @@
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
 					  <li><a href="index.html">Home</a></li>
+					  <li><a href="#">Media</a></li>
 					  <li><a href="press.html">Press</a></li>
-					  <li class="active" >STARTSANITARYWARE</li>
 					</ol>
 				</div>
 			</div>
 	<h3>PRESS</h3>
-	<div class='row'>
-		<div class='col-md-12'>
-			<h4 class='media-heading' style='color:orange'>Press of startsanitaryware</h4>
-			<img data-src='holder.js/1240x500' class='img-responsive' />
-			<div class='media-body'>
-			
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-			</div>
-		</div>		
+	<div id='list' class='row'>
 	</div>
 	
 </div> <!--end container fluid-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='js/utility.js'></script>
+<script src='js/press.js' ></script>
+<script>
+	$(document).ready(function(){
+		var id = getParameterByName('id');
+		LoadItem(id);
+	});
+</script>
 </body>

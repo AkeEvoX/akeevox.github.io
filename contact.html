@@ -8,6 +8,7 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/custom.control.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
@@ -97,74 +98,63 @@
 			</div>
 	<div class='row'>
 		<div class='col-md-4'>
-			<h3>MOST VIEW</h3>
-			<div class='row'>
 				<div class='media'>
 					<div class='media-body'>
 						<h4 class='media-heading'>ADDRESS</h4>
-							START'S WORLD CLASS SANITARYWARE PRODUCT
+							<ul id='address'></ul>
 					</div>
 				</div>
 				<hr/>
-			</div>
-			<div class='row'>
 				<div class='media'>
-					<div class='media-left'>
-						<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-					</div>
 					<div class='media-body'>
-						<h4 class='media-heading'>16 June 2016</h4>
-							START'S WORLD CLASS SANITARYWARE PRODUCT
+						<h4 class='media-heading'>PHONE</h4>
+						<ul id='phone'></ul>
 					</div>
 				</div>
 				<hr/>
-			</div>
-			<div class='row'>
 				<div class='media'>
-					<div class='media-left'>
-						<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-					</div>
 					<div class='media-body'>
-						<h4 class='media-heading'>16 June 2016</h4>
-							START'S WORLD CLASS SANITARYWARE PRODUCT
+						<h4 class='media-heading'>EMAIL</h4>
+						<ul id='email'></ul>
 					</div>
 				</div>
 				<hr/>
-			</div>
 		</div>
 		<div class='col-md-8'>
 			<div class='container'>
-				<h3>CONTACT</h3>
+				<h3>FEEDBACK</h3>
 				<div class='row col-md-8'>
-				<h4 style='color:orange'>START'S WORLD CLASS SANITARYWARE PRODUCT</h4>
-				<label>16 June 2016</label>
-				<img src='holder.js/400x300' class='img-responsive' />
-				<span>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</span>
-				<button class='btn btn-warning'>VIEW</button>
-				</div>
-				<div class='row col-md-8'>
-				<h4 style='color:orange'>START'S WORLD CLASS SANITARYWARE PRODUCT</h4>
-				<label>16 June 2016</label>
-				<img src='holder.js/400x300' class='img-responsive' />
-				<span>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</span>
-				<button class='btn btn-warning'>VIEW</button>
+				<form role='form' id='frmRegister' name='frmRegister' method='post'>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-addon">NAME</span>
+					  <input type="text" class="form-control" placeholder="fullname" id='name' aria-describedby="name-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="email-addon">EMAIL</span>
+					  <input type="text" class="form-control" placeholder="customer@email.com" id='email' aria-describedby="email-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="phone-addon">PHONE</span>
+					  <input type="text" class="form-control" placeholder="66+(0) xxx-xxxx" id='phone' aria-describedby="phone-addon">
+					</div>
+					<div class="input-group">
+					  <div class="input-group-addon textarea-addon" > Description </div>
+						<textarea class="form-control" rows="5"></textarea>
+					</div><br/>
+					<button type='submit' class='btn btn-warning' >Sumbit</button>
+				</form>
 				</div>
 			</div>
 		</div>
+		<div class='row'>
+			<div class='col-md-12'>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15498.787934161357!2d100.5749505!3d13.7971315!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f799ab57268432!2z4Liq4LiV4Liy4Lij4LmMIOC4i-C4suC4meC4tOC4l-C4suC4o-C4teC5geC4p-C4o-C5jA!5e0!3m2!1sth!2sth!4v1470099354382" width="1240" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
+			</div>
+		</div>
 	</div>
-
 </div> <!--end container fluid-->
+<br />
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
-<script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='js/contact.js' ></script>
 </body>
