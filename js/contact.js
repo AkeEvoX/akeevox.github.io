@@ -14,7 +14,7 @@ function loadcontact(){
 			setemail(data.result.email);
 		},
 		error:function(xhr,status,err){
-			alert(err.Message());
+			alert(err.message;
 		}
 	});
 
