@@ -1,27 +1,27 @@
 function loadList()
 {
-	var service = 'services/faq' ;
+	var service = '../service/sanitary/faq' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"list"}
 	CallService(service,data,setview);
 }
 
 function loadItem(id)
 {
-	var service = 'services/faq' ;
+	var service = '../service/sanitary/faq' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }
 
 function loadmostview()
 {
-	var service = 'services/faq' ;
+	var service = '../service/sanitary/faq' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"most"}
 	CallService(service,data,setmostview);
 }
 
 function loadrecentview()
 {
-	var service = 'services/faq' ;
+	var service = '../service/sanitary/faq' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"recent"}
 	CallService(service,data,setrecentview);
 }
