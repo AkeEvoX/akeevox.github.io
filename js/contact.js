@@ -5,7 +5,7 @@ $(document).ready(function(){
 function loadcontact(){
 
 	$.ajax({
-		url:'http://dev33.ddns.net:8888/startsanitaryware/services/contact?callback=?',
+		url:'http://dev33.ddns.net:8888/startsanitaryware/services/contact?_=31312&callback=?',
 		type:'GET',
 		dataType:'json',
 		success:function(data){
