@@ -1,13 +1,13 @@
 function loadList()
 {
-	var service = 'services/press' ;
+	var service = '../service/sanitary/press' ;
 	var data = {"_": new Date().getMilliseconds()}
 	CallService(service,data,setview);
 }
 
 function LoadItem(id)
 {
-	var service = 'services/press' ;
+	var service = '../service/sanitary/press' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }
