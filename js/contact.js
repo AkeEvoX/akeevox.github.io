@@ -6,7 +6,7 @@ function loadcontact(){
 
 	$.ajax({
 		url:'services/contact',
-		type:'GET',
+		type:'get',
 		dataType:'json',
 		success:function(data){
 			setaddress(data.result.address);
@@ -14,7 +14,7 @@ function loadcontact(){
 			setemail(data.result.email);
 		},
 		error:function(xhr,status,err){
-			alert(err.Message());
+			alert(xhr.responseText);
 		}
 	});
 
