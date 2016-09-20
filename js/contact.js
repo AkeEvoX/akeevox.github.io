@@ -9,6 +9,7 @@ function loadcontact(){
 		type:'POST',
 		dataType:'json',
 		success:function(data){
+			console.log(data);
 			setaddress(data.result.address);
 			setphone(data.result.phone);
 			setemail(data.result.email);
