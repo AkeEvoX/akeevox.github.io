@@ -12,3 +12,5 @@ starsanitaryware.sublime-workspace
 *.sublime-workspace
 
 starsanitaryware.sublime-workspace
+
+config/datasource.ini
