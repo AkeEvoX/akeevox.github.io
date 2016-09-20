@@ -6688,3 +6688,559 @@
 
 )
 
+2016-09-18 17:19:03 [DEBUG] get list faq most> Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:42
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+)
+
+2016-09-18 17:19:03 [DEBUG] get list faq recent> Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:42
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+)
+
+3] => Array
+        (
+            [id] => 4
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+    [4] => Array
+        (
+            [id] => 5
+            [title] => START'S WORLD CLASS SANITARYWARE PRODUCT
+            [detail] => ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ ทดสอบ
+            [thumbnail] => images/faq/faq1_thumb.jpg
+            [date] => 2016-09-18 21:30:00
+        )
+
+)
+
+2016-09-18 17:21:00 [DEBUG] get list video > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => งานแถลงข่าวเปิดตัว NOVITA 2.4 ลิตร พลังน้ำรักษ์โลก รายการบันทึกเศรษกิจ Economic Journal วันที่ 29 10
+            [thumbnail] => http://img.youtube.com/vi/_Vd_PyoxRBU/0.jpg
+            [link] => http://www.youtube.com/embed/_Vd_PyoxRBU
+            [date] => 2016-09-18 19:38:54
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => ทดสอบ Novita 2.4 Litres Test
+            [thumbnail] => http://img.youtube.com/vi/FNPHaOyTud4/0.jpg
+            [link] => http://www.youtube.com/embed/FNPHaOyTud4
+            [date] => 2016-09-18 19:38:54
+        )
+
+)
+
+2016-09-18 17:22:06 [DEBUG] get list gallery > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => ทดสอบ 1
+            [thumbnail] => images/gallery/cat1.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => ทดสอบ 2
+            [thumbnail] => images/gallery/cat2.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [title] => ทดสอบ 3 
+            [thumbnail] => images/gallery/cat3.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [title] => ทดสอบ 4
+            [thumbnail] => images/gallery/cat4.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [4] => Array
+        (
+            [id] => 5
+            [title] => ทดสอบ 5
+            [thumbnail] => images/gallery/cat5.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [5] => Array
+        (
+            [id] => 6
+            [title] => ทดสอบ 6 
+            [thumbnail] => images/gallery/cat6.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+)
+
+2016-09-18 17:22:21 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 17:22:43 [DEBUG] get list gallery > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => ทดสอบ 1
+            [thumbnail] => images/gallery/cat1.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => ทดสอบ 2
+            [thumbnail] => images/gallery/cat2.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [title] => ทดสอบ 3 
+            [thumbnail] => images/gallery/cat3.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [title] => ทดสอบ 4
+            [thumbnail] => images/gallery/cat4.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [4] => Array
+        (
+            [id] => 5
+            [title] => ทดสอบ 5
+            [thumbnail] => images/gallery/cat5.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [5] => Array
+        (
+            [id] => 6
+            [title] => ทดสอบ 6 
+            [thumbnail] => images/gallery/cat6.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+)
+
+2016-09-18 17:23:01 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 17:23:11 [DEBUG] get list gallery > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => ทดสอบ 1
+            [thumbnail] => images/gallery/cat1.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => ทดสอบ 2
+            [thumbnail] => images/gallery/cat2.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [title] => ทดสอบ 3 
+            [thumbnail] => images/gallery/cat3.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [3] => Array
+        (
+            [id] => 4
+            [title] => ทดสอบ 4
+            [thumbnail] => images/gallery/cat4.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [4] => Array
+        (
+            [id] => 5
+            [title] => ทดสอบ 5
+            [thumbnail] => images/gallery/cat5.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+    [5] => Array
+        (
+            [id] => 6
+            [title] => ทดสอบ 6 
+            [thumbnail] => images/gallery/cat6.jpg
+            [date] => 2016-09-18 16:48:06
+        )
+
+)
+
+2016-09-18 17:23:29 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:17 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:39 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:41 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:49 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:53 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [title] => แจ้งวันประชุมสามัญผู้ถือหุ้น ประจำปี 2559
+            [detail] => เชิญประชุมสามัญผู้ถือหุ้น ประจำปี 2559 ในวันจันทร์ที่ 11 เมษายน 2559 เวลา 09.30 น. โรงแรมเจ้าพระยาปาร์ค ห้องรัชวิภา อาคารธารทิพย์ ชั้น 2 ถนนรัชดาภิเษก กรุงเทพมหานคร	
+            [thumbnail] => images/press/press1_thumb.jpg
+            [coverpage] => images/press/press1.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:04:55 [DEBUG] get list press > Array
+(
+    [0] => Array
+        (
+            [id] => 2
+            [title] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [detail] => แบบฟอร์มแสดงความจำนงการใช้สิทธิซื้อหุ้นสามัญ (STAR-W2)
+            [thumbnail] => images/press/press2_thumb.jpg
+            [coverpage] => images/press/press2.jpg
+            [date] => 2016-09-18 12:21:00
+        )
+
+)
+
+2016-09-18 19:32:02 [DEBUG] get contact > Array
+(
+    [address] => Array
+        (
+            [0] => 410/7-9 Ratchadapisek 22 Rd., Huaykwang, Bangkok, 10310, Thailand.
+            [1] => 
+        )
+
+    [phone] => Array
+        (
+            [0] => 66 (0) 2541-5068-70
+            [1] => 66(0) 2541-5873-6
+            [2] => 66 (0) 2541-5877
+        )
+
+    [email] => Array
+        (
+            [0] => sales@startsanitaryware.com
+            [1] => export@starsanitaryware.com
+        )
+
+)
+
+2016-09-18 19:32:57 [DEBUG] get list download > Array
+(
+    [0] => Array
+        (
+            [id] => 1
+            [name] => คู่มือการติดตั้ง
+            [item] => Array
+                (
+                    [0] => Array
+                        (
+                            [title] => 2013
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [1] => Array
+                        (
+                            [title] => 2014
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [2] => Array
+                        (
+                            [title] => 2015
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                )
+
+        )
+
+    [1] => Array
+        (
+            [id] => 2
+            [name] => แคตตาล๊อก
+            [item] => Array
+                (
+                    [0] => Array
+                        (
+                            [title] => 2013
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [1] => Array
+                        (
+                            [title] => 2014
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [2] => Array
+                        (
+                            [title] => 2015
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                )
+
+        )
+
+    [2] => Array
+        (
+            [id] => 3
+            [name] => โบรชัวร์
+            [item] => Array
+                (
+                    [0] => Array
+                        (
+                            [title] => 2013
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [1] => Array
+                        (
+                            [title] => 2014
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                    [2] => Array
+                        (
+                            [title] => 2015
+                            [thumbnail] => images/download/manual-2016-thumbnail.png
+                            [link] => #
+                        )
+
+                )
+
+        )
+
+)
+
