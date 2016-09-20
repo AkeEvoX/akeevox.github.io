@@ -5,7 +5,7 @@ $(document).ready(function(){
 function loaditems(){
 
 var id = getParameterByName('id');
-var service = '../services/download?id='+ id ;
+var service = 'services/download?id='+ id ;
 
 	$.ajax({
 		url:service,
