@@ -7,7 +7,6 @@ $(document).ready(function(){
 	{
 		label="Thai";
 	}
-	selectLang(lang);
 	$('#lang').html(label+" <span class='caret'></span>");
 	
 });
@@ -35,27 +34,7 @@ function generateMenu(){
 			$('#mainmenu').html(data);
 		},
 		error:function(xhr,status,err){
-
-		}
-
-	});
-
-}
-
-function selectLang(lang){
-
-	$.ajax({
-
-		url:'services/language',
-		type:'POST',
-		dataType:'json',
-		data:{select:lang}
-		//contentType : 'content=utf-8',
-		success:function(data){
-			generateMenu();
-		},
-		error:function(xhr,status,err){
-
+			alert("generate menu error :"+xhr.responseText);
 		}
 
 	});
