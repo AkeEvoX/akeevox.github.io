@@ -7,7 +7,7 @@ function loadList()
 
 function LoadItem(id)
 {
-	var service = '../service/sanitary/gallery' ;
+	var service = '../services/gallery' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }

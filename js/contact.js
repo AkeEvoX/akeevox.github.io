@@ -5,11 +5,10 @@ $(document).ready(function(){
 function loadcontact(){
 
 	$.ajax({
-		url:'../service/sanitary/contact.php?_=31312&callback=?',
-		type:'POST',
+		url:'services/contact',
+		type:'get',
 		dataType:'json',
 		success:function(data){
-			console.log(data);
 			setaddress(data.result.address);
 			setphone(data.result.phone);
 			setemail(data.result.email);
