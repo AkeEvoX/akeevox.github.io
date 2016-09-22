@@ -1,5 +1,5 @@
 <?php
-require_once("lib/database.php");
+include("../lib/database.php");
 
 class MenuManager {
 
@@ -13,7 +13,8 @@ class MenuManager {
 		try{
 			
 			$this->mysql = new database();
-			echo "initial registermanager.";
+			$this->mysql->connect();
+			//echo "initial registermanager.";
 
 		}
 		catch(Exception $e)
@@ -23,9 +24,36 @@ class MenuManager {
 	}
 
 	function __destruct(){
-
+		$this->mysql->disconnect();
 	}
 
+	function getmenu($lang)
+	{
+
+		try{
+			$sql = "select id,".$lang." as name,seq ";
+			$sql .= "from menu_master where active=1 and parent=0 order by seq ";
+			$result = $this->mysql->execute($sql);
+		}
+		catch(Exception $e)
+		{
+			echo "Cannot get main menu : ".$e->getMessage();
+		}
+	}
+	function getsubmenu($id)
+	{
+
+		try{
+			$sql = "select id,".$lang." as name,seq ";
+			$sql .= "from menu_master where active=1 and parent=".$id." order by seq ";
+			$result = $this->mysql->execute($sql);
+		}
+		catch(Exception $e)
+		{
+			echo "Cannot get sub menu : ".$e->getMessage();
+		}
+	}
+/*
 	function getList(){
 
 		try{
@@ -49,7 +77,7 @@ class MenuManager {
 		}
 
 	}
-
+*/
 	function setlang($data)
 	{
 		$this->lang=$data;

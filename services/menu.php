@@ -1,48 +1,39 @@
 <?php
 Session_Start();
-//header("Content-Type: application/json;  charset=UTF8");
-include("controllers/ManuManager.php");
-
-//#Declare variable
-//protected $menu;
+date_default_timezone_set('America/Los_Angeles');
+include("../controller/ManuManager.php");
+include("../lib/logger.php");
+header("Content-Type: application/json;  charset=UTF8");
 
 $menu = new MenuManager();
-/*
-//$menu->setlang();
-$data = $menu->getList();
 
-//array_filter(array,callbackfunction);
-
-//$_SESSION["lang"]='TH';
-
-
-$result = array();
-$item = array();
-
-//#   menuid,parent,url,icon,name
-
-while($row = $data->fetch_assoc())
-{
-
-	$result.="<li>".$row["name"]."</li>";
-	
-	//$custid = $row["custid"];
-	//$fullname = $row["firstname"] .' '.$row["lastname"] ;
-	//$mobile = $row["mobile"] ;
-	//$item[] = array("id"=>$custid,"name"=>$fullname,"mobile"=>$mobile);
+$lang = "th"; 
+if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+	$lang = $_SESSION["lang"];
 }
-	*/
 
-echo "<li>hello</li>";
-//$result = array("result"=>json_encode($item));
+$req_id = $_GET["id"];
+$item = "";
 
-//echo json_encode($result);
+if(isset($req_id) && !empty($req_id))
+{
+	$item = $menu->getsubmenu($req_id);
+}
+else 
+{
+	$item = $menu->getmenu();
+}
 
-/*
-1.get current lang
-2.get menu by lang
-*/
+$result = null;
 
+while($row = $item->fetch_object()){
 
+	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq);
+	$result[] = $data;
+}
+
+log_debug("get list menu > " . print_r($result,true));
+
+echo json_encode(array("result"=> $result ,"code"=>"0"));
 
 ?>
