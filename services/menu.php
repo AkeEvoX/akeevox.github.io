@@ -1,11 +1,11 @@
 <?php
 Session_Start();
 date_default_timezone_set('America/Los_Angeles');
-include("../controller/ManuManager.php");
+include("../controller/MenuManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$menu = new MenuManager();
+$mgr = new MenuManager();
 
 $lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
@@ -14,15 +14,19 @@ if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 
 $req_id = $_GET["id"];
 $item = "";
-
+/*
 if(isset($req_id) && !empty($req_id))
 {
-	$item = $menu->getsubmenu($req_id);
+	$item = $menu->getsubmenu($req_id,$lang);
 }
 else 
 {
-	$item = $menu->getmenu();
+	$item = $menu->getmenu($lang);
+	
 }
+*/
+var_dump($mgr->getmenu());
+
 
 $result = null;
 

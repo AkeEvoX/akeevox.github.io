@@ -1,6 +1,7 @@
 $(document).ready(function(){
 
 
+/*
 	var lang = getParameterByName('lang');
 	var label = getParameterByName('label');;
 	if(label==undefined)//default thai
@@ -8,6 +9,8 @@ $(document).ready(function(){
 		label="Thai";
 	}
 	$('#lang').html(label+" <span class='caret'></span>");
+	*/
+	loadmenu();
 	
 });
 
@@ -22,8 +25,7 @@ $(function(){
 });
 
 
-function generateMenu(){
-
+function loadmenu(){
 
 	$.ajax({
 
@@ -31,7 +33,8 @@ function generateMenu(){
 		type:'GET',
 		dataType:'json',
 		success:function(data){
-			$('#mainmenu').html(data);
+			console.log(data);
+			//$('#mainmenu').html(data);
 		},
 		error:function(xhr,status,err){
 			alert("generate menu error :"+xhr.responseText);
@@ -39,4 +42,28 @@ function generateMenu(){
 
 	});
 
+}
+
+function loadsubmenu(id)
+{
+
+	$.ajax({
+
+		url:'services/menu?_=' + new Date().getMilliseconds(),
+		type:'GET',
+		data: {"id":id} ,
+		dataType:'json' ,
+		success:function(data){
+			
+			console.log(data);
+			/*
+			$('#'+id).html(data);
+			$('#mainmenu').html(data);
+			*/
+		},
+		error:function(xhr,status,err){
+			alert("generate child menu error :"+xhr.responseText);
+		}
+
+	});
 }

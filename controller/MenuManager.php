@@ -1,13 +1,11 @@
 <?php
 include("../lib/database.php");
 
+
 class MenuManager {
 
-
-	public $lang = "th";//default lang
 	protected $mysql;
-
-
+	
 	function __construct(){
 
 		try{
@@ -19,7 +17,7 @@ class MenuManager {
 		}
 		catch(Exception $e)
 		{
-			die("initial registermanager error : ". $e->getMessage());
+			die("initial mainmenu error : ". $e->getMessage());
 		}
 	}
 
@@ -27,12 +25,13 @@ class MenuManager {
 		$this->mysql->disconnect();
 	}
 
-	function getmenu($lang)
+	function getmenu()
 	{
 
 		try{
-			$sql = "select id,".$lang." as name,seq ";
+			$sql = "select id,".$lang." as name ";
 			$sql .= "from menu_master where active=1 and parent=0 order by seq ";
+			
 			$result = $this->mysql->execute($sql);
 		}
 		catch(Exception $e)
@@ -40,11 +39,12 @@ class MenuManager {
 			echo "Cannot get main menu : ".$e->getMessage();
 		}
 	}
-	function getsubmenu($id)
+	
+	function getsubmenu($id,$lang)
 	{
 
 		try{
-			$sql = "select id,".$lang." as name,seq ";
+			$sql = "select id,".$lang." as name, seq ";
 			$sql .= "from menu_master where active=1 and parent=".$id." order by seq ";
 			$result = $this->mysql->execute($sql);
 		}
@@ -78,11 +78,6 @@ class MenuManager {
 
 	}
 */
-	function setlang($data)
-	{
-		$this->lang=$data;
-	}
-
 }
 
 ?>
