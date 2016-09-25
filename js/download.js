@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	loaditems();
+	loadmenu();
+	loadbuttommenu();
 });
 
 function loaditems(){

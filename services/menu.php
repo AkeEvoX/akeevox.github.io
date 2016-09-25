@@ -5,34 +5,30 @@ include("../controller/MenuManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$mgr = new MenuManager();
-
 $lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
 
-$req_id = $_GET["id"];
+$menu = new MenuManager();
+
+$id = $_GET["id"];
 $item = "";
-/*
-if(isset($req_id) && !empty($req_id))
+$result = null;
+
+if(isset($id) && !empty($id))
 {
-	$item = $menu->getsubmenu($req_id,$lang);
+	$item = $menu->getsubmenu($id,$lang);
 }
 else 
 {
-	$item = $menu->getmenu($lang);
-	
+	$item = $menu->getmenu($lang);	
 }
-*/
-var_dump($mgr->getmenu());
 
-
-$result = null;
 
 while($row = $item->fetch_object()){
 
-	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq);
+	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"child"=>$row->child,"link"=>$row->link);
 	$result[] = $data;
 }
 

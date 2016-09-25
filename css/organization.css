@@ -1,0 +1,22 @@
+/*pc default : 1200*/
+@media(min-width:900px) {
+	
+}
+
+/* tables */
+@media(min-width:600px) and (max-width:900px){
+
+}
+/* mobile */
+@media(max-width:600px) {
+
+	#searchbar { display:none; }
+	.navbar-header { padding-left:10px; }
+	#navbar ul.nav.navbar-nav { padding-left:จpx; } /*adjust menu*/
+	
+	.media-left img {
+		position : relative;
+		margin : 0 auto;
+	}
+
+} 

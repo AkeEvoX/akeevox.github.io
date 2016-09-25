@@ -17,7 +17,7 @@ body
 padding:2px 33px;
 margin-right:48px;
 }
-
+.
 .iconbar { padding-top:10px; }
 .rowspan { padding-bottom:10px;}
 .menulist,.topbar { padding-top:30px; }
@@ -26,6 +26,7 @@ margin-right:48px;
 .submenu ul { padding-left:15px; }
 
 /*override media */
+.media-center img { display:block; margin:0 auto;}
 .media, { padding-bottom:5px; }
 .media-detail { overflow:hidden;height:200px; }
 .media-link , .media-link:hover { text-decoration: none; color:orange; }
@@ -49,8 +50,8 @@ label {
 }
 /*-----custom control--------*/
 
-/*pc*/
-@media(min-width:1200px) {
+/*pc default : 1200*/
+@media(min-width:900px) {
 	#searchbar { background-color:transparent; }
 	/*override class*/
 	#navbar ul.nav.navbar-nav { padding-left:80px; } /*adjust menu*/
@@ -60,7 +61,7 @@ label {
 }
 
 /* tables */
-@media(min-width:600px) and (max-width:1200px){
+@media(min-width:600px) and (max-width:900px){
 
 	#searchbar { display:none;  }
 	.navbar-header { padding-left:5px; }

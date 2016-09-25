@@ -1,5 +1,7 @@
 $(document).ready(function(){
 	loadcontact();
+	loadmenu();
+	loadbuttommenu();
 });
 
 function loadcontact(){
@@ -9,9 +11,16 @@ function loadcontact(){
 		type:'get',
 		dataType:'json',
 		success:function(data){
-			setaddress(data.result.address);
-			setphone(data.result.phone);
-			setemail(data.result.email);
+			//console.log(data);
+			//fillter data to generate item
+			//require utility.js
+			var addrs = data.result.filter( item=> item.type=="address" );
+			var emails = data.result.filter( item=> item.type=="email" );
+			var phones = data.result.filter( item=> item.type=="phone" );
+			
+			setaddress(addrs);
+			setphone(phones);
+			setemail(emails);
 		},
 		error:function(xhr,status,err){
 			alert(xhr.responseText);
@@ -24,8 +33,8 @@ function setaddress(address)
 {
 	$('#address').html("");
 	$.each(address,function(i,val){
-		if(val!="")
-			$('#address').append( "<li>"+val+"</li>" );
+		if(val.title!="")
+			$('#address').append( "<li>"+val.title+"</li>" );
 	});
 }
 
@@ -34,8 +43,8 @@ function setphone(phone)
 
 	$('#phone').html("");
 	$.each(phone,function(i,val){
-		if(val!='')
-			$('#phone').append("<li>"+val+"</li>");
+		if(val.title!='')
+			$('#phone').append("<li>"+val.title+"</li>");
 	});
 	
 }
@@ -44,7 +53,7 @@ function setemail(email)
 {
 	$('#email').html("");
 	$.each(email,function(i,val){
-		if(val!='')
-		$('#email').append("<li>"+val+"</li>");
+		if(val.title!='')
+		$('#email').append("<li>"+val.title+"</li>");
 	});
 }

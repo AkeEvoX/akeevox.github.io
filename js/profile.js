@@ -1,14 +1,6 @@
 $(document).ready(function(){
 
 
-	$("#standard_slide").immersive_slider({
-		animation: "slide",
-		container: ".main",
-		loop:true,
-		cssBlur:false,
-		autoStart:0
-	    });
-
 	loadaward();
 
 
@@ -33,13 +25,7 @@ function loadaward(){
 			award.append("<a href='#'' class='is-prev'>&laquo;</a><a href='#'' class='is-next'>&raquo;</a>");
 
 			
-			$('#immersive_slider').immersive_slider({
-				animation: "slide",
-				container: ".main",
-				loop:true,
-				cssBlur:false,
-				autoStart:0
-		    });
+		
 
 		}
 		,error:function(xhr,status,err){

@@ -1,4 +1,5 @@
 <?php
+mysqli_report(MYSQLI_REPORT_ERROR);
 
 class database {
 
@@ -46,6 +47,11 @@ class database {
 			$this->conn = new mysqli();
 			$this->conn->connect($this->host,$this->user,$this->pass,$this->base,$this->port);
 			$this->conn->set_charset("utf8");
+			
+			if ($this->conn->connect_errno) {
+				printf("Connect failed: %s\n", $mysqli->connect_error);
+				exit();
+			}
 
 			//echo "connect to mysql successfuly";
 

@@ -7,25 +7,23 @@ header("Content-Type: application/json;  charset=UTF8");
 
 $contact = new ContactManager();
 
-$data = $contact->getContact();
-$row = $data->fetch_object();
+$lang = "th"; 
+if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+	$lang = $_SESSION["lang"];
+}
 
-$address1 = $row->address1;
-$address2 = $row->address2;
-$phone1 = $row->phone1;
-$phone2= $row->phone2;
-$phone3= $row->phone3;
-$email1 = $row->email1;
-$email2 = $row->email2;
+$data = $contact->getContact($lang);
 
-$address = array($address1,$address2);
-$phone = array($phone1,$phone2,$phone3);
-$email= array($email1,$email2);
-
-$result = array("address"=>$address
-	,"phone"=>$phone
-	,"email"=>$email
-);
+while($row = $data->fetch_object()) 
+{
+	$item = array("id"=>$row->id
+	,"title"=>$row->title
+	,"icon"=>$row->icon
+	,"link"=>$row->link
+	,"type"=>$row->typename);
+	
+	$result[] = $item;
+}
 
 log_debug("get contact > " . print_r($result,true));
 

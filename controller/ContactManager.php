@@ -1,5 +1,5 @@
 <?php
-include("../lib/database.php");
+require_once("../lib/database.php");
 //include("../../../controller/logger.php");
 
 class ContactManager{
@@ -23,11 +23,12 @@ class ContactManager{
 		$this->mysql->disconnect();
 	}
 
-	function getContact(){
+	function getContact($lang){
 		
 		try{
 			
-			$sql = " select * from contacts ";
+			$sql = " select c.id,".$lang." as title,c.icon,c.link,t.name as typename ";
+			$sql .= " from contacts c inner join contact_type t on c.type = t.id where c.active=1 ";
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;

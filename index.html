@@ -28,43 +28,7 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul id='mainmenu' class="nav navbar-nav">
-			<li ><a href="index.html" >{menu.home}</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false">{menu.product}<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="category.html">{menu.product.category}</a></li>
-					<li><a href="series.html">{menu.product.series}</a></li>
-					<li><a href="series.html">{menu.product.showroom}</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >{menu.company}<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="about.html">{menu.company.about}</a></li>
-					<li><a href="governance.html">{menu.company.governance}</a></li>
-					<li><a href="organization.html">{menu.company.organization}</a></li>
-					<li><a href="reference.html">{menu.company.reference}</a></li>
-					<li><a href="international.html">{menu.company.international}</a></li>
-					<li><a href="profile.html">{menu.company.award}</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >{menu.media}<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="press.html">{menu.media.press}</a></li>
-					<li><a href="gallery.html">{menu.media.gallery}</a></li>
-					<li><a href="video.html">{menu.media.video}</a></li>
-					<li><a href="faq.html">{menu.media.faq}</a></li>
-				</ul>
-			</li>
-			<li ><a href="download.html" >{menu.download}</a></li>
-			<li ><a href="contact.html" >{menu.contact}</a></li>
-            </ul>
+			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
 			<span class="glyphicon glyphicon-search" ></span>
 				<div class='input-group'>
@@ -135,42 +99,31 @@
 </div>
 <div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
-		<div class='container'>	
+		<div class='container' >	
 		 	<div class='col-md-4'>
-
-		 		<label>{sitemap.title}</label>
-		 		<hr style='margin:0;'/>
-		 		<ul>
-		 			<li>{sitemap.home}</li>
-		 			<li>{sitemap.product}</li>
-		 			<li>{sitemap.company}</li>
-		 			<li>{sitemap.media}</li>
-		 			<li>{sitemap.services}</li>
-		 			<li>{sitemap.contact}</li>
-		 		</ul>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div class='rowspan'>
-					<label>{address.title}</label>
-			 		<hr style='margin:0;'/>
-					{address.detail}
-				</div>
-				<div class='rowspan'>
-					<label>{channel.title}</label>
-			 		<hr style='margin:0;'/>
-					{channel.detail}
+				<div id='menu.sitemap' class='rowspan' >
+					<label ></label>
+					<hr style='margin:0;'/>
 				</div>
 		 	</div>
 		 	<div class='col-md-4'>
-		 		<div class='rowspan'>
-				<label >{social.title}</label>
-		 		<hr style='margin:0;'/>
-				{social.facebook},{social.youtube}
-				</div>
-				<div class='rowspan'>
-					<label>{contact.title}</label>
+		 		<div id='menu.address' class='rowspan' >
+					<label ></label>
 			 		<hr style='margin:0;'/>
-					{contact.detail}
+				</div>
+				<div id='menu.email' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.social' class='rowspan'>
+				<label ></label>
+		 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.phone' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
 				</div>
 		 	</div>
 		</div>

@@ -77,13 +77,13 @@
 /* Pager */
 .lSSlideOuter .lSPager.lSpg {
     margin: 10px 0 0;
-    padding: 0;
+    padding-top: 10px;
     text-align: center;
 }
 .lSSlideOuter .lSPager.lSpg > li {
     cursor: pointer;
     display: inline-block;
-    padding: 0 5px;
+    padding: 0 10px;
 }
 .lSSlideOuter .lSPager.lSpg > li a {
     background-color: #222222;

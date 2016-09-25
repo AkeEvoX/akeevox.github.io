@@ -6,8 +6,9 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
@@ -27,187 +28,89 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			<li ><a href="index.html" id="mainmenu">HOME</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false">PRODUCTS<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="category.html">CATEGORY</a></li>
-					<li><a href="series.html">SERIES</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >COMPANY<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
-					<li><a href="profile.html">AWARD & STANDARD</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
-			</li>
-			<li ><a href="#" >PRESS</a></li>
-			<li class='dropdown'>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
-				<ul class="dropdown-menu">
-					<li><a href="gallery.html">GALLERY</a></li>
-					<li><a href="video.html">VIDEO</a></li>
-					<li><a href="download.html">DOWNLOAD</a></li>
-					<li><a href="catalog.html">CATALOG ONLINE</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="map.html">Map</a></li>
-					<li><a href="message.html">Messages</a></li>
-				</ul>
-			</li>
-            </ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<div class="form-group" >
-				  	<span class="glyphicon glyphicon-search" ></span>
-				  	<input type="text" class="form-control" placeholder="Search" />
-				  	<div class="btn-group languagebar" >
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Language <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a href="#">THAI</a></li>
-						<li><a href="#">ENGLISH</a></li>
-					  </ul>
-					</div>
-				</div>       
-			</form>
+				<ul id='menubar' class="nav navbar-nav"></ul>
+	
           </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
+        </div><!--/.container -->
       </nav>
 <!-- body -->
 <div class='container'>
-	<h3>Project Reference</h3>
-	<!--new row-->
 	<div class='row'>
 		<div class='col-md-12'>
-			<div class='media'>
-				<div class='media-body' >
-					<h4 class='media-heading'>ABBOARD</h4>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</div>
-			</div>
+			<ol class="breadcrumb">
+			  <li><a href="index.html">Home</a></li>
+			  <li><a href="#">Acrhive</a></li>
+			  <li class="active">Catalog Online</li>
+			</ol>
 		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-6 col-md-6'>
-			<h4 class='media-heading'>Project List</h4>
-			<table class='table'>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-			</table>
-		</div>
+	</div>
+		<div class='well well-sm' >
+		<h3 id='refer.header' class='text-center'><span class='glyphicon glyphicon-stop'></span>ผลงานดีเด่น</h3>
 	</div>
 	<!--new row-->
 	<div class='row'>
 		<div class='col-md-12'>
-			<div class='media'>
-				<div class='media-body' >
-					<h4 class='media-heading'>ABBOARD</h4>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</div>
+			<h3 id="refer.inter">ผลงานต่างประเทศ</h3>
+			<div id='refer.inter.detail'>
+				Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 
 			</div>
+			<div class="lightslider-main">
+        		<div class="item" >    
+				<ul id="inter-slider" class="content-slider"></ul>
+        		</div>
+        	</div><!--end lightslider-->
 		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
+	</div><!--end row-->
+	<div class='row'>
+		<div class='col-md-12'>
+		<h3 id="refer.local">ผลงานในประเทศ</h3>
+		<div id='refer.local.detail'>
+		Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 
 		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-4 col-md-3'>
-			<div class='thumbnail'>
-				<img data-src='holder.js/250x200' class='img-responsive' />
-				<div class='caption' >Whitesand Beach, Pattaya</div>
-			</div>
-		</div>
-		<div class='col-sm-6 col-md-6'>
-			<h4 class='media-heading'>Project List</h4>
-			<table class='table'>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-				<tr>
-					<td>show case new season.</td>
-					<td>bangkok</td>
-				</tr>
-			</table>
-		</div>
-	</div>
+		<div class="lightslider-main">
+        		<div class="item" >    
+				<ul id="local-slider" class="content-slider"></ul>
+        		</div>
+        	</div><!--end lightslider-->
+		</div><!--end column-->
+	</div><!--end row-->
 </div> <!--end container fluid-->
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+	<p>
+		<div class='container' >	
+		 	<div class='col-md-4'>
+				<div id='menu.sitemap' class='rowspan' >
+					<label ></label>
+					<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.address' class='rowspan' >
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.email' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.social' class='rowspan'>
+				<label ></label>
+		 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.phone' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		</div>
+	</p>
+</div>
 <script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/lightslider/lightslider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-/*
-example tree menu
-http://www.bootply.com/lE2NPpERdt
-*/
+<script src='js/utility.js' ></script>
+<script src='js/org_reference.js' ></script>
 </body>

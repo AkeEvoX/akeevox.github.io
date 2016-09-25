@@ -1,6 +1,5 @@
 <?php
-include("../lib/database.php");
-
+require_once("../lib/database.php");
 
 class MenuManager {
 
@@ -25,14 +24,16 @@ class MenuManager {
 		$this->mysql->disconnect();
 	}
 
-	function getmenu()
+	function getmenu($lang)
 	{
 
 		try{
-			$sql = "select id,".$lang." as name ";
-			$sql .= "from menu_master where active=1 and parent=0 order by seq ";
-			
+			$sql = "select m.id,m.".$lang." as name, m.seq,m.link ";
+			$sql .= ",(select count(0) from menu_master s where s.parent=m.id and s.active=1) as child ";
+			$sql .= " from menu_master m where active=1 and m.parent=0 order by m.seq ";
 			$result = $this->mysql->execute($sql);
+			
+			return $result;
 		}
 		catch(Exception $e)
 		{
@@ -44,9 +45,11 @@ class MenuManager {
 	{
 
 		try{
-			$sql = "select id,".$lang." as name, seq ";
-			$sql .= "from menu_master where active=1 and parent=".$id." order by seq ";
+			$sql = "select id,".$lang." as name,link,seq ";
+			$sql .= " from menu_master where active=1 and parent=".$id." order by seq ";
 			$result = $this->mysql->execute($sql);
+			
+			return $result;
 		}
 		catch(Exception $e)
 		{
