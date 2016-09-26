@@ -2,7 +2,7 @@ $(document).ready(function(){
 	loadmenu();
 	loadbuttommenu();
 	loadList();
-	loadstandard();
+	//loadstandard();
 });
 
 function loadList()
@@ -39,13 +39,18 @@ function CallService(service,param,callback)
 
 function setview(data)
 {
-	
-	var award = data.result.filter(item=>item.type == "0");
-	var standard = data.result.filter(item=>item.type == "1");
+	try{
+	var award = data.result.filter(function(item) {return item.type == "0" ; });
+	var standard = data.result.filter(function(item) {return item.type == "1" ; });
 	
 	setaward(award);
 	setstandard(standard);
 	 //$('.photoGrid').photoGrid({rowHeight:"250"});
+	}
+	catch(err)
+	{
+		console.error("display error : " +err.message);
+	}
 
 }
 

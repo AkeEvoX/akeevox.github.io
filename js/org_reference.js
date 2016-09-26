@@ -33,20 +33,30 @@ function loadreference()
 		dataType:'json',
 		type:"GET",
 		success: function(data){
+			try{
+				//display(data);
+				console.log(data.result);
+				
+				if(data.result != undefined)
+				{
+					var inter = data.result.filter(function(item){ return item.local=="0"; });
+					//var local = data.result.filter.call(item=>item.local == "1");
+
+					
+					var local = $.grep(data.result,function(value,i){
+						return (value.local == "1") ;
+					});
+					
+					console.log(inter);
+					displaylocal(local);
+					displayinter(inter);
+				}
+			}catch(err)
+			{
+				console.error("organization refer :" +err.message;
+				//throw {"Error":e.Message()};
+			}
 			
-			//display(data);
-			//console.log(inter);
-			var inter = data.result.filter(item=>item.local == "0");
-			var local = data.result.filter(item=>item.local == "1");
-			
-			displaylocal(local);
-			displayinter(inter);
-			
-		},
-		complete:function(data){
-			
-			console.log("complete");
-		
 		},
 		error : function (xhr,status,err)
 		{
@@ -75,6 +85,7 @@ function displayinter(data)
 		adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:true
+	    ,autoWidth:true
 	 });
 
 }
@@ -92,9 +103,11 @@ function displaylocal(data)
 	view.append(item);
 	
 	view.lightSlider({
+
 		adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:false
+	    ,autoWidth:true
 	 });
 	
 }
