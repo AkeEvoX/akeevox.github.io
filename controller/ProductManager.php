@@ -27,7 +27,7 @@ class ProductManager{
 		
 		try{
 
-			$sql = "select id,".$lang."_title as title,".$lang."_detail as detail ,type,link,update_date ";
+			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumb,image,plan,typeid,update_date ";
 			$sql .= "from about where active=1 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 			
@@ -36,6 +36,11 @@ class ProductManager{
 		catch(Exception $e){
 			echo "Cannot Get  About : ".$e->getMessage();
 		}
+		
+	}
+	
+	function getProductList($cate,)
+	{
 		
 	}
 

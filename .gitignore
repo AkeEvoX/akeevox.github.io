@@ -1,2 +1,4 @@
 *.log
 lib/Crypto.php
+*.ini
+*.ini
