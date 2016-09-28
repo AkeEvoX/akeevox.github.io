@@ -35,39 +35,31 @@
 			"file": "index.html",
 			"settings":
 			{
-				"buffer_size": 7358,
+				"buffer_size": 5613,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "css/theme.default.css",
+			"file": "services/product.php",
 			"settings":
 			{
-				"buffer_size": 1248,
+				"buffer_size": 1074,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "organization.html",
+			"file": "js/product.js",
 			"settings":
 			{
-				"buffer_size": 6822,
+				"buffer_size": 1213,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "productdetail.html",
+			"file": "category.html",
 			"settings":
 			{
-				"buffer_size": 13530,
-				"line_ending": "Unix"
-			}
-		},
-		{
-			"file": "css/product.css",
-			"settings":
-			{
-				"buffer_size": 772,
+				"buffer_size": 10247,
 				"line_ending": "Unix"
 			}
 		}
@@ -104,12 +96,24 @@
 	},
 	"file_history":
 	[
-		"/Users/iake.air/Sites/starsanitaryware/about.html",
+		"/Users/iake.air/Sites/starsanitaryware/controller/ProductManager.php",
+		"/Users/iake.air/Sites/starsanitaryware/temp_backup/menu_hightnachy.php",
+		"/Users/iake.air/Sites/starsanitaryware/services/contact.php",
+		"/Users/iake.air/Sites/starsanitaryware/config/datasource.ini",
 		"/Users/iake.air/Sites/starsanitaryware/css/theme.default.css",
+		"/Users/iake.air/Sites/starsanitaryware/css/product.css",
+		"/Users/iake.air/Sites/starsanitaryware/organization.html",
+		"/Users/iake.air/Sites/starsanitaryware/js/award.js",
+		"/Users/iake.air/Sites/starsanitaryware/reference.html",
+		"/Users/iake.air/Sites/starsanitaryware/services/organization.php",
+		"/Users/iake.air/Sites/starsanitaryware/js/org_reference.js",
+		"/Users/iake.air/Sites/starsanitaryware/lib/database.php",
+		"/Users/iake.air/Sites/starsanitaryware/productdetail.html",
+		"/Users/iake.air/OneDrive/SourceCode/php/starsanitaryware/stardb_20160925.sql",
+		"/Users/iake.air/Sites/starsanitaryware/about.html",
 		"/Users/iake.air/Sites/starsanitaryware/services/award.php",
 		"/Users/iake.air/Sites/starsanitaryware/css/compare.css",
 		"/Users/iake.air/Sites/starsanitaryware/compares.html",
-		"/Users/iake.air/Sites/starsanitaryware/css/product.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/lightslider/lightslider-content.css",
 		"/Users/iake.air/Sites/starsanitaryware/css/icon.css",
 		"/Users/iake.air/Sites/starsanitaryware/js/productdetail.js",
@@ -219,19 +223,7 @@
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/js/productgroup_manage.js",
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/category.php",
 		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/productgroup_manage.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/restaurant/controller/connect_restaurant.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/index.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/category_manage.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/category_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/data/category_manage.php",
-		"/Users/iake.air/Sites/prakongmitt/js/category_manage.js",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/pricelist_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/js/product_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/menus.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/order_ctrl.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/controller/connecter.php",
-		"/Users/iake.air/Sites/prakongmitt/pages/carwash/js/carwash_ctrl.js",
-		"/Users/iake.air/Sites/prakongmitt/controller/pricelist_ctrl.php"
+		"/Users/iake.air/Sites/prakongmitt/pages/restaurant/controller/connect_restaurant.php"
 	],
 	"find":
 	{
@@ -239,7 +231,7 @@
 	},
 	"find_in_files":
 	{
-		"height": 0.0,
+		"height": 93.0,
 		"where_history":
 		[
 			"/Users/iake.air/Sites/starsanitaryware/plugin/css",
@@ -312,7 +304,7 @@
 	"groups":
 	[
 		{
-			"selected": 3,
+			"selected": 1,
 			"sheets":
 			[
 				{
@@ -320,15 +312,15 @@
 					"file": "index.html",
 					"settings":
 					{
-						"buffer_size": 7358,
+						"buffer_size": 5613,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6484,
-								6484
+								5369,
+								4569
 							]
 						],
 						"settings":
@@ -338,80 +330,81 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 2100.0,
+						"translation.y": 1041.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "css/theme.default.css",
+					"file": "services/product.php",
 					"settings":
 					{
-						"buffer_size": 1248,
+						"buffer_size": 1074,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								165,
-								172
+								1068,
+								1068
 							]
 						],
 						"settings":
 						{
-							"syntax": "Packages/CSS/CSS.tmLanguage",
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 60.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "organization.html",
+					"file": "js/product.js",
 					"settings":
 					{
-						"buffer_size": 6822,
+						"buffer_size": 1213,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								5379,
-								5379
+								61,
+								61
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1290.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "productdetail.html",
+					"file": "category.html",
 					"settings":
 					{
-						"buffer_size": 13530,
+						"buffer_size": 10247,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								6480,
-								6480
+								7530,
+								7530
 							]
 						],
 						"settings":
@@ -421,33 +414,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 1940.0,
-						"zoom_level": 1.0
-					},
-					"type": "text"
-				},
-				{
-					"buffer": 4,
-					"file": "css/product.css",
-					"settings":
-					{
-						"buffer_size": 772,
-						"regions":
-						{
-						},
-						"selection":
-						[
-							[
-								74,
-								74
-							]
-						],
-						"settings":
-						{
-							"syntax": "Packages/CSS/CSS.tmLanguage"
-						},
-						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 2241.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

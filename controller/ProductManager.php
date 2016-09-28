@@ -34,14 +34,24 @@ class ProductManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get  About : ".$e->getMessage();
+			echo "Cannot Get Product Item : ".$e->getMessage();
 		}
 		
 	}
 	
-	function getProductList($cate,)
+	function getProductList($lang,$cate)
 	{
-		
+		try{
+
+			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang.",p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product List : ".$e->getMessage();
+		}
 	}
 
 	function getCategoryMenu($lang)
@@ -59,7 +69,7 @@ class ProductManager{
 		}
 
 	}
-	
+
 }
 
 ?>

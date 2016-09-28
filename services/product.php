@@ -5,7 +5,6 @@ include("../controller/ProductManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$product = new ProductManager();
 
 $lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
@@ -14,28 +13,32 @@ if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 
 
 $type = $_GET["type"];
-$cate = 1;
+$cate = $_GET["cate"];
 
 switch($type)
 {
-	case "product" :
-		
+	case "list" :
+		echo "call list product";
+		$result = listproduct($lang,$cate);
 	break;
 }
-
+//var_dump($result);
 log_debug("get contact > " . print_r($result,true));
 
-echo json_encode(array("result"=> $result ,"code"=>"0"));
+echo json_encode(array("result"=> $result ,"code"=>"0"));  //return
 
-function viewproduct($lang,$cate)
+
+//*************** function ***************
+
+function listproduct($lang,$cate)
 {
-
+	$product = new ProductManager();
 	$data = $product->getProductList($lang,$cate);
 
-	$result = null;
+	$items = null;
 	while($row = $data->fetch_object()) 
 	{
-		$result[] = array(
+		$items[] = array(
 			"id"=>$row->id
 			,"title"=>$row->title
 			,"detail"=>$row->detail
@@ -46,9 +49,9 @@ function viewproduct($lang,$cate)
 			,"name"=>$row->name
 			);
 	}
-
-	return $result;
+	return $items;
 }
+
 
 
 ?>
