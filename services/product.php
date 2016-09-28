@@ -18,7 +18,7 @@ $cate = $_GET["cate"];
 switch($type)
 {
 	case "list" :
-		echo "call list product";
+		//echo "call list product";
 		$result = listproduct($lang,$cate);
 	break;
 }
