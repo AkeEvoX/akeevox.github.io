@@ -2,3 +2,5 @@
 lib/Crypto.php
 *.ini
 *.ini
+
+config/datasource.ini
