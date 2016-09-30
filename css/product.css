@@ -1,4 +1,22 @@
 
+/*desktop*/
+@media(min-width:1200px) {
+
+
+}
+
+/* laptop */
+@media(min-width:600px) and (max-width:1200px){
+
+}
+
+/*mobile*/
+@media(max-width:600px) {
+ #navtree {display:none;}
+}
+
+#navtree { display:none;}
+
 .share-popup {
 	float:right;
 	border:0px solid;

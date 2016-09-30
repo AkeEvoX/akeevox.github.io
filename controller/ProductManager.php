@@ -23,12 +23,12 @@ class ProductManager{
 		$this->mysql->disconnect();
 	}
 
-	function getItem($lang){
+	function getProduct($lang,$id){
 		
 		try{
 
-			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumb,image,plan,typeid,update_date ";
-			$sql .= "from about where active=1 order by create_date desc ";
+			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.id=".$id;
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;
@@ -38,12 +38,27 @@ class ProductManager{
 		}
 		
 	}
+
+	function getImages($id)
+	{
+		try{
+
+			$sql = "select id,proid,thumb,image ";
+			$sql .= " from product_images  where active=1 and proid=".$id;
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Images : ".$e->getMessage();
+		}
+	}
 	
 	function getProductList($lang,$cate)
 	{
 		try{
 
-			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang.",p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$result = $this->mysql->execute($sql);
 			
@@ -51,6 +66,22 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Get Product List : ".$e->getMessage();
+		}
+	}
+
+	function getAttributes($lang,$id)
+	{
+		try{
+ 
+			$sql = " select p.id,p.".$lang." as title,a.".$lang." as label from product_attribute p";
+			$sql .= " left join attribute_master a on a.name=p.attribute ";
+			$sql .= " where p.proid=".$id;
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Attribute : ".$e->getMessage();
 		}
 	}
 

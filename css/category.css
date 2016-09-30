@@ -42,10 +42,10 @@
 /*mobile*/
 @media(max-width:600px) {
 
-	.img-fluid{ min-width:100%;  }
+	.img-fluid{ min-width:50%;  }
 	#menutree { display:none; }
 	
 	#logo-category{ max-height:250px;  }
 	.image-box { max-height:250px;  }
-	
+
 }

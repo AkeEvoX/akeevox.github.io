@@ -14,9 +14,6 @@
 	
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/product.css" rel="stylesheet" type="text/css" />
-	
-	
-
 </head>
 <body>
 <nav class="navbar navbar-default navbar-fixed-top" >
@@ -34,62 +31,21 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			<li ><a href="index.html" id="mainmenu">HOME</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false">PRODUCTS<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="category.html">CATEGORY</a></li>
-					<li><a href="series.html">SERIES</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >COMPANY<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
-					<li><a href="profile.html">AWARD & STANDARD</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
-			</li>
-			<li ><a href="#" >PRESS</a></li>
-			<li class='dropdown'>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
-				<ul class="dropdown-menu">
-					<li><a href="gallery.html">GALLERY</a></li>
-					<li><a href="video.html">VIDEO</a></li>
-					<li><a href="download.html">DOWNLOAD</a></li>
-					<li><a href="catalog.html">CATALOG ONLINE</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="map.html">Map</a></li>
-					<li><a href="message.html">Messages</a></li>
-				</ul>
-			</li>
-
-            </ul>
+			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<div class="form-group" >
-				  	<span class="glyphicon glyphicon-search" ></span>
-				  	<input type="text" class="form-control" placeholder="Search" />
-				  	<div class="btn-group languagebar" >
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Language <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a href="#">THAI</a></li>
-						<li><a href="#">ENGLISH</a></li>
-					  </ul>
+			<span class="glyphicon glyphicon-search" ></span>
+				<div class='input-group'>
+					<input type='text' class='form-control input-xs' area-label=''   />
+					<div class='input-group-btn'>
+						<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Thai </button>
+						<ul  class='dropdown-menu dropdown-menu-right' >
+							<li ><a href='?lang=th&label=Thai'>Thai</a></li>
+							<li ><a href='?lang=en&label=English'>English</a></li>
+						</ul>
 					</div>
-				</div>        
-			</form> 
+				</div><br/>
+				<button type='button'  class='btn pull-right btn-default btn-xs text-center contactseller'>Contact Seller</button>	
+			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>  
@@ -108,7 +64,7 @@
 				</div>
 		<div class='col-md-3' id='menutree'>
 			<div class='span3'>
-				<ul  class='nav nav-list menulist'>
+				<ul id='navtree' class='nav nav-list menulist'>
 					<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>
 						<ul class='nav nav-list tree'>
 							<li><a href='#' >WATRE CLOSET</a></li>
@@ -144,47 +100,31 @@
 			<div class='container-fluid'>
 				<div class='row'><!--product gallery-->
 					<div id="productgallery" style="display:none;">
-					
-						<img alt="Preview Image 1"
-							 src="images/products/FAUCET/faucet-1.thumb.png"
-							 data-image="images/products/FAUCET/faucet-1.png"
-							 data-description="">
-						<img alt="Preview Image 1"
-							 src="images/products/FAUCET/faucet-2.thumb.png"
-							 data-image="images/products/FAUCET/faucet-2.png"
-							 data-description="">
-						<img alt="Preview Image 1"
-							 src="images/products/FAUCET/faucet-2.thumb.png"
-							 data-image="images/products/FAUCET/faucet-2.png"
-							 data-description="">
 					</div>
 				</div>
 				<div class='row well well-sm'>
-					<form class="form-inline">
-								<label class='col-xs-2 control-label' >Name 1</label>
+					<form id='listattribute' class="form-inline">
+								<label class='col-xs-2 control-label' >prod.code</label>
 								<div class='col-xs-4'>
-									<p class='form-control-static'>HELLO WORLD'S </p>
+									<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
 								</div>
-								<label class='col-xs-2 control-label' >Name 2</label>
+								<label class='col-xs-2 control-label' >prod.name</label>
 								<div class='col-xs-4'>
-									<p class='form-control-static'>HELLO WORLD'S </p>
+									<p id='prod.name' class='form-control-static'>HELLO WORLD'S </p>
 								</div>
-								<label class='col-xs-2 control-label' >Name 3</label>
+								<label class='col-xs-2 control-label' >prod.type</label>
 								<div class='col-xs-4'>
-									<p class='form-control-static'>HELLO WORLD'S </p>
+									<p id='prod.type' class='form-control-static'>HELLO WORLD'S </p>
 								</div>
-								<label class='col-xs-2 control-label' >Name 4</label>
+								<label class='col-xs-2 control-label' >prod.size</label>
 								<div class='col-xs-4'>
-										<p class='form-control-static'>HELLO WORLD'S </p>
+									<p id='prod.size'  class='form-control-static'>HELLO WORLD'S </p>
 								</div>	
-								<label class='col-xs-2 control-label' >Name 5</label>
+								<label class='col-xs-2 control-label' >prod.shape</label>
 								<div class='col-xs-4'>
-										<p class='form-control-static'>HELLO WORLD'S </p>
+									<p id='prod.shape' class='form-control-static'>HELLO WORLD'S </p>
 								</div>	
-								<label class='col-xs-2 control-label' >Name 6</label>
-								<div class='col-xs-4'>
-										<p class='form-control-static'>HELLO WORLD'S </p>
-								</div>	
+								
 					</form>
 				</div>
 				<div class='row'>
@@ -293,6 +233,38 @@
 			</div> <!--end productdetail container-->
 		</div>
 	</div><!--end conatiner-->
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+	<p>
+		<div class='container' >	
+		 	<div class='col-md-4'>
+				<div id='menu.sitemap' class='rowspan' >
+					<label ></label>
+					<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.address' class='rowspan' >
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.email' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.social' class='rowspan'>
+				<label ></label>
+		 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.phone' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		</div>
+	</p>
+</div><!--bottom menu-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
@@ -301,17 +273,52 @@
 <script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>
 <script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
 <script src='js/utility.js' ></script>
-<script src='js/productdetail.js' ></script>
+<script src='js/product.js' ></script>
 <script>
-
+/*
 (function(d, s, id) {
 	  var js, fjs = d.getElementsByTagName(s)[0];
 	  if (d.getElementById(id)) return;
 	  js = d.createElement(s); js.id = id;
 	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
 	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));
-	</script>
+	}(document, 'script', 'facebook-jssdk'));*/
+
+$(document).ready(function(){
+
+
+	var id = getParameterByName("id");
+	loadproduct(id);
+	$("#product-slider").lightSlider({
+		autoWidth: true
+		,item:4
+		,adaptiveHeight:true
+	    ,loop:true
+	    ,keyPress:true
+	    ,pager:false
+ 	});
+
+	
+	$(".share-popup").click(function(){
+    var window_size = "width=585,height=511";
+    var url = this.href;
+    var domain = url.split("/")[2];
+    switch(domain) {
+        case "www.facebook.com":
+            window_size = "width=585,height=368";
+            break;
+        case "www.twitter.com":
+            window_size = "width=585,height=261";
+            break;
+        case "plus.google.com":
+            window_size = "width=517,height=511";
+            break;
+    	}
+	});
+
+});
+
+</script>
 	
 	
 </body>

@@ -30,6 +30,7 @@ $(document).ready(function(){
             window_size = "width=517,height=511";
             break;
     }
+    
     window.open(url, '', 'menubar=no,toolbar=no,resizable=yes,scrollbars=yes,' + window_size);
     return false;
 });

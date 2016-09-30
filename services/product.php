@@ -14,12 +14,19 @@ if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 
 $type = $_GET["type"];
 $cate = $_GET["cate"];
-
+$id =  $_GET["id"];
 switch($type)
 {
 	case "list" :
 		//echo "call list product";
-		$result = listproduct($lang,$cate);
+		$result = getlistproduct($lang,$cate);
+	break;
+	case "item" : 
+		
+		$result = getproduct($lang,$id);
+	break;
+	case "attr":
+		$result = getattribute($lang,$id);
 	break;
 }
 //var_dump($result);
@@ -30,7 +37,7 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));  //return
 
 //*************** function ***************
 
-function listproduct($lang,$cate)
+function getlistproduct($lang,$cate)
 {
 	$product = new ProductManager();
 	$data = $product->getProductList($lang,$cate);
@@ -50,6 +57,61 @@ function listproduct($lang,$cate)
 			);
 	}
 	return $items;
+}
+
+function getproduct($lang,$id)
+{
+	$product = new ProductManager();
+	$data = $product->getProduct($lang,$id);
+
+	$items = null;
+	$row = $data->fetch_object();
+	$items = array(
+			"id"=>$row->id
+			,"title"=>$row->title
+			,"detail"=>$row->detail
+			,"thumb"=>$row->thumb
+			,"image"=>getimages($id)
+			,"plan"=>$row->plan
+			,"code"=>$row->code
+			,"name"=>$row->name
+			);
+	return $items;
+}
+
+function getimages($id)
+{
+	$product = new ProductManager();
+	$data = $product->getImages($id);
+	while($row= $data->fetch_object())
+	{
+		$item[] = array(
+			"id"=>$row->id
+			,"thumb"=>$row->thumb
+			,"image"=>$row->image
+			);
+	}
+	return $item;
+}
+
+function getattribute($lang,$id)
+{
+
+	$product = new ProductManager();
+	$data = $product->getAttributes($lang,$id);
+	
+	while($row = $data->fetch_object())
+	{
+		$item[] = array(
+			"id"=>$row->id
+			,"title"=>$row->title
+			,"label"=>$row->label
+			);
+	}
+
+	return $item;
+
+
 }
 
 
