@@ -104,6 +104,7 @@
 				</div>
 				<div class='row well well-sm'>
 					<form id='listattribute' class="form-inline">
+						<!--
 								<label class='col-xs-2 control-label' >prod.code</label>
 								<div class='col-xs-4'>
 									<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
@@ -123,7 +124,7 @@
 								<label class='col-xs-2 control-label' >prod.shape</label>
 								<div class='col-xs-4'>
 									<p id='prod.shape' class='form-control-static'>HELLO WORLD'S </p>
-								</div>	
+								</div>	-->
 								
 					</form>
 				</div>
@@ -286,9 +287,13 @@
 
 $(document).ready(function(){
 
+	loadmenu();
+	loadbuttommenu();
 
 	var id = getParameterByName("id");
 	loadproduct(id);
+
+
 	$("#product-slider").lightSlider({
 		autoWidth: true
 		,item:4

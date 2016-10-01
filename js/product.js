@@ -61,15 +61,8 @@ function loadattribute(id)
 		type:"GET",
 		success: function(data){
 			
-			console.log(data);
+			//console.log(data);
 			setViewAttribute(data);
-			//console.warn()
-		},
-		complete : function(){
-			
-		 	$("#productgallery").unitegallery({
-				theme_panel_position: "left"		
-			});
 		}
 		,error : function (xhr,status,err)
 		{
@@ -107,17 +100,17 @@ function setViewAttribute(data)
 {
 	/*
 <label class='col-xs-2 control-label' >prod.code</label>
-								<div class='col-xs-4'>
-									<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
-								</div>
+	<div class='col-xs-4'>
+		<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
+	</div>
 	*/
 
 	var view = $('#listattribute');
 	$.each(data.result,function(i,val){
 		var item = "";
 
-		item += "<label class='col-xs-2 control-label' >"+val.label+"</label>";
-		item += "<div class='col-xs-4'><p lass='form-control-static'>"+val.title+"</p></div>";
+		item += "<label class='col-xs-3 control-label' >"+val.label+"</label>";
+		item += "<div class='col-xs-3'><p lass='form-control'>"+val.title+"</p></div>";
 		//console.warn(item);
 		view.append(item);
 
@@ -135,12 +128,4 @@ function setviewitem(data)
 		view.append(item);
 	});
 
-/*
-<div id="productgallery" style="display:none;">
-
-<img alt="Preview Image 1"
-	 src="images/products/FAUCET/faucet-1.thumb.png"
-	 data-image="images/products/FAUCET/faucet-1.png"
-	 data-description="">
-	 */
 }

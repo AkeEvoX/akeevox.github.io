@@ -13,6 +13,12 @@
 /*mobile*/
 @media(max-width:600px) {
  #navtree {display:none;}
+
+	.form-inline label,div,p{
+		min-width:100%;
+	}
+
+
 }
 
 #navtree { display:none;}
