@@ -21,71 +21,30 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle' class='iconbar' alt='google+' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			<li ><a href="index.html" id="mainmenu">HOME</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false">PRODUCTS<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="category.html">CATEGORY</a></li>
-					<li><a href="series.html">SERIES</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-				aria-expanded="false" >COMPANY<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
-					<li><a href="profile.html">AWARD & STANDARD</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
-			</li>
-			<li ><a href="press.html" >PRESS</a></li>
-			<li class='dropdown'>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
-				<ul class="dropdown-menu">
-					<li><a href="gallery.html">GALLERY</a></li>
-					<li><a href="video.html">VIDEO</a></li>
-					<li><a href="download.html">DOWNLOAD</a></li>
-					<li><a href="catalog.html">CATALOG ONLINE</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="map.html">Map</a></li>
-					<li><a href="message.html">Messages</a></li>
-				</ul>
-			</li>
-            </ul>
+			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<div class="form-group" >
-				  	<span class="glyphicon glyphicon-search" ></span>
-				  	<input type="text" class="form-control" placeholder="Search" />
-				  	<div class="btn-group languagebar" >
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Language <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a href="#">THAI</a></li>
-						<li><a href="#">ENGLISH</a></li>
-					  </ul>
+			<span class="glyphicon glyphicon-search" ></span>
+				<div class='input-group'>
+					<input type='text' class='form-control input-xs' area-label=''   />
+					<div class='input-group-btn'>
+						<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Thai </button>
+						<ul  class='dropdown-menu dropdown-menu-right' >
+							<li ><a href='?lang=th&label=Thai'>Thai</a></li>
+							<li ><a href='?lang=en&label=English'>English</a></li>
+						</ul>
 					</div>
-				</div>
+				</div><br/>
+				<button type='button'  class='btn pull-right btn-default btn-xs text-center contactseller'>Contact Seller</button>	
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
-
 <div class='container'>
 	<div class='row'>
 				<div class='col-md-12'>
@@ -99,7 +58,38 @@
 	<div id='list'>
 	</div>
 </div> <!--end container fluid-->
-
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+	<p>
+		<div class='container' >	
+		 	<div class='col-md-4'>
+				<div id='menu.sitemap' class='rowspan' >
+					<label ></label>
+					<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.address' class='rowspan' >
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.email' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.social' class='rowspan'>
+				<label ></label>
+		 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.phone' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		</div>
+	</p>
+</div><!--bottom menu-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>

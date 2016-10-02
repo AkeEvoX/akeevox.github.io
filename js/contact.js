@@ -7,7 +7,7 @@ $(document).ready(function(){
 function loadcontact(){
 
 	$.ajax({
-		url:'services/contact',
+		url:'services/contact.php',
 		type:'get',
 		dataType:'json',
 		success:function(data){

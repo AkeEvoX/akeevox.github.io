@@ -12,16 +12,19 @@
 
 /*mobile*/
 @media(max-width:600px) {
- #navtree {display:none;}
-
-	.form-inline label,div,p{
-		min-width:100%;
+	
+	#navtree {display:none;}
+	
+	#listattribute label {
+		width:100%;
 	}
-
+	
+	#listattribute div {
+		width:100%;
+	}
+	
 
 }
-
-#navtree { display:none;}
 
 .share-popup {
 	float:right;
@@ -74,9 +77,17 @@ ul{
 
 .lightslider-desc{
 	float:left;
-
+	
 }
-
+.lightslider-desc li {
+	
+	width:200px;
+	/*
+	text-align:left;
+	list-style: none;
+	min-width:100%;
+	*/
+}
 
 .content-slider li{
     background-color: white;

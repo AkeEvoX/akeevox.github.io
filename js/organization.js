@@ -9,7 +9,7 @@ function loadorganization()
 {
 	
 	$.ajax({
-		url:"services/organization",
+		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"org"},
 		dataType:'json',
 		type:"GET",

@@ -1,11 +1,13 @@
 $(document).ready(function(){
+	loadmenu();
+	loadbuttommenu();
 	loaditems();
 });
 
 function loaditems(){
 
 var id = getParameterByName('id');
-var service = 'services/download?id='+ id ;
+var service = 'services/download.php?id='+ id ;
 
 	$.ajax({
 		url:service,
@@ -45,6 +47,6 @@ function setview(data)
 	
 	row += itemview ;
 	row += "</div>";
-	console.log(row);
+	//console.log(row);
 	$('#list').append(row);
 }

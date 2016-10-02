@@ -20,7 +20,7 @@ function loadabout()
 {
 	
 	$.ajax({
-		url:"services/about",
+		url:"services/about.php",
 		data:{"_": new Date().getHours() },
 		dataType:'json',
 		type:"GET",

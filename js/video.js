@@ -1,7 +1,7 @@
 
 function loadList()
 {
-	var service = 'services/video' ;
+	var service = 'services/video.php' ;
 	var data = {"_": new Date().getMilliseconds()}
 	CallService(service,data,setview);
 }

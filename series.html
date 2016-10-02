@@ -22,67 +22,26 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>
             </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle' class='iconbar' alt='google+' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
+            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul class="nav navbar-nav">
-			<li ><a href="index.html" id="mainmenu">HOME</a></li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false">PRODUCTS<span class="caret"></span>
-				</a>
-				<ul class="dropdown-menu">
-					<li><a href="category.html">CATEGORY</a></li>
-					<li><a href="series.html">SERIES</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" 
-				aria-expanded="false" >COMPANY<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="about.html">ABOUT US</a></li>
-					<li><a href="reference.html">PROJECTS REFERENCE</a></li>
-					<li><a href="profile.html">AWARD & STANDARD</a></li>
-					<li><a href="faq.html">FAQ</a></li>
-				</ul>
-			</li>
-			<li ><a href="#" >PRESS</a></li>
-			<li class='dropdown'>
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false" >ACRHIVE<span class="caret"></a>
-				<ul class="dropdown-menu">
-					<li><a href="gallery.html">GALLERY</a></li>
-					<li><a href="video.html">VIDEO</a></li>
-					<li><a href="download.html">DOWNLOAD</a></li>
-					<li><a href="catalog.html">CATALOG ONLINE</a></li>
-				</ul>
-			</li>
-			<li class="dropdown">
-				<a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">CONTACT<span class="caret"/></a>
-				<ul class="dropdown-menu">
-					<li><a href="map.html">Map</a></li>
-					<li><a href="message.html">Messages</a></li>
-				</ul>
-			</li>
-
-            </ul>
+			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<div class="form-group" >
-				  	<span class="glyphicon glyphicon-search" ></span>
-				  	<input type="text" class="form-control" placeholder="Search" />
-				  	<div class="btn-group languagebar" >
-					  <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-						Language <span class="caret"></span>
-					  </button>
-					  <ul class="dropdown-menu">
-						<li><a href="#">THAI</a></li>
-						<li><a href="#">ENGLISH</a></li>
-					  </ul>
+			<span class="glyphicon glyphicon-search" ></span>
+				<div class='input-group'>
+					<input type='text' class='form-control input-xs' area-label=''   />
+					<div class='input-group-btn'>
+						<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Thai </button>
+						<ul  class='dropdown-menu dropdown-menu-right' >
+							<li ><a href='?lang=th&label=Thai'>Thai</a></li>
+							<li ><a href='?lang=en&label=English'>English</a></li>
+						</ul>
 					</div>
-				</div>       
+				</div><br/>
+				<button type='button'  class='btn pull-right btn-default btn-xs text-center contactseller'>Contact Seller</button>	
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
@@ -122,46 +81,71 @@
 					<div class='col-md-12'>
 							<div class='row'>
 								<div class='col-md-12'>
-									<h3>INNOCENCE SUITE</h3>
-									<h5 class='text'>Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text Text </h5>
+									<h3 id='series_title'>INNOCENCE SUITE</h3>
+									<h5 id='series_detail' class='text'>Text Text Text </h5>
 								</div>
 								<div class='col-md-12'>
-									<img data-src='holder.js/1260x450' class='img-responsive' />
+									<img id='series_cover'  data-src='holder.js/1260x450' class='img-responsive' />
 								</div>
 							</div>
-							
 							<div class='row'>
-								<h4 class='col-md-12'>COLLECTIONS DETAILS</h4>
+								<h4 class='col-md-12'>{COLLECTIONS DETAILS}</h4>
 							</div>
-							<div class='row'>
-								<label for='code' class='col-md-3 control-label'>COUNTER :</label>
-								<div class='col-md-9'>
-									<div class='controls'>
-										<p class="form-control-static">TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT </p>
-									</div>
-								</div>
-								<label for='code' class='col-md-3 control-label'>AS65432 :</label>
-								<div class='col-md-9'>
-									<div class='controls'>
-										<p class="form-control-static">TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT TEXT </p>
-									</div>
-								</div>
-								<div class='col-md-12'>
-									<img data-src='holder.js/1240x200' class='img-responsive' />
-								</div>
+							<div id = 'viewproduct' >
 							</div>
 					</div>
 				</div>
 		</div>
 	</div>
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+	<p>
+		<div class='container' >	
+		 	<div class='col-md-4'>
+				<div id='menu.sitemap' class='rowspan' >
+					<label ></label>
+					<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.address' class='rowspan' >
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.email' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		 	<div class='col-md-4'>
+		 		<div id='menu.social' class='rowspan'>
+				<label ></label>
+		 		<hr style='margin:0;'/>
+				</div>
+				<div id='menu.phone' class='rowspan'>
+					<label ></label>
+			 		<hr style='margin:0;'/>
+				</div>
+		 	</div>
+		</div>
+	</p>
+</div><!--bottom menu-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
 <script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
+<script src='js/series.js' ></script>
 <script>
 	$(document).ready(function(){
+	
+	loadmenu();
+	loadbuttommenu();
+	//loadserieslist();
+	
+	var id = getParameterByName("id");
+	loadseriesinfo(id);
+	/*
 		 $("#immersive_slider").immersive_slider({
 			animation: "fade",
 			container: ".main",
@@ -169,6 +153,8 @@
 			cssBlur:false,
 			autoStart:0
   	    });
+		*/
+		
 	});
 </script>
 </body>

@@ -1,13 +1,13 @@
 function loadList()
 {
-	var service = 'services/press' ;
+	var service = 'services/press.php' ;
 	var data = {"_": new Date().getMilliseconds()}
 	CallService(service,data,setview);
 }
 
 function LoadItem(id)
 {
-	var service = 'services/press' ;
+	var service = 'services/press.php' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }
@@ -21,12 +21,6 @@ function CallService(service,param,callback)
 		data:param,
 		dataType:'json',
 		success : callback ,
-		/*
-		success:function(data){
-			$('#list').html("");
-			setview(data.result);
-		},
-		*/
 		error:function(xhr,status,err){
 			alert(err.message);
 		}
@@ -40,7 +34,6 @@ function setview(data)
 		
 		var itemview = "";
 		itemview += "<div class='col-md-6'>" ;
-		//itemview += "<a href='press_detail?id="+val.id+"'>" ;
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
 		itemview += "<div class='view second-effect'><img src='"+val.thumbnail+"' class='media-object' />";
@@ -52,7 +45,6 @@ function setview(data)
 			itemview += "<div class='media-detail'>"+val.detail+"</div>";//#detail
 		itemview += "</div>";//media-body
 		itemview += "</div>";//media
-		//itemview += "</a>";
 		itemview += "</div>" ; //column
 		
 		console.log(itemview);

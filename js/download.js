@@ -7,7 +7,7 @@ $(document).ready(function(){
 function loaditems(){
 
 
-var service = 'services/download' ;
+var service = 'services/download.php' ;
 
 	$.ajax({
 		url:service,

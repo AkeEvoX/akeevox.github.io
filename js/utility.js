@@ -24,7 +24,7 @@ function loadmenu(){
 
 	$.ajax({
 
-		url:'services/menu?_=' + new Date().getMilliseconds(),
+		url:'services/menu.php?_=' + new Date().getMilliseconds(),
 		type:'GET',
 		dataType:'json',
 		success:function(data){
@@ -45,7 +45,7 @@ function loadchildmenu(id)
 	
 	$.ajax({
 
-		url:'services/menu?_=' + new Date().getMilliseconds(),
+		url:'services/menu.php?_=' + new Date().getMilliseconds(),
 		type:'GET',
 		data: {"id":id} ,
 		dataType:'json' ,
@@ -101,7 +101,7 @@ function getchildmenu(id,data)
 function loadbuttommenu()
 {
 	$.ajax({
-		url:"services/attributes",
+		url:"services/attributes.php",
 		data:{"type":"menu"} ,
 		dataType:'json',
 		type:'GET',

@@ -131,7 +131,8 @@
 				<div class='row'>
 					<div class='col-md-12'>
 					<hr>{productname}</hr>
-					<img src='images/products/WATER_CLOSED/wc002.png' class='img-responsive'/>
+						<img id='plan' data-src='holder.js/650x300' class='img-responsive' />
+					
 					</div>
 				</div>
 				<div class='row'>
@@ -161,72 +162,7 @@
 						<h3>Product Releated</h3>
 						<div class="lightslider-main">
 			        		<div class="item" >    
-							<ul id="product-slider" class="content-slider">
-				                <li>
-				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />
-				                    <div class='lightslider-title'>
-				                    	<label>
-				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-				                    	</label>
-				                    </div>
-				                    <ul class='lightslider-desc'>
-			                    		<li>1.)aaaaaaaaaa</li>
-			                    		<li>2.)aaaaaaaaaa</li>
-			                    		<li>3.)aaaaaaaaaa</li>
-			                    		<li>4.)aaaaaaaaaa</li>
-			                    		<li>5.)aaaaaaaaaa</li>
-			                    		<li>6.)aaaaaaaaaa</li>
-			                    	</ul>
-				                </li>
-				                <li>
-				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />
-				                    <div class='lightslider-title'>
-				                    	<label>
-				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-				                    	</label>
-				                    </div>
-			                    	<ul class='lightslider-desc'>
-			                    		<li>1.)aaaaaaaaaa</li>
-			                    		<li>2.)aaaaaaaaaa</li>
-			                    		<li>3.)aaaaaaaaaa</li>
-			                    		<li>4.)aaaaaaaaaa</li>
-			                    		<li>5.)aaaaaaaaaa</li>
-			                    		<li>6.)aaaaaaaaaa</li>
-			                    	</ul>
-				                </li>
-				                <li>
-				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />
-				                    <div class='lightslider-title'>
-				                    	<label>
-				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-				                    	</label>
-				                    </div>
-				                    <ul class='lightslider-desc'>
-			                    		<li>1.)aaaaaaaaaa</li>
-			                    		<li>2.)aaaaaaaaaa</li>
-			                    		<li>3.)aaaaaaaaaa</li>
-			                    		<li>4.)aaaaaaaaaa</li>
-			                    		<li>5.)aaaaaaaaaa</li>
-			                    		<li>6.)aaaaaaaaaa</li>
-			                    	</ul>
-				                </li>
-				                <li>
-				                	<img src='images/products/LOWATORYS/categoriesimage_88.jpg' class='img-responsive' />
-				                    <div class='lightslider-title'>
-				                    	<label>
-				                    		STAR'S WORLD CLASS <br/>SANITARYWARE PRODUCT
-				                    	</label>
-				                    </div>
-				                    <ul class='lightslider-desc'>
-			                    		<li>1.)aaaaaaaaaa</li>
-			                    		<li>2.)aaaaaaaaaa</li>
-			                    		<li>3.)aaaaaaaaaa</li>
-			                    		<li>4.)aaaaaaaaaa</li>
-			                    		<li>5.)aaaaaaaaaa</li>
-			                    		<li>6.)aaaaaaaaaa</li>
-			                    	</ul>
-				                </li>
-				            </ul>
+							<ul id="product-slider" class="content-slider"></ul>
 			        		</div>
 			        	</div><!--end lightslider-->
 					</div>
@@ -291,20 +227,10 @@ $(document).ready(function(){
 	loadbuttommenu();
 
 	var id = getParameterByName("id");
-	loadproduct(id);
+	callproduct(id);
 
-
-	$("#product-slider").lightSlider({
-		autoWidth: true
-		,item:4
-		,adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	    ,pager:false
- 	});
-
-	
 	$(".share-popup").click(function(){
+	
     var window_size = "width=585,height=511";
     var url = this.href;
     var domain = url.split("/")[2];
@@ -322,6 +248,14 @@ $(document).ready(function(){
 	});
 
 });
+
+
+function callproduct(id)
+{
+	loadproduct(id);
+	loadattribute(id);
+	loadproductreleated(id);
+}
 
 </script>
 	

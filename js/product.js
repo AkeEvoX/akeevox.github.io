@@ -1,9 +1,56 @@
 
-function loadlistproduct()
+
+function loadcategorylist()
 {
 	
 	$.ajax({
-		url:"services/product",
+		url:"services/product.php",
+		data:{"_": new Date().getHours() ,"cate":"5","type":"list"},
+		dataType:'json',
+		type:"GET",
+		success: function(data){
+			
+			console.log(data.result);
+			setviewlist(data);
+			//console.warn()
+		},
+		error : function (xhr,status,err)
+		{
+			console.error(xhr.responseText);
+			alert("load product list error : "+ xhr.responseText);
+		}
+	});
+	
+}
+
+function loadshowroomlist()
+{
+	
+	$.ajax({
+		url:"services/product.php",
+		data:{"_": new Date().getHours(),"type":"showroom"},
+		dataType:'json',
+		type:"GET",
+		success: function(data){
+			
+			console.log(data.result);
+			//setviewlist(data);
+			//console.warn()
+		},
+		error : function (xhr,status,err)
+		{
+			console.error(xhr.responseText);
+			alert("load product list error : "+ xhr.responseText);
+		}
+	});
+	
+}
+
+function loadproductlist()
+{
+	
+	$.ajax({
+		url:"services/product.php",
 		data:{"_": new Date().getHours() ,"cate":"1","type":"list"},
 		dataType:'json',
 		type:"GET",
@@ -22,11 +69,46 @@ function loadlistproduct()
 	
 }
 
+function loadproductreleated(id)
+{
+	$.ajax({
+		url:"services/product.php",
+		data:{"_": new Date().getHours() ,"id":id,"type":"related"},
+		dataType:'json',
+		type:"GET",
+		success: function(data){
+			
+			console.log(data);
+			setViewReleated(data);
+
+		},
+		complete : function(data){
+			
+			//initial slider
+
+			$("#product-slider").lightSlider({
+				autoWidth: true
+				,item:4
+				,adaptiveHeight:true
+				,loop:true
+				,keyPress:true
+				,pager:false
+			});
+
+		},
+		error : function (xhr,status,err)
+		{
+			console.error(xhr.responseText);
+			alert("load product list error : "+ xhr.responseText);
+		}
+	});
+}
+
 function loadproduct(id)
 {
 	
 	$.ajax({
-		url:"services/product",
+		url:"services/product.php",
 		data:{"_": new Date().getHours() , "id":id,"type":"item"},
 		dataType:'json',
 		type:"GET",
@@ -35,12 +117,18 @@ function loadproduct(id)
 			console.log(data);
 			setviewitem(data.result);
 			//console.warn()
-		},
-		complete : function(){
+		}
+		,complete:function(data){
 			
-		 	$("#productgallery").unitegallery({
-				theme_panel_position: "left"		
+			$("#productgallery").unitegallery({
+				theme_panel_position: "left"
+				,slider_scale_mode: "fit"
+				,thumb_fixed_size:true
+				,thumb_width:100								//thumb width
+				,thumb_height:60
+				,thumb_loader_type:"light"	
 			});
+			
 		}
 		,error : function (xhr,status,err)
 		{
@@ -48,14 +136,14 @@ function loadproduct(id)
 			alert("load product list error : "+ xhr.responseText);
 		}
 	});
-
-	loadattribute(id);
+	
+	
 }
 
 function loadattribute(id)
 {
 	$.ajax({
-		url:"services/product",
+		url:"services/product.php",
 		data:{"_": new Date().getHours() , "id":id,"type":"attr"},
 		dataType:'json',
 		type:"GET",
@@ -96,15 +184,37 @@ function setviewlist(data)
 	
 }
 
+function setViewReleated(data){
+	
+	var view = $('#product-slider');
+	$.each(data.result,function(i,val){
+		
+		var item = "";
+		item += "<li  >";
+		item += "<img src='"+val.thumb+"' class='img-responsive' >";
+		item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
+		item += "<ul class='lightslider-desc'>";
+		item += "<li>&nbsp;</li>";
+		item += "<li>&nbsp;</li>";
+		item += "<li>&nbsp;</li>";
+		item += "<li>&nbsp;</li>";
+		item += "<li>&nbsp;</li>";
+		/*
+		$.each(val.attributes,function(attr_id,attr_val){
+			item += "<li >"+attr_val.label +") "+attr_val.title+"</li>";
+		});
+		*/
+		item += "</ul>";
+		
+		item += "</li>";
+		
+		view.append(item);
+
+	});
+}
+
 function setViewAttribute(data)
 {
-	/*
-<label class='col-xs-2 control-label' >prod.code</label>
-	<div class='col-xs-4'>
-		<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
-	</div>
-	*/
-
 	var view = $('#listattribute');
 	$.each(data.result,function(i,val){
 		var item = "";
@@ -121,7 +231,11 @@ function setviewitem(data)
 {
 
 	var view = $('#productgallery');
-	console.warn(data.image);
+	console.warn(data);
+	//view info
+	
+	$('#plan').attr('src',data.plan);
+	//view image list
 	$.each(data.image,function(i,val){
 		var item = "";
 		item += "<img src='"+val.image+"' data-image='"+val.image+"' data-description=''  />";

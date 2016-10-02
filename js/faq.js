@@ -1,27 +1,27 @@
 function loadList()
 {
-	var service = 'services/faq' ;
+	var service = 'services/faq.php' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"list"}
 	CallService(service,data,setview);
 }
 
 function loadItem(id)
 {
-	var service = 'services/faq' ;
+	var service = 'services/faq.php' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }
 
 function loadmostview()
 {
-	var service = 'services/faq' ;
+	var service = 'services/faq.php' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"most"}
 	CallService(service,data,setmostview);
 }
 
 function loadrecentview()
 {
-	var service = 'services/faq' ;
+	var service = 'services/faq.php' ;
 	var data = {"_": new Date().getMilliseconds(),"type":"recent"}
 	CallService(service,data,setrecentview);
 }
@@ -73,20 +73,7 @@ function setmostview(data)
 		itemview += val.title + "</div >";//media-body
 		itemview += "</div >";//media
 		itemview += "<hr/></div >";//row
-		/*
-	<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object'/></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-		*/
+	
 		$('#mostview').append(itemview);
 	});
 }

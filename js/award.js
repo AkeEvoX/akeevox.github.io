@@ -7,7 +7,7 @@ $(document).ready(function(){
 
 function loadList()
 {
-	var service = 'services/award' ;
+	var service = 'services/award.php' ;
 	var data = {"_": new Date().getMilliseconds()}
 	CallService(service,data,setview);
 	
@@ -16,7 +16,7 @@ function loadList()
 
 function LoadItem(id)
 {
-	var service = 'services/award' ;
+	var service = 'services/award.php' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
 }

@@ -9,7 +9,7 @@ function loadchart()
 {
 	
 	$.ajax({
-		url:"services/organization",
+		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"chart"},
 		dataType:'json',
 		type:"GET",
@@ -31,7 +31,7 @@ function loadchart()
 function loadinfo()
 {
 	$.ajax({
-		url:"services/attributes",
+		url:"services/attributes.php",
 		data:{"_": new Date().getHours() , "type":"chart"},
 		dataType:'json',
 		type:"GET",

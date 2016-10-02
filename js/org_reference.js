@@ -28,19 +28,17 @@ function setup_slider()
 function loadreference()
 {
 	$.ajax({
-		url:"services/organization",
+		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"refer"},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
 			try{
-				//display(data);
 				console.log(data.result);
 				
 				if(data.result != undefined)
 				{
 					var inter = data.result.filter(function(item){ return item.local=="0"; });
-					//var local = data.result.filter.call(item=>item.local == "1");
 
 					
 					var local = $.grep(data.result,function(value,i){
@@ -53,8 +51,7 @@ function loadreference()
 				}
 			}catch(err)
 			{
-				console.error("organization refer :" +err.message;
-				//throw {"Error":e.Message()};
+				console.error("organization refer :" +err.message);
 			}
 			
 		},
@@ -115,7 +112,7 @@ function displaylocal(data)
 function loadinfo()
 {
 	$.ajax({
-		url:"services/attributes",
+		url:"services/attributes.php",
 		data:{"_": new Date().getHours() , "type":"chart"},
 		dataType:'json',
 		type:"GET",
