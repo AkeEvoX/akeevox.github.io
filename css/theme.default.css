@@ -7,6 +7,7 @@ body
 	position:absolute;
 	top:5px;
 	left:130px;
+	box-shadow:0px 0px 5px #000;
 }
 
 .languagebar {
@@ -47,7 +48,7 @@ label {
 }
 
 .input-xs {
-  height: 23px;
+  height: 22px;
   max-width:150px;
   font-size: 12px;
   line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
@@ -59,7 +60,7 @@ label {
 @media(min-width:900px) {
 	#searchbar { background-color:transparent; }
 	/*override class*/
-	#navbar ul.nav.navbar-nav { padding-left:80px; } /*adjust menu*/
+	#navbar ul.nav.navbar-nav { padding-left:110px; } /*adjust menu*/
 	.navbar { height:60px; } 
 	#navbar {padding-top:0px;}
 	
@@ -71,13 +72,14 @@ label {
 	#searchbar { display:none;  }
 	.navbar-header { padding-left:5px; }
 	/*override class*/
-	#navbar ul.nav.navbar-nav { padding-left:90px; } /*adjust menu*/
+	#navbar ul.nav.navbar-nav { padding-left:110px; } /*adjust menu*/
 }
 /* mobile */
 @media(max-width:600px) {
 
 	#searchbar { display:none; }
 	.navbar-header { padding-left:10px; }
+	.logobar { width:86px;
 	#navbar ul.nav.navbar-nav { padding-left:จpx; } /*adjust menu*/
 
 } 
