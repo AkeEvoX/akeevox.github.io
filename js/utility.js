@@ -8,6 +8,7 @@ $('.tree-toggle').parent().children('ul.tree').toggle(200);
 })
 */
 
+
 function getParameterByName(name, url) {
 	
     if (!url) url = window.location.href;
@@ -19,6 +20,25 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 	
 }
+function selectlang(lang)
+{
+	
+	$.ajax({
+
+		url:'services/lang.php',
+		data : {"_":new Date().getMilliseconds(),"lang":lang},
+		type:'POST',
+		dataType:'text',
+		success:function(data){
+			
+		},
+		error:function(xhr,status,err){
+			alert("select language error :"+xhr.responseText);
+		}
+
+	});
+}
+
 //-----------------load globle menu-----------------
 function loadmenu(){
 

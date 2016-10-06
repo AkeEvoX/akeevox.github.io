@@ -5,8 +5,8 @@ include("../controller/MenuManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$lang = "th"; 
-if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+
+if(isset($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
 
@@ -33,7 +33,8 @@ while($row = $item->fetch_object()){
 }
 
 log_debug("get list menu > " . print_r($result,true));
+log_debug("lang > " . print_r($_SESSION["lang"],true));
 
-echo json_encode(array("result"=> $result ,"code"=>"0"));
+echo json_encode(array("result"=> $result ,"code"=>"0","lang"=>$lang));
 
 ?>

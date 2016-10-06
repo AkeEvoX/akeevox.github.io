@@ -8,7 +8,7 @@ header("Content-Type: application/json;  charset=UTF8");
 
 $gallery = new GalleryManager();
 
-$lang = "th"; 
+//$lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }

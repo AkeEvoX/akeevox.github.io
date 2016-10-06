@@ -7,13 +7,22 @@ body
 	position:absolute;
 	top:5px;
 	left:130px;
+	width:70px;
 	box-shadow:0px 0px 5px #000;
 }
+
+#searchbar span { 
+	position:absolute;top:12px;margin-left:15px;
+ }
+ #searchbar ul { 
+	list-style:none;
+ }
 
 .languagebar {
 	position:relative;
 	right:0;
 }
+
 .contactseller {
 padding:2px 33px;
 margin-right:48px;
@@ -48,7 +57,7 @@ label {
 }
 
 .input-xs {
-  height: 22px;
+  height: 23px;
   max-width:150px;
   font-size: 12px;
   line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
@@ -79,7 +88,7 @@ label {
 
 	#searchbar { display:none; }
 	.navbar-header { padding-left:10px; }
-	.logobar { width:86px;
-	#navbar ul.nav.navbar-nav { padding-left:จpx; } /*adjust menu*/
+	.logobar { width:86px; }
+	#navbar ul.nav.navbar-nav { padding-left:10px; } /*adjust menu*/
 
 } 

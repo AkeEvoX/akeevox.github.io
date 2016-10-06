@@ -37,7 +37,7 @@ function setview(data)
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
 		itemview += "<div class='view second-effect'><img src='"+val.thumbnail+"' class='media-object' />";
-		itemview += "<div class='mask'><a href='press_detail?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect
+		itemview += "<div class='mask'><a href='press_detail.html?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect
 		itemview += "</div>";//view
 		itemview += "</div>";//media-left
 		itemview += "<div class='media-body'>";//
@@ -64,7 +64,7 @@ function setviewdetail(data)
 	itemview += "<div class='media-body' >"+press.detail+"</div>"; //detail new
 	itemview += "</div >"; //column
 	//previous and next 
-	itemview +=  "</br><div style='text-align:center;'><a href='press_detail?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
+	itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
 
 $('#list').append(itemview);
 }

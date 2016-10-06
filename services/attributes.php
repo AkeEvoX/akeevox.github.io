@@ -7,8 +7,8 @@ include("../controller/ContactManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$lang = "th"; 
-if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+//$lang = "th"; 
+if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
 
@@ -77,6 +77,6 @@ switch($type)
 	
 }
 
-echo json_encode(array("result"=>$result,"code"=>"0"));
+echo json_encode(array("result"=>$result,"code"=>"0","lang"=>$lang));
 
 ?>
