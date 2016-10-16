@@ -1,5 +1,5 @@
 $(document).ready(function(){
-	utility.setpage('intermarket');
+	utility.setpage('inter');
 	utility.loadmenu();
 	utility.loadbuttommenu();
 	loadview();

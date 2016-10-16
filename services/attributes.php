@@ -104,8 +104,8 @@ switch($type)
 				$result[] = array("name"=>$row->name,"title"=>$row->title);
 			}
 			break;
-	case "intermarket" :
-			$itemattr = $attrMgr->getItems($lang,'intermarket');
+	case "inter" :
+			$itemattr = $attrMgr->getItems($lang,'inter');
 			while($row = $itemattr->fetch_object())
 			{
 				$result[] = array("name"=>$row->name,"title"=>$row->title);

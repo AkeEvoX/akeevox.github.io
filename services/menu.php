@@ -5,7 +5,7 @@ include("../controller/MenuManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-
+$lang='th';
 if(isset($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
@@ -21,9 +21,9 @@ if(isset($id) && !empty($id))
 {
 	$item = $menu->getsubmenu($id,$lang);
 }
-else 
+else
 {
-	$item = $menu->getmenu($lang);	
+	$item = $menu->getmenu($lang);
 }
 
 

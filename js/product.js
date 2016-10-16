@@ -5,7 +5,7 @@ product.listmenu = function(){
 
 			var list = $('#productlist');
 			var args = {'_':new Date().getHours(),'type':'menu'}
-			utility.service('services/product','GET',args
+			utility.service('services/product.php','GET',args
 		,function(response){
 
 			$.each(response.result,function(i,val){
@@ -122,7 +122,7 @@ function loadproductlist() {
 		error : function (xhr,status,err)
 		{
 			console.error(xhr.responseText);
-			alert("load product list 123 error : "+ xhr.responseText);
+			alert("load product list error : "+ xhr.responseText);
 		}
 	});
 

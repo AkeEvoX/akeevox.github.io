@@ -64,13 +64,8 @@ function setviewdetail(data)
 	itemview += "<img src='"+press.coverpage+"' class='img-responsive' />"; //1240x500
 	itemview += "<div class='media-body' >"+press.detail+"</div>"; //detail new
 	itemview += "</div >"; //column
-<<<<<<< HEAD
-	//previous and next 
-	itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
-=======
 	//previous and next
 	//itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
->>>>>>> origin/master
 
 $('#list').append(itemview);
 }
