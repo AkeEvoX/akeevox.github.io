@@ -1,17 +1,35 @@
 $(document).ready(function(){
-	loadmenu();
-	loadbuttommenu();
+	utility.setpage('award');
+	utility.loadmenu();
+	utility.loadbuttommenu();
 	loadList();
 	//loadstandard();
 });
+
+function setpage(){
+
+	var args = {'_':new Date().getHours(),'type':'award'};
+	utility.service('services/attributes.php','GET',args
+	,function(response){
+		console.warn(response);
+		if(response!==undefined)
+		{
+			console.info('found.');
+			$.each(response.result,function(i,val){
+				$("span[id='"+val.name+"']").text(val.title);
+			});
+		}
+		else { console.warn('not found.'); }
+	}
+	,null);
+
+}
 
 function loadList()
 {
 	var service = 'services/award.php' ;
 	var data = {"_": new Date().getMilliseconds()}
 	CallService(service,data,setview);
-	
-	
 }
 
 function LoadItem(id)
@@ -23,7 +41,7 @@ function LoadItem(id)
 
 function CallService(service,param,callback)
 {
-	
+
 	$.ajax({
 		url:service,
 		type:'GET',
@@ -37,12 +55,12 @@ function CallService(service,param,callback)
 	});
 }
 
-function setview(data)
-{
+
+function setview(data){
 	try{
 	var award = data.result.filter(function(item) {return item.type == "0" ; });
 	var standard = data.result.filter(function(item) {return item.type == "1" ; });
-	
+
 	setaward(award);
 	setstandard(standard);
 	 //$('.photoGrid').photoGrid({rowHeight:"250"});
@@ -55,21 +73,21 @@ function setview(data)
 }
 
 function setaward(data){
-	
+
 	var award = $('#immersive_slider');
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
 	$.each(data,function(idx,val){
-		
+
 		 //item
 		 itemview += "<div class='col-md-3' ><a href='#' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
-		
+
 		//row
 		 if(((idx +1) % 4) == 0)
 		 {
 			 itemview += "</div><div class='row' >";
 		 }
-		 
+
 		  //page slide
 		 if(((idx+1) % 13) == 0)
 		 {
@@ -77,19 +95,19 @@ function setaward(data){
 		 }
 
 	});
-	
+
 	itemview += "</div>";//close tag contact
-	
-	if(data.length<=12) //12 item :: page 
+
+	if(data.length<=12) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}
-	
+
 	//console.log(itemview);
 	award.append(itemview);
 	award.append("<a href='#'' class='is-prev'>&laquo;</a><a href='#'' class='is-next'>&raquo;</a>");
-		
-		
+
+
 	award.immersive_slider({
 		animation: "slide",
 		container: ".main",
@@ -97,49 +115,47 @@ function setaward(data){
 		cssBlur:false,
 		autoStart:0
 	});
-	
+
 }
-
-
 
 function setstandard(data)
 {
-	
+
 	var standard = $('#standard_slide');
 	//console.log(data.result);
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
 	$.each(data,function(idx,val){
-		
+
 		//item
 		 itemview += "<div class='col-md-3' ><a href='#' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
-		
+
 		//row
-		 if(((idx +1) % 4) == 0)
+		 if(((idx +1) % 4) === 0)
 		 {
 			 itemview += "</div><div class='row' >";
 		 }
-		 
+
 		  //page slide
-		 if(((idx+1) % 13) == 0)
+		 if(((idx+1) % 13) === 0)
 		 {
 			 itemview += "</div></div><div class='slide' data-blurred='' ><div class='content' ><div class='row'> ";
 		 }
 
 	});
-	
+
 	itemview += "</div>";//close tag contact
-	
-	if(data.length<=12) //12 item :: page 
+
+	if(data.length<=12) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}
-	
+
 	//console.log(itemview);
 	standard.append(itemview);
 	standard.append("<a href='#'' class='is-prev'>&laquo;</a><a href='#'' class='is-next'>&raquo;</a>");
-		
-	
+
+
 	standard.immersive_slider({
 		animation: "slide",
 		container: ".main",

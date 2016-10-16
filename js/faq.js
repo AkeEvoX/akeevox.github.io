@@ -28,7 +28,7 @@ function loadrecentview()
 
 function CallService(service,param,callback)
 {
-	
+
 	$.ajax({
 		url:service,
 		type:'GET',
@@ -41,11 +41,30 @@ function CallService(service,param,callback)
 	});
 }
 
+function setpage(){
+
+	var args = {'_':new Date().getHours(),'type':'faq'};
+	utility.service('services/attributes.php','GET',args
+	,function(response){
+		console.warn(response);
+		if(response!==undefined)
+		{
+			console.info('found.');
+			$.each(response.result,function(i,val){
+				$("span[id='"+val.name+"']").text(val.title);
+			});
+		}
+		else { console.warn('not found.'); }
+	}
+	,null);
+
+}
+
 function setview(data)
 {
 	$('#list').html("");
 	$.each(data.result,function(i,val){
-		
+
 		var itemview = "";
 		itemview += "<div class='row col-md-8'>";
 		itemview += "<h4>"+val.title+"</h4>";
@@ -56,14 +75,14 @@ function setview(data)
 		itemview += "</div >";
 		$('#list').append(itemview);
 	});
-	
+
 }
 
 function setmostview(data)
 {
 	$('#mostview').html("");
 	$.each(data.result,function(i,val){
-		
+
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";
@@ -73,7 +92,7 @@ function setmostview(data)
 		itemview += val.title + "</div >";//media-body
 		itemview += "</div >";//media
 		itemview += "<hr/></div >";//row
-	
+
 		$('#mostview').append(itemview);
 	});
 }
@@ -82,7 +101,7 @@ function setrecentview(data)
 {
 	$('#recent').html("");
 	$.each(data.result,function(i,val){
-		
+
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";

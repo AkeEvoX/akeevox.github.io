@@ -1,6 +1,6 @@
 <?php
 require_once("../lib/database.php");
-//include("../../../controller/logger.php");
+//require_once("../lib/logger.php");
 
 class ProductManager{
 	
@@ -28,7 +28,8 @@ class ProductManager{
 		try{
 
 			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
-			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.id=".$id;
+			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.id='".$id."' ; ";
+			log_warning("product > " . $sql);
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;
@@ -44,7 +45,8 @@ class ProductManager{
 		try{
 
 			$sql = "select id,proid,thumb,image ";
-			$sql .= " from product_images  where active=1 and proid=".$id;
+			$sql .= " from product_images  where active=1 and proid='".$id."' ";
+			log_warning("product image > " . $sql);
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;
@@ -60,8 +62,9 @@ class ProductManager{
 			
 			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
-			$sql .= " where p.typeid=".$cate;
+			$sql .= " where p.typeid='".$cate."' ";
 			$sql .= " order by p.create_date desc ";
+			log_warning("product list > " . $sql);
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -107,7 +110,7 @@ class ProductManager{
 		try{
 
 			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
-			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid=".$cate;
+			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid='".$cate."' ";
 			$sql .= " order by  p.create_date desc ";
 			$result = $this->mysql->execute($sql);
 			
@@ -124,7 +127,7 @@ class ProductManager{
  
 			$sql = " select p.id,p.".$lang." as title,a.".$lang." as label from product_attribute p ";
 			$sql .= " left join attribute_master a on a.name=p.attribute ";
-			$sql .= " where p.proid=".$id;
+			$sql .= " where p.proid='".$id."' ";
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;

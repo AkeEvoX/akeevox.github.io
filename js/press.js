@@ -14,7 +14,7 @@ function LoadItem(id)
 
 function CallService(service,param,callback)
 {
-	
+
 	$.ajax({
 		url:service,
 		type:'GET',
@@ -31,7 +31,7 @@ function setview(data)
 {
 	$('#list').html("");
 	$.each(data.result,function(i,val){
-		
+
 		var itemview = "";
 		itemview += "<div class='col-md-6'>" ;
 		itemview += "<div class='media'>";
@@ -43,10 +43,11 @@ function setview(data)
 		itemview += "<div class='media-body'>";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
 			itemview += "<div class='media-detail'>"+val.detail+"</div>";//#detail
+			itemview += "<span class='badge'><a href='press_detail.html?id="+val.id+"' style='color:white;'  >อ่านต่อ</a></span>";//#read more.
 		itemview += "</div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column
-		
+
 		console.log(itemview);
 		$('#list').append(itemview);
 	});
@@ -63,8 +64,13 @@ function setviewdetail(data)
 	itemview += "<img src='"+press.coverpage+"' class='img-responsive' />"; //1240x500
 	itemview += "<div class='media-body' >"+press.detail+"</div>"; //detail new
 	itemview += "</div >"; //column
+<<<<<<< HEAD
 	//previous and next 
 	itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
+=======
+	//previous and next
+	//itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
+>>>>>>> origin/master
 
 $('#list').append(itemview);
 }

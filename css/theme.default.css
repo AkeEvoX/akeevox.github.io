@@ -1,7 +1,87 @@
 body
 {
-	margin-top:80px;
+	margin-top:100px;
 }
+/**********navbar color*******/
+.navbar-default {
+	min-height:70px !important;
+  background-color: #ffffff;
+  border-color: #ffffff;
+	border-style: solid;
+	border-width:3px;
+  border-bottom-color: #d2aa5c;
+}
+.navbar-default .navbar-brand {
+  color: #242525;
+}
+.navbar-default .navbar-brand:hover,
+.navbar-default .navbar-brand:focus {
+  color: #d2aa5c;
+}
+.navbar-default .navbar-text {
+  color: #242525;
+}
+.navbar-default .navbar-nav > li > a {
+  color: #242525;
+}
+.navbar-default .navbar-nav > li > a:hover,
+.navbar-default .navbar-nav > li > a:focus {
+  color: #d2aa5c;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a {
+  color: #242525;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
+  color: #d2aa5c;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
+  color: #d2aa5c;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > .active > a,
+.navbar-default .navbar-nav > .active > a:hover,
+.navbar-default .navbar-nav > .active > a:focus {
+  color: #d2aa5c;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-nav > .open > a,
+.navbar-default .navbar-nav > .open > a:hover,
+.navbar-default .navbar-nav > .open > a:focus {
+  color: #d2aa5c;
+  background-color: #ffffff;
+}
+.navbar-default .navbar-toggle {
+  border-color: #ffffff;
+}
+.navbar-default .navbar-toggle:hover,
+.navbar-default .navbar-toggle:focus {
+  background-color: #ffffff;
+}
+.navbar-default .navbar-toggle .icon-bar {
+  background-color: #242525;
+}
+.navbar-default .navbar-collapse,
+.navbar-default .navbar-form {
+  border-color: #242525;
+}
+.navbar-default .navbar-link {
+  color: #242525;
+}
+.navbar-default .navbar-link:hover {
+  color: #d2aa5c;
+}
+/**********navbar color*******/
+/**********object nav bar*******/
 
 .logobar {
 	position:absolute;
@@ -11,6 +91,7 @@ body
 	box-shadow:0px 0px 5px #000;
 }
 
+<<<<<<< HEAD
 #searchbar span { 
 	position:absolute;top:12px;margin-left:15px;
  }
@@ -18,15 +99,42 @@ body
 	list-style:none;
  }
 
+=======
+#searchbar .glyphicon {
+	position:absolute;
+	top:12px;
+	margin-left:15px;
+ }
+ #searchbar ul {
+	list-style:none;
+ }
+
+#lang {
+	border-left:0px;
+}
+
+#btncontact {
+	background-color:#d2aa5c;
+	color:white;
+}
+
+>>>>>>> origin/master
 .languagebar {
 	position:relative;
 	right:0;
 }
 
+<<<<<<< HEAD
 .contactseller {
 padding:2px 33px;
 margin-right:48px;
 }
+=======
+/**********object nav bar*******/
+
+/*buttom menu*/
+#buttommenu { background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;margin-top:50px; }
+>>>>>>> origin/master
 
 /* define height*/
 .h100 { height:100px;}
@@ -50,6 +158,8 @@ margin-right:48px;
 	padding-left:5px;
 }
 /*-----custom control--------*/
+a {list-style: none;color:black;}
+
 iframe, object, embed{ max-width: 100%;}
 
 label {
@@ -58,7 +168,11 @@ label {
 
 .input-xs {
   height: 23px;
+<<<<<<< HEAD
   max-width:150px;
+=======
+  max-width:100px;
+>>>>>>> origin/master
   font-size: 12px;
   line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
   border-radius: 3px;
@@ -70,9 +184,9 @@ label {
 	#searchbar { background-color:transparent; }
 	/*override class*/
 	#navbar ul.nav.navbar-nav { padding-left:110px; } /*adjust menu*/
-	.navbar { height:60px; } 
+	.navbar { height:60px; }
 	#navbar {padding-top:0px;}
-	
+
 }
 
 /* tables */
@@ -91,4 +205,4 @@ label {
 	.logobar { width:86px; }
 	#navbar ul.nav.navbar-nav { padding-left:10px; } /*adjust menu*/
 
-} 
+}

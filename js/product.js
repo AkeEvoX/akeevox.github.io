@@ -1,4 +1,8 @@
+var product = function(){};
 
+product.menus = function(){
+	
+}
 
 function loadcategorylist()
 {
@@ -40,7 +44,7 @@ function loadshowroomlist()
 		error : function (xhr,status,err)
 		{
 			console.error(xhr.responseText);
-			alert("load product list error : "+ xhr.responseText);
+			alert("load showroom list error : "+ xhr.responseText);
 		}
 	});
 	
@@ -63,7 +67,7 @@ function loadproductlist()
 		error : function (xhr,status,err)
 		{
 			console.error(xhr.responseText);
-			alert("load product list error : "+ xhr.responseText);
+			alert("load product list 123 error : "+ xhr.responseText);
 		}
 	});
 	
@@ -99,7 +103,7 @@ function loadproductreleated(id)
 		error : function (xhr,status,err)
 		{
 			console.error(xhr.responseText);
-			alert("load product list error : "+ xhr.responseText);
+			alert("load product releated list error : "+ xhr.responseText);
 		}
 	});
 }
@@ -114,11 +118,10 @@ function loadproduct(id)
 		type:"GET",
 		success: function(data){
 			
-			console.log(data);
 			setviewitem(data.result);
-			//console.warn()
 		}
 		,complete:function(data){
+			
 			
 			$("#productgallery").unitegallery({
 				theme_panel_position: "left"
@@ -132,8 +135,8 @@ function loadproduct(id)
 		}
 		,error : function (xhr,status,err)
 		{
-			console.error(xhr);
-			alert("load product list error : "+ xhr.responseText);
+			console.error("load product error > " + xhr.responseText);
+			alert("load product error : "+ xhr.responseText);
 		}
 	});
 	
@@ -162,84 +165,88 @@ function loadattribute(id)
 
 function setviewlist(data)
 {
-	var view = $('#viewproduct');
-	$.each(data.result,function(i,val){
-		var item = "";
+	if(data!==undefined && data.result!=null)
+	{
+		var view = $('#viewproduct');
 
-		item += "<li class='col-md-3 col-sm-6 col-xs-12' >";
-		item += "<div class='port-1 effect-2' >";
-		item += "<div class='image-box' >";
-		item += "<img src='"+val.thumb+"' class='img-fluid h150' alt=''>";
-		item += "<div class='thumbnail-desc'><label>"+val.name+"</label><span>"+val.code+"</span></div>";
-		item += "</div>";
-		item += "<div class='text-desc'>";
-		item += "<p><span class='bigger glyphicon glyphicon-zoom-in orange topbar'></span><p/>";
-		item += "<a href='productdetail.html?id="+val.id+"' class='btn'>View</a>";
-		item += "</div>";
-		item += "</li>";
-		//console.warn(item);
-		view.append(item);
+		$.each(data.result,function(i,val){
+			var item = "";
 
-	});
+			item += "<li class='col-md-3 col-sm-6 col-xs-12' >";
+			item += "<div class='port-1 effect-2' >";
+			item += "<div class='image-box' >";
+			item += "<img src='"+val.thumb+"' class='img-fluid h150' alt=''>";
+			item += "<div class='thumbnail-desc'><label>"+val.name+"</label><span>"+val.code+"</span></div>";
+			item += "</div>";
+			item += "<div class='text-desc'>";
+			item += "<p><span class='bigger glyphicon glyphicon-zoom-in orange topbar'></span><p/>";
+			item += "<a href='productdetail.html?id="+val.id+"' class='hover-btn'>View</a>";
+			item += "</div>";
+			item += "</li>";
+			//console.warn(item);
+			view.append(item);
+
+		});
+	}
 	
 }
 
 function setViewReleated(data){
 	
 	var view = $('#product-slider');
-	$.each(data.result,function(i,val){
-		
-		var item = "";
-		item += "<li  >";
-		item += "<img src='"+val.thumb+"' class='img-responsive' >";
-		item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
-		item += "<ul class='lightslider-desc'>";
-		item += "<li>&nbsp;</li>";
-		item += "<li>&nbsp;</li>";
-		item += "<li>&nbsp;</li>";
-		item += "<li>&nbsp;</li>";
-		item += "<li>&nbsp;</li>";
-		/*
-		$.each(val.attributes,function(attr_id,attr_val){
-			item += "<li >"+attr_val.label +") "+attr_val.title+"</li>";
-		});
-		*/
-		item += "</ul>";
-		
-		item += "</li>";
-		
-		view.append(item);
+	if(data!==undefined && data.result!=null){
+		$.each(data.result,function(i,val){
 
-	});
+			var item = "";
+			item += "<li  >";
+			item += "<img src='"+val.thumb+"' class='img-responsive' >";
+			item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
+			item += "<ul class='lightslider-desc'>";
+			item += "<li>&nbsp;</li>";
+			item += "<li>&nbsp;</li>";
+			item += "<li>&nbsp;</li>";
+			item += "<li>&nbsp;</li>";
+			item += "<li>&nbsp;</li>";
+			item += "</ul>";
+			item += "</li>";
+
+			view.append(item);
+
+		});
+	}
 }
 
 function setViewAttribute(data)
 {
-	var view = $('#listattribute');
-	$.each(data.result,function(i,val){
-		var item = "";
+		var view = $('#listattribute');
+		if(data!==undefined && data.result!=null){
+			
+		$.each(data.result,function(i,val){
+			var item = "";
 
-		item += "<label class='col-xs-3 control-label' >"+val.label+"</label>";
-		item += "<div class='col-xs-3'><p lass='form-control'>"+val.title+"</p></div>";
-		//console.warn(item);
-		view.append(item);
+			item += "<label class='col-xs-3 control-label' >"+val.label+"</label>";
+			item += "<div class='col-xs-3'><p lass='form-control'>"+val.title+"</p></div>";
+			//console.warn(item);
+			view.append(item);
 
-	});
+		});
+	}
 }
 
 function setviewitem(data)
 {
 
 	var view = $('#productgallery');
-	console.warn(data);
 	//view info
-	
-	$('#plan').attr('src',data.plan);
-	//view image list
-	$.each(data.image,function(i,val){
-		var item = "";
-		item += "<img src='"+val.image+"' data-image='"+val.image+"' data-description=''  />";
-		view.append(item);
-	});
-
+	if(data!==undefined){
+		$('#plan').attr('src',data.plan);
+		//view image list
+		if(data.image!=null){
+			$.each(data.image,function(i,val){
+				var item = "";
+				item += "<img src='"+val.image+"' data-image='"+val.image+"' data-description=''  />";
+				view.append(item);
+			});
+		}
+	}
 }
