@@ -6,7 +6,6 @@ include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
 
-$lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
@@ -66,18 +65,20 @@ function setProductList($lang,$cate)
 		$data = $product->getProductList($lang,$cate);
 
 		$items = null;
-		while($row = $data->fetch_object()) 
-		{
-			$items[] = array(
-				"id"=>$row->id
-				,"title"=>$row->title
-				,"detail"=>$row->detail
-				,"thumb"=>$row->thumb
-				,"image"=>$row->image
-				,"plan"=>$row->plan
-				,"code"=>$row->code
-				,"name"=>$row->name
-				);
+		if($data){
+			while($row = $data->fetch_object()) 
+			{
+				$items[] = array(
+					"id"=>$row->id
+					,"title"=>$row->title
+					,"detail"=>$row->detail
+					,"thumb"=>$row->thumb
+					,"image"=>$row->image
+					,"plan"=>$row->plan
+					,"code"=>$row->code
+					,"name"=>$row->name
+					);
+			}
 		}
 		return $items;
 	}
@@ -128,20 +129,22 @@ function setProductRelated($lang,$cate)
 	$data = $product->getProductReleated($lang,$cate);
 
 	$items = null;
-	while($row = $data->fetch_object()) 
-	{
-		$attrs = setAttribute($lang,$row->id);
-		$items[] = array(
-			"id"=>$row->id
-			,"title"=>$row->title
-			,"detail"=>$row->detail
-			,"thumb"=>$row->thumb
-			,"image"=>$row->image
-			,"plan"=>$row->plan
-			,"code"=>$row->code
-			,"name"=>$row->name
-			,"attributes"=>$attrs
-			);
+	if($data){
+		while($row = $data->fetch_object()) 
+		{
+			$attrs = setAttribute($lang,$row->id);
+			$items[] = array(
+				"id"=>$row->id
+				,"title"=>$row->title
+				,"detail"=>$row->detail
+				,"thumb"=>$row->thumb
+				,"image"=>$row->image
+				,"plan"=>$row->plan
+				,"code"=>$row->code
+				,"name"=>$row->name
+				,"attributes"=>$attrs
+				);
+		}
 	}
 	return $items;
 }
@@ -152,6 +155,7 @@ function setProduct($lang,$id)
 	$data = $product->getProduct($lang,$id);
 
 	$items = null;
+	if($data){
 	$row = $data->fetch_object();
 	$items = array(
 			"id"=>$row->id
@@ -164,6 +168,7 @@ function setProduct($lang,$id)
 			,"code"=>$row->code
 			,"name"=>$row->name
 			);
+	}
 	return $items;
 }
 
@@ -171,13 +176,15 @@ function setImages($id)
 {
 	$product = new ProductManager();
 	$data = $product->getImages($id);
-	while($row= $data->fetch_object())
-	{
-		$item[] = array(
-			"id"=>$row->id
-			,"thumb"=>$row->thumb
-			,"image"=>$row->image
-			);
+	if($data){
+		while($row= $data->fetch_object())
+		{
+			$item[] = array(
+				"id"=>$row->id
+				,"thumb"=>$row->thumb
+				,"image"=>$row->image
+				);
+		}
 	}
 	return $item;
 }
@@ -187,16 +194,16 @@ function setAttribute($lang,$id)
 
 	$product = new ProductManager();
 	$data = $product->getAttributes($lang,$id);
-	
-	while($row = $data->fetch_object())
-	{
-		$item[] = array(
-			"id"=>$row->id
-			,"title"=>$row->title
-			,"label"=>$row->label
-			);
+	if($data){
+		while($row = $data->fetch_object())
+		{
+			$item[] = array(
+				"id"=>$row->id
+				,"title"=>$row->title
+				,"label"=>$row->label
+				);
+		}
 	}
-
 	return $item;
 
 

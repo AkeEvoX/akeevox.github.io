@@ -25,11 +25,30 @@
             <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
             <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
             <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
+			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
 				<ul id='menubar' class="nav navbar-nav"></ul>
-	
+	<form class="navbar-form navbar-right" id='searchbar' role="search">
+			<span class="glyphicon glyphicon-search" ></span>
+				<ul style='list-style:none;padding-right:10px;'>
+					<li>
+						<div class='input-group'>
+							<input type='text' class='form-control input-xs' area-label='lang'   />
+							<div class='input-group-btn '>
+								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >Thai </button>
+								<ul  class='dropdown-menu dropdown-menu-right' >
+									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
+									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
+					</li>
+				</ul>
+			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container -->
       </nav>

@@ -8,7 +8,7 @@ header("Content-Type: application/json;  charset=UTF8");
 
 $about = new AboutManager();
 
-$lang = "th"; 
+//$lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
@@ -24,7 +24,13 @@ $row = $item->fetch_object();
 
 $media = $row->link;
 
-$data = array("id"=>$row->id,"title"=>$row->title,"detail"=>$row->detail,"media"=>$media,"type"=>$row->type,"date"=>$row->update_date);
+$data = array("id"=>$row->id
+							,"title"=>$row->title
+							,"detail"=>$row->detail
+							,"media"=>$media
+							,"type"=>$row->type
+							,"date"=>$row->update_date);
+
 $result = $data;
 
 log_debug("get list about > " . print_r($result,true));

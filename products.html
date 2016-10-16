@@ -1,20 +1,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-<title>Welcome to Starsanitaryware</title>
+<title>Welcome to Andamantaxis</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/icon.css" rel="stylesheet" type="text/css" />
+	<link href="css/category.css" rel="stylesheet" type="text/css" />	
+
+	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
+	<link href="plugin/css/hover-effects.css" rel="stylesheet" type="text/css" />	
 
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
+<nav class="navbar navbar-default navbar-fixed-top" >
         <div class="container-fluid">
-			<div class="navbar-header">
+		<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
               <span class="icon-bar"></span>
@@ -27,9 +32,9 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-		<ul id='menubar' class="nav navbar-nav"></ul>
+			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
+				<span class="glyphicon glyphicon-search" ></span>
 				<ul style='list-style:none;padding-right:10px;'>
 					<li>
 						<div class='input-group'>
@@ -50,30 +55,70 @@
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-      </nav>
-
-<div class='container'>
-	<div class='row'>
-				<div class='col-md-12'>
-					<ol class="breadcrumb">
-					  <li><a href="index.html"><span id='nav.home'></span></a></li>
-					  <li><a href="#"><span id='nav.company'></span></a></li>
-					  <li class="active"><span id='intermarket.title'></span></li>
-					</ol>
+      </nav>  
+	  <!--navigator-->
+	  <div class='container-fluid'>
+		<div class='col-md-3' id='menutree'>
+			<div class='span3'>
+				<ul id='productlist' class='nav nav-list menulist'>
+					<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>
+						<ul class='nav nav-list tree'>
+							<li><a href='productdetail.html?id=1' >WATRE CLOSET</a></li>
+						<!--	<li><label class="tree-toggle nav-header submenu">WASH BASIN</label>
+								<ul class='nav nav-list tree submenu' >
+									<li><a href='#'>BASIN Above-Counter</a></li>
+									<li><a href='#'>BASIN Counter-Top</a></li>
+									<li><a href='#'>BASIN Under-Counter</a></li>
+									<li><a href='#'>BASIN Half-Counter</a></li>
+									<li><a href='#'>BASIN Wall Hung</a></li>
+								</ul>
+							</li>-->
+							<li><a href='productdetail.html?id=2' >URINAL /BIDET</a></li>
+							<li><a href='productdetail.html?id=3' >ACCESSORIES</a></li>
+						</ul>
+					</li>
+					<li><label class="tree-toggle nav-header mainmenu">SERIES</label>
+						<ul class="nav nav-list tree">
+							<li><a href="series.html?id=1">INNOCENCE SUITE</a></li>
+							<li><a href="series.html?id=2">CURVE SUITE</a></li>
+							<li><a href="#">ANGULAR SUITE</a></li>
+							<li><a href="#">FOCUS SUITE</a></li>
+							<li><a href="#">LOFTY SUITE</a></li>
+							<li><a href="#">SPIRIT SUITE</a></li>
+							<li><a href="#">CURVE B&W SUITE</a></li>
+							<li><a href="#">JUNIPER SUITE</a></li>
+						</ul>
+					</li>
+						<li><label class="tree-toggle nav-header mainmenu">SHOW ROOMS</label>
+						<ul class="nav nav-list tree">
+							<li><a href="showroom.html?id=1">ROOM 1</a></li>
+						</ul>
+					</li>
+				</ul>
+			</div><!--end tree menu-->
+		</div>
+		<div class='col-md-9' id='view-content' >
+				<div class='row'>
+					<div class='col-md-12'>
+						<ol class="breadcrumb">
+						  <li><a href="#">Home</a></li>
+						  <li><a href="#">Product</a></li>
+						  <li class="active">Category</li>
+						</ol>
+					</div>
 				</div>
-			</div>
-	<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='intermarket.title'></span></h3>
-	</div>
-
-	<div id='media-data' class='row media-center' >
-			<img data-src='' class='img-responsive'/>
-	</div>
-
-</div> <!--end container fluid-->
-<div class='container-fluid' id='buttommenu'>
+				<div class='container-fluid'>
+					<ul id='viewproduct' class='product-list' class='hover'>
+						<li class='col-md-6 col-sm-6 col-xs-12'>
+							<img id='logo-category' data-src="holder.js/500x450" class='img-responsive'  alt="">
+						</li>
+					</ul>
+				</div>
+		</div>
+	</div><!--end conatiner-->
+<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
-		<div class='container' >
+		<div class='container' >	
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -102,10 +147,20 @@
 		 	</div>
 		</div>
 	</p>
-</div>
+</div><!--bottom menu-->
 <script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/jquery-ui.min.js' ></script>
+<script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
-<script src='js/org_intermarket.js' ></script>
+<script src='js/product.js' ></script>
+<script>
+$(document).ready(function(){
+	loadmenu();
+	loadbuttommenu();
+	loadcategorylist();
+});
+</script>
 </body>
+<!--www.bootply.com/lE2NPpERdt-->

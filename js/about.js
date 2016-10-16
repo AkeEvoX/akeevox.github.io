@@ -1,15 +1,5 @@
 $(document).ready(function(){
 
-
-/*
-	var lang = getParameterByName('lang');
-	var label = getParameterByName('label');;
-	if(label==undefined)//default thai
-	{
-		label="Thai";
-	}
-	$('#lang').html(label+" <span class='caret'></span>");
-	*/
 	loadmenu();
 	loadbuttommenu();
 	loadabout();

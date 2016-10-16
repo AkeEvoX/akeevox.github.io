@@ -1,18 +1,31 @@
-$(document).ready(function(){
+var Index = function(){};
+
+Index.initial = function() {
+	
+//	loadmenu();
+	utility.loadmenu();
+	utility.loadbuttommenu();
+//	loadbuttommenu();
+   // return this.color + ' ' + this.type + ' apple';
+};
 
 
-/*
-	var lang = getParameterByName('lang');
-	var label = getParameterByName('label');;
-	if(label==undefined)//default thai
-	{
-		label="Thai";
+function loadpage()
+{
+	var item = {'_':new Date().getHours(),'type':'index'};
+	utility.service('services/attributes','GET',item
+	,function (response){ //sunccess
+		
+		$('#title').val(response.title);
+		$('#title-desc').val(response.title_desc);
+		  //$.each(response,function(i,val){
+			//	$('#'+val.name).val(val.title);
+			//});
 	}
-	$('#lang').html(label+" <span class='caret'></span>");
-	*/
-	loadmenu();
-	loadbuttommenu();
-});
+	,null)	
+	
+}
+
 
 
 /*dropdown menu*/

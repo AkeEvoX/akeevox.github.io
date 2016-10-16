@@ -27,23 +27,29 @@
             <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
             <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
             <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo_temp.png' class='logobar' ></a>
+			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
 			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
 			<span class="glyphicon glyphicon-search" ></span>
-				<div class='input-group'>
-					<input type='text' class='form-control input-xs' area-label=''   />
-					<div class='input-group-btn'>
-						<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false'>Thai </button>
-						<ul  class='dropdown-menu dropdown-menu-right' >
-							<li ><a href='?lang=th&label=Thai'>Thai</a></li>
-							<li ><a href='?lang=en&label=English'>English</a></li>
-						</ul>
-					</div>
-				</div><br/>
-				<button type='button'  class='btn pull-right btn-default btn-xs text-center contactseller'>Contact Seller</button>	
+				<ul style='list-style:none;padding-right:10px;'>
+					<li>
+						<div class='input-group'>
+							<input type='text' class='form-control input-xs' area-label='lang'   />
+							<div class='input-group-btn '>
+								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >Thai </button>
+								<ul  class='dropdown-menu dropdown-menu-right' >
+									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
+									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
+								</ul>
+							</div>
+						</div>
+					</li>
+					<li>
+						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
+					</li>
+				</ul>
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container -->
@@ -53,19 +59,19 @@
 	<div class='row'>
 		<div class='col-md-12'>
 			<ol class="breadcrumb">
-			  <li><a href="#">Home</a></li>
-			  <li><a href="#">Company</a></li>
-			  <li class="active">AWARD & STANDARD</li>
+			  <li><a href="index.html"><span id='nav.home'></span></a></li>
+			  <li><a href="#"><span id='nav.company'></span></a></li>
+			  <li class="active"><span id='award.title'></span></li>
 			</ol>
 		</div>
 	</div>
 		<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> มาตรฐานและรางวัล</h3>
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> <span id='award.title'>มาตรฐานและรางวัล</span></h3>
 	</div>
 	<!--new row-->
 	<div class='row'>
 		<div class='col-md-12'>
-			<h3>AWARDS</h3>
+			<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_award'></span></h3>
 			<div class="main">
 			  <!--<div class="page_container">-->
 				<div id="immersive_slider">
@@ -76,7 +82,7 @@
 	</div><!--end row-->
 	<div class='row'>
 		<div class='col-md-12'>
-		<h3>STANDARD</h3>
+		<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_standard'></span></h3>
 			<div class="main">
 			  <!--<div class="page_container">-->
 				<div id="standard_slide" >
@@ -85,11 +91,11 @@
 			</div><!--end slide-->
 		</div><!--end column-->
 	</div><!--end row-->
-	
+
 </div> <!--end container fluid-->
 <div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>

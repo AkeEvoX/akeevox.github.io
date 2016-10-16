@@ -12,37 +12,36 @@
 
 /*mobile*/
 @media(max-width:600px) {
-	
+
 	#navtree {display:none;}
-	
+
 	#listattribute label {
 		width:100%;
 	}
-	
+
 	#listattribute div {
 		width:100%;
 	}
-	
+
 
 }
 
 .share-popup {
 	float:right;
-	border:0px solid;
+	position: relative;
+	padding-right:5px;
+	/*
+	float:right;
+	border:1px solid;
 	height:32px;
 	width: 130px;
-	position: relative;
-	/*
-
-	position:relative;
-	*/
+	position: relative;*/
 }
 
-.share-popup img {
+.share-popup2 img {
 	position: absolute;
 	left: 0;
 	top: 0;
-	
 }
 
 .share-popup span {
@@ -77,10 +76,10 @@ ul{
 
 .lightslider-desc{
 	float:left;
-	
+
 }
 .lightslider-desc li {
-	
+
 	width:200px;
 	/*
 	text-align:left;

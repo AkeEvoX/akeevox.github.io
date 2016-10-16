@@ -9,6 +9,7 @@ $lang = "th";
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
+else {$_SESSION["lang"] = $lang;}
 
 $menu = new MenuManager();
 
