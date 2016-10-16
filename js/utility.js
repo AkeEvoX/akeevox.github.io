@@ -7,9 +7,6 @@ $(function(){
 $('.tree-toggle').parent().children('ul.tree').toggle(200);
 })
 */
-
-<<<<<<< HEAD
-=======
 var utility = function(){};
 
 utility.service = function(url,method,args,success_callback,complete_callback){
@@ -77,21 +74,18 @@ utility.setpage = function(page){
 		var args = {'_':new Date().getHours(),'type':page};
 		utility.service('services/attributes.php','GET',args
 		,function(response){
-			console.warn(response);
+			console.warn(response.result);
 			if(response!==undefined)
 			{
-				console.info('found.');
 				$.each(response.result,function(i,val){
+					console.log(val);
 					$("span[id='"+val.name+"']").text(val.title);
 				});
 			}
 			else { console.warn('not found.'); }
 		}
 		,null);
-
-
 }
->>>>>>> origin/master
 
 function getParameterByName(name, url) {
 
@@ -121,28 +115,6 @@ function selectlang(lang) {
 
 	});
 }
-<<<<<<< HEAD
-function selectlang(lang)
-{
-	
-	$.ajax({
-
-		url:'services/lang.php',
-		data : {"_":new Date().getMilliseconds(),"lang":lang},
-		type:'POST',
-		dataType:'text',
-		success:function(data){
-			
-		},
-		error:function(xhr,status,err){
-			alert("select language error :"+xhr.responseText);
-		}
-
-	});
-}
-=======
->>>>>>> origin/master
-
 //-----------------load globle menu-----------------
 function loadmenu(){
 

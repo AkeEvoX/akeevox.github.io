@@ -7,11 +7,7 @@ include("../controller/ContactManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-<<<<<<< HEAD
-//$lang = "th"; 
-=======
 $lang = "th";
->>>>>>> origin/master
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
@@ -87,7 +83,7 @@ switch($type)
 		/*load attribute*/
 		while($row = $itemattr->fetch_object())
 		{
-			$result[$row->name] = $row->title;
+			$result[] = array("name"=>$row->name,"title"=>$row->title);
 		}
 		break;
 	case "award" :
@@ -108,7 +104,6 @@ switch($type)
 				$result[] = array("name"=>$row->name,"title"=>$row->title);
 			}
 			break;
-	default :
 	case "intermarket" :
 			$itemattr = $attrMgr->getItems($lang,'intermarket');
 			while($row = $itemattr->fetch_object())
@@ -116,6 +111,34 @@ switch($type)
 				$result[] = array("name"=>$row->name,"title"=>$row->title);
 			}
 			break;
+	case "product" :
+			$itemattr = $attrMgr->getItems($lang,'product');
+			while($row = $itemattr->fetch_object())
+			{
+				$result[] = array("name"=>$row->name,"title"=>$row->title);
+			}
+			break;
+	case "productdetail" :
+		$itemattr = $attrMgr->getItems($lang,'productdetail');
+		while($row = $itemattr->fetch_object())
+		{
+			$result[] = array("name"=>$row->name,"title"=>$row->title);
+		}
+	break;
+	case "series" :
+		$itemattr = $attrMgr->getItems($lang,'series');
+		while($row = $itemattr->fetch_object())
+		{
+			$result[] = array("name"=>$row->name,"title"=>$row->title);
+		}
+	break;
+	case "showroom" :
+		$itemattr = $attrMgr->getItems($lang,'showroom');
+		while($row = $itemattr->fetch_object())
+		{
+			$result[] = array("name"=>$row->name,"title"=>$row->title);
+		}
+	break;
 	default :
 
 	break;

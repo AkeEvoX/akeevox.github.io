@@ -10,10 +10,10 @@
 	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/icon.css" rel="stylesheet" type="text/css" />
-	<link href="css/category.css" rel="stylesheet" type="text/css" />	
+	<link href="css/category.css" rel="stylesheet" type="text/css" />
 
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
-	<link href="plugin/css/hover-effects.css" rel="stylesheet" type="text/css" />	
+	<link href="plugin/css/hover-effects.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -55,13 +55,13 @@
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
-      </nav>  
+      </nav>
 	  <!--navigator-->
 	  <div class='container-fluid'>
 		<div class='col-md-3' id='menutree'>
 			<div class='span3'>
 				<ul id='productlist' class='nav nav-list menulist'>
-					<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>
+					<!--<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>
 						<ul class='nav nav-list tree'>
 							<li><a href='productdetail.html?id=1' >WATRE CLOSET</a></li>
 						<!--	<li><label class="tree-toggle nav-header submenu">WASH BASIN</label>
@@ -72,7 +72,7 @@
 									<li><a href='#'>BASIN Half-Counter</a></li>
 									<li><a href='#'>BASIN Wall Hung</a></li>
 								</ul>
-							</li>-->
+							</li>- ->
 							<li><a href='productdetail.html?id=2' >URINAL /BIDET</a></li>
 							<li><a href='productdetail.html?id=3' >ACCESSORIES</a></li>
 						</ul>
@@ -93,7 +93,7 @@
 						<ul class="nav nav-list tree">
 							<li><a href="showroom.html?id=1">ROOM 1</a></li>
 						</ul>
-					</li>
+					</li>-->
 				</ul>
 			</div><!--end tree menu-->
 		</div>
@@ -101,9 +101,8 @@
 				<div class='row'>
 					<div class='col-md-12'>
 						<ol class="breadcrumb">
-						  <li><a href="#">Home</a></li>
-						  <li><a href="#">Product</a></li>
-						  <li class="active">Category</li>
+						  <li><a href="index.html"><span id='nav.home'></span></a></li>
+						  <li class="active"><span id='nav.product'></span></li>
 						</ol>
 					</div>
 				</div>
@@ -118,7 +117,7 @@
 	</div><!--end conatiner-->
 <div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -157,8 +156,12 @@
 <script src='js/product.js' ></script>
 <script>
 $(document).ready(function(){
-	loadmenu();
-	loadbuttommenu();
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('product');
+	product.listmenu();
+	//loadmenu();
+	//loadbuttommenu();
 	loadcategorylist();
 });
 </script>

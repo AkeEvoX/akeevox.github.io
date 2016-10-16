@@ -1,13 +1,14 @@
 
 function loadseriesinfo(id)
 {
+	console.info('series id = '+id);
 	$.ajax({
 		url:"services/product.php",
 		data:{"_": new Date().getHours() ,"type":"series","id":id},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			setviewinfo(data.result);
 			//console.warn()
@@ -33,7 +34,7 @@ function loadserieslist(id)
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			setviewlist(data.result);
 			//console.warn()
@@ -44,10 +45,11 @@ function loadserieslist(id)
 			alert("load series list error : "+ xhr.responseText);
 		}
 	});
-	
+
 }
 
 function setviewinfo(data){
+	$('span[id="productname"]').text(data.title);
 	$('#series_title').text(data.title);
 	$('#series_detail').text(data.detail);
 	//console.log(data.cover);
@@ -67,11 +69,11 @@ function setviewlist(data)
 		item += "<div class='col-md-9' ><img src='"+val.plan+"' class='img-responsive' /></div>";
 		item += "</div>";
 		;
-	
+
 		view.append(item);
 
 	});
-	
+
 }
 
 function setviewitem(data)
@@ -80,7 +82,7 @@ function setviewitem(data)
 	var view = $('#productgallery');
 	console.warn(data);
 	//view info
-	
+
 	$('#plan').attr('src',data.plan);
 	//view image list
 	$.each(data.image,function(i,val){

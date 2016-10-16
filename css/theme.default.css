@@ -91,15 +91,13 @@ body
 	box-shadow:0px 0px 5px #000;
 }
 
-<<<<<<< HEAD
-#searchbar span { 
+#searchbar span {
 	position:absolute;top:12px;margin-left:15px;
  }
- #searchbar ul { 
+ #searchbar ul {
 	list-style:none;
  }
 
-=======
 #searchbar .glyphicon {
 	position:absolute;
 	top:12px;
@@ -118,23 +116,19 @@ body
 	color:white;
 }
 
->>>>>>> origin/master
 .languagebar {
 	position:relative;
 	right:0;
 }
 
-<<<<<<< HEAD
 .contactseller {
 padding:2px 33px;
 margin-right:48px;
 }
-=======
 /**********object nav bar*******/
 
 /*buttom menu*/
 #buttommenu { background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;margin-top:50px; }
->>>>>>> origin/master
 
 /* define height*/
 .h100 { height:100px;}
@@ -168,11 +162,7 @@ label {
 
 .input-xs {
   height: 23px;
-<<<<<<< HEAD
-  max-width:150px;
-=======
   max-width:100px;
->>>>>>> origin/master
   font-size: 12px;
   line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
   border-radius: 3px;

@@ -3,11 +3,11 @@ function loadshowroominfo(id)
 {
 	$.ajax({
 		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"type":"series","id":id},
+		data:{"_": new Date().getHours() ,"type":"showroom","id":id},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			setviewinfo(data.result);
 			//console.warn()
@@ -33,7 +33,7 @@ function loadshowroomlist(id)
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			setviewlist(data.result);
 			//console.warn()
@@ -44,14 +44,16 @@ function loadshowroomlist(id)
 			alert("load series list error : "+ xhr.responseText);
 		}
 	});
-	
+
 }
 
 function setviewinfo(data){
-	$('#series_title').text(data.title);
-	$('#series_detail').text(data.detail);
+
+	$('span[id="productname"]').text(data.title);
+	$('#showtoom_title').text(data.title);
+	$('#showroom_detail').text(data.detail);
 	//console.log(data.cover);
-	$('#series_cover').attr('src',data.cover);
+	$('#showroom_cover').attr('src',data.cover);
 }
 
 function setviewlist(data)
@@ -67,18 +69,18 @@ function setviewlist(data)
 		item += "<div class='col-md-9' ><img src='"+val.plan+"' class='img-responsive' /></div>";
 		item += "</div>";
 		;
-	
+
 		view.append(item);
 
 	});
-	
+
 }
 
 function setviewitem(data)
 {
 
 	var view = $('#productgallery');
-	console.warn(data);
+	//console.warn(data);
 	//view info
 	$('#plan').attr('src',data.plan);
 	//view image list

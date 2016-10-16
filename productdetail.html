@@ -55,44 +55,16 @@
 	  		<div class='row'>
 					<div class='col-md-12'>
 						<ol class="breadcrumb">
-						  <li><a href="index.html">Home</a></li>
-						  <li><a href="#">Product</a></li>
-						  <li><a href="category.html">Category</a></li>
-						  <li class="active">WATER CLOSED</li>
+						  <li><a href="index.html"><span id='nav.home'></span></a></li>
+						  <li><a href="products.html"><span id='nav.product'></span></a></li>
+						  <li><a href="products.html"><span id='nav.category'></span></a></li>
+						  <li class="active"><span id='productname'></span></li>
 						</ol>
 					</div>
 				</div>
 		<div class='col-md-3' id='menutree'>
 			<div class='span3'>
-				<ul id='navtree' class='nav nav-list menulist'>
-					<li><label class='tree-toggle nav-header mainmenu' >CATEGORIES</label>
-						<ul class='nav nav-list tree'>
-							<li><a href='#' >WATRE CLOSET</a></li>
-							<li><label class="tree-toggle nav-header submenu">WASH BASIN</label>
-								<ul class='nav nav-list tree submenu' >
-									<li><a href='#'>BASIN Above-Counter</a></li>
-									<li><a href='#'>BASIN Counter-Top</a></li>
-									<li><a href='#'>BASIN Under-Counter</a></li>
-									<li><a href='#'>BASIN Half-Counter</a></li>
-									<li><a href='#'>BASIN Wall Hung</a></li>
-								</ul>
-							</li>
-							<li><a href='#' >URINAL /BIDET</a></li>
-							<li><a href='#' >ACCESSORIES</a></li>
-						</ul>
-					</li>
-					 <li><label class="tree-toggle nav-header mainmenu">SERIES</label>
-						<ul class="nav nav-list tree">
-							<li><a href="#">INNOCENCE SUITE</a></li>
-							<li><a href="#">CURVE SUITE</a></li>
-							<li><a href="#">ANGULAR SUITE</a></li>
-							<li><a href="#">FOCUS SUITE</a></li>
-							<li><a href="#">LOFTY SUITE</a></li>
-							<li><a href="#">SPIRIT SUITE</a></li>
-							<li><a href="#">CURVE B&W SUITE</a></li>
-							<li><a href="#">JUNIPER SUITE</a></li>
-						</ul>
-					</li>
+				<ul id='productlist' class='nav nav-list menulist'>
 				</ul>
 			</div><!--end tree menu-->
 		</div>
@@ -104,53 +76,30 @@
 				</div>
 				<div class='row well well-sm'>
 					<form id='listattribute' class="form-inline">
-						<!--
-								<label class='col-xs-2 control-label' >prod.code</label>
-								<div class='col-xs-4'>
-									<p id='prod.code' class='form-control-static'>HELLO WORLD'S </p>
-								</div>
-								<label class='col-xs-2 control-label' >prod.name</label>
-								<div class='col-xs-4'>
-									<p id='prod.name' class='form-control-static'>HELLO WORLD'S </p>
-								</div>
-								<label class='col-xs-2 control-label' >prod.type</label>
-								<div class='col-xs-4'>
-									<p id='prod.type' class='form-control-static'>HELLO WORLD'S </p>
-								</div>
-								<label class='col-xs-2 control-label' >prod.size</label>
-								<div class='col-xs-4'>
-									<p id='prod.size'  class='form-control-static'>HELLO WORLD'S </p>
-								</div>
-								<label class='col-xs-2 control-label' >prod.shape</label>
-								<div class='col-xs-4'>
-									<p id='prod.shape' class='form-control-static'>HELLO WORLD'S </p>
-								</div>	-->
-
 					</form>
 				</div>
 				<div class='row'>
 					<div class='col-md-12'>
-					<hr>{productname}</hr>
+					<hr><span class='glyphicon glyphicon-stop'></span><span id='nav.category'></span>:<span id='productname'></span></hr>
 						<img id='plan' data-src='holder.js/650x300' class='img-responsive' />
-
 					</div>
 				</div>
 				<div class='row'>
 					<div class='col-md-12'>
 						<div class='share-popup'>
-						 	<a href="http://plus.google.com/share?url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript" target="_blank" >
+						 	<a id='google' href="" target="_blank" >
 							<img src='images\logos\share_google.png' />
 							<span>google+<span>
 						</a>
 						</div>
 						<div class='share-popup'>
-						 <a href="http://www.twitter.com/intent/tweet?url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&via=TWITTER_HANDLE_HERE&text=best product" target="_blank"  >
+						 <a id='twitter' href="" target="_blank"  >
 							<img src='images\logos\share_twitter.png' />
 							<span >twitter</span>
 						</a>
 						</div>
 						<div class='share-popup'>
-						 	<a href="http://www.facebook.com/sharer/sharer.php?u=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&t=link popup" target="_blank" >
+						 	<a id='facebook' href="" target="_blank" >
 							<img src='images\logos\share_facebook.png' />
 							<span>facebook<span>
 						</a>
@@ -159,10 +108,10 @@
 				</div>
 				<div class='row'>
 					<div class='col-md-12'>
-						<h3>Product Releated</h3>
+						<span class='glyphicon glyphicon-stop'></span><span id='productdetail.release'></span>
 						<div class="lightslider-main">
 			        		<div class="item" >
-							<ul id="product-slider" class="content-slider"></ul>
+											<ul id="product-slider" class="content-slider"></ul>
 			        		</div>
 			        	</div><!--end lightslider-->
 					</div>
@@ -170,7 +119,7 @@
 			</div> <!--end productdetail container-->
 		</div>
 	</div><!--end conatiner-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu'>
 	<p>
 		<div class='container' >
 		 	<div class='col-md-4'>
@@ -223,12 +172,13 @@
 
 $(document).ready(function(){
 
-	loadmenu();
-	loadbuttommenu();
-
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('productdetail');
+  product.listmenu();
 	var id = getParameterByName("id");
 	callproduct(id);
-
+	setshare();
 	$(".share-popup").click(function(){
 
     var window_size = "width=585,height=511";
@@ -255,6 +205,16 @@ function callproduct(id)
 	loadproduct(id);
 	loadattribute(id);
 	loadproductreleated(id);
+}
+
+function setshare(){
+	var page = document.URL;//window.location.href ;
+	$('#google').attr('href','http://plus.google.com/share?url='+page);
+	//http://plus.google.com/share?url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript
+	$('#twitter').attr('href','http://www.twitter.com/intent/tweet?via=TWITTER_HANDLE_HERE&url='+page);
+	//url=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&via=TWITTER_HANDLE_HERE&text=best product
+	$('#facebook').attr('href','http://www.facebook.com/sharer/sharer.php?&t=link popup&u='+page);
+	//http://www.facebook.com/sharer/sharer.php?u=http://stackoverflow.com/questions/9120539/facebook-share-link-no-javascript&t=link popup
 }
 
 </script>
