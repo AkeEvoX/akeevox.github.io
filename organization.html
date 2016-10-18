@@ -57,22 +57,22 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">Company</a></li>
-					  <li class="active">Organization</li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.company'></span></a></li>
+					  <li class="active"><span id='org.header'></span></li>
 					</ol>
 				</div>
 			</div>
 	<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> Management Team</h3>
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> <span id='org.header'></span></h3>
 	</div>
 	<div class='row'>
 		<div id="dataview"></div>
 	</div>
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -107,4 +107,14 @@
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/organization.js' ></script>
+<script>
+$(document).ready(function(){
+
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('org');
+	loadorganization();
+
+});
+</script>
 </body>

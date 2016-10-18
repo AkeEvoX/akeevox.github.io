@@ -8,7 +8,7 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	
+
 </head>
 <body>
 
@@ -56,24 +56,24 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">COMPANY</a></li>
-					  <li class="active">Organization Chart</li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.company'></span></a></li>
+					  <li class="active"><span id='chart.title'></span></li>
 					</ol>
 				</div>
 			</div>
 	<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> ผังองค์กร</h3>
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='chart.title'></span></h3>
 	</div>
-	
+
 	<div id='media-data' class='row media-center' >
 			<img data-src='' class='img-responsive'/>
 	</div>
 
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -108,4 +108,13 @@
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/org_chart.js' ></script>
+<script>
+$(document).ready(function(){
+
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('chart');
+	loadchart();
+});
+</script>
 </body>

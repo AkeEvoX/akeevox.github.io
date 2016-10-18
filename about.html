@@ -8,7 +8,7 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	
+
 </head>
 <body>
 
@@ -56,41 +56,31 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li class="active">Abount</li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li class="active"><span id='about.title'></span></li>
 					</ol>
 				</div>
 			</div>
-	<h3>Abount US</h3>
+	<h3><span id='about.title'></span></h3>
 	<div id='media-data' class='row media-center' >
 			<img data-src='holder.js/600x300' class='img-responsive'/>
 	</div>
 	<div class='row'>
 		<div class='col-md-12'>
-			<label id='title-data' style='color:orange'>Header title</label>
+			<label id='title-data' style='color:orange'></label>
 		</div>
 	</div>
 	<div class='row'>
 		<div id='content-data' class='col-md-12'>
 			<div class='columnies'>
-				<p>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</p>
-				<p>
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-					text text text text text text text text text text text text text text text text text text text text text text text text text text 
-				</p>
 			</div>
 		</div>
 	</div>
 
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -125,4 +115,12 @@
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/about.js' ></script>
+<script>
+$(document).ready(function(){
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('about');
+	loadabout();
+});
+</script>
 </body>

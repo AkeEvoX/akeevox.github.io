@@ -1,20 +1,14 @@
-$(document).ready(function(){
-	loadmenu();
-	loadbuttommenu();
-	loadorganization();
-});
-
 
 function loadorganization()
 {
-	
+
 	$.ajax({
 		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"org"},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			gendata(data.result);
 		},
@@ -24,14 +18,14 @@ function loadorganization()
 			alert("load organization information error : "+ xhr.responseText);
 		}
 	});
-	
+
 }
 
 function gendata(data)
 {
 	var view = $('#dataview');
 	$.each(data,function(idx,val){
-		
+
 		var item = "";
 		item += "<div class='col-md-6 col-sm-6'>";
 		item += "<div class='media'>";
@@ -46,5 +40,5 @@ function gendata(data)
 		item += "<div class='well well-sm'>"+val.name+"</div></div>";
 		view.append(item);
 	});
-	
+
 }

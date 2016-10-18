@@ -1,14 +1,7 @@
-$(document).ready(function(){
-	
-	loadmenu();
-	loadbuttommenu();
-	loadreference();
-	
-});
 
 function setup_slider()
 {
-	
+
 	$("#inter-slider").lightSlider({
 		autoWidth: true
 		,adaptiveHeight:true
@@ -35,16 +28,16 @@ function loadreference()
 		success: function(data){
 			try{
 				console.log(data.result);
-				
+
 				if(data.result != undefined)
 				{
 					var inter = data.result.filter(function(item){ return item.local=="0"; });
 
-					
+
 					var local = $.grep(data.result,function(value,i){
 						return (value.local == "1") ;
 					});
-					
+
 					console.log(inter);
 					displaylocal(local);
 					displayinter(inter);
@@ -53,7 +46,7 @@ function loadreference()
 			{
 				console.error("organization refer :" +err.message);
 			}
-			
+
 		},
 		error : function (xhr,status,err)
 		{
@@ -68,16 +61,16 @@ function displayinter(data)
 	var view = $('#inter-slider');
 	var item = "";
 	$.each(data,function(idx,val){
-		
+
 		item+= "<li >";
 		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
 		item+= "</li>";
-		
+
 	});
-	
+
 	view.append(item);
-	
+
 	view.lightSlider({
 		adaptiveHeight:true
 	    ,loop:true
@@ -98,7 +91,7 @@ function displaylocal(data)
 		item+= "</li>";
 	});
 	view.append(item);
-	
+
 	view.lightSlider({
 
 		adaptiveHeight:true
@@ -106,7 +99,7 @@ function displaylocal(data)
 	    ,keyPress:false
 	    ,autoWidth:true
 	 });
-	
+
 }
 
 function loadinfo()
@@ -117,9 +110,9 @@ function loadinfo()
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
-			
+
 			$('#media-data img').attr('src',data.result.chart);
 		},
 		error : function (xhr,status,err)
@@ -128,7 +121,5 @@ function loadinfo()
 			alert("load organization chart error : "+ xhr.responseText);
 		}
 	});
-	
+
 }
-
-

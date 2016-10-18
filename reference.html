@@ -9,7 +9,7 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
-	
+
 </head>
 <body>
 
@@ -57,24 +57,24 @@
 	<div class='row'>
 		<div class='col-md-12'>
 			<ol class="breadcrumb">
-			  <li><a href="index.html">Home</a></li>
-			  <li><a href="#">Acrhive</a></li>
-			  <li class="active">Catalog Online</li>
+			  <li><a href="index.html"><span id='nav.home'></span></a></li>
+			  <li><a href="#"><span id='nav.company'></span></a></li>
+			  <li class="active"><span id='refer.title'></span></li>
 			</ol>
 		</div>
 	</div>
 		<div class='well well-sm' >
-		<h3 id='refer.header' class='text-center'><span class='glyphicon glyphicon-stop'></span>ผลงานดีเด่น</h3>
+		<h3 id='refer.header' class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='refer.title'></span></h3>
 	</div>
 	<!--new row-->
 	<div class='row'>
 		<div class='col-md-12'>
 			<h3 id="refer.inter">ผลงานต่างประเทศ</h3>
 			<div id='refer.inter.detail'>
-				Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 
+				Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test
 			</div>
 			<div class="lightslider-main">
-        		<div class="item" >    
+        		<div class="item" >
 				<ul id="inter-slider" class="content-slider"></ul>
         		</div>
         	</div><!--end lightslider-->
@@ -84,19 +84,19 @@
 		<div class='col-md-12'>
 		<h3 id="refer.local">ผลงานในประเทศ</h3>
 		<div id='refer.local.detail'>
-		Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test 
+		Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test Test
 		</div>
 		<div class="lightslider-main">
-        		<div class="item" >    
+        		<div class="item" >
 				<ul id="local-slider" class="content-slider"></ul>
         		</div>
         	</div><!--end lightslider-->
 		</div><!--end column-->
 	</div><!--end row-->
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -132,4 +132,13 @@
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/org_reference.js' ></script>
+<script>
+$(document).ready(function(){
+
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('refer');
+	loadreference();
+});
+</script>
 </body>

@@ -1,21 +1,14 @@
-$(document).ready(function(){
-
-	loadmenu();
-	loadbuttommenu();
-	loadabout();
-});
-
 
 function loadabout()
 {
-	
+
 	$.ajax({
 		url:"services/about.php",
 		data:{"_": new Date().getHours() },
 		dataType:'json',
 		type:"GET",
 		success: function(data){
-			
+
 			console.log(data.result);
 			//console.warn()
 			$('#title-data').html(data.result.title);
@@ -28,5 +21,5 @@ function loadabout()
 			alert("load about information error : "+ xhr.responseText);
 		}
 	});
-	
+
 }

@@ -71,12 +71,6 @@ switch($type)
 		}
 
 		break;
-	case "org" :
-
-		break;
-	case "contact" :
-
-		break;
 	case "index" :
 
 		$itemattr = $attrMgr->getItems($lang,'index');
@@ -140,6 +134,13 @@ switch($type)
 		}
 	break;
 	default :
+
+	$itemattr = $attrMgr->getItems($lang,$type);
+	while($row = $itemattr->fetch_object())
+	{
+		$result[] = array("name"=>$row->name,"title"=>$row->title);
+	}
+
 
 	break;
 
