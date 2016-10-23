@@ -58,13 +58,13 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">Acrhive</a></li>
-					  <li class="active" >Gallery</li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
+					  <li class="active" ><span id='gallery.title'></span></li>
 					</ol>
 				</div>
 			</div>
-	<h3>GALLERY</h3>
+	<h3><span id='gallery.title'></span></h3>
 	<div class='row'>
 		<div class='col-md-12'>
 			<div id='list' class='photoGrid clearfix'>
@@ -72,9 +72,31 @@
 		</div>
 	</div>
 </div> <!--end container fluid-->
+<!--show modal-->
+<!-- Modal -->
+<div class="modal fade" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" style='display:block;width:auto;max-height:100%;'>
+			<!--<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modaltitle"><span id='gallery.title'></span></h4>
+			</div>-->
+			<div class="modal-body">
+				<div id="modalcontent">
+				.....
+				</div>
+			</div>
+		<div class='modal-footer'>
+				<button type="button" data-dismiss="modal" class="btn">Close</button>
+		</div>
+    </div>
+  </div>
+</div>
+	<!--show modal-->
+	<!--buttom menu-->
 <div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -120,8 +142,9 @@ var defaults = {
 };
 
   $(window).load(function() {
-	loadmenu();
-	loadbuttommenu();
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('gallery');
 	loadList();
   });
 </script>

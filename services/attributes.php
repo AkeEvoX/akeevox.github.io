@@ -7,12 +7,13 @@ include("../controller/ContactManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$lang = "th";
+
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
 else {
-	$_SESSION["th"] = $lang;
+	$lang = "th";
+	$_SESSION["lang"] = $lang;
 }
 
 $attrMgr = new AttributeManager();

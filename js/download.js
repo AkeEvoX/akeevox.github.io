@@ -1,8 +1,3 @@
-$(document).ready(function(){
-	loaditems();
-	loadmenu();
-	loadbuttommenu();
-});
 
 function loaditems(){
 
@@ -34,7 +29,7 @@ function setview(data)
 	row += "<div class='row' >";
 	var itemview = "";
 	$.each(data.item,function(i,val){
-		
+
 //console.log("child="+val.title);
 		itemview += "<div class='col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
@@ -44,10 +39,10 @@ function setview(data)
 		itemview += "</div>";
 		itemview += "</div>" ;
 	});
-	
+
 	row += itemview ;
 	row += "<a class='btn btn-warning pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
-	
-	console.log(row);
+
+	//console.log(row);
 	$('#list').append(row);
 }

@@ -47,8 +47,11 @@
 							</div>
 						</div>
 					</li>
-					<li>
-						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
+					<li >
+						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;' >contact seller
+            </button>
+
+							<!--<span id='nav.contact' class='btn btn-default' style='margin-left:0px;margin-top:30px;'></span>-->
 					</li>
 				</ul>
 			</form>
@@ -60,12 +63,13 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index">Home</a></li>
-					  <li class='active'>Press</li>
+					  <li><a href="index"><span id='nav.home'></span></a></li>
+						<li><a href="#"><span id='nav.media'></span></a></li>
+					  <li class='active'><span id='press.title'></span></li>
 					</ol>
 				</div>
 			</div>
-	<h3>PRESS</h3>
+	<h3><span id='press.title'></span></h3>
 	<div id='list'></div>
 </div> <!--end container fluid-->
 <div class='container-fluid' id='buttommenu'>
@@ -107,9 +111,10 @@
 <script src='js/press.js' ></script>
 <script>
 	$(document).ready(function(){
+		loadList();
 		utility.loadmenu();
 		utility.loadbuttommenu();
-		loadList();
+    utility.setpage('press');
 	});
 
 </script>

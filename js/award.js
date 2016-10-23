@@ -1,30 +1,3 @@
-$(document).ready(function(){
-	utility.setpage('award');
-	utility.loadmenu();
-	utility.loadbuttommenu();
-	loadList();
-	//loadstandard();
-});
-
-function setpage(){
-
-	var args = {'_':new Date().getHours(),'type':'award'};
-	utility.service('services/attributes.php','GET',args
-	,function(response){
-		console.warn(response);
-		if(response!==undefined)
-		{
-			console.info('found.');
-			$.each(response.result,function(i,val){
-				$("span[id='"+val.name+"']").text(val.title);
-			});
-		}
-		else { console.warn('not found.'); }
-	}
-	,null);
-
-}
-
 function loadList()
 {
 	var service = 'services/award.php' ;
@@ -56,6 +29,8 @@ function CallService(service,param,callback)
 }
 
 
+
+
 function setview(data){
 	try{
 	var award = data.result.filter(function(item) {return item.type == "0" ; });
@@ -80,7 +55,7 @@ function setaward(data){
 	$.each(data,function(idx,val){
 
 		 //item
-		 itemview += "<div class='col-md-3' ><a href='#' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' class='abc' data-id='"+val.id+"' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
 
 		//row
 		 if(((idx +1) % 4) == 0)
@@ -118,8 +93,7 @@ function setaward(data){
 
 }
 
-function setstandard(data)
-{
+function setstandard(data) {
 
 	var standard = $('#standard_slide');
 	//console.log(data.result);
@@ -165,3 +139,10 @@ function setstandard(data)
 	    });
 
 }
+
+$('.abc').on("click",function(event){
+
+ //var id = $(this).attr('data-id');
+	console.log("view id = " );
+
+});

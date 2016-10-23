@@ -64,12 +64,12 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li class="active" ><span id='nav.download'>Download</span><!--{nav.download}--></li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li class="active" ><span id='download.title'></span><!--{nav.download}--></li>
 					</ol>
 				</div>
 			</div>
-	<h3><span id='download.title'>Download</span><!--{title.download}--></h3>
+	<h3><span id='download.title'></span><!--{title.download}--></h3>
 	<div id='list'>
 	</div>
 </div> <!--end container fluid-->
@@ -110,4 +110,10 @@
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js'></script>
 <script src='js/download.js'></script>
+<script>
+utility.loadmenu();
+utility.loadbuttommenu();
+utility.setpage('download');
+loaditems();
+</script>
 </body>

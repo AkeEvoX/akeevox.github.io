@@ -60,13 +60,13 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html">Home</a></li>
-					  <li><a href="#">ACRHIVE</a></li>
-					  <li class="active" >VIDEO</li>
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
+					  <li class="active" ><span id='video.title'></span></li>
 					</ol>
 				</div>
 			</div>
-	<h3>VIDEO</h3>
+	<h3><span id='video.title'></span></h3>
 	<div class='row'>
 		<div class='col-md-offset-2 col-md-8'>
 			<h4 id='title' class='media-heading' style='color:orange'></h4>
@@ -128,8 +128,9 @@
 <script src='js/video.js' ></script>
 <script>
 $(document).ready(function(){
-	loadmenu();
-	loadbuttommenu();
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('video');
 	loadList();
 
 });

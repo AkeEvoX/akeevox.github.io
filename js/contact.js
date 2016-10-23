@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	loadcontact();
-	loadmenu();
-	loadbuttommenu();
-});
-
 function loadcontact(){
 
 	$.ajax({
@@ -17,7 +11,7 @@ function loadcontact(){
 			var addrs = data.result.filter( item=> item.type=="address" );
 			var emails = data.result.filter( item=> item.type=="email" );
 			var phones = data.result.filter( item=> item.type=="phone" );
-			
+
 			setaddress(addrs);
 			setphone(phones);
 			setemail(emails);
@@ -46,7 +40,7 @@ function setphone(phone)
 		if(val.title!='')
 			$('#phone').append("<li>"+val.title+"</li>");
 	});
-	
+
 }
 
 function setemail(email)

@@ -29,6 +29,7 @@ function CallService(service,param,callback)
 
 function setview(data)
 {
+
 	$('#list').html("");
 	$.each(data.result,function(i,val){
 
@@ -43,7 +44,7 @@ function setview(data)
 		itemview += "<div class='media-body'>";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
 			itemview += "<div class='media-detail'>"+val.detail+"</div>";//#detail
-			itemview += "<span class='badge'><a href='press_detail.html?id="+val.id+"' style='color:white;'  >อ่านต่อ</a></span>";//#read more.
+			itemview += "<span class='badge'><a href='press_detail.html?id="+val.id+"' style='color:white;'  ><span id='press.read'></span></a></span>";//#read more.
 		itemview += "</div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column
@@ -59,6 +60,7 @@ function setviewdetail(data)
 	$('#list').html("");
 	var itemview = "";
 	var press = data.result[0];
+	$('span[id="pressdetail"]').text(press.title);
 	itemview += "<div class='col-md-12'>";
 	itemview += "<h4 class='media-heading' style='color:orange'>"+press.title+"</h4>";
 	itemview += "<img src='"+press.coverpage+"' class='img-responsive' />"; //1240x500

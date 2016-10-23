@@ -1,15 +1,19 @@
 <?php
-Session_Start();
+session_start();
 date_default_timezone_set('America/Los_Angeles');
 include("../controller/MenuManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-$lang='th';
-if(isset($_SESSION['lang'])) {
+
+if(isset($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
-else {$_SESSION["lang"] = $lang;}
+else {
+
+	$_SESSION["lang"] = "th";
+	$lang = $_SESSION["lang"];
+}
 
 $menu = new MenuManager();
 

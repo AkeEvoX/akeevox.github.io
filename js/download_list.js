@@ -1,9 +1,3 @@
-$(document).ready(function(){
-	loadmenu();
-	loadbuttommenu();
-	loaditems();
-});
-
 function loaditems(){
 
 var id = getParameterByName('id');
@@ -34,7 +28,7 @@ function setview(data)
 	row += "<div class='row' >";
 	var itemview = "";
 	$.each(data.item,function(i,val){
-		
+
 //console.log("child="+val.title);
 		itemview += "<div class='col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
@@ -44,7 +38,7 @@ function setview(data)
 		itemview += "</div>";
 		itemview += "</div>" ;
 	});
-	
+
 	row += itemview ;
 	row += "</div>";
 	//console.log(row);

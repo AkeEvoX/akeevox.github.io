@@ -8,9 +8,14 @@ header("Content-Type: application/json;  charset=UTF8");
 
 $press = new PressManager();
 
-//$lang = "th"; 
-if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+//$lang = "th";
+if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
+}
+else
+{
+	$lang = "th";
+	$_SESSION["lang"] = $lang;
 }
 
 $req_id = $_GET["id"];

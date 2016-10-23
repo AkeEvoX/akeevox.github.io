@@ -8,7 +8,6 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
 
@@ -56,121 +55,25 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index">Home</a></li>
-					  <li><a href="#">Media</a></li>
+					  <li><a href="index"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
 					  <li class="active"><span id='faq.title'></span></li>
 					</ol>
 				</div>
 			</div>
 	<div class='row'>
 		<div class='col-md-4'>
-			<h3><span id='faq.mostview'>Most View</span></h3>
+			<h3><span id='faq.mostview'></span></h3>
 		<div id='mostview'>
-				<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object'/></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-				<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-				<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
 			</div>
-			<h3><span id='faq.recent'>Recent Article</span></h3>
+			<h3><span id='faq.recent'></span></h3>
 			<div id='recent'>
-					<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-				<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-				<div class='row'>
-					<div class='media'>
-						<div class='media-left'>
-							<a href='#'><img src='holder.js/200x150' class='media-object' /></a>
-						</div>
-						<div class='media-body'>
-							<h4 class='media-heading'>16 June 2016</h4>
-								START'S WORLD CLASS SANITARYWARE PRODUCT
-						</div>
-					</div>
-					<hr/>
-				</div>
-			</div>
+ 		 </div>
 		</div>
 		<div class='col-md-8'>
 			<div class='container'>
 				<h3><span id='faq.title'></span></h3>
 				<div id='list'>
-					<div class='row col-md-8'>
-					<h4 style='color:orange'>START'S WORLD CLASS SANITARYWARE PRODUCT</h4>
-					<label>16 June 2016</label>
-					<img src='holder.js/400x300' class='img-responsive' />
-					<span>
-						text text text text text text text text text text text text text text text text text text text text text text text text text text
-						text text text text text text text text text text text text text text text text text text text text text text text text text text
-						text text text text text text text text text text text text text text text text text text text text text text text text text text
-						text text text text text text text text text text text text text text text text text text text text text text text text text text
-					</span>
-					<button class='btn btn-warning'>VIEW</button>
-					</div>
-					<div class='row col-md-8'>
-						<h4 style='color:orange'>START'S WORLD CLASS SANITARYWARE PRODUCT</h4>
-						<label>16 June 2016</label>
-						<img src='holder.js/400x300' class='img-responsive' />
-						<span>
-							text text text text text text text text text text text text text text text text text text text text text text text text text text
-							text text text text text text text text text text text text text text text text text text text text text text text text text text
-							text text text text text text text text text text text text text text text text text text text text text text text text text text
-							text text text text text text text text text text text text text text text text text text text text text text text text text text
-						</span>
-						<button class='btn btn-warning'>VIEW</button>
-						</div>
 				</div>
 			</div>
 		</div>
@@ -216,9 +119,11 @@
 <script src='js/faq.js'></script>
 <script>
 $(document).ready(function(){
-setpage();
-loadmenu();
-loadbuttommenu();
+
+/*setpage();*/
+utility.loadmenu();
+utility.loadbuttommenu();
+utility.setpage('faq');
 loadList();
 loadmostview();
 loadrecentview();

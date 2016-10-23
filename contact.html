@@ -9,7 +9,7 @@
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/custom.control.css" rel="stylesheet" type="text/css" />
-	
+
 </head>
 <body>
 
@@ -45,7 +45,7 @@
 						</div>
 					</li>
 					<li>
-						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
+						<button id='nav.contact' type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
 					</li>
 				</ul>
 			</form>
@@ -57,8 +57,8 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index">Home</a></li>
-					  <li class="active">Contact</li>
+					  <li><a href="index"><span id='nav.home'></span></a></li>
+					  <li class="active"><span id='contact.title'></span></li>
 					</ol>
 				</div>
 			</div>
@@ -66,21 +66,21 @@
 		<div class='col-md-4'>
 				<div class='media'>
 					<div class='media-body'>
-						<h4 class='media-heading'>ADDRESS</h4>
+						<h4 class='media-heading'><span id='contact.address'></span></h4>
 							<ul id='address'></ul>
 					</div>
 				</div>
 				<hr/>
 				<div class='media'>
 					<div class='media-body'>
-						<h4 class='media-heading'>PHONE</h4>
+						<h4 class='media-heading'><span id='contact.phone'></span></h4>
 						<ul id='phone'></ul>
 					</div>
 				</div>
 				<hr/>
 				<div class='media'>
 					<div class='media-body'>
-						<h4 class='media-heading'>EMAIL</h4>
+						<h4 class='media-heading'><span id='contact.email'></span></h4>
 						<ul id='email'></ul>
 					</div>
 				</div>
@@ -88,26 +88,26 @@
 		</div>
 		<div class='col-md-8'>
 			<div class='container'>
-				<h3>FEEDBACK</h3>
+				<h3><span id='contact.feedback'></span></h3>
 				<div class='row col-md-8'>
 				<form role='form' id='frmRegister' name='frmRegister' method='post'>
 					<div class="input-group">
-					  <span class="input-group-addon" id="name-addon">NAME</span>
+					  <span class="input-group-addon" id="name-addon"><span id='contact.name'></span></span>
 					  <input type="text" class="form-control" placeholder="fullname" id='name' aria-describedby="name-addon">
 					</div>
 					<div class="input-group">
-					  <span class="input-group-addon" id="email-addon">EMAIL</span>
+					  <span class="input-group-addon" id="email-addon"><span id='contact.email'></span></span>
 					  <input type="text" class="form-control" placeholder="customer@email.com" id='email' aria-describedby="email-addon">
 					</div>
 					<div class="input-group">
-					  <span class="input-group-addon" id="phone-addon">PHONE</span>
+					  <span class="input-group-addon" id="phone-addon"><span id='contact.phone'></span></span>
 					  <input type="text" class="form-control" placeholder="66+(0) xxx-xxxx" id='phone' aria-describedby="phone-addon">
 					</div>
 					<div class="input-group">
-					  <div class="input-group-addon textarea-addon" > Description </div>
+					  <div class="input-group-addon textarea-addon" > <span id='contact.desc'></span></div>
 						<textarea class="form-control" rows="5"></textarea>
 					</div><br/>
-					<button type='submit' class='btn btn-warning' >Sumbit</button>
+					<button type='submit' class='btn btn-warning' ><span id='contact.send' ></span></button>
 				</form>
 				</div>
 			</div>
@@ -119,9 +119,9 @@
 		</div>
 	</div>
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
-		<div class='container' >	
+		<div class='container' >
 		 	<div class='col-md-4'>
 				<div id='menu.sitemap' class='rowspan' >
 					<label ></label>
@@ -152,11 +152,17 @@
 	</p>
 </div>
 <br />
+
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/contact.js' ></script>
-
+<script>
+utility.loadmenu();
+utility.loadbuttommenu();
+utility.setpage('contact');
+loadcontact();
+</script>
 
 </body>
