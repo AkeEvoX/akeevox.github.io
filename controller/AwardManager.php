@@ -43,7 +43,7 @@ class AwardManager{
 	{
 			try{
 
-			$sql = "select id,title_".$lang." as title ,thumbnail ,update_date as date,type ";
+			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail ,update_date as date,type ";
 			$sql .= "from award where active=1 order by update_date desc ";
 
 			$result = $this->mysql->execute($sql);

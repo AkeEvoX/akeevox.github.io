@@ -9,8 +9,11 @@ header("Content-Type: application/json;  charset=UTF8");
 $award = new AwardManager();
 
 //$lang = "th";
-if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
+if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
+}else{
+	$lang = "th";
+	 $_SESSION["lang"] = $lang;
 }
 
 $req_id = $_GET["id"];
@@ -33,6 +36,7 @@ while($row = $item->fetch_object()){
 	"id"=>$row->id
 	,"title"=>$row->title
 	,"thumbnail"=>$row->thumbnail
+	,"detail"=>$row->detail
 	,"date"=>$row->update_date
 	,"type"=>$row->type
 	);

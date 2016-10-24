@@ -3,14 +3,14 @@ function setup_slider()
 {
 
 	$("#inter-slider").lightSlider({
-		autoWidth: true
+		autoWidth: false
 		,adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:true
 	 });
 
 	$("#local-slider").lightSlider({
-		autoWidth: true
+		autoWidth: false
 		,adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:true
@@ -38,7 +38,6 @@ function loadreference()
 						return (value.local == "1") ;
 					});
 
-					console.log(inter);
 					displaylocal(local);
 					displayinter(inter);
 				}
@@ -46,6 +45,12 @@ function loadreference()
 			{
 				console.error("organization refer :" +err.message);
 			}
+
+		},
+		complete:function(){
+
+			setup_slider();
+
 
 		},
 		error : function (xhr,status,err)
@@ -56,8 +61,7 @@ function loadreference()
 	});
 }
 
-function displayinter(data)
-{
+function displayinter(data){
 	var view = $('#inter-slider');
 	var item = "";
 	$.each(data,function(idx,val){
@@ -70,40 +74,21 @@ function displayinter(data)
 	});
 
 	view.append(item);
-
-	view.lightSlider({
-		adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	    ,autoWidth:true
-	 });
-
 }
 
-function displaylocal(data)
-{
+function displaylocal(data) {
 	var view = $('#local-slider');
 	var item = "";
 	$.each(data,function(idx,val){
 		item+= "<li>";
-		item+= "<img src='"+val.thumbnail+"' class='img-responsive' />";
+		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
 		item+= "</li>";
 	});
 	view.append(item);
-
-	view.lightSlider({
-
-		adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:false
-	    ,autoWidth:true
-	 });
-
 }
 
-function loadinfo()
-{
+function loadinfo() {
 	$.ajax({
 		url:"services/attributes.php",
 		data:{"_": new Date().getHours() , "type":"chart"},

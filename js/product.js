@@ -250,7 +250,7 @@ function setViewReleated(data){
 		$.each(data.result,function(i,val){
 
 			var item = "";
-			item += "<li  >";
+			item += "<li  ><a href='productdetail.html?id="+val.id+"' >";
 			item += "<img src='"+val.thumb+"' class='img-responsive' >";
 			item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
 			item += "<ul class='lightslider-desc'>";
@@ -260,7 +260,7 @@ function setViewReleated(data){
 			item += "<li>&nbsp;</li>";
 			item += "<li>&nbsp;</li>";
 			item += "</ul>";
-			item += "</li>";
+			item += "</a></li>";
 
 			view.append(item);
 

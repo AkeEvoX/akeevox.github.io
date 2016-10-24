@@ -33,12 +33,12 @@
 			<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
 			<span class="glyphicon glyphicon-search" ></span>
-				<ul style='list-style:none;padding-right:10px;'>
+				<ul style='list-style:none;'>
 					<li>
 						<div class='input-group'>
 							<input type='text' class='form-control input-xs' area-label='lang'   />
 							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >Thai </button>
+								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
 								<ul  class='dropdown-menu dropdown-menu-right' >
 									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
 									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
@@ -47,7 +47,7 @@
 						</div>
 					</li>
 					<li>
-						<button type='button' class='btn btn-default btn-xs text-center' style='width:100%;'>Contact Seller</button>
+						<button type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
 					</li>
 				</ul>
 			</form>
@@ -69,17 +69,7 @@
 		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> <span id='award.title'>มาตรฐานและรางวัล</span></h3>
 	</div>
 	<!--new row-->
-	<div class='row'>
-		<div class='col-md-12'>
-			<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_award'></span></h3>
-			<div class="main">
-			  <!--<div class="page_container">-->
-				<div id="immersive_slider">
-				</div>
-			  <!--</div>--><!-- end page_container-->
-			</div>
-		</div>
-	</div><!--end row-->
+
 	<div class='row'>
 		<div class='col-md-12'>
 		<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_standard'></span></h3>
@@ -91,7 +81,17 @@
 			</div><!--end slide-->
 		</div><!--end column-->
 	</div><!--end row-->
-
+	<div class='row'>
+		<div class='col-md-12'>
+			<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_award'></span></h3>
+			<div class="main">
+				<!--<div class="page_container">-->
+				<div id="immersive_slider">
+				</div>
+				<!--</div>--><!-- end page_container-->
+			</div>
+		</div>
+	</div><!--end row-->
 </div> <!--end container fluid-->
 <div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
 	<p>
@@ -125,6 +125,27 @@
 		</div>
 	</p>
 </div>
+<!--show modal-->
+<!-- Modal -->
+<div class="modal fade" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" >
+			<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modaltitle"><span id='gallery.title'></span></h4>
+			</div>
+			<div class="modal-body">
+				<div id="modalcontent">
+				.....
+				</div>
+			</div><!--
+			<div class='modal-footer'>
+					<button type="button" data-dismiss="modal" class="btn">Close</button>
+			</div>-->
+    </div>
+  </div>
+</div>
+	<!--show modal-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>

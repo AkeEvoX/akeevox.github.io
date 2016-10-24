@@ -91,9 +91,6 @@ body
 	box-shadow:2px 2px 2px #ccc;
 }
 
-#searchbar span {
-	position:absolute;top:12px;margin-left:15px;
- }
  #searchbar ul {
 	list-style:none;
  }

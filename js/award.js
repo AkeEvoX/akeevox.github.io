@@ -55,7 +55,7 @@ function setaward(data){
 	$.each(data,function(idx,val){
 
 		 //item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' class='abc' data-id='"+val.id+"' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
 
 		//row
 		 if(((idx +1) % 4) == 0)
@@ -102,7 +102,7 @@ function setstandard(data) {
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-md-3' ><a href='#' ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
 
 		//row
 		 if(((idx +1) % 4) === 0)
@@ -140,9 +140,27 @@ function setstandard(data) {
 
 }
 
-$('.abc').on("click",function(event){
 
- //var id = $(this).attr('data-id');
-	console.log("view id = " );
+function popup(id)
+{
+	//var id = $(obj).data('id');
+	var page = "viewaward.html?rdm="+new Date().getHours();
+	utility.modalpage("&nbsp;",page,bindmodal(id));
+}
 
-});
+function bindmodal(id){
+
+ var url = "services/award.php";
+ var arg = {"_": new Date().getMilliseconds(),"id":id}
+
+  utility.service(url,'GET',arg
+,function(response){
+
+		$('#cover').attr('src',response.result[0].thumbnail);
+		$('#title').text(response.result[0].title);
+		$('#desc').text(response.result[0].detail);
+
+}
+,null)
+
+}

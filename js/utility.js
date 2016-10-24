@@ -1,3 +1,16 @@
+$(document).ready(function(){
+
+ var url = 'services/lang.php';
+ var args = {'_':new Date().getMilliseconds()};
+ utility.service(url,'GET',args
+ ,function(resp){
+	 console.log(resp);
+	 $('span[id="nav.lang"]').text(resp.result.lang);
+ }
+ ,null)
+	//$('#nav.lang').text("")
+});
+
 /*dropdown menu*/
 $('.tree-toggle').click(function () {
 	$(this).parent().children('ul.tree').toggle(200);
@@ -84,38 +97,46 @@ utility.modalpage = function(title,url,event){
 
 	if(title!=null)
 		$('#modaltitle').html(title);
+
 	var d= new Date();
-	$('#modalcontent').load(url + '?rdm='+d.getMilliseconds(),event);
+	$('#modalcontent').load(url,event);
 	$('#modaldialog').modal('show');
 
 }
 
 utility.modalimage = function(title,url){
+
 	if(title!=null)
 		$('#modaltitle').html(title);
 
+	$('.modal').on('show.bs.modal', centerModal);
+
 	$('#modalcontent').html("<img src='"+url+"' class='img-fluid' /> ");
 	$('#modaldialog').modal('show');
+
+	$('.modal:visible').each(centerModal);
+
 }
 
-function centerModal() {
-    $(this).css('display', 'block');
-    var $dialog = $(this).find(".modal-dialog");
 
-var imgwidth = $(this).find('.modal-body img').width();
-	$dialog.css({width:imgwidth+35});
+	function centerModal() {
+	    $(this).css('display', 'block');
+	    var $dialog = $(this).find(".modal-dialog");
 
-    var offset = ($(window).height() - $dialog.height()) / 2;
-    // Center modal vertically in window
-    $dialog.css("margin-top", offset);
-}
+			var imgwidth = $(this).find('.modal-body img').width();
+			$dialog.css({width:imgwidth+35});
 
+	    var offset = ($(window).height() - $dialog.height()) / 2;
+	    // Center modal vertically in window
+	    $dialog.css("margin-top", offset);
+	}
+/*
 $('.modal').on('show.bs.modal', centerModal);
 
 $(window).on("resize", function () {
     $('.modal:visible').each(centerModal);
 });
-
+*/
 function bindpage(response)
 {
 	if(response!==undefined)
