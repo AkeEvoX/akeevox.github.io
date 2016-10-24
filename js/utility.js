@@ -9,6 +9,12 @@ $(document).ready(function(){
  }
  ,null)
 	//$('#nav.lang').text("")
+
+  $('#find_dealer').click(function(){
+    var name = $('#find_text').val();
+     window.location.href = "dealer.html?name="+name+"&_=" + new Date().getMilliseconds();
+  });
+
 });
 
 /*dropdown menu*/
@@ -53,20 +59,15 @@ utility.log = function(type,message){
 }
 
 utility.loadmenu = function(){
-
+ var endpoint ="services/menu.php";
 	var args = {'_':new Date().getHours()};
-	this.service(
-	'services/menu.php','get',args
-	,getmenubar //handle with function
-	,null);
+	this.service(endpoint,'get',args ,getmenubar ,null);
 }
 
 utility.loadbuttommenu = function(){
-
+ var endpoint = "services/menu.php";
 	var args = {'_':new Date().getHours(),'type':'menu'};
-	this.service('services/attributes.php','get',args
-	,genbutton //handle with function
-	,null);
+  this.service(endpoint,'get',args ,genbutton ,null);
 }
 /*
 ,function(response){ //success
@@ -86,11 +87,9 @@ utility.querystr = function(name,url){
 }
 
 utility.setpage = function(page){
-
-		var args = {'_':new Date().getHours(),'type':page};
-		utility.service('services/attributes.php','GET',args
-		, bindpage
-		,null);
+  var endpoint = "services/attributes.php";
+  var args = {'_':new Date().getHours(),'type':page};
+  utility.service(endpoint,'GET',args, bindpage,null);
 }
 
 utility.modalpage = function(title,url,event){
@@ -262,5 +261,7 @@ function genbutton(data){
 			$("div[id='"+val.name+ "']").append(val.item);
 	});
 }
+
+
 
 //-----------------load globle menu-----------------
