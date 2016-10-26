@@ -8,7 +8,7 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	<link href="css/about.css" rel="stylesheet" type="text/css" />
+	<link href="css/custom.control.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -28,8 +28,8 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-		<ul id='menubar' class="nav navbar-nav"></ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
+		  <ul id='menubar' class="nav navbar-nav"></ul>
+		       <form class="navbar-form navbar-right" id='searchbar' role="search">
 			<span class="glyphicon glyphicon-search" ></span>
 				<ul style='list-style:none;'>
 					<li>
@@ -38,8 +38,8 @@
 							<div class='input-group-btn '>
 								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
 								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en'>English</a></li>
+									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
+									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
 								</ul>
 							</div>
 						</div>
@@ -57,30 +57,67 @@
 	<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
-					  <li><a href="index.html"><span id='nav.home'></span></a></li>
-						<li><a href="#"><span id='nav.company'></span></a></li>
-					  <li class="active"><span id='about.title'></span></li>
+					  <li><a href="index"><span id='nav.home'></span></a></li>
+					  <li class="active"><span id='contact.title'></span></li>
 					</ol>
 				</div>
 			</div>
-	<h3><span id='about.title'></span></h3>
-	<div class='row media-center'>
-		<div id='media-data' >
-				<img data-src='holder.js/600x300'  /><!--class='img-responsive'-->
-		</div>
-	</div>
 	<div class='row'>
-		<div class='col-md-12'>
-			<h3><span id='title-data' style='color:orange'></span></h3>
+		<div class='col-md-4'>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'><span id='contact.address'></span></h4>
+							<ul id='address'></ul>
+					</div>
+				</div>
+				<hr/>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'><span id='contact.phone'></span></h4>
+						<ul id='phone'></ul>
+					</div>
+				</div>
+				<hr/>
+				<div class='media'>
+					<div class='media-body'>
+						<h4 class='media-heading'><span id='contact.email'></span></h4>
+						<ul id='email'></ul>
+					</div>
+				</div>
+				<hr/>
 		</div>
-	</div>
-	<div class='row'>
-		<div id='content-data' class='col-md-12'>
-			<div class='columnies'>
+		<div class='col-md-8'>
+			<div class='container'>
+				<h3><span id='contact.feedback'></span></h3>
+				<div class='row col-md-8'>
+				<form role='form' id='frmRegister' name='frmRegister' method='post'>
+					<div class="input-group">
+					  <span class="input-group-addon" id="name-addon"><span id='contact.name'></span></span>
+					  <input type="text" class="form-control" placeholder="fullname" id='name' aria-describedby="name-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="email-addon"><span id='contact.email'></span></span>
+					  <input type="text" class="form-control" placeholder="customer@email.com" id='email' aria-describedby="email-addon">
+					</div>
+					<div class="input-group">
+					  <span class="input-group-addon" id="phone-addon"><span id='contact.phone'></span></span>
+					  <input type="text" class="form-control" placeholder="66+(0) xxx-xxxx" id='phone' aria-describedby="phone-addon">
+					</div>
+					<div class="input-group">
+					  <div class="input-group-addon textarea-addon" > <span id='contact.desc'></span></div>
+						<textarea class="form-control" rows="5"></textarea>
+					</div><br/>
+					<button type='submit' class='btn btn-warning' ><span id='contact.send' ></span></button>
+				</form>
+				</div>
+			</div>
+		</div>
+		<div class='row'>
+			<div class='col-md-12'>
+				<iframe src="https://www.google.com/maps/embed?pb=!1m14!1m8!1m3!1d15498.787934161357!2d100.5749505!3d13.7971315!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x7f799ab57268432!2z4Liq4LiV4Liy4Lij4LmMIOC4i-C4suC4meC4tOC4l-C4suC4o-C4teC5geC4p-C4o-C5jA!5e0!3m2!1sth!2sth!4v1470099354382" width="1240" height="600" frameborder="0" style="border:0" allowfullscreen></iframe>
 			</div>
 		</div>
 	</div>
-
 </div> <!--end container fluid-->
 <div class='container-fluid' id='buttommenu' >
 	<p>
@@ -114,17 +151,18 @@
 		</div>
 	</p>
 </div>
+<br />
+
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
-<script src='js/about.js' ></script>
+<script src='js/contact.js' ></script>
 <script>
-$(document).ready(function(){
-	utility.loadmenu();
-	utility.loadbuttommenu();
-	utility.setpage('about');
-	loadabout();
-});
+utility.loadmenu();
+utility.loadbuttommenu();
+utility.setpage('contact');
+loadcontact();
 </script>
+
 </body>

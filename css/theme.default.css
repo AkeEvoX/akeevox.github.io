@@ -152,7 +152,7 @@ margin-right:48px;
 
 a {list-style: none;color:black;}
 
-iframe, object, embed{ max-width: 100%;}
+iframe, object, embed{ max-width: 100%;display:block;margin:0 auto;}
 
 label {
     white-space: normal; /*word wrap*/

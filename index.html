@@ -62,8 +62,8 @@
 				<li data-target="#myCarousel" data-slide-to="1"></li>
 				<li data-target="#myCarousel" data-slide-to="2"></li>
 			  </ol>
-			  <div class="carousel-inner">
-				<div class="item active"> <img src="http://lorempixel.com/1200/500/sports" style="width:100%" alt="First slide">
+			  <div id='viewtop' class="carousel-inner">
+				<!--<div class="item active"> <img src="http://lorempixel.com/1200/500/sports" style="width:100%" alt="First slide">
 				  <div class="container">
 				  </div>
 				</div>
@@ -74,8 +74,8 @@
 				<div class="item"> <img src="http://lorempixel.com/1200/500/abstract" style="width:100%" data-src="" alt="Third slide">
 				  <div class="container">
 				  </div>
-				</div>
-			  </div>
+				</div>-->
+			</div>
 					<!-- button navigator -->
 			  </div>
 		</div>
@@ -102,7 +102,7 @@
 		</div>
 	</div>
 </div>
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
 		<div class='container' >
 		 	<div class='col-md-4'>
@@ -143,5 +143,6 @@
 		utility.loadmenu();
 		utility.loadbuttommenu();
 		utility.setpage('index');
+		//showtopconver();
 	</script>
 </body>

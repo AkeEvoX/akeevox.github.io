@@ -4,11 +4,10 @@ $(document).ready(function(){
  var args = {'_':new Date().getMilliseconds()};
  utility.service(url,'GET',args
  ,function(resp){
-	 console.log(resp);
+	 //console.log(resp);
 	 $('span[id="nav.lang"]').text(resp.result.lang);
  }
  ,null)
-	//$('#nav.lang').text("")
 
   $('#find_dealer').click(function(){
     var name = $('#find_text').val();
@@ -40,13 +39,15 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 		complete:complete_callback,
 		error:function(xhr,status,error){
 
-			var args = {'page':url
+			var result = {'page':url
 									,'args':args
 								 ,'msg':xhr.responseText};
 
 			//utility.log('error',args);
-			console.error(args);
-			alert(args);
+			console.error(result);
+			//alert(args);
+      alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
+      //JSON.stringify(args)
 		}
 	});
 
@@ -65,7 +66,10 @@ utility.loadmenu = function(){
 }
 
 utility.loadbuttommenu = function(){
- var endpoint = "services/menu.php";
+
+
+ console.log("load buttom menu");
+ var endpoint = "services/attributes.php";
 	var args = {'_':new Date().getHours(),'type':'menu'};
   this.service(endpoint,'get',args ,genbutton ,null);
 }
@@ -117,7 +121,6 @@ utility.modalimage = function(title,url){
 
 }
 
-
 	function centerModal() {
 	    $(this).css('display', 'block');
 	    var $dialog = $(this).find(".modal-dialog");
@@ -129,6 +132,7 @@ utility.modalimage = function(title,url){
 	    // Center modal vertically in window
 	    $dialog.css("margin-top", offset);
 	}
+
 /*
 $('.modal').on('show.bs.modal', centerModal);
 
@@ -256,6 +260,7 @@ function loadbuttommenu(){
 }
 
 function genbutton(data){
+  console.log(data);
 	$.each(data.result,function(idx,val){
 			$("div[id='"+val.name+ "'] label").text(val.title);
 			$("div[id='"+val.name+ "']").append(val.item);

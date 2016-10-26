@@ -41,11 +41,11 @@ function setview(data)
 		itemview += "<div class='mask'><a href='press_detail.html?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect
 		itemview += "</div>";//view
 		itemview += "</div>";//media-left
-		itemview += "<div class='media-body'>";//
+		itemview += "<div class='media-body'><a href='press_detail.html?id="+val.id+"' style='text-decoration: none;'  >";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
 			itemview += "<div class='media-detail'>"+val.detail+"</div>";//#detail
-			itemview += "<span class='badge'><a href='press_detail.html?id="+val.id+"' style='color:white;'  ><span id='press.read'></span></a></span>";//#read more.
-		itemview += "</div>";//media-body
+			itemview += "<span class='badge'><span id='press.read' style='color:white;'></span></span>";//#read more.
+		itemview += "</a></div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column
 

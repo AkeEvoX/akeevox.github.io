@@ -11,10 +11,12 @@ function loadcontact(){
 			var addrs = data.result.filter( item=> item.type=="address" );
 			var emails = data.result.filter( item=> item.type=="email" );
 			var phones = data.result.filter( item=> item.type=="phone" );
+			var map = data.result.filter( item=> item.type=="map" );
 
 			setaddress(addrs);
 			setphone(phones);
 			setemail(emails);
+			setmap(map);
 		},
 		error:function(xhr,status,err){
 			alert(xhr.responseText);
@@ -50,4 +52,9 @@ function setemail(email)
 		if(val.title!='')
 		$('#email').append("<li>"+val.title+"</li>");
 	});
+}
+
+function setmap(map)
+{
+	  $('#map').attr('src',map[0].link);
 }
