@@ -59,13 +59,12 @@
 			<ol class="breadcrumb">
 			  <li><a href="index.html"><span id='nav.home'></span></a></li>
 				<li><a href="#"><span id='nav.company'></span></a></li>
-				<li><a href="reference.html"><span id='refer.title'></span></a></li>
-			  <li class="active"><span id='refer.subject'></span></li>
+				<li class="active"><a href="reference.html"><span id='refer.title'></span></a></li>
 			</ol>
 		</div>
 	</div>
-	<div class='row'>
-		<h3><span class='glyphicon glyphicon-stop'></span><span id='refer.title'></span></h3>
+	<div class='well well-sm' >
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='refer.inter'></span><span id='refer.local'></span></h3>
 	</div>
 	<div class='row'>
 		<div class='col-md-12'>
@@ -126,6 +125,11 @@ $(document).ready(function(){
 	utility.loadmenu();
 	utility.loadbuttommenu();
 	utility.setpage('refer');
+	
+	var local = utility.querystr("local");
+ 	if(local==0) $('span[id="refer.local"]').attr("style","display:none;") ;
+ 	else $('span[id="refer.inter"]').attr("style","display:none;") ;
+
 	getreferal(utility.querystr("id"));
 });
 </script>

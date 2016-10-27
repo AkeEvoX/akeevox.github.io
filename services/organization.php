@@ -17,9 +17,10 @@ $item = "";
 
 $type = $_GET["type"];
 $id = $_GET["id"];
+$local = $_GET["local"];
 switch($type){
-	case "org": 
-				
+	case "org":
+
 		$item = $Org->getlistItem($lang);
 
 		$result = null;
@@ -35,40 +36,40 @@ switch($type){
 			,"shareholder"=>$row->shareholder
 			,"image"=>$row->image
 			,"age"=>$row->age);
-			
+
 			$result[] = $data;
 		}
 
 	break;
-	case "chart":  
-		
+	case "chart":
+
 		$item = $Org->getchart();
 		$row= $item->fetch_object();
-		
+
 		$data = array (
 		"chart"=>$row->chart
 		,"date"=>$row->update_date
 		);
-		
+
 		$result = $data;
-		
-	
+
+
 	break;
 	case "inter" :
-	
+
 		$item = $Org->getintermarket();
 		$row= $item->fetch_object();
-		
+
 		$data = array (
 		"chart"=>$row->chart
 		,"date"=>$row->update_date
 		);
-		
+
 		$result = $data;
-	
+
 	break;
 	case "refer":
-	 
+
 		$item = $Org->getReferenceList($lang);
 		while($row= $item->fetch_object())
 		{
@@ -76,6 +77,7 @@ switch($type){
 			"id"=>$row->id
 			,"title"=>$row->title
 			,"detail"=>$row->detail
+			,"contury"=>$row->contury
 			,"thumbnail"=>$row->thumbnail
 			,"image"=>$row->image
 			,"date"=>$row->update_date
@@ -86,7 +88,7 @@ switch($type){
 
 	break;
 	case "referid":
-	 
+
 		$item = $Org->getReferalID($lang,$id);
 		$row= $item->fetch_object();
 		//while($row= $item->fetch_object())
@@ -95,6 +97,7 @@ switch($type){
 			"id"=>$row->id
 			,"title"=>$row->title
 			,"detail"=>$row->detail
+			,"contury"=>$row->contury
 			,"thumbnail"=>$row->thumbnail
 			,"image"=>$row->image
 			,"date"=>$row->update_date
@@ -103,9 +106,18 @@ switch($type){
 
 			$result = $data;
 		//}
+	break;
+	case "project":
+		$item = $Org->getProjectList($lang,$local);
+		while($row= $item->fetch_object()){
+			$data = array("id"=>$row->id
+			,"title"=>$row->title
+			,"contury"=>$row->contury);
+		$result[] = $data;
+		}
 
-	
-		
+
+
 	break;
 }
 

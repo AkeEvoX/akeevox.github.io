@@ -65,12 +65,12 @@ ul{
 }
 
 .lightslider-main .item{
-    margin-bottom: 90px;
+    margin-bottom: 0px;
 }
 
 .lightslider-title{
     color:white;
-    background-color:orange;
+    background-color:#995c00;
     height:50px;
 }
 

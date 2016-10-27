@@ -9,20 +9,20 @@ ul{
 }
 
 .lightslider-main .item{
-    margin-bottom: 90px;
+    margin-bottom: 20px;
 }
 
 .lightslider-desc{
 	margin:10px;
-	border-right:1px solid orange;
-	border-bottom:1px solid orange;
+	border-right:1px solid #995c00;
+	border-bottom:1px solid #995c00;
 }
 
 
 .content-slider li{
     background-color: white;
     text-align: center;
-    color: orange;
+    color: #995c00;
 }
 .content-slider h3 {
     margin: 0;

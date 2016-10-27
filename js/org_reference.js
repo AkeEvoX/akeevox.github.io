@@ -18,6 +18,33 @@ function setup_slider()
 
 }
 
+function loadprojectlist(local)
+{
+
+ //<h3><span class='glyphicon glyphicon-stop'></span><span id='refer.list'>Project List</span></h3>
+
+	var endpoint = "services/organization.php";
+	var method='get';
+	var args = {"_": new Date().getHours() , "type":"project","local":local};
+	utility.service(endpoint,method,args,viewprojectlist);
+
+}
+
+function viewprojectlist(resp){
+
+	var view = $('#refer-list');
+	var item = "";
+	console.warn(resp);
+	$.each(resp.result,function(i,val){
+		item += "<tr>";
+		item += "<td>"+val.title+"</td>";
+		item += "<td>"+val.contury+"</td>";
+		item += "</tr>";
+	});
+
+	view.append(item);
+}
+
 function loadreference()
 {
 	$.ajax({
@@ -68,7 +95,7 @@ function displayinter(data){
 	var project ="";
 	$.each(data,function(idx,val){
 
-		item+= "<li ><a href='refer-info.html?id="+val.id+"'>";
+		item+= "<li ><a href='refer-info.html?id="+val.id+"&local=0'>";
 		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
 		item+= "</a></li>";
@@ -92,7 +119,7 @@ function displaylocal(data) {
 	var item = "";
 	var project ="";
 	$.each(data,function(idx,val){
-		item+= "<li><a href='refer-info.html?id="+val.id+"'>";
+		item+= "<li><a href='refer-info.html?id="+val.id+"&local=1'>";
 		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
 		item+= "</a></li>";
@@ -147,6 +174,6 @@ function viewreferal(resp)
 		$('#title-data').html(resp.result.title);
 		$('#content-data').html(resp.result.detail);
 		$('#media-data img').attr('src',resp.result.thumbnail);
-		
+
 	}
 }

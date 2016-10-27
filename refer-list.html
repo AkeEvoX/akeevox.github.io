@@ -7,9 +7,9 @@
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
-	<link href="css/icon.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	<link href="css/organization.css" rel="stylesheet" type="text/css" />
+	<link href="css/referal.css" rel="stylesheet" type="text/css" />
+
 </head>
 <body>
 
@@ -28,9 +28,9 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul id='menubar' class="nav navbar-nav"></ul>
+		<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<span class="glyphicon glyphicon-search" ></span>
+			<span class="glyphicon glyphicon-search" ></span>
 				<ul style='list-style:none;'>
 					<li>
 						<div class='input-group'>
@@ -38,14 +38,14 @@
 							<div class='input-group-btn '>
 								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
 								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
+									<li ><a href='services/lang.php?lang=th'>Thai</a></li>
+									<li ><a href='services/lang.php?lang=en'>English</a></li>
 								</ul>
 							</div>
 						</div>
 					</li>
 					<li>
-						<button  id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
+						<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
 					</li>
 				</ul>
 			</form>
@@ -55,33 +55,37 @@
 
 <div class='container'>
 	<div class='row'>
-				<div class='col-md-12'>
-					<ol class="breadcrumb">
-					  <li><a href="index.html"><span id='nav.home'></span></a></li>
-					  <li><a href="#"><span id='nav.company'></span></a></li>
-					  <li class="active"><span id='org.header'></span></li>
-					</ol>
-				</div>
-			</div>
-	<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='org.header'></span></h3>
-	</div>
-</div> <!--end container fluid-->
-<div class='container' >
-	<div class='row'>
-		<div class='col-md-offset-4 col-md-8' ><div class='well well-sm'><p><h3><span id='org.header'></span></h3></p><br/>test test test test test</div>
-	  </div>
-	</div>
-	<div class='row'>
-		<div class='col-md-6' style='padding-right:0px;'>
-			<div id="dataview_left"></div>
+		<div class='col-md-12'>
+			<ol class="breadcrumb">
+			  <li><a href="index.html"><span id='nav.home'></span></a></li>
+				<li><a href="#"><span id='nav.company'></span></a></li>
+				<li><a href="reference.html"><span id='refer.title'></span></a></li>
+			  <li class="active"><span id='refer.subject'></span></li>
+			</ol>
 		</div>
-			<div class='col-md-6' style='padding:0px;'>
-					<address style='padding-left:10px;'><p><h3>STAR'S WORLD CLASS QUALITY</h3></p>test test test tset</address>
-					<div id="dataview_right" ></div>
-			</div>
 	</div>
-</div><!--end container fluid-->
+	<div class='well well-sm' >
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='refer.title'></span></h3>
+	</div>
+	<div class='row'>
+		<div class='col-md-12'>
+				<h3><span class='glyphicon glyphicon-stop'></span><span id='refer.list'>Project List</span> <span id='refer.inter'></span><span id='refer.local'></span></h3>
+		</div>
+	</div>
+	<div class='row'>
+		<div class='col-md-12'>
+			<div class='well well-sm'>
+			<table id='refer-list' class='table table-striped'>
+				<tr>
+					<th><span id='refer.column.name'>Name</span></th>
+					<th><span id='refer.column.contury'>Detail</span></th>
+				</tr>
+			</table>
+		</div>
+		</div>
+	</div><!--end project list-->
+
+</div> <!--end container fluid-->
 <div class='container-fluid' id='buttommenu' >
 	<p>
 		<div class='container' >
@@ -118,14 +122,19 @@
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
-<script src='js/organization.js' ></script>
+<script src='js/org_reference.js' ></script>
 <script>
 $(document).ready(function(){
-
 	utility.loadmenu();
 	utility.loadbuttommenu();
-	utility.setpage('org');
-	loadorganization();
+	utility.setpage('refer');
+	
+ var local = utility.querystr("local");
+	if(local==0) $('span[id="refer.local"]').attr("style","display:none;") ;
+	else $('span[id="refer.inter"]').attr("style","display:none;") ;
+
+	loadprojectlist(local);
+
 
 });
 </script>
