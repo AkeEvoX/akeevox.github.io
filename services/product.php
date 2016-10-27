@@ -51,6 +51,10 @@ switch($type)
 	case "menu":
 		$result = setMenu($lang);
 	break;
+	case "info":
+		$result = setProductType($lang,$id);
+	break;
+
 }
 //var_dump($result);
 log_debug("get product > " . print_r($result,true));
@@ -198,6 +202,25 @@ function setProduct($lang,$id) {
 			,"plan"=>$row->plan
 			,"code"=>$row->code
 			,"name"=>$row->name
+			);
+	}
+	return $items;
+}
+
+function setProductType($lang,$id)
+{
+	$product = new ProductManager();
+	$data = $product->getProductType($lang,$id);
+//id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover
+	$items = null;
+	if($data){
+	$row = $data->fetch_object();
+	$items = array(
+			"id"=>$row->id
+			,"title"=>$row->title
+			,"detail"=>$row->detail
+			,"thumb"=>$row->thumb
+			,"cover"=>$row->cover
 			);
 	}
 	return $items;

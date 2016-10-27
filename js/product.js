@@ -64,6 +64,17 @@ function setchildmenu(menu,submenu) {
 
 function loadcategorylist() {
 
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {"_": new Date().getHours() ,"cate":"5","type":"list"}
+	utility.service(endpoint,method,args,function(resp){
+		setproductcover(resp);
+		setviewlist(resp);
+	});
+
+
+
+	/*
 	$.ajax({
 		url:"services/product.php",
 		data:{"_": new Date().getHours() ,"cate":"5","type":"list"},
@@ -80,8 +91,13 @@ function loadcategorylist() {
 			console.error(xhr.responseText);
 			alert("load product list error : "+ xhr.responseText);
 		}
-	});
+	});*/
 
+}
+
+function setproductcover(resp)
+{
+	$('#logo-category').attr('src',resp.result[0].cover);
 }
 
 function loadshowroomlist() {
