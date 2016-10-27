@@ -86,6 +86,21 @@ class OrgManager{
 			echo "Cannot Get Organization Reference: ".$e->getMessage();
 		}
 	}
+
+	function getReferalID($lang,$id)
+	{
+		try{
+			
+			$sql = "select id,title_".$lang." as title , detail_".$lang." as detail ,thumbnail,image , update_date ,islocal ";
+			$sql .= " from organization_reference where active=1 and id=".$id." order by update_date desc ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Reference by id : ".$e->getMessage();
+		}
+	}
 	
 	
 	

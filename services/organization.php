@@ -16,7 +16,7 @@ if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 $item = "";
 
 $type = $_GET["type"];
-
+$id = $_GET["id"];
 switch($type){
 	case "org": 
 				
@@ -83,6 +83,28 @@ switch($type){
 			);
 			$result[] = $data;
 		}
+
+	break;
+	case "referid":
+	 
+		$item = $Org->getReferalID($lang,$id);
+		$row= $item->fetch_object();
+		//while($row= $item->fetch_object())
+		//{
+			$data = array (
+			"id"=>$row->id
+			,"title"=>$row->title
+			,"detail"=>$row->detail
+			,"thumbnail"=>$row->thumbnail
+			,"image"=>$row->image
+			,"date"=>$row->update_date
+			,"local"=>$row->islocal
+			);
+
+			$result = $data;
+		//}
+
+	
 		
 	break;
 }

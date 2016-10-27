@@ -5,16 +5,16 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/referal.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
 
 <nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
-<div class="container-fluid">
+        <div class="container-fluid">
 			<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
               <span class="sr-only">Toggle navigation</span>
@@ -28,10 +28,10 @@
 			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
           </div>
           <div id="navbar" class="navbar-collapse collapse">
-			<ul id='menubar' class="nav navbar-nav"></ul>
+		<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<span class="glyphicon glyphicon-search" ></span>
-				<ul style='list-style:none;'><!--padding-right:10px;-->
+			<span class="glyphicon glyphicon-search" ></span>
+				<ul style='list-style:none;'>
 					<li>
 						<div class='input-group'>
 							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
@@ -52,56 +52,38 @@
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
       </nav>
+
 <div class='container'>
 	<div class='row'>
 		<div class='col-md-12'>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			  </ol>
-			  <div id='viewtop' class="carousel-inner">
-				 <div class="item active"> <img src="images/home/top1.png" style="width:100%" alt="First slide">
-				  <div class="container">
-				  </div>
-				</div>
-				<div class="item"> <img src="images/home/top2.png" style="width:100%" data-src="" alt="Second slide">
-				  <div class="container">
-				  </div>
-				</div>
-				<div class="item"> <img src="images/home/top3.png" style="width:100%" data-src="" alt="Third slide">
-				  <div class="container">
-				  </div>
-				</div>
-			</div>
-					<!-- button navigator -->
-			  </div>
+			<ol class="breadcrumb">
+			  <li><a href="index.html"><span id='nav.home'></span></a></li>
+				<li><a href="#"><span id='nav.company'></span></a></li>
+				<li><a href="reference.html"><span id='refer.title'></span></a></li>
+			  <li class="active"><span id='refer.subject'></span></li>
+			</ol>
 		</div>
 	</div>
 	<div class='row'>
-		<div class='col-md-12'>
-			<div class='text-center' >
-				<h3><span id='index.top'></span></h3>
-				<h4><span id='index.top_detail'></span></h4>
-			</div>
-		</div>
+		<h3><span class='glyphicon glyphicon-stop'></span><span id='refer.title'></span></h3>
 	</div>
 	<div class='row'>
 		<div class='col-md-12'>
-			<img src='images/home/01.png' class='img-responsive' />
+			<h3><span id='title-data' style='color:orange'></span></h3>
 		</div>
 	</div>
 	<div class='row'>
-		<div class='col-md-12'>
-			<div class='text-center' >
-				<h3><span id='index.bottom'></span></h3>
-				<h4><span id='index.bottom_detail'></span></h4>
-			</div>
+		<div id='media-data' class='media-center'>
+			<img data-src='holder.js/600x300' class='img-responsive' /><!--class='img-responsive'-->
 		</div>
 	</div>
-</div>
+	<div class='row'>
+		<div id='content-data' class='col-md-12'>
+			<div class='columnies'></div>
+		</div>
+	</div>
+
+</div> <!--end container fluid-->
 <div class='container-fluid' id='buttommenu' >
 	<p>
 		<div class='container' >
@@ -137,12 +119,14 @@
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
-<script src='js/utility.js'></script>
-<script src='js/index.js'></script>
-	<script>
-		utility.loadmenu();
-		utility.loadbuttommenu();
-		utility.setpage('index');
-		//showtopconver();
-	</script>
+<script src='js/utility.js' ></script>
+<script src='js/org_reference.js' ></script>
+<script>
+$(document).ready(function(){
+	utility.loadmenu();
+	utility.loadbuttommenu();
+	utility.setpage('refer');
+	getreferal(utility.querystr("id"));
+});
+</script>
 </body>

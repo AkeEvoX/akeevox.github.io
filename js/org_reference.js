@@ -63,30 +63,50 @@ function loadreference()
 
 function displayinter(data){
 	var view = $('#inter-slider');
+	var list = $('#refer-inter-list');
 	var item = "";
+	var project ="";
 	$.each(data,function(idx,val){
 
-		item+= "<li >";
+		item+= "<li ><a href='refer-info.html?id="+val.id+"'>";
 		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
-		item+= "</li>";
+		item+= "</a></li>";
+
+		project += "<tr>";
+		project += "<td>"+val.title+"</td>";
+		project += "<td>"+val.detail+"</td>";
+		project += "</tr>";
 
 	});
 
+
 	view.append(item);
+	list.append(project);
 }
+
 
 function displaylocal(data) {
 	var view = $('#local-slider');
+	var list = $('#refer-local-list');
 	var item = "";
+	var project ="";
 	$.each(data,function(idx,val){
-		item+= "<li>";
+		item+= "<li><a href='refer-info.html?id="+val.id+"'>";
 		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
-		item+= "</li>";
+		item+= "</a></li>";
+
+		project += "<tr>";
+		project += "<td>"+val.title+"</td>";
+		project += "<td>"+val.detail+"</td>";
+		project += "</tr>";
 	});
 	view.append(item);
+	list.append(project);
 }
+
+
 
 function loadinfo() {
 	$.ajax({
@@ -107,4 +127,26 @@ function loadinfo() {
 		}
 	});
 
+}
+
+function getreferal(id)
+{
+	var endpoint = "services/organization.php";
+	var method = "get";
+	var args = {'_':new Date().getMilliseconds(),'id':id,'type':'referid'};
+	utility.service(endpoint,method,args,viewreferal);
+}
+
+function viewreferal(resp)
+{
+
+	if(resp.result != undefined )
+	{
+		console.warn(resp.result);
+		$('span[id="refer.subject"]').html(resp.result.title);
+		$('#title-data').html(resp.result.title);
+		$('#content-data').html(resp.result.detail);
+		$('#media-data img').attr('src',resp.result.thumbnail);
+		
+	}
 }

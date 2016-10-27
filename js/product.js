@@ -66,38 +66,19 @@ function loadcategorylist() {
 
 	var endpoint = "services/product.php";
 	var method = "GET";
-	var args = {"_": new Date().getHours() ,"cate":"5","type":"list"}
-	utility.service(endpoint,method,args,function(resp){
-		setproductcover(resp);
-		setviewlist(resp);
-	});
+	var args = {"_": new Date().getHours() ,"cate":"5","type":"list"};
+	utility.service(endpoint,method,args,setviewlist);
 
-
-
-	/*
-	$.ajax({
-		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"cate":"5","type":"list"},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			setviewlist(data);
-			//console.warn()
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load product list error : "+ xhr.responseText);
-		}
-	});*/
+	var args = {"_": new Date().getHours() ,"id":"5","type":"info"};
+	utility.service(endpoint,method,args,setproductcover);
 
 }
 
 function setproductcover(resp)
 {
-	$('#logo-category').attr('src',resp.result[0].cover);
+	console.info("set product conver");
+	//console.warn(resp);
+	$('#logo-category').attr('src',resp.result.cover);
 }
 
 function loadshowroomlist() {
