@@ -47,7 +47,7 @@
 <script src='js/utility.js' ></script>
 <script>
 	$(document).ready(function(){
-		$('.default-slider').unslider();           
+		//$('.default-slider').unslider();           
 		 $.ajax({
     url: "https://www.facebook.com?callback=?",
     data: "message="+commentdata,
@@ -55,7 +55,7 @@
     success: function (resp) {
         //alert(resp);
 	    $('#view').html(resp);
-	    
+	    console.log(resp);
     },
     error: function(e) {
         alert('Error: '+e);
