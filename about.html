@@ -9,11 +9,9 @@
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/about.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
+<nav class="navbar navbar-default navbar-fixed-top"   >
         <div class="container-fluid">
 			<div class="navbar-header">
             <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
@@ -30,13 +28,13 @@
           <div id="navbar" class="navbar-collapse collapse">
 		<ul id='menubar' class="nav navbar-nav"></ul>
 		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
+			<span id='iconsearch' ></span>
 				<ul style='list-style:none;'>
 					<li>
 						<div class='input-group'>
 							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
 							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
+								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
 								<ul  class='dropdown-menu dropdown-menu-right' >
 									<li ><a href='services/lang.php?lang=th'>Thai</a></li>
 									<li ><a href='services/lang.php?lang=en'>English</a></li>
@@ -51,8 +49,9 @@
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container-fluid -->
+				<div id='linegradient'></div>
       </nav>
-
+<!-- body -->
 <div class='container'>
 	<div class='row'>
 				<div class='col-md-12'>
@@ -63,7 +62,9 @@
 					</ol>
 				</div>
 			</div>
-	<h3><span id='about.title'></span></h3>
+	<div class='well well-sm' >
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='about.title'></span></h3>
+	</div>
 	<div class='row media-center'>
 		<div id='media-data' >
 				<img data-src='holder.js/600x300'  /><!--class='img-responsive'-->

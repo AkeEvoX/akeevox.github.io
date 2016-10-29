@@ -15,7 +15,7 @@ if(isset($_GET["lang"])){
 else
 {
 	if(!isset($_SESSION["lang"]) && empty($_SESSION["lang"])){
-		$_SESSION["lang"] = "th";
+		$_SESSION["lang"] = "en";
 	}
 } //default language
 

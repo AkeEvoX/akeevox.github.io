@@ -10,50 +10,48 @@
 	<link href="plugin/jquery/hover/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/hover/css/secondeffect.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
-        <div class="container-fluid">
+	<nav class="navbar navbar-default navbar-fixed-top" >
+	        <div class="container-fluid">
 			<div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
-          </div>
-          <div id='find_text' id="navbar" class="navbar-collapse collapse">
-			<ul id='menubar' class="nav navbar-nav"></ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
-				<ul style='list-style:none;'>
-					<li>
-						<div class='input-group'>
-							<input type='text' class='form-control input-xs' area-label='lang'   />
-							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
-								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
-								</ul>
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	              <span class="sr-only">Toggle navigation</span>
+	              <span class="icon-bar"></span>
+	              <span class="icon-bar"></span>
+	              <span class="icon-bar"></span>
+	            </button>
+	            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
+	            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
+	            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
+				<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
+	          </div>
+	          <div id="navbar" class="navbar-collapse collapse">
+				<ul id='menubar' class="nav navbar-nav"></ul>
+			    <form class="navbar-form navbar-right" id='searchbar' role="search">
+					<span id='iconsearch' ></span>
+					<ul style='list-style:none;'>
+						<li>
+							<div class='input-group'>
+								<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
+								<div class='input-group-btn '>
+									<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
+									<ul  class='dropdown-menu dropdown-menu-right' >
+										<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
+										<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
+									</ul>
+								</div>
 							</div>
-						</div>
-					</li>
-					<li>
-						<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
-					</li>
-				</ul>
-			</form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-
+						</li>
+						<li>
+							<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
+						</li>
+					</ul>
+				</form>
+	          </div><!--/.nav-collapse -->
+	        </div><!--/.container-fluid -->
+					<div id='linegradient'></div>
+	      </nav>
 <div class='container'>
 	<div class='row'>
 				<div class='col-md-12'>
@@ -64,7 +62,9 @@
 					</ol>
 				</div>
 			</div>
-	<h3><span id='gallery.title'></span></h3>
+	<div class='well well-sm' >
+		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='gallery.title'></span></h3>
+	</div>
 	<div class='row'>
 		<div class='col-md-12'>
 			<div id='list' class='photoGrid clearfix'>
@@ -74,7 +74,7 @@
 </div> <!--end container fluid-->
 
 	<!--buttom menu-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
+<div class='container-fluid' id='buttommenu' >
 	<p>
 		<div class='container' >
 		 	<div class='col-md-4'>

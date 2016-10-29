@@ -36,10 +36,8 @@ switch($type)
 			$result[$row->name] = $itemdata;
 		}
 
-		/*load menu*/
-
 		$menu = new MenuManager();
-		$menuresult = $menu->getmenu($lang);
+		$menuresult = $menu->getparentmenu($lang);
 
 		while($row = $menuresult->fetch_object())
 		{

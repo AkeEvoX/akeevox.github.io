@@ -1,8 +1,3 @@
-ul{
-	list-style: none outside none;
-    padding-left: 0;
-    margin: 0;
-}
 
 .lightslider-main {
 	width: 100%;
@@ -14,10 +9,10 @@ ul{
 
 .lightslider-desc{
 	margin:10px;
-	border-right:1px solid #995c00;
-	border-bottom:1px solid #995c00;
+	border-right:2px solid #995c00;
+	border-bottom:2px solid #995c00;
+	color:#b28b22;
 }
-
 
 .content-slider li{
     background-color: white;

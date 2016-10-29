@@ -20,11 +20,7 @@ $(document).ready(function(){
 $('.tree-toggle').click(function () {
 	$(this).parent().children('ul.tree').toggle(200);
 });
-/*  force collopse
-$(function(){
-$('.tree-toggle').parent().children('ul.tree').toggle(200);
-})
-*/
+
 var utility = function(){};
 
 utility.service = function(url,method,args,success_callback,complete_callback){
@@ -43,11 +39,8 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 									,'args':args
 								 ,'msg':xhr.responseText};
 
-			//utility.log('error',args);
 			console.error(result);
-			//alert(args);
       alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
-      //JSON.stringify(args)
 		}
 	});
 
@@ -165,7 +158,7 @@ function getParameterByName(name, url) {
 }
 
 //-----------------load globle menu-----------------
-
+/*
 function loadmenu(){
 
 	$.ajax({
@@ -183,6 +176,7 @@ function loadmenu(){
 	});
 
 }
+*/
 
 function loadchildmenu(id){
 	var menu = $('#'+id);
@@ -210,21 +204,38 @@ function loadchildmenu(id){
 function getmenubar(data){
 		var menu = $('#menubar');
 		menu.html("");
-		$.each(data.result,function(id,val){
+
+    var parent = data.result.filter(function(item){return item.parent=="0"});
+    var child = data.result.filter(function(item){return item.parent!="0"});
+
+		$.each(parent,function(id,val){
 
 			var item = "";
-			if(val.child=="0")
-			{
-				item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
-			}
-			else
-			{
-				item += "<li id='"+val.id+"' class='dropdown' >";
-				item += "<a href='"+val.link+"' onclick=loadchildmenu("+val.id+") class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>"+val.name+"<span class='caret'/></a>";
+      var sub = child.filter(function(item){return item.parent==val.id });
+
+      if(sub.length==0)
+      {
+        item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
+      }
+      else {
+        item = "<li id='"+val.id+"' class='dropdown' >";
+				item += "<a href='"+val.link+"' onclick=loadchildmenu("+val.id+") class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>"+val.name+"</a>";
+
+          item += "<ul class='dropdown-menu'>";
+          $.each(sub,function(subid,subval){
+              item += "<li><a href='"+subval.link+"'>"+subval.name+"</a></li>";
+          });
+          item += "</ul>";
+
 				item +="</li> ";
-			}
+
+      }
+
+      //console.warn(item);
 			menu.append(item);
 		});
+
+    //var inter = data.result.filter(function(item){ return item.local=="0"; });
 
 }
 
@@ -240,7 +251,7 @@ function getchildmenu(id,data){
 	item += "</ul>";
 	menu.append(item);
 }
-
+/*
 function loadbuttommenu(){
 	$.ajax({
 		url:"services/attributes.php",
@@ -257,10 +268,9 @@ function loadbuttommenu(){
 
 	});
 
-}
+}*/
 
 function genbutton(data){
-  console.log(data);
 	$.each(data.result,function(idx,val){
 			$("div[id='"+val.name+ "'] label").text(val.title);
 			$("div[id='"+val.name+ "']").append(val.item);

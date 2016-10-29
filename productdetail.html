@@ -5,58 +5,56 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
-
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
 	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />
-
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/product.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-<nav class="navbar navbar-default navbar-fixed-top" >
-        <div class="container-fluid">
-		<div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
+	<nav class="navbar navbar-default navbar-fixed-top"   >
+	        <div class="container-fluid">
+				<div class="navbar-header">
+	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+	              <span class="sr-only">Toggle navigation</span>
+	              <span class="icon-bar"></span>
+	              <span class="icon-bar"></span>
+	              <span class="icon-bar"></span>
+	            </button>
+	            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
+	            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
+	            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
+				<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
+	          </div>
+	          <div id="navbar" class="navbar-collapse collapse">
 			<ul id='menubar' class="nav navbar-nav"></ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
-			<ul style='list-style:none;'>
-				<li>
-					<div class='input-group'>
-						<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
-						<div class='input-group-btn '>
-							<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
-							<ul  class='dropdown-menu dropdown-menu-right' >
-								<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-								<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
-							</ul>
-						</div>
-					</div>
-				</li>
-				<li>
-					<button id='find_dealer' type='button' class='btn btn-default btn-xs text-center' style='width:100%;'><span id='nav.contact'></span></button>
-				</li>
-			</ul>
-			</form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
+			    <form class="navbar-form navbar-right" id='searchbar' role="search">
+				<span id='iconsearch' ></span>
+					<ul style='list-style:none;'>
+						<li>
+							<div class='input-group'>
+								<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
+								<div class='input-group-btn '>
+									<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
+									<ul  class='dropdown-menu dropdown-menu-right' >
+										<li ><a href='services/lang.php?lang=th'>Thai</a></li>
+										<li ><a href='services/lang.php?lang=en'>English</a></li>
+									</ul>
+								</div>
+							</div>
+						</li>
+						<li>
+							<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
+						</li>
+					</ul>
+				</form>
+	          </div><!--/.nav-collapse -->
+	        </div><!--/.container-fluid -->
+					<div id='linegradient'></div>
+	      </nav>
 	  <!--end navigator-->
-
 	  <div class='container'>
 		<div class='col-md-3' id='menutree'>
 			<div class='span3'>
@@ -161,22 +159,15 @@
 </div><!--bottom menu-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
-<script src='plugin/jquery/holder.js' ></script>
-<script src='plugin/jquery/lightslider/lightslider.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='plugin/jquery/holder.js' ></script>
+
+<script src='plugin/jquery/lightslider/lightslider.js' ></script>
 <script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>
 <script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/product.js' ></script>
 <script>
-/*
-(function(d, s, id) {
-	  var js, fjs = d.getElementsByTagName(s)[0];
-	  if (d.getElementById(id)) return;
-	  js = d.createElement(s); js.id = id;
-	  js.src = "//connect.facebook.net/en_US/sdk.js#xfbml=1";
-	  fjs.parentNode.insertBefore(js, fjs);
-	}(document, 'script', 'facebook-jssdk'));*/
 
 $(document).ready(function(){
 
@@ -226,7 +217,4 @@ function setshare(){
 }
 
 </script>
-
-
 </body>
-<!--www.bootply.com/lE2NPpERdt-->

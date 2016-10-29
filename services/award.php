@@ -1,18 +1,17 @@
 <?php
 session_start();
 date_default_timezone_set('America/Los_Angeles');
+include("../lib/common.php");
 include("../controller/AwardManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
 
 $award = new AwardManager();
-
 //$lang = "th";
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }else{
-	$lang = "th";
 	 $_SESSION["lang"] = $lang;
 }
 

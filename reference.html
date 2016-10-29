@@ -12,7 +12,6 @@
 
 </head>
 <body>
-
 <nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
         <div class="container-fluid">
 			<div class="navbar-header">
@@ -30,13 +29,13 @@
           <div id="navbar" class="navbar-collapse collapse">
 				<ul id='menubar' class="nav navbar-nav"></ul>
 	<form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
+			<span id='iconsearch' ></span>
 				<ul style='list-style:none;'>
 					<li>
 						<div class='input-group'>
 							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
 							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
+								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
 								<ul  class='dropdown-menu dropdown-menu-right' >
 									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
 									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
@@ -51,6 +50,7 @@
 			</form>
           </div><!--/.nav-collapse -->
         </div><!--/.container -->
+				<div id='linegradient'></div>
       </nav>
 <!-- body -->
 <div class='container'>

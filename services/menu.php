@@ -11,7 +11,7 @@ if(isset($_SESSION["lang"])) {
 }
 else {
 
-	$_SESSION["lang"] = "th";
+	$_SESSION["lang"] = "en";
 	$lang = $_SESSION["lang"];
 }
 
@@ -33,7 +33,8 @@ else
 
 while($row = $item->fetch_object()){
 
-	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"child"=>$row->child,"link"=>$row->link);
+	//$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"child"=>$row->child,"link"=>$row->link);
+	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"parent"=>$row->parent,"link"=>$row->link);
 	$result[] = $data;
 }
 
