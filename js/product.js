@@ -3,7 +3,12 @@ var product = function(){};
 product.listmenu = function(){
 	
 	var args = {'_':new Date().getHours(),'type':'menu'}
-	utility.service('services/product.php','GET',args,viewmenu);
+	utility.service('services/product.php','GET',args,viewmenu,function(){
+		/*set slide dropdown*/
+		$('.tree-toggle').click(function () {
+			$(this).parent().children('ul.tree').toggle(200);
+		});
+	});
 }
 
 function viewmenu(data){
@@ -52,7 +57,7 @@ function viewchildmenu(child,data,menu){
 			//console.log(subchild);
 			menu += viewchildmenu(subchild,data,"");
 
-			menu +="</ul>";
+			menu +="</ul></li>";
 		}
 
 	});

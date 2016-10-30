@@ -29,8 +29,9 @@ position:absolute;
 
 #iconsearch {
 background: url('../images/logos/icon_search.png') left top;
-width:40px;
-height:37px;
+background-size:32px;
+width:32px;
+height:30px;
 display: block;
 float:left;
 padding-right:10px;

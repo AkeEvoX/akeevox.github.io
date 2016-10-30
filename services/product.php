@@ -12,9 +12,9 @@ if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$_SESSION["lang"] = $lang;
 }
 
-if(isset($_GET["type"])) $type = $_GET["type"];
-if(isset($_GET["cate"])) $cate = $_GET["cate"];
-if(isset($_GET["id"])) $id = $_GET["id"];
+if(isset($_GET["type"])) $type = $_GET["type"]; else $type="";
+if(isset($_GET["cate"])) $cate = $_GET["cate"]; else $cate="";
+if(isset($_GET["id"])) $id = $_GET["id"] ; else $id="";
 
 switch($type)
 {
@@ -215,9 +215,10 @@ function setProductType($lang,$id)
 	$product = new ProductManager();
 	$data = $product->getProductType($lang,$id);
 //id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover
-	$items = null;
+	$items = array();
 	if($data){
 	$row = $data->fetch_object();
+	//$id = ["id"];
 	$items = array(
 			"id"=>$row->id
 			,"title"=>$row->title
