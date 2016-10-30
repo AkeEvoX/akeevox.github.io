@@ -136,12 +136,12 @@ class ProductManager{
 		try{
 			//$sql = "select id,".$lang." as title ,parent ";
 			//$sql .= "from product_type where active=1 order by parent ";
+			//,(select count(1) from product_type b where b.parent=a.id) as isparent 
 
-			$sql = "select a.id,a.parent,a.title_".$lang."  as title,a.link ";
-			$sql .= ",(select count(1) from product_type b where b.parent=a.id) as isparent ";
-			$sql .= "from product_type a ";
-			$sql .= "where a.active=1 ";
-			$sql .= "order by a.id; ";
+			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
+			$sql .= " from product_type a ";
+			$sql .= " where a.active=1 ";
+			$sql .= " order by a.id; ";
 
 			$result = $this->mysql->execute($sql);
 			return  $result;
@@ -150,6 +150,7 @@ class ProductManager{
 			echo "Cannot Get  Menu Product : ".$e->getMessage();
 		}
 	}
+
 
 }
 

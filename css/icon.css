@@ -5,6 +5,39 @@ span.bigger.glyphicon-zoom-in{
     font-size: 5.2em;
 }
 
+
+#iconbar {
+background: url('../images/logos/logo.png') left top;
+background-size: 70px;
+position:absolute;
+display: block;
+float:center;
+top:5px;
+left:-100px;
+width:70px;
+height:70px;
+padding-right:30px;
+box-shadow:2px 2px 2px #ccc;
+}
+/*
+position:absolute;
+	top:5px;
+	left:130px;
+	width:70px;
+	box-shadow:2px 2px 2px #ccc;
+*/
+
+#iconsearch {
+background: url('../images/logos/icon_search.png') left top;
+width:40px;
+height:37px;
+display: block;
+float:left;
+padding-right:10px;
+/*background-image: linear-gradient();*/
+/*input-xs*/
+}
+
 .orange {color:orange;}
 .blue { color: blue; }
 .green {color:green;}

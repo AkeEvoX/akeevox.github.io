@@ -1,78 +1,79 @@
 var product = function(){};
 
 product.listmenu = function(){
-	//productlist
+	
+	var args = {'_':new Date().getHours(),'type':'menu'}
+	utility.service('services/product.php','GET',args,viewmenu);
+}
 
-			var list = $('#productlist');
-			var args = {'_':new Date().getHours(),'type':'menu'}
-			utility.service('services/product.php','GET',args
-		,function(response){
+function viewmenu(data){
 
-			$.each(response.result,function(i,val){
-				//parent
-				var menu = "<li><label class='tree-toggle nav-header mainmenu'>"+val.title+"</label>";
-				if(val.child!=undefined){
-					menu += "<ul class='nav nav-list tree'>";
+	var list = $('#productlist');
 
+	var parent = data.result.filter(function(item){ return item.parent=="0"; });
+	
+	var menu = "";
+	$.each(parent,function(i,val){
 
-						$.each(val.child,function(isub,subchild){
-								//console.warn(subchild);
-
-									if(subchild.child!=undefined){  //find to fix
-										menu += setchildmenu(menu,subchild.child);
-									}else{
-										var link = "#";
-										//console.warn(subchild);
-
-										if(subchild.link!=undefined)
-											link = subchild.link + subchild.id;
-
-										menu += "<li><a href='"+link+"'>"+subchild.title+"</a></li>";
-									}
-						});
-					}
-					else {
-
-					}
-					menu += "</li>";
-				 //console.log(menu);
-					list.append(menu);
-			});
+		var child = data.result.filter(function(item){ return item.parent==val.id; });
+		if(child.length==0){//not found child
+			menu += "<li><label class='tree-toggle nav-header mainmenu'><a href='"+val.link+"'>"+val.title+"</a></label></li>";
 		}
-		,null);
+		else{
+			menu += "<li><label class='tree-toggle nav-header mainmenu'>"+val.title+"</label>";
+			menu += "<ul class='nav nav-list tree'>";
+			menu += viewchildmenu(child,data,"");
+			menu += "</ul></li>";
+		}
+
+	});
+
+	console.warn(menu);
+
+	list.append(menu);
+	
+
 }
 
-function setchildmenu(menu,submenu) {
-		//var list = $('#productlist');
-		menu += "<li><label class='tree-toggle nav-header submenu'>"+submenu.title+"</label>";
-		menu += "<ul class='nav nav-list tree submenu'>";
+function viewchildmenu(child,data,menu){
 
-		$.each(submenu.child,function(i,val){
+	$.each(child,function(i,val){
 
-			//drill down to child menu
-			if(val.child!=undefined){
-					setchildmenu(menu,val.child);
-			}else{
-					menu += "<li><a href='"+val.link+val.id+"'>"+val.title+"</a></li>";
-			}
+		var subchild = data.result.filter(function(item){ return item.parent==val.id; });
+		var link = val.link+val.id;
+		//console.log("count child = "+subchild.length+" of " + val.title + "["+val.id+"]");
+		if(subchild.length==0){
 
-		});
+			menu += "<li><a href='"+link+"'>"+val.title+"</a></li>";
+		}else{
 
-		menu += "</ul></li>";
-		return menu;
+			menu += "<li><label class='tree-toggle nav-header submenu'>"+val.title+"</label>";
+			menu += "<ul class='nav nav-list tree submenu'>";
+			//console.log(subchild);
+			menu += viewchildmenu(subchild,data,"");
+
+			menu +="</ul>";
+		}
+
+	});
+
+	
+	return menu;
 }
 
-function loadcategorylist() {
+function loadcategorylist(id) {
 
 	var endpoint = "services/product.php";
 	var method = "GET";
-	var args = {"_": new Date().getHours() ,"cate":"5","type":"list"};
+	var args = {"_": new Date().getHours() ,"cate":id,"type":"list"};
 	utility.service(endpoint,method,args,setviewlist);
 
-	var args = {"_": new Date().getHours() ,"id":"5","type":"info"};
+	var args = {"_": new Date().getHours() ,"id":id,"type":"info"};
 	utility.service(endpoint,method,args,setproductcover);
 
 }
+
+//function load
 
 function setproductcover(resp)
 {

@@ -1,22 +1,21 @@
 <?php
 session_start();
 date_default_timezone_set('America/Los_Angeles');
+include("../lib/common.php");
 include("../controller/ProductManager.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
-
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }else {
-	$lang = 'th';
 	$_SESSION["lang"] = $lang;
 }
 
+if(isset($_GET["type"])) $type = $_GET["type"];
+if(isset($_GET["cate"])) $cate = $_GET["cate"];
+if(isset($_GET["id"])) $id = $_GET["id"];
 
-$type = $_GET["type"];
-$cate = $_GET["cate"];
-$id =  $_GET["id"];//meaning is product
 switch($type)
 {
 	case "list" :
@@ -49,6 +48,7 @@ switch($type)
 		$result = setShowRoom($lang,$id);
 	break;
 	case "menu":
+		//echo "route to menu ";
 		$result = setMenu($lang);
 	break;
 	case "info":
@@ -66,6 +66,8 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));  //return
 function setProductList($lang,$cate) {
 	try
 	{
+		if($cate=="") $cate=5;
+
 		$product = new ProductManager();
 		$data = $product->getProductList($lang,$cate);
 
@@ -126,6 +128,7 @@ function setSeriesInfo($lang,$id) {
 	}
 
 }
+
 function setShowRoom($lang,$id) {
 	try
 	{
@@ -229,6 +232,7 @@ function setProductType($lang,$id)
 function setImages($id) {
 	$product = new ProductManager();
 	$data = $product->getImages($id);
+	$item = "";
 	if($data){
 		while($row= $data->fetch_object())
 		{
@@ -260,42 +264,29 @@ function setAttribute($lang,$id) {
 }
 
 function setMenu($lang){
+
 	$product = new ProductManager();
 	$data = $product->getMenu($lang);
-
 	if($data){
 
-		//step 1 ) fillter all parent
-		while($row =  $data->fetch_object()){
+		while($row = $data->fetch_object()){
 
-			$id = $row->id;
-			$parent = $row->parent;
-			$isparent = $row->isparent;
 			$menu =  array("id"=>$row->id
-			,"parent"=>$row->parent
-			,"title"=>$row->title
-		  ,"link"=>$row->link);
+						,"parent"=>$row->parent
+						,"title"=>$row->title
+		  				,"link"=>$row->link);
 
-			if($isparent>0) // set main parent
-			{
-					$item[$id] = $menu;
-			}
-			else { //set child of parent
-					$item[$parent]["child"][] = $menu;
-			}
+			$result[] = $menu;
 		}
 
-		//step 2 ) move sub parent to main parent
-		foreach($item as $key=>$val){
-			$subparent = $val["parent"];
-			if($subparent != 0){
-					$item[$subparent]["child"][] = $val;
-					unset($item[$val["id"]]);
-			}
-		}
-		//print_r($item);
 	}
-	return $item;
+
+	return $result;
+}
+	
+function setchildmenu($item,$data)
+{
+	//if($data)
 }
 
 //move array with key
@@ -304,5 +295,4 @@ function movearray($arrs,$from,$to){
 	array_splice($arrs,$to,0,$out);
 	return $arrs;
 }
-
 ?>
