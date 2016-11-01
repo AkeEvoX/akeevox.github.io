@@ -34,6 +34,7 @@ body
 
 #lang {
 	border-left:0px;
+	color:#b28b22;
 }
 
 #lang .caret{
@@ -89,7 +90,8 @@ margin-right:48px;
 .h150 { height:150px;}
 .h200 { height:200px;}
 
-.iconbar { padding-top:10px; }
+.iconbar { padding-top:10px; padding-right:5px; width:26px; }
+
 .rowspan { padding-bottom:10px;}
 .menulist,.topbar { padding-top:30px; }
 .mainmenu{ color:orange; }

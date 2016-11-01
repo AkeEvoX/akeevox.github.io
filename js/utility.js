@@ -4,8 +4,25 @@ $(document).ready(function(){
  var args = {'_':new Date().getMilliseconds()};
  utility.service(url,'GET',args
  ,function(resp){
-	 //console.log(resp);
-	 $('span[id="nav.lang"]').text(resp.result.lang);
+	 console.log(resp);
+	 
+	 //<span class="caret"></span>
+	 
+		 switch(resp.result.lang)
+		 {
+			 case 'th':
+			  $('#lang').html("Thai <span class='caret'></span>")
+			 break;
+			 case 'en':
+			 $('#lang').html("English <span class='caret'></span>")
+			 break;
+		 }
+	 //$('span[id="nav.lang"]').text(resp.result.lang);
+	 
+	 
+	 
+	 
+	 
  }
  ,null)
 

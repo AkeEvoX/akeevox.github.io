@@ -6,21 +6,27 @@
 	color:orange;
 }
 
-.title_buttom {
+.title_series {
 	position:absolute;
 	top:30px;
 	width:100%;
 	color:white;
 }
 
-.title_buttom span{
-	display:block;
+.title_series span{
+	/*display:block;
 	width:95%;
-	margin:20px;
+	margin:20px;*/
 	word-wrap:break-all;
 	white-space:normal;
 }
 
+.title_series_button{
+	padding:15px 30px;
+	border:3px solid #b28b22;
+	background-color:white;
+	color:#b28b22;
+}
 .middle_link {
 	position:absolute;
 	top:30px;
