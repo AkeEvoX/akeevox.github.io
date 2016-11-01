@@ -140,7 +140,7 @@ function bindpage(response)
 	{
 		$.each(response.result,function(i,val){
 			//console.log(val);
-			$("span[id='"+val.name+"']").text(val.title);
+			$("span[id='"+val.name+"']").html(val.title);
 		});
 	}
 	else { console.warn('attribute not found.'); }

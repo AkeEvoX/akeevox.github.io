@@ -8,17 +8,26 @@
 }
 
 .lightslider-desc{
-	margin:10px;
+	margin:0px;
+	padding:5px;
+	height:50px;
 	border-right:2px solid #995c00;
 	border-bottom:2px solid #995c00;
 	color:#b28b22;
 }
 
 .content-slider li{
-    background-color: white;
+    background-color: transparent;
     text-align: center;
     color: #995c00;
+	/*width:30%;*/
 }
+
+.content-slider img{
+	/*width:70%;*/
+	margin:auto;
+}
+
 .content-slider h3 {
     margin: 0;
     padding: 70px 0;

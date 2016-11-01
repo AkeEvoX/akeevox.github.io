@@ -1,0 +1,60 @@
+#viewbuttom {
+	
+}
+
+.title_top span{
+	color:orange;
+}
+
+.title_buttom {
+	position:absolute;
+	top:30px;
+	width:100%;
+	color:white;
+}
+
+.title_buttom span{
+	display:block;
+	width:95%;
+	margin:20px;
+	word-wrap:break-all;
+	white-space:normal;
+}
+
+.middle_link {
+	position:absolute;
+	top:30px;
+	width:100%;
+}
+
+.title_press {
+	position:absolute;
+	top:0px;
+	/*top:3px;*/
+	width:100%;
+}
+
+.title_press .item {
+	display:block;
+	margin:auto;
+	align:center;
+	position:relative;
+	/*left:15%;*/
+}
+
+
+/*
+.title_press .item li {
+	width:100px;
+}
+*/
+.lSSlideWrapper {
+	left:0%;
+	margin:auto;
+	width:50%;
+	/*width:200px;*/
+}
+
+.middle_link img{
+	padding-top:30px;
+}

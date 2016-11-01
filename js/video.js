@@ -2,8 +2,21 @@
 function loadList()
 {
 	var service = 'services/video.php' ;
-	var data = {"_": new Date().getMilliseconds()}
-	CallService(service,data,setview);
+	var method='GET';
+	var args = {"_": new Date().getMilliseconds()}
+	//CallService(service,args,setview);
+	utility.service(service,method,args,setview,settinglightSlider)
+	
+}
+
+function loadvideomain(){
+	
+	var service = 'services/video.php' ;
+	var method='GET';
+	var args = {"_": new Date().getMilliseconds()}
+	//CallService(service,args,setview);
+	utility.service(service,method,args,setview,indexlightSlider)
+	
 }
 
 function CallService(service,param,callback)
@@ -30,7 +43,7 @@ function setview(data)
 		
 		var itemview = "";
 		itemview += "<li data-link='"+val.link+"' >";
-		itemview += "<img src='"+val.thumbnail+"' class='img-responsive' />";
+		itemview += "<img src='"+val.thumbnail+"' class='img-responsive' />";//responsive
 		itemview += "<div class='lightslider-desc' >";
 		itemview += "<label>"+val.title+"</label>";
 		itemview += "</div>";
@@ -39,13 +52,7 @@ function setview(data)
 		$('#list').append(itemview);
 	});
 
-	$("#list").lightSlider({
-		autoWidth: false
-		,adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	 });
-	 
+
 	 
 	$('#list').find('li').click(function(){
 
@@ -57,6 +64,30 @@ function setview(data)
 		$('#mediaplayer').attr('src',link);
 	}	
 });
+}
+
+function settinglightSlider(){
+	
+		$("#list").lightSlider({
+		autoWidth: false
+		,adaptiveHeight:false
+	    ,loop:true
+	    ,keyPress:false
+		,item:3
+	 });
+	 /*http://sachinchoolur.github.io/lightslider/settings.html*/
+}
+
+function indexlightSlider(){
+		$("#list").lightSlider({
+		autoWidth: false
+		,adaptiveHeight:true
+	    ,loop:true
+	    ,keyPress:false
+		,item:2
+		,slideMargin:4
+		,slideWidth:200
+	 });
 }
 
 function setdefaultview(item){
