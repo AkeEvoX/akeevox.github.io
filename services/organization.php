@@ -2,6 +2,7 @@
 session_start();
 date_default_timezone_set('America/Los_Angeles');
 require_once("../controller/OrgManager.php");
+require_once("../lib/common.php");
 require_once("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 

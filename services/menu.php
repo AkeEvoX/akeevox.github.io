@@ -2,16 +2,12 @@
 session_start();
 date_default_timezone_set('America/Los_Angeles');
 include("../controller/MenuManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
 
 if(isset($_SESSION["lang"])) {
-	$lang = $_SESSION["lang"];
-}
-else {
-
-	$_SESSION["lang"] = "en";
 	$lang = $_SESSION["lang"];
 }
 

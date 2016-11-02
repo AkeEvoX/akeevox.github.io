@@ -11,9 +11,16 @@ body
 /**********object nav bar*******/
 
 .logobar {
-	position:absolute;
+	/*position:absolute;
 	top:5px;
 	left:130px;
+	width:70px;
+	box-shadow:2px 2px 2px #ccc;
+	*/
+	position:relative;
+	top:0px;
+	margin-top:10px;
+	/*left:130px;*/
 	width:70px;
 	box-shadow:2px 2px 2px #ccc;
 }
@@ -90,7 +97,7 @@ margin-right:48px;
 .h150 { height:150px;}
 .h200 { height:200px;}
 
-.iconbar { padding-top:10px; padding-right:5px; width:26px; }
+.iconbar { margin-top:-10px; padding-right:15px; width:34px; }
 
 .rowspan { padding-bottom:10px;}
 .menulist,.topbar { padding-top:30px; }
@@ -128,9 +135,10 @@ label {
 
 /*pc default : 1200*/
 @media(min-width:900px) {
+	
 	#searchbar { background-color:transparent; }
 	/*override class*/
-	#navbar ul.nav.navbar-nav { padding-left:110px; } /*adjust menu*/
+	#navbar ul.nav.navbar-nav { padding-left:0px; } /*adjust menu*/
 	.navbar { height:60px; }
 	#navbar {padding-top:0px;}
 
@@ -142,7 +150,8 @@ label {
 	#searchbar { display:none;  }
 	.navbar-header { padding-left:5px; }
 	/*override class*/
-	#navbar ul.nav.navbar-nav { padding-left:110px; } /*adjust menu*/
+	.logobar { width:70px; }
+	 #navbar ul.nav.navbar-nav { font-size:10px;}  /*adjust menu*/
 }
 /* mobile */
 @media(max-width:600px) {

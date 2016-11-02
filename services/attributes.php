@@ -4,6 +4,7 @@ date_default_timezone_set('America/Los_Angeles');
 include("../controller/AttributeManager.php");
 include("../controller/MenuManager.php");
 include("../controller/ContactManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
 header("Content-Type: application/json;  charset=UTF8");
 
@@ -12,7 +13,7 @@ if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
 else {
-	$lang = "th";
+	/*$lang = "en";*/
 	$_SESSION["lang"] = $lang;
 }
 
@@ -38,7 +39,7 @@ switch($type)
 
 		$menu = new MenuManager();
 		$menuresult = $menu->getparentmenu($lang);
-
+		$result["menu.sitemap"]["item"] = "";
 		while($row = $menuresult->fetch_object())
 		{
 			//menu.sitemap
@@ -49,7 +50,10 @@ switch($type)
 
 		$contact = new ContactManager();
 		$contactresult = $contact->getContact($lang);
-
+		$result["menu.address"]["item"] = "";
+		$result["menu.email"]["item"] = "";
+		$result["menu.phone"]["item"] = "";
+		$result["menu.social"]["item"] = "";
 		while($row = $contactresult->fetch_object())
 		{
 			switch ($row->typename)

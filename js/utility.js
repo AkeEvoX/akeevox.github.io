@@ -18,11 +18,7 @@ $(document).ready(function(){
 			 break;
 		 }
 	 //$('span[id="nav.lang"]').text(resp.result.lang);
-	 
-	 
-	 
-	 
-	 
+
  }
  ,null)
 
