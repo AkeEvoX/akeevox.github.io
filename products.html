@@ -11,6 +11,7 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/icon.css" rel="stylesheet" type="text/css" />
 	<link href="css/category.css" rel="stylesheet" type="text/css" />
+	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
 	<link href='https://fonts.googleapis.com/css?family=Lato:400,300,700,900' rel='stylesheet' type='text/css'>
 	<link href="plugin/css/hover-effects.css" rel="stylesheet" type="text/css" />
 </head>
@@ -75,7 +76,7 @@
 				<div class='container-fluid'>
 					<ul id='viewproduct' class='product-list' class='hover'>
 						<li class='col-md-6 col-sm-6 col-xs-12'>
-							<img id='logo-category' data-src="holder.js/400x400" class='img-responsive'  alt="">
+							<img id='logo-category' class='img-responsive' alt="">
 						</li>
 					</ul>
 				</div>
@@ -126,7 +127,7 @@ $(document).ready(function(){
 	utility.loadbuttommenu();
 	utility.setpage('product');
 	product.listmenu();
-	loadcategorylist();
+	loadcategorylist(5);
 });
 </script>
 </body>

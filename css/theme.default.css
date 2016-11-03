@@ -97,13 +97,7 @@ margin-right:48px;
 .h150 { height:150px;}
 .h200 { height:200px;}
 
-.iconbar { margin-top:-10px; padding-right:15px; width:34px; }
-
 .rowspan { padding-bottom:10px;}
-.menulist,.topbar { padding-top:30px; }
-.mainmenu{ color:orange; }
-.submenu { color:red; padding-left:15px;}
-.submenu ul { padding-left:15px; }
 
 /*override media */
 .media-center img { display:block; margin:0 auto;}

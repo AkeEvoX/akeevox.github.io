@@ -5,9 +5,15 @@ product.listmenu = function(){
 	var args = {'_':new Date().getHours(),'type':'menu'}
 	utility.service('services/product.php','GET',args,viewmenu,function(){
 		/*set slide dropdown*/
+		
+		/*hide menu*/
+		$('.tree-toggle').parent().children('ul.submenu').toggle(200);
+
+		/*explain submenu*/
 		$('.tree-toggle').click(function () {
 			$(this).parent().children('ul.tree').toggle(200);
 		});
+		
 	});
 }
 
@@ -33,8 +39,7 @@ function viewmenu(data){
 
 	});
 
-	console.warn(menu);
-
+	//console.warn(menu);
 	list.append(menu);
 	
 
