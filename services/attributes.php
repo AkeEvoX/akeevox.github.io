@@ -12,10 +12,6 @@ header("Content-Type: application/json;  charset=UTF8");
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
-else {
-	/*$lang = "en";*/
-	$_SESSION["lang"] = $lang;
-}
 
 $attrMgr = new AttributeManager();
 $result = null;

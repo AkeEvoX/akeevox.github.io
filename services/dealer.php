@@ -12,7 +12,7 @@ $dealer = new DealerManager();
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }else{
-	 $_SESSION["lang"] = $lang;
+	/* $_SESSION["lang"] = $lang;*/
 }
 
 $req_id = $_GET["id"];

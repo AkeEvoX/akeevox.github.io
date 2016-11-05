@@ -5,9 +5,7 @@ $(document).ready(function(){
  utility.service(url,'GET',args
  ,function(resp){
 	 console.log(resp);
-	 
-	 //<span class="caret"></span>
-	 
+
 		 switch(resp.result.lang)
 		 {
 			 case 'th':
@@ -17,7 +15,6 @@ $(document).ready(function(){
 			 $('#lang').html("English <span class='caret'></span>")
 			 break;
 		 }
-	 //$('span[id="nav.lang"]').text(resp.result.lang);
 
  }
  ,null)
@@ -29,12 +26,6 @@ $(document).ready(function(){
 
 });
 
-/*dropdown menu*/
-/*
-$('.tree-toggle').click(function () {
-	$(this).parent().children('ul.tree').toggle(200);
-});
-*/
 var utility = function(){};
 
 utility.service = function(url,method,args,success_callback,complete_callback){

@@ -26,6 +26,8 @@
 
 }
 
+
+
 .share-popup {
 	float:right;
 	position: relative;
@@ -71,7 +73,7 @@
 
 .lightslider-title{
     color:white;
-    background-color:#995c00;
+    background-color:#a2644b; /*995c00*/
     height:50px;
 }
 
@@ -98,3 +100,58 @@
     margin: 0;
     padding: 70px 0;
 }
+
+.productdesc {
+	background-color:#CAC7AB  ; 
+}
+
+.productdesc .control-label{
+	color:white;
+}
+
+.productdesc p {
+	color:#76764 ;
+}
+
+h4 span{
+		color:#a58b5d;
+		font-weight:bold;
+}
+
+.sharezone {
+	padding:0px;
+	list-style-type:none;
+	border:0px solid;
+	width:100%;
+	float:right;
+}
+
+.sharezone li {
+	border:0px solid;
+}
+
+.downloadlist {
+	padding:0px;
+	list-style-type:none;
+}
+
+.downloadlist li {
+	display:inline;
+}
+
+.sociallist {
+	padding:0px;
+	list-style-type:none;
+	
+}
+
+.sociallist li {
+	float:right;
+	display:inline-block;
+	padding-right:5px;
+	border:0px solid #000;
+	padding-top:18px;
+	color:white;
+}
+
+
