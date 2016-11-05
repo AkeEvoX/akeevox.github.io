@@ -3,7 +3,15 @@
 }
 
 .title_top span{
-	color:orange;
+	/*color:orange;*/
+}
+
+.title_top .top {
+	color:#bf8b0c;
+}
+
+.title_top .detail{
+	color:#a86915;
 }
 
 .title_series {

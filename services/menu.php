@@ -10,6 +10,10 @@ header("Content-Type: application/json;  charset=UTF8");
 if(isset($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
+else {
+	$lang = "en";
+	$_SESSION["lang"] = $lang;
+}
 
 $menu = new MenuManager();
 
