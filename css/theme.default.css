@@ -89,6 +89,16 @@ margin-right:48px;
 
 
 /**********object nav bar*******/
+
+h4 span{
+		color:#a58b5d;
+		font-weight:bold;
+}
+
+.startext span,ul{
+	color:#a58b5d;
+}
+
 /*buttom menu*/
 #buttommenu { background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;margin-top:50px; }
 

@@ -1,12 +1,12 @@
 $(document).ready(function(){
+	
+	utility.initial();
 
- var url = 'services/lang.php';
- var args = {'_':new Date().getMilliseconds()};
- utility.service(url,'GET',args
- ,function(resp){
-	 console.log(resp);
+});
 
-		 switch(resp.result.lang)
+function viewlang(resp)
+{
+		switch(resp.result.lang)
 		 {
 			 case 'th':
 			  $('#lang').html("Thai <span class='caret'></span>")
@@ -15,18 +15,37 @@ $(document).ready(function(){
 			 $('#lang').html("English <span class='caret'></span>")
 			 break;
 		 }
+}
 
- }
- ,null)
-
+function setfinddealer(){
   $('#find_dealer').click(function(){
     var name = $('#find_text').val();
      window.location.href = "dealer.html?name="+name+"&_=" + new Date().getMilliseconds();
   });
-
-});
+}
 
 var utility = function(){};
+
+utility.initial = function(){
+	
+	
+	$('#view-navbar').load('navbar.html',{'_':new Date().getHours()},function(){
+
+		setfinddealer();
+		utility.loadmenu();
+		var url = 'services/lang.php';
+		var args = {'_':new Date().getMilliseconds()};
+		utility.service(url,'GET',args ,viewlang ,null);
+		
+	});
+
+	$('#view-footer').load('navfooter.html',{'_':new Date().getHours()},function(){
+		utility.loadbuttommenu();
+	});
+	
+	
+	
+}
 
 utility.service = function(url,method,args,success_callback,complete_callback){
 
@@ -71,11 +90,6 @@ utility.loadbuttommenu = function(){
 	var args = {'_':new Date().getHours(),'type':'menu'};
   this.service(endpoint,'get',args ,genbutton ,null);
 }
-/*
-,function(response){ //success
-	genbutton(response);
-}
-*/
 
 utility.querystr = function(name,url){
 
@@ -89,9 +103,11 @@ utility.querystr = function(name,url){
 }
 
 utility.setpage = function(page){
+	
   var endpoint = "services/attributes.php";
   var args = {'_':new Date().getHours(),'type':page};
   utility.service(endpoint,'GET',args, bindpage,null);
+  
 }
 
 utility.modalpage = function(title,url,event){
@@ -149,7 +165,7 @@ function bindpage(response)
 	}
 	else { console.warn('attribute not found.'); }
 }
-
+/*
 function getParameterByName(name, url) {
 
     if (!url) url = window.location.href;
@@ -161,27 +177,8 @@ function getParameterByName(name, url) {
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 
 }
-
-//-----------------load globle menu-----------------
-/*
-function loadmenu(){
-
-	$.ajax({
-
-		url:'services/menu.php?_=' + new Date().getMilliseconds(),
-		type:'GET',
-		dataType:'json',
-		success:function(data){
-			getmenubar(data);
-		},
-		error:function(xhr,status,err){
-			alert("generate menu error :"+xhr.responseText);
-		}
-
-	});
-
-}
 */
+//-----------------load globle menu-----------------
 
 function loadchildmenu(id){
 	var menu = $('#'+id);
@@ -256,24 +253,6 @@ function getchildmenu(id,data){
 	item += "</ul>";
 	menu.append(item);
 }
-/*
-function loadbuttommenu(){
-	$.ajax({
-		url:"services/attributes.php",
-		data:{"type":"menu"} ,
-		dataType:'json',
-		type:'GET',
-		success:function(data){
-			genbutton(data);
-		},
-		error:function(xhr,status,err){
-			console.log(xhr.responseText);
-			alert("load button menu error : " + xhr.responseText);
-		}
-
-	});
-
-}*/
 
 function genbutton(data){
 	$.each(data.result,function(idx,val){

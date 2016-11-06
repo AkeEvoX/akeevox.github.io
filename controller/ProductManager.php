@@ -121,7 +121,7 @@ class ProductManager{
 
 			$sql = " select p.id,p.".$lang." as title,a.".$lang." as label from product_attribute p ";
 			$sql .= " left join attribute_master a on a.name=p.attribute ";
-			$sql .= " where p.proid='".$id."' ";
+			$sql .= " where p.proid='".$id."' order by attribute ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;

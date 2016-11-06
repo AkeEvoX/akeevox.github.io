@@ -41,7 +41,7 @@ class PressManager{
 
 	function getListItem($lang)
 	{
-			try{
+		try{
 			
 			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail,coverpage,update_date ";
 			$sql .= "from press where active=1 order by create_date desc ";
@@ -53,6 +53,21 @@ class PressManager{
 			echo "Cannot Get List Press : ".$e->getMessage();
 		}
 	}
+	
+	function getSlideItem($lang){
+		try{
+			
+			$sql = "select id,title_".$lang." as title,thumbnail,update_date ";
+			$sql .= "from press where active=1 order by create_date desc limit 5 ";
+
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Slide Press : ".$e->getMessage();
+		}	
+	}
+	
 	
 }
 

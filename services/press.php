@@ -13,18 +13,17 @@ $press = new PressManager();
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
-else
-{
-	$lang = "th";
-	$_SESSION["lang"] = $lang;
-}
 
 $req_id = $_GET["id"];
+$type=$_GET["type"];
 $item = "";
 
 if(!isset($req_id) && empty($req_id))  //no request id
 {
 	$item = $press->getListItem($lang);
+}
+else if($type=="slide"){
+	$item = $press->getSlideItem($lang);
 }
 else
 {

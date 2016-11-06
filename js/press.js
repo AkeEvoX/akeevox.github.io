@@ -1,8 +1,8 @@
 function loadList()
 {
-	var service = 'services/press.php' ;
+	var endpoint = 'services/press.php' ;
 	var data = {"_": new Date().getMilliseconds()}
-	CallService(service,data,setview);
+	CallService(endpoint,data,setview);
 }
 
 function LoadItem(id)
@@ -10,6 +10,12 @@ function LoadItem(id)
 	var service = 'services/press.php' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
 	CallService(service,data,setviewdetail);
+}
+
+function loadslidepress()
+{
+	
+	
 }
 
 function CallService(service,param,callback)

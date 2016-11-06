@@ -65,6 +65,7 @@ function setviewlist(data)
 		item += "<div class='row'>";
 		item += "<label for='code' class='col-md-3 control-label'>"+val.title+"</label>";
 		item += "<div class='col-md-9'><div class='controls'><p class='form-control-static'> "+val.detail+"</p></div></div>";
+		item += "</div><hr/><div class='row'>";
 		item += "<div class='col-md-3' ><img src='"+val.thumb+"' class='img-responsive' /></div>";
 		item += "<div class='col-md-9' ><img src='"+val.plan+"' class='img-responsive' /></div>";
 		item += "</div>";

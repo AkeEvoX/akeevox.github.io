@@ -6,4 +6,9 @@ error_reporting(E_ERROR);
 
 //$lang="en";
 
+if(!isset($_SESSION["lang"]) or empty($_SESSION["lang"])){
+	$_SESSION["lang"] = "en";
+	$lang = $_SESSION["lang"];
+} 
+
 ?>

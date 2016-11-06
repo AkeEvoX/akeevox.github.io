@@ -21,7 +21,6 @@ switch($type)
 {
 	case "menu":
 
-
 		$itemattr = $attrMgr->getmenu($lang);
 		/*load attribute*/
 		while($row = $itemattr->fetch_object())
@@ -64,7 +63,7 @@ switch($type)
 					$result["menu.phone"]["item"] .= $row->title ."<br/>";
 				break;
 				case "social" :
-					$result["menu.social"]["item"] .= "<a href='".$row->link."'><img src='".$row->icon."' /></a>";
+					$result["menu.social"]["item"] .= "<a href='".$row->link."'><img src='".$row->icon."' style='padding-right:5px;'/></a>";
 				break;
 			}
 		}

@@ -1,11 +1,3 @@
-$(document).ready(function(){
-	utility.setpage('inter');
-	utility.loadmenu();
-	utility.loadbuttommenu();
-	loadview();
-});
-
-
 function loadview()
 {
 

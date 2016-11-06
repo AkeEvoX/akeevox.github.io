@@ -12,46 +12,7 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-	<nav class="navbar navbar-default navbar-fixed-top" >
-	        <div class="container">
-			<div class="navbar-header">
-	            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-	              <span class="sr-only">Toggle navigation</span>
-	              <span class="icon-bar"></span>
-	              <span class="icon-bar"></span>
-	              <span class="icon-bar"></span>
-	            </button>
-	            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-	            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-	            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-				<a class='navbar-band' href="index.html" ><img src='images/logos/logo.png' class='logobar' ></a>
-	          </div>
-	          <div id="navbar" class="navbar-collapse collapse">
-				<ul id='menubar' class="nav navbar-nav"></ul>
-			    <form class="navbar-form navbar-right" id='searchbar' role="search">
-					<span id='iconsearch' ></span>
-					<ul style='list-style:none;'>
-						<li>
-							<div class='input-group'>
-								<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
-								<div class='input-group-btn '>
-									<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
-									<ul  class='dropdown-menu dropdown-menu-right' >
-										<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-										<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
-									</ul>
-								</div>
-							</div>
-						</li>
-						<li>
-							<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
-						</li>
-					</ul>
-				</form>
-	          </div><!--/.nav-collapse -->
-	        </div><!--/.container-fluid -->
-					<div id='linegradient'></div>
-	      </nav>
+<div id='view-navbar'></div><!--navigator-->
 <div class='container'>
 	<div class='row'>
 				<div class='col-md-12'>
@@ -72,40 +33,8 @@
 		</div>
 	</div>
 </div> <!--end container fluid-->
-
-	<!--buttom menu-->
-<div class='container-fluid' id='buttommenu' >
-	<p>
-		<div class='container' >
-		 	<div class='col-md-4'>
-				<div id='menu.sitemap' class='rowspan' >
-					<label ></label>
-					<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.address' class='rowspan' >
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.email' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.social' class='rowspan'>
-				<label ></label>
-		 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.phone' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		</div>
-	</p>
-</div><!--bottom menu-->
+<div id='view-footer'></div><!--nav footer-->
+	
 <!--show modal-->
 <!-- Modal -->
 <div class="modal fade" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
@@ -142,9 +71,7 @@ var defaults = {
 	callback: function() {} // fires when layouting grid is done
 };
 
-  $(window).load(function() {
-	utility.loadmenu();
-	utility.loadbuttommenu();
+  $(document).ready(function() {
 	utility.setpage('gallery');
 	loadList();
   });

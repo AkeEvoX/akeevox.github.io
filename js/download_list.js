@@ -1,46 +1,34 @@
-function loaditems(){
+function loaditems(id){
 
-var id = getParameterByName('id');
-var service = 'services/download.php?id='+ id ;
+	var endpoint = 'services/download.php';
+	var method ='GET';
+	var args = {'_':new Date().getHours(),'id':id};
 
-	$.ajax({
-		url:service,
-		type:'GET',
-		dataType:'json',
-		success:function(data){
-
-			$('#list').html("");
-			$.each(data.result,function(i,val){
-				setview(val);
-			});
-
-		},
-		error:function(xhr,status,err){
-			alert(err.message);
-		}
-	});
+	utility.service(endpoint,method,args,setview);
 
 }
 
 function setview(data)
 {
-	var row = "<label>"+data.name+"</label>" ;
-	row += "<div class='row' >";
-	var itemview = "";
-	$.each(data.item,function(i,val){
+	$('#list').html("");
+	$.each(data.result,function(i,val){
+		
+		$("span[id='download.submenu']").html(val.name);
+		var row = "<h4><span class='glyphicon glyphicon-stop'><span>&nbsp;"+val.name+"</span></h4>" ;
+		row += "<div class='row' >";
+		var itemview = "";
+		$.each(val.item,function(childid,childval){
+			itemview += "<div class='col-md-4'>" ;
+			itemview += "<div class='view second-effect'>";
+			itemview += "<img src='"+childval.thumbnail+"' style='height:240px;'>"; //#image
+			itemview += "<div class='thumbnail-desc'><label>"+childval.title+"</label></div>";
+			itemview += "<div class='mask'><a href='"+childval.link+"' class='info' title='click download'></a></div>";//#hover effect
+			itemview += "</div>";
+			itemview += "</div>" ;
+		});
 
-//console.log("child="+val.title);
-		itemview += "<div class='col-md-4'>" ;
-		itemview += "<div class='view second-effect'>";
-		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image
-		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
-		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
-		itemview += "</div>";
-		itemview += "</div>" ;
+		row += itemview +"</div>";
+		$('#list').append(row);
 	});
 
-	row += itemview ;
-	row += "</div>";
-	//console.log(row);
-	$('#list').append(row);
 }

@@ -12,60 +12,22 @@
 
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
-        <div class="container">
-			<div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="index.html" ><img src='images/logos/logo.png' class='logobar' ></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-		  <ul id='menubar' class="nav navbar-nav"></ul>
-		       <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span id='iconsearch' ></span>
-				<ul style='list-style:none;'>
-					<li>
-						<div class='input-group'>
-							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
-							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' >&nbsp;<span class='caret'></span></button>
-								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
-					</li>
-				</ul>
-			</form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-				<div id='linegradient'></div>
-      </nav>
-
+<div id='view-navbar'></div><!--navigator-->
 <div class='container'>
 	<div class='row'>
-				<div class='col-md-12'>
-					<ol class="breadcrumb">
-					  <li><a href="index"><span id='nav.home'></span></a></li>
-					  <li class="active"><span id='contact.title'></span></li>
-					</ol>
-				</div>
-			</div>
+		<div class='col-md-12'>
+			<ol class="breadcrumb">
+			  <li><a href="index"><span id='nav.home'></span></a></li>
+			  <li class="active"><span id='contact.title'></span></li>
+			</ol>
+		</div>
+	</div>
+	<div class='well well-sm' >
+	<h4 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='contact.title'></span></h4>
+	</div>
 	<div class='row'>
 		<div class='col-md-4'>
-				<div class='media'>
+				<div class='media startext'>
 					<div class='media-body'>
 						<h4 class='media-heading'><span id='contact.address'></span></h4>
 							<ul id='address'></ul>
@@ -88,8 +50,45 @@
 				<hr/>
 		</div>
 		<div class='col-md-8'>
-			<div class='container'>
-				<h3><span id='contact.feedback'></span></h3>
+		<div class='container'>
+			<h4><span id='contact.feedback'></span></h4>
+				<div class='row col-md-8'>
+					<form role='form' id='frmRegister' name='frmRegister' method='post' class="form-horizontal">
+							<div class="form-group">
+								<label for="name" class="col-sm-2 control-label"><span id='contact.name'></span></label>
+								<div class="col-sm-10">
+								  <input type="text" class="form-control" id="name" placeholder="fullname">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label for="email" class="col-sm-2 control-label" id="email-addon"><span id='contact.email'></span></label>
+								<div class="col-sm-10">
+								  <input type="email" class="form-control" id="email" placeholder="customer@email.com" aria-describedby="email-addon">
+								</div>
+							  </div>
+							  <div class="form-group">
+								<label for="phone" class="col-sm-2 control-label" id="phone-addon"><span id='contact.phone'></span></label>
+								<div class="col-sm-10">
+								  <input type="text" class="form-control" id="phone" placeholder="66+(0) xxx-xxxx" aria-describedby="phone-addon">
+								</div>
+							  </div>
+							  <div class="form-group text-left">
+								<label for="desc" class="col-sm-2 control-label" id="phone-addon"><span id='contact.desc'></span></label>
+								<div class="col-sm-10">
+								  <textarea class="form-control" rows="5" id='desc'></textarea>
+								</div>
+							  </div>
+							   <div class="form-group">
+							<div class="col-sm-offset-2 col-sm-10">
+							  <button type="submit" class="btn btn-warning"><span id='contact.send' ></span></button>
+							</div>
+						  </div>
+					</form>		
+				</div>
+			</div>
+		
+			<!--<div class='container'>
+				
 				<div class='row col-md-8'>
 				<form role='form' id='frmRegister' name='frmRegister' method='post'>
 					<div class="input-group">
@@ -111,59 +110,27 @@
 					<button type='submit' class='btn btn-warning' ><span id='contact.send' ></span></button>
 				</form>
 				</div>
-			</div>
+			</div>-->
 		</div>
 		<div class='row'>
-			<div class='col-md-12'>
-				 <img id='map' src='' class='img-responsive' />
+			<div class='col-md-12' >
+				 <img id='map' src='' class='img-responsive' style='display:block; margin:0 auto;'/>
 			</div>
 		</div>
 	</div>
 </div> <!--end container fluid-->
-<div class='container-fluid' id='buttommenu' >
-	<p>
-		<div class='container' >
-		 	<div class='col-md-4'>
-				<div id='menu.sitemap' class='rowspan' >
-					<label ></label>
-					<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.address' class='rowspan' >
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.email' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.social' class='rowspan'>
-				<label ></label>
-		 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.phone' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		</div>
-	</p>
-</div>
-<br />
-
+<div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/contact.js' ></script>
 <script>
-utility.loadmenu();
-utility.loadbuttommenu();
-utility.setpage('contact');
-loadcontact();
+$(document).ready(function(){
+	utility.setpage('contact');
+	loadcontact();
+});
+
 </script>
 
 </body>

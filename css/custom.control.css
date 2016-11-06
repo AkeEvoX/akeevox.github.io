@@ -12,3 +12,14 @@ textarea{
     min-width:200px;// if you want width please write here //
     text-align:left;
 }
+
+.form-horizontal .control-label{
+/* text-align:right; */
+	color:#a58b5d;
+	text-align:left;
+}
+
+.form-horizontal input, .form-horizontal textarea {
+	background-color:#fff2cc;
+	border:1px solid #a58b5d;
+}
