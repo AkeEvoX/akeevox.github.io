@@ -77,7 +77,8 @@
 
 .lightslider-desc{
 	float:left;
-
+	border-right:0px;
+	border-bottom:0px;
 }
 .lightslider-desc li {
 
@@ -87,6 +88,7 @@
 	list-style: none;
 	min-width:100%;
 	*/
+	
 }
 
 .content-slider li{
@@ -147,4 +149,14 @@
 	color:white;
 }
 
+/*product gallery*/
+
+.ug-gallery-wrapper .ug-grid-panel {
+	background-color:#ffffff;
+}
+
+.ug-slider-wrapper .ug-item-wrapper {
+	background-color:#ffffff;
+	/*f2f2f2*/
+}
 

@@ -53,7 +53,7 @@ function setview(data)
 	});
 
 
-	 
+	 /* script pop to media player */
 	$('#list').find('li').click(function(){
 
 	var link = $(this).attr('data-link');
@@ -78,7 +78,7 @@ function settinglightSlider(){
 	 /*http://sachinchoolur.github.io/lightslider/settings.html*/
 }
 
-function indexlightSlider(){
+function indexlightSlider() {
 		$("#list").lightSlider({
 		autoWidth: false
 		,adaptiveHeight:true

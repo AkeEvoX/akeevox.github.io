@@ -52,7 +52,7 @@
 	display:block;
 	margin:auto;
 	align:center;
-	position:relative;
+	/*position:relative;*/
 	/*left:15%;*/
 }
 
@@ -64,10 +64,21 @@
 */
 .lSSlideWrapper {
 	left:0%;
+	padding:0px;
 	margin:auto;
 	width:50%;
 	/*width:200px;*/
 }
+
+.lSAction > .lSNext{
+	right:20%;
+}
+
+.lSAction > .lSPrev  {
+	left:20%;
+}
+
+
 
 .middle_link img{
 	padding-top:30px;

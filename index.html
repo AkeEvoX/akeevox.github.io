@@ -9,9 +9,9 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-	<link href="css/index.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/lightslider/lightslider.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/lightslider/lightslider-content.css" rel="stylesheet" type="text/css" />
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id='view-navbar'>
@@ -73,11 +73,14 @@
 			</div>
 			<div class='title_press text-center'>
 				<h3><span id='index.press.title'></span></h3>
+				<div class='col-md-12'>
 				<div class="lightslider-main">
 					<div class="item" >
-						<ul id="list" class="content-slider" ></ul>
+						<ul id="itemslide" class="content-slider" >
+						</ul>
 					</div>
 				</div><!--end lightslider-->
+				</div>
 			</div>
 		</div>
 	</div>
@@ -89,12 +92,17 @@
 <script src='plugin/jquery/lightslider/lightslider.js' ></script>
 <script src='js/utility.js'></script>
 <script src='js/index.js'></script>
-<script src='js/video.js' ></script>
 	<script>
 		$(document).ready(function(){
 			utility.setpage('index');
 			showcover();
-			loadvideomain();
+			//loadvideomain();
+			
+			$.getScript("js/press.js",function(){
+				loadslidepress();
+			});
+			
+			
 		});
 	
 	</script>

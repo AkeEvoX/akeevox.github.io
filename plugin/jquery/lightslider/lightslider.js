@@ -185,7 +185,11 @@
             },
             controls: function () {
                 if (settings.controls) {
-                    $el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
+						
+					//# original
+                    //$el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
+					//#custom
+					$('.lSSlideOuter').append('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
                     if (!settings.autoWidth) {
                         if (length <= settings.item) {
                             $slide.find('.lSAction').hide();
@@ -195,19 +199,42 @@
                             $slide.find('.lSAction').hide();
                         }
                     }
+					/*custom*/
+					$('.lSSlideOuter').find('.lSAction a').on('click',function(e){
+
+						  if (e.preventDefault) {
+                            e.preventDefault();
+                        } else {
+                            e.returnValue = false;
+                        }
+						
+						if ($(this).attr('class') === 'lSPrev') {
+							$el.goToPrevSlide();
+						}
+						else{
+							$el.goToNextSlide();
+						}
+						
+					});
+					/*original*/
+					
                     $slide.find('.lSAction a').on('click', function (e) {
                         if (e.preventDefault) {
                             e.preventDefault();
                         } else {
                             e.returnValue = false;
                         }
-                        if ($(this).attr('class') === 'lSPrev') {
-                            $el.goToPrevSlide();
-                        } else {
-                            $el.goToNextSlide();
-                        }
+						
+					
+						if ($(this).attr('class') === 'lSPrev') {
+							$el.goToPrevSlide();
+						}
+						else{
+							$el.goToNextSlide();
+						}
                         return false;
                     });
+					
                 }
             },
             initialStyle: function () {

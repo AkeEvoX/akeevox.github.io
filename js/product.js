@@ -153,7 +153,7 @@ function loadproductreleated(id) {
 			//initial slider
 
 			$("#product-slider").lightSlider({
-				autoWidth: true
+				autoWidth: false
 				,item:4
 				,adaptiveHeight:true
 				,loop:true
@@ -185,12 +185,15 @@ function loadproduct(id) {
 
 
 			$("#productgallery").unitegallery({
+				
 				theme_panel_position: "left"
 				,slider_scale_mode: "fit"
-				,thumb_fixed_size:true
-				,thumb_width:100								//thumb width
-				,thumb_height:60
+				,thumb_fixed_size:false
+				,thumb_width:100
+				,thumb_height:80
 				,thumb_loader_type:"light"
+				,grid_num_cols:1
+				,gridpanel_grid_align: "top"
 			});
 
 		}
@@ -262,11 +265,11 @@ function setViewReleated(data){
 			item += "<img src='"+val.thumb+"' class='img-responsive' >";
 			item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
 			item += "<ul class='lightslider-desc'>";
-			item += "<li>&nbsp;</li>";
-			item += "<li>&nbsp;</li>";
-			item += "<li>&nbsp;</li>";
-			item += "<li>&nbsp;</li>";
-			item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
 			item += "</ul>";
 			item += "</a></li>";
 
@@ -287,7 +290,7 @@ function setViewAttribute(data)
 			item += "<label class='col-xs-6 control-label' >"+val.label+"</label>";
 			item += "<div class='col-xs-6'><p lass='form-control'>"+val.title+"</p></div>";
 			item += "</div>"
-			console.warn(item);
+			//console.warn(item);
 			view.append(item);
 
 		});

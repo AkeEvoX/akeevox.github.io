@@ -1,20 +1,26 @@
 function loadList()
 {
 	var endpoint = 'services/press.php' ;
-	var data = {"_": new Date().getMilliseconds()}
-	CallService(endpoint,data,setview);
+	var method = 'get';
+	var args = {"_": new Date().getMilliseconds()};
+	utility.service(endpoint,method,args,setview);
 }
 
 function LoadItem(id)
 {
-	var service = 'services/press.php' ;
-	var data = {"_": new Date().getMilliseconds(),"id":id}
-	CallService(service,data,setviewdetail);
+	var endpoint = 'services/press.php' ;
+	var method = 'get';
+	var args = {"_": new Date().getMilliseconds(),"id":id};
+	utility.service(endpoint,method,args,setviewdetail);
 }
 
 function loadslidepress()
 {
+	var endpoint  = "services/press.php";
+	var method = "get";
+	var args = {'_':new Date().getHours(),'type':'slide'} ;
 	
+	utility.service(endpoint,method,args,setviewslide,indexlightSlider);
 	
 }
 
@@ -31,6 +37,44 @@ function CallService(service,param,callback)
 			alert(err.message);
 		}
 	});
+}
+
+function setviewslide(data){
+	console.log(data);
+	$('#itemslide').html("");
+	$.each(data.result,function(i,val){
+		
+		var itemview = "";
+		itemview += "<li >";
+		itemview += "<a href='press_detail.html?id="+val.id+"'>";
+		itemview += "<img src='"+val.thumbnail+"' class='img-fluid' style='max-width:100%' />";//responsive
+		itemview += "<div class='lightslider-desc' >";
+		itemview += "<label>"+val.title+"</label>";
+		itemview += "</div>";
+		itemview += "</a>";
+		itemview += "</li>";
+		
+		$('#itemslide').append(itemview);
+		
+	});
+
+}
+
+/*function for slide */
+function indexlightSlider() {
+	
+		$("#itemslide").lightSlider({
+		autoWidth: false
+		,adaptiveHeight:true
+	    ,loop:true
+	    ,keyPress:false
+		,item:2
+	 });
+	 
+	 /*
+	 		,slideMargin:4
+		,slideWidth:200
+	 */
 }
 
 function setview(data)
@@ -63,6 +107,7 @@ function setview(data)
 
 function setviewdetail(data)
 {
+	console.log(data);
 	$('#list').html("");
 	var itemview = "";
 	var press = data.result[0];

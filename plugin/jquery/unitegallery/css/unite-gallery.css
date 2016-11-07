@@ -543,9 +543,8 @@ img.ug-sepia-effect{
 
 .ug-gallery-wrapper .ug-grid-panel{
 	position:absolute;
-    background-color: #f2f2f2;
+    /*background-color: #f2f2f2;*/
     xbackground-color: blue;
-
     z-index:2;
 }
 
