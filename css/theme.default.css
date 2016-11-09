@@ -137,10 +137,11 @@ label {
 }
 /*-----custom control--------*/
 
+	#searchbar {background-color:white;}
 /*pc default : 1200*/
 @media(min-width:900px) {
 	
-	#searchbar { background-color:transparent; }
+	/*#searchbar { background-color:transparent;  }*/
 	/*override class*/
 	#navbar ul.nav.navbar-nav { padding-left:0px; } /*adjust menu*/
 	.navbar { height:60px; }
@@ -151,7 +152,16 @@ label {
 /* tables */
 @media(min-width:600px) and (max-width:900px){
 
-	#searchbar { display:none;  }
+	#searchbar { display:none; }
+	/*
+	.input-xs {
+	  height: 22px;
+	  max-width:100%;
+	  font-size: 12px;
+	  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. * /
+	  border-radius: 3px;
+	}
+	*/
 	.navbar-header { padding-left:5px; }
 	/*override class*/
 	.logobar { width:70px; }
@@ -159,10 +169,18 @@ label {
 }
 /* mobile */
 @media(max-width:600px) {
+	
+	/*#searchbar { display:none; }*/
 
-	#searchbar { display:none; }
+	.input-xs {
+	  height: 22px;
+	  max-width:100%;
+	  font-size: 12px;
+	  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
+	  border-radius: 3px;
+	}
 	.navbar-header { padding-left:10px; }
-	.logobar { width:86px; }
+	.logobar { width:52px; }
 	#navbar ul.nav.navbar-nav { padding-left:10px; } /*adjust menu*/
 
 }
