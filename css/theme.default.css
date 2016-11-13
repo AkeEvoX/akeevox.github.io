@@ -153,7 +153,8 @@ label {
 	/*#searchbar { display:none; }*/
 }
 @media(min-width:900px) and (max-width:1000px) {
-	#searchbar { display:none; }
+	/*#searchbar { display:none; }*/
+	.input-xs { max-width:100%; float:left;}
 }
 
 /* tables */
