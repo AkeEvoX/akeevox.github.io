@@ -33,7 +33,6 @@
 
 	.product-list .col-md-* { padding:5px;margin:5px; }
 	.img-fluid {max-width: 100%;}
-	#menutree { display:none; }
 	#view-content {width:100%;}
 	
 
@@ -43,9 +42,10 @@
 @media(max-width:600px) {
 
 	.img-fluid{ min-width:50%;  }
-	#menutree { display:none; }
+	/*#menutree { display:inline; } */
 	
 	#logo-category{ max-height:250px;  }
 	.image-box { max-height:250px;  }
+
 
 }

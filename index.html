@@ -33,8 +33,8 @@
 	<div class='row'>
 		<div class='col-md-12'>
 			<div class='title_top text-center' >
-				<h2><span id='index.top' class='top'></span></h2>
-				<h4><span id='index.top_detail' class='detail'></span></h4>
+				<h3><span id='index.top' class='top'></span></h3>
+				<span id='index.top_detail' class='detail'></span>
 			</div>
 		</div>
 	</div>
@@ -52,7 +52,7 @@
 			<img src='images/home/OL_WEB_COVER_STARS-03.png' class='img-responsive' />
 		</div>
 	</div>
-	<div class='row'>
+	<div class='row rowspan'>
 		<div class='col-md-12'>
 			<div id='viewbuttom'>
 				<img src='images/home/buttom1_test.png' class='img-responsive'   />
@@ -65,6 +65,10 @@
 		</div>
 	</div>
 	<div class='row'>
+		<span id='viewpress' class='col-md-12' ></span>
+	</div>
+	<!--
+	<div class='row'>
 		<div class='col-md-12'>
 			<div id='view_press'>
 				<img id='bg_press'  src='images/home/press-long.png' class='img-responsive' />
@@ -74,85 +78,12 @@
 						<ul id="itemslide" class="content-slider" >
 						</ul>
 					</div>
-				</div><!--end lightslider-->
+				</div><!- -end lightslider- ->
 			</div>
 		</div>
 	</div>
-	
+	-->
 </div>
-<!--<div class='container'>
-	<div class='row'>
-		<div class='col-md-12'>
-			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!- - Indicators - - >
-			  <ol id='index-carousel' class="carousel-indicators"></ol>
-			  <div id='viewtop' class="carousel-inner"></div>
-					<!- - button navigator - - >
-				<div id='socialbar'>
-						<ul>
-							<li><a href='https://www.facebook.com/admstar.sanitaryware?ref=br_rs' target='_blank' ><img src='images/home/icon-fb.png' /></a></li>
-							<li><a href='https://www.youtube.com/user/starsanitaryware' target='_blank'><img src='images/home/icon-youtube.png' /></a></li>
-						</ul>
-					</div>
-			 </div>
-			
-		</div>
-	</div>
-	<div class='row'>
-		<div class='col-md-12'>
-			<div class='title_top text-center' >
-				<h2><span id='index.top' class='top'></span></h2>
-				<h4><span id='index.top_detail' class='detail'></span></h4>
-			</div>
-		</div>
-	</div>
-	<div class='row'>
-		<div  class='col-md-12'>
-			<div id='viewmiddle'>
-				<img  src='images/home/middle1.png' style='width:100%;' data-src='holder.js/500x400' class='img-responsive' />
-			</div>
-			
-		</div>
-	</div>
-	<div class='row'>
-		<div id='viewmiddle' >
-			<a href='reference.html'><span id='index.referal'></span></a>
-			<a href='award.html'><span id='index.award' ></span></a>
-			<a href='products.html'><span id='index.catalog'></span></a>
-		</div>
-	</div>
-	<div class='row'>
-		<div class='col-md-12'>
-			<div id='viewbuttom'>
-				<img src='images/home/buttom1_test.png' style='height:300px;width:100%;' class='img-responsive'   />
-			</div>
-			<div class='title_series text-center'>
-				<h2><span id='index.series.title'></span></h2>
-				<span id='index.series.detail' ></span>
-				<div style='padding-top:50px;'><a class='title_series_button' href='series.html?id=4'><span id='index.series.button'></span></a></div>
-			</div>
-		</div>
-	</div>
-	<div class='row'>
-		<div  class='col-md-12'>
-			<div id='viewmiddle'>
-				<img  src='images/home/press.png' style='width:100%;' data-src='holder.js/500x400' class='img-responsive' />
-			
-			<div class='title_press text-center'>
-				<h3><span id='index.press.title'></span></h3>
-				<div class='col-md-12'>
-				<div class="lightslider-main">
-					<div class="item" >
-						<ul id="itemslide" class="content-slider" >
-						</ul>
-					</div>
-				</div><!- -end lightslider- - >
-				</div>
-			</div>
-			</div>
-		</div>
-	</div>
-</div>-->
 <div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
@@ -167,7 +98,7 @@
 			//loadvideomain();
 			
 			$.getScript("js/press.js",function(){
-				loadslidepress();
+				loadhomepress();
 			});
 			
 			

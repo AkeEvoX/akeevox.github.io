@@ -155,9 +155,9 @@ function loadproductreleated(id) {
 			$("#product-slider").lightSlider({
 				autoWidth: false
 				,item:4
-				,adaptiveHeight:true
+				,adaptiveHeight:false
 				,loop:true
-				,keyPress:true
+				,keyPress:false
 				,pager:false
 			});
 

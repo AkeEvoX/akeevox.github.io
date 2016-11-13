@@ -24,6 +24,13 @@ function loadslidepress()
 	
 }
 
+function loadhomepress(){
+	var endpoint = 'services/press.php' ;
+	var method = 'get';
+	var args = {"_": new Date().getMilliseconds()};
+	utility.service(endpoint,method,args,setviewhome);
+}
+
 function CallService(service,param,callback)
 {
 
@@ -87,7 +94,7 @@ function setview(data)
 		itemview += "<div class='col-md-6'>" ;
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
-		itemview += "<div class='view second-effect'><img src='"+val.thumbnail+"' class='media-object' />";
+		itemview += "<div class='view second-effect'><img src='"+val.coverpage+"' class='media-object' width='200' height='200' />";
 		itemview += "<div class='mask'><a href='press_detail.html?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect
 		itemview += "</div>";//view
 		itemview += "</div>";//media-left
@@ -102,6 +109,27 @@ function setview(data)
 		console.log(itemview);
 		$('#list').append(itemview);
 	});
+
+}
+
+function setviewhome(resp){
+	$('#viewpress').html("");
+
+	$.each(resp.result,function(i,val){
+
+		var view = "<div class='col-md-3'>";
+		view += "<a href='press_detail.html?id="+val.id+"' >";
+		view += "<img src='"+val.coverpage+"' class='img-responsive' />";
+		view += "<div class='lightslider-desc' >";
+		view += "<label>"+val.title+"</label>";
+		view += "</div>";
+		view += "</a></div>";
+
+		$('#viewpress').append(view);
+
+	});
+
+
 
 }
 

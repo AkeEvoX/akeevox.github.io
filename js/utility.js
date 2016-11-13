@@ -135,49 +135,42 @@ utility.modalimage = function(title,url){
 
 }
 
-	function centerModal() {
-	    $(this).css('display', 'block');
-	    var $dialog = $(this).find(".modal-dialog");
+utility.convertToObject = function(arrlist){
 
-			var imgwidth = $(this).find('.modal-body img').width();
-			$dialog.css({width:imgwidth+35});
+	var result = {};
+	
+	$.each(arrlist,function(i,val){
+		result[val.name] = val.value;
+	});
 
-	    var offset = ($(window).height() - $dialog.height()) / 2;
-	    // Center modal vertically in window
-	    $dialog.css("margin-top", offset);
-	}
+	return result;
 
-/*
-$('.modal').on('show.bs.modal', centerModal);
+}
 
-$(window).on("resize", function () {
-    $('.modal:visible').each(centerModal);
-});
-*/
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+
+	var imgwidth = $(this).find('.modal-body img').width();
+	$dialog.css({width:imgwidth+35});
+
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
 function bindpage(response)
 {
 	if(response!==undefined)
 	{
 		$.each(response.result,function(i,val){
 			//console.log(val);
-			$("span[id='"+val.name+"']").html(val.title);
+			$("span[id='"+val.name+"']").html(val.value);
 		});
 	}
 	else { console.warn('attribute not found.'); }
 }
-/*
-function getParameterByName(name, url) {
 
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-
-}
-*/
 //-----------------load globle menu-----------------
 
 function loadchildmenu(id){

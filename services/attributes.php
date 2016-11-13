@@ -75,7 +75,7 @@ switch($type)
 		/*load attribute*/
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 		break;
 	case "award" :
@@ -85,7 +85,7 @@ switch($type)
 			/*load attribute*/
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 
 			break;
@@ -93,42 +93,42 @@ switch($type)
 			$itemattr = $attrMgr->getItems($lang,'faq');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "inter" :
 			$itemattr = $attrMgr->getItems($lang,'inter');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "product" :
 			$itemattr = $attrMgr->getItems($lang,'product');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "productdetail" :
 		$itemattr = $attrMgr->getItems($lang,'productdetail');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 	break;
 	case "series" :
 		$itemattr = $attrMgr->getItems($lang,'series');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 	break;
 	case "showroom" :
 		$itemattr = $attrMgr->getItems($lang,'showroom');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 	break;
 	default :
@@ -136,7 +136,7 @@ switch($type)
 	$itemattr = $attrMgr->getItems($lang,$type);
 	while($row = $itemattr->fetch_object())
 	{
-		$result[] = array("name"=>$row->name,"title"=>$row->title);
+		$result[] = array("name"=>$row->name,"value"=>$row->title);
 	}
 
 

@@ -1,31 +1,4 @@
 
-/*desktop*/
-@media(min-width:1200px) {
-
-
-}
-
-/* laptop */
-@media(min-width:600px) and (max-width:1200px){
-
-}
-
-/*mobile*/
-@media(max-width:600px) {
-
-	#navtree {display:none;}
-
-	#listattribute label {
-		width:100%;
-	}
-
-	#listattribute div {
-		width:100%;
-	}
-
-
-}
-
 .share-popup {
 	float:right;
 	position: relative;
@@ -82,7 +55,7 @@
 }
 .lightslider-desc li {
 
-	width:200px;
+	width:300px;
 	/*
 	text-align:left;
 	list-style: none;
@@ -158,5 +131,48 @@
 .ug-slider-wrapper .ug-item-wrapper {
 	background-color:#ffffff;
 	/*f2f2f2*/
+}
+
+
+/*desktop*/
+@media(min-width:1200px) {
+
+
+}
+
+/* laptop */
+@media(min-width:600px) and (max-width:1200px){
+
+}
+
+/*mobile*/
+@media(max-width:600px) {
+
+	/*#navtree { display:block; } */
+
+	#listattribute label {
+		width:100%;
+	}
+
+	#listattribute div {
+		width:100%;
+	}
+
+	.content-slider {
+
+	}
+	.content-slider li{
+	    background-color: white;
+	    text-align: center;
+	    color: orange;
+	    border:0px solid;
+	}
+	.content-slider h3 {
+	    margin: 0;
+	    padding: 70px 0;
+	}
+
+
+
 }
 
