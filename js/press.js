@@ -113,16 +113,19 @@ function setview(data)
 }
 
 function setviewhome(resp){
+	
 	$('#viewpress').html("");
 
 	$.each(resp.result,function(i,val){
-
+		var detail = val.detail.slice(0,50)+"...";
 		var view = "<div class='col-md-3'>";
 		view += "<a href='press_detail.html?id="+val.id+"' >";
 		view += "<img src='"+val.coverpage+"' class='img-responsive' />";
-		view += "<div class='lightslider-desc' >";
-		view += "<label>"+val.title+"</label>";
-		view += "</div>";
+		//view += "<div class='lightslider-desc' >";
+		view += "<span class='press-date'>"+val.date+"</span>"
+		view += "<div class='press-title'>"+val.title+"</div>";
+		//view += "</div>";
+		view += "<div class='press-detail'>"+detail+"</div>";
 		view += "</a></div>";
 
 		$('#viewpress').append(view);

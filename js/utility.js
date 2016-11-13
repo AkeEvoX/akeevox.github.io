@@ -84,8 +84,6 @@ utility.loadmenu = function(){
 
 utility.loadbuttommenu = function(){
 
-
- console.log("load buttom menu");
  var endpoint = "services/attributes.php";
 	var args = {'_':new Date().getHours(),'type':'menu'};
   this.service(endpoint,'get',args ,genbutton ,null);

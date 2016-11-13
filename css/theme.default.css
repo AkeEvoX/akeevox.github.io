@@ -21,7 +21,7 @@ body
 	top:0px;
 	margin-top:10px;
 	width:80px;/*70px-*/
-	box-shadow:2px 2px 2px #ccc;
+	box-shadow:4px 4px 4px #ccc;
 }
 
  #searchbar ul {
@@ -129,16 +129,17 @@ label {
 
 .input-xs {
   height: 23px;
-  max-width:150px;
+  max-width:100px;
   font-size: 12px;
   line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. */
   border-radius: 3px;
 }
 /*-----custom control--------*/
 
-	#searchbar {background-color:white;}
+#searchbar {background-color:white;}
 /*pc default : 1200*/
-@media(min-width:900px) {
+/*@media(min-width:900px) {*/
+@media(min-width:1200px) {
 	
 	/*#searchbar { background-color:transparent;  }*/
 	/*override class*/
@@ -148,24 +149,51 @@ label {
 
 }
 
+@media(min-width:1000px) and (max-width:1200px) {
+	/*#searchbar { display:none; }*/
+}
+@media(min-width:900px) and (max-width:1000px) {
+	#searchbar { display:none; }
+}
+
 /* tables */
 @media(min-width:600px) and (max-width:900px){
-
-	#searchbar { display:none; }
-
-	/*
-	.input-xs {
-	  height: 22px;
-	  max-width:100%;
-	  font-size: 12px;
-	  line-height: 1.5; /* If Placeholder of the input is moved up, rem/modify this. * /
-	  border-radius: 3px;
+	
+	/*collapse menu*/
+	.navbar-header {
+	  float: none;
 	}
-	*/
+	.navbar-toggle {
+	  display: block;
+	}
+	.navbar-collapse.collapse {
+	  display: none!important;
+	}
+	.navbar-nav {
+	  float: none!important;
+	}
+	.navbar-nav>li {
+	  float: none;
+	}
+	.navbar-collapse.collapse.in{
+	  display:block !important;
+	}
+
+	/*#searchbar { display:none; }*/
+		
+	#searchbar {
+		float:left;
+		position:absolute;
+		display:block;
+	}
+	
+	.input-xs { max-width:100%; float:left;}
+	
 	.navbar-header { padding-left:5px; }
 	/*override class*/
 	.logobar { width:70px; }
-	 #navbar ul.nav.navbar-nav { font-size:10px;}  /*adjust menu*/
+	
+	 #navbar ul.nav.navbar-nav { font-size:1em;}  /*adjust menu*/
 }
 /* mobile */
 @media(max-width:600px) {

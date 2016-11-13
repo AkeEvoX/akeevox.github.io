@@ -8,6 +8,7 @@
 	color:#a86915;
 	word-wrap:break-all;
 	white-space:normal;
+	font-size:16px;
 }
 
 #viewbuttom img{
@@ -26,12 +27,22 @@
 
 .title_series .top {
 	/*font-size:.5em;*/
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
+	
+	/*
+	font-size: 24px;
+	font-style: normal;
+	font-variant: normal;
+	font-weight: 500;
+	line-height: 26.4px;
+	*/
 }
 
 .title_series .detail {
 	/*font-size:.5em;*/
 	word-wrap:break-all;
 	white-space:normal;
+	font-family: Arial, "Helvetica Neue", Helvetica, sans-serif;
 }
 
 .title_series_button {
@@ -93,11 +104,44 @@
 	width:100%;
 }
 
+#press-control {
+	background-color:#f4e1c0 ;
+}
+
+#press-header{
+	color:#b28b22;	
+}
+
+h2 div {
+	
+	color:#b28b22;	
+	 overflow: hidden;
+    text-align: center;
+}
+
+h2 div:before,h2 div:after{
+	background-color: #b28b22;
+    content: "";
+    display: inline-block;
+    height: 2px;
+    position: relative;
+    vertical-align: middle;
+    width: 10%;
+}
+h2 div :before {
+	 right: 1em;
+    margin-left: -50%;
+}
+
+h2 div :after {
+	 left: 1em;
+    margin-right: -50%;
+}
 
 #viewpress .col-md-3 {
-	background-color:#F5E2C0;
-	padding-top:30px;
-	padding-bottom:30px;
+	/*background-color:#f4e1c0 ;*/
+	padding-top:15px;
+	padding-bottom:15px;
 	/*display:block;
 	margin:0 auto;*/
 }
@@ -109,12 +153,29 @@
 	width:100%;
 }
 
+.press-date{
+	color:gray;
+	font-size:0.7em;
+}
+
+.press-title{
+	color:#b28b22;	
+	font-size:10px;
+}
+
+.press-detail{
+	/*height:100px;*/
+	border:0px solid;
+	font-size:10px;
+}
+
 
 .lightslider-desc {
 	padding:0px;
 	font-size:1em;
 	/*border:2px solid;*/
 	height:60px;
+	border:0px;
 	/*position:relative;*/
 	/*left:15%;*/
 }
@@ -180,6 +241,7 @@
 	}
 
 	.title_top .detail{
+		margin:0 auto;
 		color:#a86915;
 		font-size:.7em;
 		word-wrap:break-word;
@@ -209,9 +271,13 @@
 	
 	.title_series .detail {
 		/*.7*/
+		border:0px solid;
+		display:block;
+		width:80%;
 		font-size:.7em;
-		word-wrap:break-all;
 		white-space:wrap;
+		word-wrap:break-word;
+		margin:0 auto;
 	}
 	
 	.title_series_button {
@@ -225,6 +291,11 @@
 	
 	.title_series_button span {
 		font-size:.7em;
+	}
+	
+	
+	#press-header div{
+		padding-top:20px;
 	}
 
 	#view_press #bg_press  {

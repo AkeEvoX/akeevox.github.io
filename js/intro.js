@@ -15,7 +15,7 @@ function checkintro(resp){
 	if(resp.result!=undefined){
 
 		var intro = utility.convertToObject(resp.result);
-
+		console.log(intro['intro.enable']);
 		if(intro['intro.enable']=="1"){
 			getintro(intro['intro.cover']);
 		}
