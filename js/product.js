@@ -153,7 +153,7 @@ function loadproductreleated(id) {
 			//initial slider
 
 			$("#product-slider").lightSlider({
-				autoWidth: false
+				autoWidth: true
 				,item:4
 				,adaptiveHeight:false
 				,loop:true
