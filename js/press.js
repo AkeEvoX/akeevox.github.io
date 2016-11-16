@@ -117,10 +117,10 @@ function setviewhome(resp){
 	$('#viewpress').html("");
 
 	$.each(resp.result,function(i,val){
-		var detail = val.detail.slice(0,50)+"...";
-		var view = "<div class='col-md-3'>";
+		var detail = val.detail.slice(0,50)+"..."; //trim text
+		var view = "<div class='col-xs-12 col-sm-6 col-md-3' >";
 		view += "<a href='press_detail.html?id="+val.id+"' >";
-		view += "<img src='"+val.coverpage+"' class='img-responsive' />";
+		view += "<img src='"+val.coverpage+"' />";
 		//view += "<div class='lightslider-desc' >";
 		view += "<span class='press-date'>"+val.date+"</span>"
 		view += "<div class='press-title'>"+val.title+"</div>";

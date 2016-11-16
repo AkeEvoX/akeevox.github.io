@@ -155,7 +155,7 @@ function loadproductreleated(id) {
 			$("#product-slider").lightSlider({
 				autoWidth: true
 				,item:4
-				,adaptiveHeight:false
+				,adaptiveHeight:true
 				,loop:true
 				,keyPress:false
 				,pager:false
@@ -238,7 +238,7 @@ function setviewlist(data)
 			item += "<li class='col-md-3 col-sm-6 col-xs-12' >";
 			item += "<div class='port-1 effect-2' >";
 			item += "<div class='image-box' >";
-			item += "<img src='"+val.thumb+"' class='img-fluid h150' alt=''>";
+			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid h150' alt=''>";
 			item += "<div class='thumbnail-desc'><label>"+val.name+"</label><span>"+val.code+"</span></div>";
 			item += "</div>";
 			item += "<div class='text-desc'>";
@@ -262,7 +262,7 @@ function setViewReleated(data){
 
 			var item = "";
 			item += "<li  ><a href='productdetail.html?id="+val.id+"' >";
-			item += "<img src='"+val.thumb+"' class='img-responsive' >";
+			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-responsive' >";
 			item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
 			item += "<ul class='lightslider-desc'>";
 			//item += "<li>&nbsp;</li>";
@@ -307,11 +307,23 @@ function setviewitem(data)
 		$('span[id="productname"]').text(data.title);
 
 		$('#plan').attr('src',data.plan);
+		$('#doc_link').attr('href',data.doc);
+		
+		var colors = $('#productcolor');
+		colors.html("");
+		if(data.colors!=null){
+			$.each(data.colors,function(i,val){
+				var item = "";
+				item = "<img src='"+val.color+"'  onerror=this.src='images/common/unavaliable.jpg' /> ";
+				colors.append(item);
+			});
+		}
+		
 		//view image list
 		if(data.image!=null){
 			$.each(data.image,function(i,val){
 				var item = "";
-				item += "<img src='"+val.image+"' data-image='"+val.image+"' data-description=''  />";
+				item += "<img src='"+val.image+"' data-image='"+val.image+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
 				view.append(item);
 			});
 		}

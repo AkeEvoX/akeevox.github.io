@@ -27,7 +27,7 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.id='".$id."' ; ";
 			log_warning("product > " . $sql);
 			$result = $this->mysql->execute($sql);
@@ -58,7 +58,7 @@ class ProductManager{
 	function getProductList($lang,$cate) {
 		try{
 
-			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " where p.typeid='".$cate."' ";
 			$sql .= " order by p.create_date desc ";
@@ -128,6 +128,21 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Get Product Attribute : ". $e->getMessage();
+		}
+	}
+	
+	function getColor($id){
+		try{
+
+			$sql = " select c.thumb from product_color p ";
+			$sql .=  " left join color_master c on p.colorid = c.id ";
+			$sql .= " where p.proid='".$id."' and c.active=1 ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Color : ". $e->getMessage();
 		}
 	}
 

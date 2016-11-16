@@ -205,6 +205,8 @@ function setProduct($lang,$id) {
 			,"plan"=>$row->plan
 			,"code"=>$row->code
 			,"name"=>$row->name
+			,"doc"=>$row->doc_link
+			,"colors"=>setColor($id)
 			);
 	}
 	return $items;
@@ -230,7 +232,23 @@ function setProductType($lang,$id)
 	return $items;
 }
 
+function setColor($id){
+	$product = new ProductManager();
+	$data = $product->getColor($id);
+	$item = "";
+	if($data){
+		while($row= $data->fetch_object())
+		{
+			$item[] = array(
+				"color"=>$row->thumb
+				);
+		}
+	}
+	return $item;
+}
+
 function setImages($id) {
+	
 	$product = new ProductManager();
 	$data = $product->getImages($id);
 	$item = "";

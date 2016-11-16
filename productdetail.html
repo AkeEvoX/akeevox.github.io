@@ -52,7 +52,7 @@
 				<div class='row'>
 					<div class='col-md-12'>
 					<h4><span class='glyphicon glyphicon-stop'></span><span id='productdetail.plan'></span><hr/></h4>
-						<img id='plan' class='img-responsive' />
+						<img id='plan' onerror="this.src='images/common/image-not-found.png'"  class='img-responsive' />
 					</div>
 				</div>
 				<div class='row'>
@@ -62,7 +62,9 @@
 					</div>
 					<div class='col-md-4'>
 						<h4><span id='productdetail.color'>COLOR</span></h4>
-						<img src='images/products/color_test.png' />
+						<div id='productcolor'>
+							<img src='images/products/color_test.png' />
+						</div>
 					</div>
 					<div class='col-md-4'>
 					
@@ -74,7 +76,7 @@
 							<li>
 								<ul class='downloadlist text-right'>
 									<li><a href='#'><img src='images/products/icon_dwg.png'></a></li>
-									<li><a href='#'><img src='images/products/icon_pdf.png'></a></li>
+									<li><a id='doc_link' ><img src='images/products/icon_pdf.png'></a></li>
 								</ul>
 							</li>
 							<li>

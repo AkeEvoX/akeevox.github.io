@@ -11,17 +11,12 @@ body
 /**********object nav bar*******/
 
 .logobar {
-	/*position:absolute;
-	top:5px;
-	left:130px;
-	width:70px;
-	box-shadow:2px 2px 2px #ccc;
-	*/
+	
 	position:relative;
 	top:0px;
 	margin-top:10px;
-	width:80px;/*70px-*/
-	box-shadow:4px 4px 4px #ccc;
+	width:100px;/*70px-*/
+	/*box-shadow:4px 4px 4px #ccc;*/
 }
 
  #searchbar ul {
@@ -154,7 +149,7 @@ label {
 }
 @media(min-width:900px) and (max-width:1000px) {
 	/*#searchbar { display:none; }*/
-	.input-xs { max-width:100%; float:left;}
+	.input-xs { max-width:100%; float:left;} 
 }
 
 /* tables */
@@ -209,7 +204,7 @@ label {
 	  border-radius: 3px;
 	}
 	.navbar-header { padding-left:10px; }
-	.logobar { width:62px; /*52*/ }
+	.logobar { width:80px; /*52*/ }
 	#navbar ul.nav.navbar-nav { padding-left:10px; } /*adjust menu*/
 
 }

@@ -11,15 +11,16 @@ if(isset($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
 else {
-	$lang = "en";
-	$_SESSION["lang"] = $lang;
+	//$lang = "en";
+	//$_SESSION["lang"] = $lang;
 }
 
 $menu = new MenuManager();
 
-$id = $_GET["id"];
 $item = "";
 $result = null;
+
+if(isset($_GET["id"])) $id = $_GET["id"] ; else $id="";
 
 if(isset($id) && !empty($id))
 {

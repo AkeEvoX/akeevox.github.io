@@ -1,15 +1,23 @@
 function loadList()
 {
-	var service = 'services/award.php' ;
-	var data = {"_": new Date().getMilliseconds()}
-	CallService(service,data,setview);
+	var endpoint = 'services/award.php' ;
+	var method = "get";
+	var args = {"_": new Date().getMilliseconds()}
+	//CallService(service,data,setview);
+	
+	
+	utility.service(endpoint,method,args,setview,apply_slider);
+	
 }
 
 function LoadItem(id)
 {
-	var service = 'services/award.php' ;
-	var data = {"_": new Date().getMilliseconds(),"id":id}
-	CallService(service,data,setviewdetail);
+	var endpoint = 'services/award.php' ;
+	var method = 'get';
+	var args = {"_": new Date().getMilliseconds(),"id":id}
+	//CallService(service,data,setviewdetail);
+	
+	utility.service(endpoint,method,args,setviewdetail);
 }
 
 function CallService(service,param,callback)
@@ -33,6 +41,7 @@ function CallService(service,param,callback)
 
 function setview(data){
 	try{
+		
 	var award = data.result.filter(function(item) {return item.type == "0" ; });
 	var standard = data.result.filter(function(item) {return item.type == "1" ; });
 
@@ -82,7 +91,7 @@ function setaward(data){
 	award.append(itemview);
 	award.append("<a href='#'' class='is-prev'>&laquo;</a><a href='#'' class='is-next'>&raquo;</a>");
 
-
+/*
 	award.immersive_slider({
 		animation: "slide",
 		container: ".main",
@@ -90,7 +99,17 @@ function setaward(data){
 		cssBlur:false,
 		autoStart:0
 	});
+*/
+}
 
+function apply_slider(){
+	$('#immersive_slider').immersive_slider({
+		animation: "slide",
+		container: ".main",
+		loop:true,
+		cssBlur:false,
+		autoStart:0
+	});
 }
 
 function setstandard(data) {
