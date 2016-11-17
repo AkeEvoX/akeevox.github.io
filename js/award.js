@@ -121,7 +121,7 @@ function setstandard(data) {
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
 
 		//row
 		 if(((idx +1) % 4) === 0)
@@ -176,8 +176,8 @@ function bindmodal(id){
 ,function(response){
 
 		$('#cover').attr('src',response.result[0].thumbnail);
-		$('#title').text(response.result[0].title);
-		$('#desc').text(response.result[0].detail);
+		$('#title').html(response.result[0].title);
+		$('#desc').html(response.result[0].detail);
 
 }
 ,null)

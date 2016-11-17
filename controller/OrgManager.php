@@ -39,11 +39,11 @@ class OrgManager{
 
 	}
 
-	function getchart()
+	function getchart($lang)
 	{
 		try{
 
-			$sql = "select id, chart ,update_date ";
+			$sql = "select id, chart_".$lang." as chart ,update_date ";
 			$sql .= " from organization_chart where active=1 order by update_date desc ";
 			$result = $this->mysql->execute($sql);
 
@@ -70,6 +70,20 @@ class OrgManager{
 			echo "Cannot Get Organization InterMarket : ".$e->getMessage();
 		}
 
+	}
+	
+	function getmarketcontury($lang){
+		try{
+
+			$sql = "select id, title_".$lang." title";
+			$sql .= " from org_market_countries where active=1 order by update_date desc ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Market Contury : ".$e->getMessage();
+		}
 	}
 
 	function getReferenceList($lang)

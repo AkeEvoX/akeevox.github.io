@@ -8,6 +8,7 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/intermarket.css" rel="stylesheet" type="text/css" />
 
 </head>
 <body>
@@ -29,7 +30,12 @@
 	<div id='media-data' class='row media-center' >
 			<img data-src='' class='img-responsive'/>
 	</div>
-
+	<div class='row'>
+		<div id='content-data' class='col-md-12'>
+			<div class='view_country'>
+			</div>
+		</div>
+	</div>
 </div> <!--end container fluid-->
 <div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
@@ -41,6 +47,7 @@
 $(document).ready(function(){
 	utility.setpage('inter');
 	loadview();
+	loadcountry();
 });
 
 </script>

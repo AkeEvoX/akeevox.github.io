@@ -6,36 +6,34 @@ function loadorganization()
 	var method= "get";
 	var args = {"_": new Date().getHours() , "type":"org","align":"left"};
 
-	utility.service(endpoint,method,args,profile_left);
-
-	args = {"_": new Date().getHours() , "type":"org","align":"right"};
-	utility.service(endpoint,method,args,profile_right);
-/*
-	$.ajax({
-		url:"services/organization.php",
-		data:{"_": new Date().getHours() , "type":"org"},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			gendata(data.result);
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load organization information error : "+ xhr.responseText);
-		}
-	});*/
+	utility.service(endpoint,method,args,view_profile);
 
 }
 
-function profile_left(data)
-{
-	//console.log(data.result);
-	var view = $('#dataview_left');
-	$.each(data.result,function(idx,val){
+function view_profile(resp){
+	
+	if(resp.result!=undefined){
+		
+		$('#dataview_left').html("");
+		$('#dataview_right').html("");
+		$.each(resp.result,function(i,val){
+			
+				if((i % 2) == 0){
+					profile_right(val);
+				}else{
+					profile_left(val);
+				}
+			
+		});
+		
+	}
+	
+}
 
+function profile_left(val)
+{
+	var view = $('#dataview_left');
+	
 		var item = "";
 		item += "<div class='col-md-12'>";
 		item += "<div class='media'>";
@@ -49,15 +47,12 @@ function profile_left(data)
 		item += "</div>";
 		item += "</div><div class='well well-sm'>"+val.name+"</div></div>";
 		view.append(item);
-	});
 
 }
 
-function profile_right(data){
+function profile_right(val){
 
 	var view = $('#dataview_right');
-	$.each(data.result,function(idx,val){
-
 		var item = "";
 		item += "<div class='col-md-12'>";
 		item += "<div class='media'>";
@@ -71,6 +66,5 @@ function profile_right(data){
 		item += "</div>";
 		item += "</div><div class='well well-sm'>"+val.name+"</div></div>";
 		view.append(item);
-	});
 
 }

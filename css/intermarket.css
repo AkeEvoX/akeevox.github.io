@@ -1,0 +1,36 @@
+
+#content-data {
+	
+	-webkit-column-count: 4; /* Chrome, Safari, Opera */
+	-moz-column-count: 4; /* Firefox */
+	column-count: 4;
+	min-height:350px;
+	color:#a58b5d;
+	font-weight: bold;
+}
+
+
+/*desktop*/
+@media(min-width:1200px) {
+
+
+}
+
+/*tablet*/
+@media(min-width:900px) and (max-width:1000px) {
+	#view-content {width:70%;}
+}
+
+/* laptop */
+@media(min-width:600px) and (max-width:900px){
+	#view-content {width:70%;}
+}
+
+/*mobile*/
+@media(max-width:600px) {
+	#content-data {	
+		-webkit-column-count: 2; /* Chrome, Safari, Opera */
+		-moz-column-count: 2; /* Firefox */
+		column-count: 2;
+	}
+}

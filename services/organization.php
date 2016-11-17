@@ -44,7 +44,7 @@ switch($type){
 	break;
 	case "chart":
 
-		$item = $Org->getchart();
+		$item = $Org->getchart($lang);
 		$row= $item->fetch_object();
 
 		$data = array (
@@ -69,6 +69,18 @@ switch($type){
 		$result = $data;
 
 	break;
+	case "country" :
+		$item = $Org->getmarketcontury($lang);
+		while($row= $item->fetch_object())
+		{
+			$data = array (
+			"id"=>$row->id
+			,"title"=>$row->title
+			);
+			$result[] = $data;
+		}
+	break;
+	
 	case "refer":
 
 		$item = $Org->getReferenceList($lang);

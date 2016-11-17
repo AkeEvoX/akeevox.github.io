@@ -27,7 +27,7 @@ function loadslidepress()
 function loadhomepress(){
 	var endpoint = 'services/press.php' ;
 	var method = 'get';
-	var args = {"_": new Date().getMilliseconds()};
+	var args = {"_": new Date().getMilliseconds(),'type':'home'};
 	utility.service(endpoint,method,args,setviewhome);
 }
 
@@ -115,10 +115,15 @@ function setview(data)
 function setviewhome(resp){
 	
 	$('#viewpress').html("");
-
+	console.log(resp);
 	$.each(resp.result,function(i,val){
-		var detail = val.detail.slice(0,50)+"..."; //trim text
-		var view = "<div class='col-xs-12 col-sm-6 col-md-3' >";
+		
+		var detail  = "";
+		var view  = "";
+		if(val.detail!=undefined)
+			 detail = val.detail.slice(0,50)+"..."; //trim text
+		 
+		view = "<div class='col-xs-12 col-sm-6 col-md-3' >";
 		view += "<a href='press_detail.html?id="+val.id+"' >";
 		view += "<img src='"+val.coverpage+"' />";
 		//view += "<div class='lightslider-desc' >";

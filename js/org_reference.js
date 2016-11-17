@@ -1,20 +1,23 @@
 
 function setup_slider()
 {
-
+	
+	
 	$("#inter-slider").lightSlider({
 		autoWidth: false
 		,adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:true
 	 });
-
+	 
+	 
 	$("#local-slider").lightSlider({
 		autoWidth: false
 		,adaptiveHeight:true
 	    ,loop:true
 	    ,keyPress:true
 	 });
+
 
 }
 
@@ -47,12 +50,40 @@ function viewprojectlist(resp){
 
 function loadreference()
 {
+	var endpoint = "services/organization.php";
+	var method = "get";
+	var args = {"_": new Date().getHours() , "type":"refer"};
+	
+	utility.service(endpoint,method,args,seperateproject,setup_slider,function(){
+	
+		 
+		$("#local-slider").lightSlider({
+			autoWidth: false
+			,adaptiveHeight:true
+			,loop:true
+			,keyPress:true
+		 });
+		 
+		 		
+		$("#inter-slider").lightSlider({
+			autoWidth: false
+			,adaptiveHeight:true
+			,loop:true
+			,keyPress:true
+		 });
+		 
+		
+	});
+	
+
+	/*
 	$.ajax({
 		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"refer"},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
+			
 			try{
 				console.log(data.result);
 
@@ -87,6 +118,23 @@ function loadreference()
 			alert("load organization reference error : "+ xhr.responseText);
 		}
 	});
+	*/
+}
+
+function seperateproject(resp){
+		if(resp.result != undefined)
+				{
+
+					var inter = resp.result.filter(function(item){ return item.local=="0"; });
+
+
+					var local = $.grep(resp.result,function(value,i){
+						return (value.local == "1") ;
+					});
+
+					displaylocal(local);
+					displayinter(inter);
+				}
 }
 
 function displayinter(data){
@@ -133,6 +181,7 @@ function displaylocal(data) {
 	});
 	view.append(item);
 	list.append(project);
+	
 }
 
 

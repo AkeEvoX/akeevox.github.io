@@ -18,17 +18,21 @@ $req_id = $_GET["id"];
 $type=$_GET["type"];
 $item = "";
 
-if(!isset($req_id) && empty($req_id))  //no request id
-{
-	$item = $press->getListItem($lang);
-}
-else if($type=="slide"){
+if($type=="slide"){
 	$item = $press->getSlideItem($lang);
 }
-else
+else if($type=="home"){
+	$item = $press->getHomeItem($lang);
+}
+else if(isset($req_id))
 {
 	$item = $press->getItem($req_id,$lang);
 }
+else //if(!isset($req_id) && empty($req_id))  //no request id
+{
+	$item = $press->getListItem($lang);
+}
+
 
 $result = null;
 

@@ -27,7 +27,7 @@ class AboutManager{
 		
 		try{
 
-			$sql = "select id,".$lang."_title as title,".$lang."_detail as detail ,type,link,update_date ";
+			$sql = "select id,".$lang."_title as title,".$lang."_detail as detail ,type,".$lang."_link as link,update_date ";
 			$sql .= "from about where active=1 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 			
