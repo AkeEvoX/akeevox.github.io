@@ -1,6 +1,6 @@
-/*! lightslider - v1.1.5 - 2015-10-31
+/*! lightslider - v1.1.6 - 2016-10-25
 * https://github.com/sachinchoolur/lightslider
-* Copyright (c) 2015 Sachin N; Licensed MIT */
+* Copyright (c) 2016 Sachin N; Licensed MIT */
 (function ($, undefined) {
     'use strict';
     var defaults = {
@@ -185,11 +185,7 @@
             },
             controls: function () {
                 if (settings.controls) {
-						
-					//# original
-                    //$el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
-					//#custom
-					$('.lSSlideOuter').append('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
+                    $el.after('<div class="lSAction"><a class="lSPrev">' + settings.prevHtml + '</a><a class="lSNext">' + settings.nextHtml + '</a></div>');
                     if (!settings.autoWidth) {
                         if (length <= settings.item) {
                             $slide.find('.lSAction').hide();
@@ -199,42 +195,19 @@
                             $slide.find('.lSAction').hide();
                         }
                     }
-					/*custom*/
-					$('.lSSlideOuter').find('.lSAction a').on('click',function(e){
-
-						  if (e.preventDefault) {
-                            e.preventDefault();
-                        } else {
-                            e.returnValue = false;
-                        }
-						
-						if ($(this).attr('class') === 'lSPrev') {
-							$el.goToPrevSlide();
-						}
-						else{
-							$el.goToNextSlide();
-						}
-						
-					});
-					/*original*/
-					
                     $slide.find('.lSAction a').on('click', function (e) {
                         if (e.preventDefault) {
                             e.preventDefault();
                         } else {
                             e.returnValue = false;
                         }
-						
-					
-						if ($(this).attr('class') === 'lSPrev') {
-							$el.goToPrevSlide();
-						}
-						else{
-							$el.goToNextSlide();
-						}
+                        if ($(this).attr('class') === 'lSPrev') {
+                            $el.goToPrevSlide();
+                        } else {
+                            $el.goToNextSlide();
+                        }
                         return false;
                     });
-					
                 }
             },
             initialStyle: function () {
@@ -483,7 +456,7 @@
                             $this.auto();
                         }   
                     }else{
-                        obj.find('img').load(function () {
+                        obj.find('img').on('load', function () {
                             setTimeout(function () {
                                 setCss();
                                 if (!interval) {

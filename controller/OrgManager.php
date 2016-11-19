@@ -120,8 +120,9 @@ class OrgManager{
 
 		try{
 
-			$sql = "select id,title_".$lang." as title  ,contury_".$lang." as contury";
-			$sql .= " from organization_reference where active=1 and islocal=".$local." order by title_".$lang." ";
+		
+			$sql = " select id,title_".$lang." as title  ,location_".$lang." as location ";
+			$sql .= " from project_reference where active=1 and islocal=".$local." order by title_".$lang." ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;

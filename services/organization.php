@@ -125,7 +125,7 @@ switch($type){
 		while($row= $item->fetch_object()){
 			$data = array("id"=>$row->id
 			,"title"=>$row->title
-			,"contury"=>$row->contury);
+			,"location"=>$row->location);
 		$result[] = $data;
 		}
 
