@@ -91,6 +91,12 @@ function setview(data)
 	$.each(data.result,function(i,val){
 
 		var itemview = "";
+		
+		var detail ="";
+		
+		if(val.detail !=undefined)
+			detail = val.detail.slice(0,200)+"....";
+		
 		itemview += "<div class='col-md-6'>" ;
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
@@ -100,7 +106,7 @@ function setview(data)
 		itemview += "</div>";//media-left
 		itemview += "<div class='media-body'><a href='press_detail.html?id="+val.id+"' style='text-decoration: none;'  >";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
-			itemview += "<div class='media-detail'>"+val.detail+"</div>";//#detail
+			itemview += "<div class='media-detail'>"+detail+"</div>";//#detail
 			itemview += "<span class='badge'><span id='press.read' style='color:white;'></span></span>";//#read more.
 		itemview += "</a></div>";//media-body
 		itemview += "</div>";//media
@@ -120,8 +126,9 @@ function setviewhome(resp){
 		
 		var detail  = "";
 		var view  = "";
-		if(val.detail!=undefined)
-			 detail = val.detail.slice(0,50)+"..."; //trim text
+		
+		//if(val.detail !=undefined)
+		//detail = val.detail.slice(0,50) +"..."; //trim text
 		 
 		view = "<div class='col-xs-12 col-sm-6 col-md-3' >";
 		view += "<a href='press_detail.html?id="+val.id+"' >";
@@ -143,10 +150,13 @@ function setviewhome(resp){
 
 function setviewdetail(data)
 {
-	console.log(data);
+	//console.log(data);
 	$('#list').html("");
 	var itemview = "";
+	var detail
 	var press = data.result[0];
+
+	
 	$('span[id="pressdetail"]').text(press.title);
 	itemview += "<div class='col-md-12'>";
 	itemview += "<h4 class='media-heading' style='color:orange'>"+press.title+"</h4>";

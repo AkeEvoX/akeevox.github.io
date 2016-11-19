@@ -33,7 +33,6 @@ else //if(!isset($req_id) && empty($req_id))  //no request id
 	$item = $press->getListItem($lang);
 }
 
-
 $result = null;
 
 while($row = $item->fetch_object()){

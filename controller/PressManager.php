@@ -71,7 +71,7 @@ class PressManager{
 	function getHomeItem($lang){
 		try{
 			
-			$sql = "select id,title_".$lang." as title,thumbnail,coverpage,update_date ";
+			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumbnail,coverpage,update_date ";
 			$sql .= "from press where active=1 order by update_date desc limit 4 ";
 
 			$result = $this->mysql->execute($sql);
