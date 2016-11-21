@@ -6,48 +6,48 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/hover/css/style.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/hover/css/secondeffect.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-			<style>
-	.view .mask, .view .content{
-		/*height:270px;*/
-		width:100%;
+	<style>
+	.img-responsive {
+		margin: 0 auto;
+		box-shadow: 0px 0px 5px #aaa;
 	}
-	.second-effect:hover .mask {
-		border:135px solid rgba(0,0,0,0.7);
-	}
+	.media-heading {padding-bottom:10px;}
+	.media-body {padding-top:15px;}
+
 	</style>
 </head>
 <body>
 <div id='view-navbar'></div><!--navigator-->
 <div class='container'>
 	<div class='row'>
-	<div class='col-md-12'>
-		<ol class="breadcrumb">
-		  <li><a href="index.html"><span id='nav.home'></span></a></li>
-		  <li ><a href="download.html"><span id='download.title'></span></a></li>
-		  <li class="active" ><span id='download.submenu'></span></li>
-		</ol>
-	</div>
-</div>
+				<div class='col-md-12'>
+					<ol class="breadcrumb">
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
+					  <li><a href="faq.html"><span id='faq.title'></span></a></li>
+						<li class='active'><span id='faqdetail'></span></li>
+					</ol>
+				</div>
+			</div>
 	<div class='well well-sm' >
-		<h3 class='text-center'><span id='download.title'></span></h3>
+		<h3 class='text-center'><span id='faq.title'></span></h3>
 	</div>
-	<h3><span id='typename'></span></h3>
-	<div id='list'>
+	<div id='list' class='row'>
 	</div>
+
 </div> <!--end container fluid-->
 <div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js'></script>
-<script src='js/download_list.js'></script>
+<script src='js/faq.js' ></script>
 <script>
 $(document).ready(function(){
-	utility.setpage('download');
-	loaditems(utility.querystr('id'));
+	utility.setpage('faq');
+	LoadItem(utility.querystr("id"));
 });
+		
 </script>
 </body>
