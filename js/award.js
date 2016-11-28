@@ -108,7 +108,8 @@ function apply_slider(){
 		container: ".main",
 		loop:true,
 		cssBlur:false,
-		autoStart:0
+		autoStart:0,
+		pagination :false
 	});
 }
 
@@ -121,7 +122,7 @@ function setstandard(data) {
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
 
 		//row
 		 if(((idx +1) % 4) === 0)
@@ -154,7 +155,8 @@ function setstandard(data) {
 		container: ".main",
 		loop:true,
 		cssBlur:false,
-		autoStart:0
+		autoStart:0,
+		pagination :false
 	    });
 
 }

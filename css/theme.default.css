@@ -5,7 +5,7 @@
 
 body
 {
-	margin-top:130px;
+	margin-top:80px;
 }
 
 /**********object nav bar*******/
@@ -17,6 +17,11 @@ body
 	margin-top:10px;
 	width:120px;/*70px-*/
 	/*box-shadow:4px 4px 4px #ccc;*/
+}
+
+.header {
+	color:#976935; 
+	padding-bottom:20px;
 }
 
  #searchbar ul {
@@ -132,6 +137,7 @@ label {
 /*-----custom control--------*/
 
 #searchbar {background-color:white;}
+#minibar { border:0px; display:none; }
 /*pc default : 1200*/
 /*@media(min-width:900px) {*/
 @media(min-width:1200px) {
@@ -141,16 +147,13 @@ label {
 	#navbar ul.nav.navbar-nav { padding-left:0px; } /*adjust menu*/
 	.navbar { height:100px; }
 	#navbar {padding-top:0px;}
-
 }
 
 @media(min-width:1000px) and (max-width:1200px) {
 	/*#searchbar { display:none; }*/
-	#searchbar { display:none; }
 }
 @media(min-width:900px) and (max-width:1000px) {
-	#searchbar { display:none; }
-	
+	/*#searchbar { display:none; }*/
 	.input-xs { max-width:100px; float:left;} 
 }
 
@@ -182,8 +185,10 @@ label {
 	#searchbar {
 		float:left;
 		position:absolute;
-		display:block;
+		display:none;
 	}
+	
+	#minibar { display:block; margin-top:10px;}
 	
 	.input-xs { max-width:100%; float:left;}
 	
@@ -196,7 +201,7 @@ label {
 /* mobile */
 @media(max-width:600px) {
 	
-	/*#searchbar { display:none; }*/
+	#searchbar { display:none; }
 
 	.input-xs {
 	  height: 22px;
@@ -208,5 +213,5 @@ label {
 	.navbar-header { padding-left:10px; }
 	.logobar { width:80px; /*52*/ }
 	#navbar ul.nav.navbar-nav { padding-left:10px; } /*adjust menu*/
-
+	#minibar { display:block;}
 }

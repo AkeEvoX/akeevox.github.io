@@ -50,7 +50,7 @@ function setemail(email)
 	$('#email').html("");
 	$.each(email,function(i,val){
 		if(val.title!='')
-		$('#email').append("<li>"+val.title+"</li>");
+		$('#email').append("<li><a href='mailto:"+val.title+"' style='text-decoration: none;color:#a58b5d;' >"+val.title+"<a/></li>");
 	});
 }
 

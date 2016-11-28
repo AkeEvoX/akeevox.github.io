@@ -2,3 +2,7 @@
  height:150px;
  width:100%;
 }
+
+.immersive_slider .is-slide .content {
+	vertical-align:top;
+}

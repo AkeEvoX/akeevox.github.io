@@ -28,23 +28,26 @@
 				<div class='row'>
 					<div class='col-md-12'>
 						<ul id='menutab' class="nav nav-tabs nav-justified">
-						  <li role="presentation" class="active"><a  href="#home" data-toggle="tab">Home</a></li>
-						  <li role="presentation"><a href="#product" data-toggle="tab">Products</a></li>
-						  <li role="presentation"><a href="#company" data-toggle="tab">Company</a></li>
-						  <li role="presentation"><a href="#media" data-toggle="tab">Media</a></li>
-						  <li role="presentation"><a href="#download" data-toggle="tab">Services & Download</a></li>
-						  <li role="presentation"><a href="#contact" data-toggle="tab">Contact</a></li>
+						  <li role="presentation" class='active'><a class='menutab' data-page='home-tab.html'  href="#" data-toggle="tab">Home</a></li>
+						  <li role="presentation"><a class='menutab' data-page='product-tab.html'    href="#product" data-toggle="tab">Products</a></li>
+						  <li role="presentation"><a class='menutab' data-page='company-tab.html'   href="#company" data-toggle="tab">Company</a></li>
+						  <li role="presentation"><a class='menutab' data-page='media-tab.html'    href="#media" data-toggle="tab">Media</a></li>
+						  <li role="presentation"><a class='menutab' data-page='download-tab.html'   href="#download" data-toggle="tab">Services & Download</a></li>
+						  <li role="presentation"><a class='menutab'  data-page='contact-tab.html'   href="#contact" data-toggle="tab">Contact</a></li>
 						</ul>
-						
 					</div>
 				</div>
 				<div class='row'>
+					<div id='viewcontent'></div>
+				</div>
+				<!--<div class='row'>
+					<div id='viewcenter'></div>
 					<div class='tab-content'>
 							<div id='home' class="tab-pane fade in active">
 								<div class='col-md-3'>
 									<ul class="nav nav-pills nav-stacked">
-										<li role="presentation" ><a class='pagetab' data-page='intro.html'  href="javascript:void(0);">จัดหน้า Intro</a></li>
-										<li role="presentation"><a class='pagetab' data-page='brander.html'  href="javascript:void(0);" >จัดการแบนเนอร์</a></li>
+										<li role="presentation" ><a class='pagetab' data-page='intro.html' data-parent='home' href="javascript:void(0);">จัดหน้า Intro</a></li>
+										<li role="presentation"><a class='pagetab' data-page='branner.html'  data-parent='home' href="javascript:void(0);" >จัดการแบนเนอร์</a></li>
 									</ul>
 								</div>
 								<div class='col-md-9'>
@@ -54,11 +57,11 @@
 							<div id='product' class="tab-pane fade">
 								<div class='col-md-3'>
 									<ul class="nav nav-pills nav-stacked">
-										<li role="presentation" ><a class='pagetab' data-page='category.html'  href="javascript:void(0);" data-toggle="tab">จัดการหน้าหมวดหมู่สินค้า</a></li>
-										<li role="presentation"><a class='pagetab' data-page='product.html'  href="javascript:void(0);" data-toggle="tab">จัดการสินค้า</a></li>
-										<li role="presentation"><a class='pagetab' data-page='series.html'  href="javascript:void(0);" data-toggle="tab">จัดการหน้า Series</a></li>
-										<li role="presentation"><a class='pagetab' data-page='showroom.html'  href="javascript:void(0);" data-toggle="tab">จัดการหน้า Showroom</a></li>
-										<li role="presentation"><a class='pagetab' data-page='color.html'  href="javascript:void(0);" data-toggle="tab">จัดการสีผลิตภัณฑ์</a></li>
+										<li role="presentation" ><a class='pagetab' data-page='category-manager.html' data-parent='product' href="javascript:void(0);" data-toggle="tab">จัดการหน้าหมวดหมู่สินค้า</a></li>
+										<li role="presentation"><a class='pagetab' data-page='product-manager.html' data-parent='product' href="javascript:void(0);" data-toggle="tab">จัดการสินค้า</a></li>
+										<li role="presentation"><a class='pagetab' data-page='series-manager.html' data-parent='product'  href="javascript:void(0);" data-toggle="tab">จัดการหน้า Series</a></li>
+										<li role="presentation"><a class='pagetab' data-page='showroom-manager.html' data-parent='product' href="javascript:void(0);" data-toggle="tab">จัดการหน้า Showroom</a></li>
+										<li role="presentation"><a class='pagetab' data-page='color-manager.html' data-parent='product' href="javascript:void(0);" data-toggle="tab">จัดการสีผลิตภัณฑ์</a></li>
 									</ul>
 								</div>
 								<div class='col-md-9'>
@@ -78,10 +81,9 @@
 								Contact
 							</div>
 						</div>
-				</div>
-				<!--<div class='row'>
-					<div id='viewcenter'></div>
 				</div>-->
+				
+				
 			</div>
 		</div>
 	</div>
@@ -90,18 +92,12 @@
 <script src='../plugin/jquery/jquery-ui.min.js' ></script>
 <script src='../plugin/jquery/holder.js' ></script>
 <script src='../plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='../js/utility.js' ></script>
 <script src='js/center.js' ></script>
 <script>
 $(document).ready(function(){
+
 	control.init();
-	
-	$('.nav-pills > li > a').click( function() {
-		$('.nav-pills > li.active').removeClass('active');
-		$(this).parent().addClass('active');
-		var link  = $(this).attr('data-page');
-		console.log($(this));
-		control.pagetab(link);
-	} );
 
 	$('#viewnavbar').load('navbar.html');
 	control.menutab('home-tab.html');
