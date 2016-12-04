@@ -44,7 +44,7 @@ class VideoManager{
 			try{
 			
 			$sql = "select id,title_".$lang." as title ,thumbnail,link,update_date ";
-			$sql .= "from video where active=1 order by create_date desc ";
+			$sql .= "from video where active=1 and title_".$lang." is not null order by create_date desc ";
 
 			$result = $this->mysql->execute($sql);
 			return  $result;

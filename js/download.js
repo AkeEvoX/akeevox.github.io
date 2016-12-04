@@ -33,7 +33,7 @@ function setview(data)
 //console.log("child="+val.title);
 		itemview += "<div class='col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
-		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image
+		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image height:240px;
 		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
 		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
 		itemview += "</div>";

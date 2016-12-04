@@ -38,12 +38,28 @@ class AttributeManager {
 			return "Cannot get attribute menu : ".$e->getMessage();
 		}
 	}
-
+	/*get attribute for page*/
 	function getItems($lang,$type)
 	{
 		try{
-			$sql = " select id,name,".$lang." as title,seq from attribute_master ";
-			$sql .= " where name like '".$type.".%' or name like '%nav.%' ";
+			$sql = " select id,name,".$lang." as title,seq,options from attribute_master ";
+			$sql .= " where name like '".$type.".%' or name like '%nav.%' order by seq ";
+			log_warning($sql);
+			$result = $this->mysql->execute($sql);
+
+			return $result;
+		}
+		catch(Exception $e)
+		{
+			return "Cannot get attributes : ".$e->getMessage();
+		}
+	}
+	/*get attribute only*/
+	function getattrs($lang,$type)
+	{
+		try{
+			$sql = " select id,name,".$lang." as title,seq,options from attribute_master ";
+			$sql .= " where name like '".$type.".%' order by seq";
 			log_warning($sql);
 			$result = $this->mysql->execute($sql);
 

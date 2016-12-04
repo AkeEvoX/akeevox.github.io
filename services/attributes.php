@@ -2,7 +2,7 @@
 Session_Start();
 date_default_timezone_set('America/Los_Angeles');
 include("../controller/AttributeManager.php");
-include("../controller/MenuManager.php");
+//include("../controller/MenuManager.php");
 include("../controller/ContactManager.php");
 include("../lib/common.php");
 include("../lib/logger.php");
@@ -31,16 +31,22 @@ switch($type)
 												,"seq"=>$row->seq);
 			$result[$row->name] = $itemdata;
 		}
-
-		$menu = new MenuManager();
-		$menuresult = $menu->getparentmenu($lang);
+		
+		/*
+		$itemattr = $attrMgr->getItems($lang,$type);
+		*/
+		//$itemattr = null;
+		$itemattr = $attrMgr->getattrs($lang,'sitemap');
+		
+		//$menu = new MenuManager();
+		//$menuresult = $menu->getparentmenu($lang);
 		$result["menu.sitemap"]["item"] = "";
-		while($row = $menuresult->fetch_object())
+		while($row = $itemattr->fetch_object())
 		{
 			//menu.sitemap
-			$result["menu.sitemap"]["item"] .=  "<a href='".$row->link."'>".$row->name."</a><br/>";
+			$result["menu.sitemap"]["item"] .=  "<a href='".$row->options."'>".$row->title."</a><br/>";
 		}
-
+		
 		/*load contact*/
 
 		$contact = new ContactManager();
