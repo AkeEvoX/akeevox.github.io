@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-<title>Welcome to Starsanitaryware</title>
+<title>Test External Site</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
 	<meta name="msapplication-window" content="width=device-width;height=device-height">
@@ -38,32 +38,37 @@
 		</div>
 	</div>
 </ul>
-	<div id='view'></div>
+
+<div id='view'>
+</div>
+	
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
 <script src='plugin/jquery/unslider/unslider-min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<!--<script src='js/utility.js' ></script>-->
 <script>
 	$(document).ready(function(){
-		//$('.default-slider').unslider();           
-		 $.ajax({
-    url: "https://www.facebook.com?_=1x0&callback=?",
+		/*$('.default-slider').unslider();*/
+		$.ajax({
+    url: "http://www.baankunnan.com/test.html?_=1x0&callback=?",
     data: "message=123",
     type: 'POST',
     success: function (resp) {
         //alert(resp);
+			console.log(resp);
 	    $('#view').html(resp);
-	    console.log(resp);
+	    
     },
     error: function(e) {
-        alert('Error: '+e);
+			console.error(e);
+			$('#view').html("Error : " + e.message);
+        //alert('Error: '+e);
     }  
-});
+	 });
 		
 	});
-	
-	
 </script>
 </body>
 

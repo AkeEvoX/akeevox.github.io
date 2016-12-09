@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-<title>Welcome to Starsanitaryware</title>
+<title>Starsanitaryware - Product Detail</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -14,20 +14,13 @@
 	<link rel='stylesheet' href='plugin/jquery/unitegallery/skins/alexis/alexis.css' type='text/css' /> 
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
-	<link href="css/product.css" rel="stylesheet" type="text/css" />
+	<link href="css/product-print.css" rel="stylesheet" type="text/css" />
 	
 </head>
 <body>
 <div id='view-navbar'></div><!--navigator-->
-	  <div class='container'>
-		<div class='col-md-3' id='menutree'>
-			<div class='span3'>
-				<ul id='productlist' class='nav nav-list menulist'>
-				</ul>
-			</div><!--end tree menu-->
-			<a href='download.html' class='btn btn-warning' style='background-color:#a2644d;' ><span class='glyphicon glyphicon-list-alt'></span>&nbsp;<span id='nav.download'></span></a>
-		</div>
-		<div class='col-md-9' id='view-content' >
+	  <div class='container-fluid'>
+		<div class='col-md-12' id='view-content' >
 			<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
@@ -43,33 +36,17 @@
 				<img src='images/logos/btn_print.png' id='btn_pring' style='cursor:pointer;'  ></span>
 			</h4>
 			<hr/>
-			<div class='container-fluid'>
-				<div id='control_compare' >
-					<div class='row'>
-						<h4 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='productdetail.compare'></span><hr/></h4>
-					</div>
-					<div class='row well well-sm'>
-						<div class='row'>
-							<div class="lightslider-main comapre-main">
-				        		<div class="item" >
-									<ul id="compare-slider" class="content-slider"></ul><!-- list-unstyled clearfix-->
-				        		</div>
-			        		</div>
-						</div>
-						<div class='row text-center'>
-							<a class='btn btn-warning' href='compares.html'><span id='productdetail.compare.button'></span></a>
-							<button class='btn btn-warning'><span id='productdetail.compare.reset'></span></button>
-						</div>
-					</div>
-				</div>
+			<!--<div class='container'>-->
 				<div class='row'><!--product gallery-->
-					<div id="productgallery" style="display:none;">
+					<div class='col-md-12'>	
+						<div id="productgallery" style="display:none;"></div>
 					</div>
 				</div>
 				<h4><span class='glyphicon glyphicon-stop'></span><span id='nav.category'></span> : <span id='productname'></span><hr/></h4>
 				<div class='row well well-sm productdesc'>
-					<form id='listattribute' class="form-inline">
-					</form>
+					<div class='col-xs-12 col-sm-12 col-md-12'>
+					<form id='listattribute' class="form-inline"></form>
+					</div>
 				</div>
 				<div class='row'>
 					<div class='col-md-12'>
@@ -106,7 +83,7 @@
 									<li style='top:-20px;position:relative;'><a href='#'><img src='images/products/icon_share.png'></a></li>
 									<li ><img src='images/products/icon_google.png' id='google' style='cursor:pointer;'></li>
 									<li ><img src='images/products/icon_twitter.png' id='twitter' style='cursor:pointer;'></li>
-									<li ><img src='images/common/line_share.png' width='99px' height='33px' id='line' style='cursor:pointer;'></li>
+									<li ><a href='#'><img src='images/products/icon_line.png'></a></li>
 									<li ><img src='images/products/icon_facebook.png' id='facebook' style='cursor:pointer;'></li>
 									<li ><a href='#'><img src='images/products/icon_instagram.png'></a></li>
 								</ul>
@@ -114,20 +91,9 @@
 						</ul>
 					</div>
 				</div>
-				<div class='row'>
-					<div class='col-md-12'>
-						<h4><span class='glyphicon glyphicon-stop'></span><span id='productdetail.release'></span><hr/></h4>
-						<div class="lightslider-main">
-			        		<div class="item" >
-								<ul id="product-slider" class="content-slider"></ul>
-			        		</div>
-			        	</div><!--end lightslider-->
-					</div>
-				</div>
-			</div> <!--end productdetail container-->
+			<!--</div>--> <!--end productdetail container-->
 		</div>
 	</div><!--end conatiner-->
-<div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
@@ -143,10 +109,16 @@
 $(document).ready(function(){
 
 	utility.setpage('productdetail');
-	product.compare();
-	product.listmenu();
+	//product.listmenu();
 	callproduct(utility.querystr('id'));
-	setshare();
+	//setshare();
+	/*load current compare*/
+	//product.compare();
+		
+	
+	$('#btn_pring').on('click',function(){
+		window.print();
+	});
 
 });
 
@@ -156,31 +128,6 @@ function callproduct(id)
 	loadproduct(id);
 	loadattribute(id);
 	loadproductreleated(id);
-}
-
-function setshare(){
-	var page = document.URL;
-
-	$('#google').on('click',function(){
-		var data = document.URL;
-		window.open('http://plus.google.com/share?url=' + encodeURIComponent(data) , 'sharer', 'toolbar=0, status=0, width=517, height=511');
-	});
-	$('#twitter').on('click',function(){
-		var data = document.URL;
-		window.open('http://www.twitter.com/intent/tweet?via=starsanitaryware&url=' + encodeURIComponent(data) , 'sharer', 'toolbar=0, status=0, width=585, height=261');
-	});
-	
-	$('#facebook').on('click',function(){
-		var data = document.URL;
-		window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(data) + '&t=' + encodeURIComponent('link popup'), 'sharer', 'toolbar=0, status=0, width=585, height=386');
-	});
-	
-	$('#line').on('click',function(){
-		var data = document.URL;
-		window.open('http://line.me/R/msg/text/?' + encodeURIComponent(data) , 'share', 'toolbar=0, status=0, width=585, height=386');
-	});
-	
-	
 }
 
 </script>
