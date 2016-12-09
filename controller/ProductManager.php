@@ -1,6 +1,5 @@
 <?php
-require_once("../lib/database.php");
-//require_once("../lib/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class ProductManager{
 
@@ -27,8 +26,11 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ";
-			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.id='".$id."' ; ";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ,t.title_".$lang." as catename";
+			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
+			$sql .= " inner join product_type t on p.typeid=t.id ";
+			$sql .= " where p.id='".$id."' ;";
+			
 			log_warning("product > " . $sql);
 			$result = $this->mysql->execute($sql);
 
@@ -62,13 +64,29 @@ class ProductManager{
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " where p.typeid='".$cate."' ";
 			$sql .= " order by p.create_date desc ";
-			log_warning("product list > " . $sql);
+			//log_warning("product list > " . $sql);
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
 		}
 		catch(Exception $e){
 			echo "Cannot Get Product List : ".$e->getMessage();
+		}
+	}
+	
+	function getProductTypeByID($id) {
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select id,parent,title_th,title_en,detail_th,detail_en,link,thumb,cover ";
+			$sql .= " from product_type ";
+			$sql .= " where active=1 and id='".$id."' ;";
+			log_warning("getProductTypeByID > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get ProductType By ID : ".$e->getMessage();
 		}
 	}
 
@@ -83,7 +101,7 @@ class ProductManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get Series List : ".$e->getMessage();
+			echo "Cannot Get ProductType : ".$e->getMessage();
 		}
 	}
 
@@ -106,7 +124,7 @@ class ProductManager{
 
 			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid='".$cate."' ";
-			$sql .= " order by  p.create_date desc ";
+			$sql .= " order by  p.create_date desc limit 6 ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -121,7 +139,7 @@ class ProductManager{
 
 			$sql = " select p.id,p.".$lang." as title,a.".$lang." as label from product_attribute p ";
 			$sql .= " left join attribute_master a on a.name=p.attribute ";
-			$sql .= " where p.proid='".$id."' order by attribute ";
+			$sql .= " where p.proid='".$id."' order by a.seq ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -149,9 +167,6 @@ class ProductManager{
 	function getMenu($lang)
 	{
 		try{
-			//$sql = "select id,".$lang." as title ,parent ";
-			//$sql .= "from product_type where active=1 order by parent ";
-			//,(select count(1) from product_type b where b.parent=a.id) as isparent 
 
 			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
 			$sql .= " from product_type a ";
@@ -164,8 +179,101 @@ class ProductManager{
 		catch(Exception $e){
 			echo "Cannot Get  Menu Product : ".$e->getMessage();
 		}
+		
 	}
+	
+	function insert_product_type($items){
+		try{
+			$parent = $items["parent"];
+			$title_th = $items["title_th"];
+			$title_en = $items["title_en"];
+			$link = $items["link"];
+			$cover = $items["cover"];
+			$active = "1";
+			$create_by = "0";
+			$create_date = "now()";
+			
+			$sql = "insert into product_type(parent,title_th,title_en,cover,active,link,create_by,create_date) ";
+			$sql .= "values($parent,'$title_th','$title_en','$cover',$active,'$link',$create_by,$create_date); ";
+			
+			//echo $sql."<br/>";
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product Type: ".$e->getMessage();
+		}
+	}
+	
+	function update_product_type($items){
+		try{
+			$id = $items["id"];
+			$parent = $items["parent"];
+			$title_th = $items["title_th"];
+			$title_en = $items["title_en"];
+			//$link = $items["link"];
+			$cover = $items["cover"];
+			//$active = "1";
+			$update_by = "0";
+			$update_date = "now()";
+			
+			$sql = "update product_type set  ";
+			$sql .= "parent=$parent ";
+			$sql .= ",title_th='$title_th' ";
+			$sql .= ",title_en='$title_en' ";
+			$sql .= ",cover='$cover' ";
+			//$sql .= ",link='$link' ";
+			//$sql .= ",active=$active ";
+			$sql .= ",update_by=$update_by";
+			$sql .= ",update_date='$update_date' ";
+			$sql .= "where id=$id ;";
+			
+			//echo $sql."<br/>";
+			log_warning("update_product_type > " . $sql);
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Product Type: ".$e->getMessage();
+		}
+	}
+	
+	
+	function delete_product_type($id){
+		try{
+			/*flag delete 
+			** can delete manual with your self. prevent data is lost
+			*/
+			//$sql = "delete from product_type where id=$id ;";
+			$sql = "update product_type set active='0' where id=$id ;";
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Product Type: ".$e->getMessage();
+		}
+	}
+	
+	function get_fetch_category($lang,$start_fetch,$max_fetch){
+		try{
+			//$max_fetch = 10;
 
+			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
+			$sql .= " from product_type a ";
+			$sql .= " where active=1 ";
+			$sql .= " order by a.id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Category Product : ".$e->getMessage();
+		}
+	}
 
 }
 

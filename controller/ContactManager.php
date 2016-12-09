@@ -1,6 +1,5 @@
 <?php
-require_once("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class ContactManager{
 	

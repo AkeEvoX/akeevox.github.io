@@ -1,5 +1,5 @@
 <?php
-require_once("../lib/database.php");
+require_once($base_dir."/lib/database.php");
 
 class MenuManager {
 

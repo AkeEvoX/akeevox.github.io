@@ -1,6 +1,5 @@
 <?php
-include("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class GalleryManager{
 	
@@ -27,7 +26,7 @@ class GalleryManager{
 		
 		try{
 
-			$sql = "select id,title_".$lang." as title ,thumbnail,update_date ";
+			$sql = "select id,title_".$lang." as title ,thumbnail,image,update_date ";
 			$sql .= "from gallery where active=1 and id='".$id."' order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 			
@@ -43,7 +42,7 @@ class GalleryManager{
 	{
 			try{
 			
-			$sql = "select id,title_".$lang." as title ,thumbnail,update_date ";
+			$sql = "select id,title_".$lang." as title ,thumbnail,image,update_date ";
 			$sql .= "from gallery where active=1 order by create_date desc ";
 
 			$result = $this->mysql->execute($sql);

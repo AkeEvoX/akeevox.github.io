@@ -1,6 +1,5 @@
 <?php
-include("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class DownloadManager{
 	
@@ -27,13 +26,13 @@ class DownloadManager{
 		
 		try{
 
-		
-			
-			$sql = " select id,".$lang." as name from download_type where active=1 ";
+			$sql = " select id,".$lang." as name from download_type where active=1  ";
 
 			if(isset($id) && !empty($id)) {
 				$sql  .= " and id=".$id;
 			}
+			
+			$sql .= " order by seq";
 		
 			$result = $this->mysql->execute($sql);
 			
@@ -45,11 +44,11 @@ class DownloadManager{
 		
 	}
 
-	function getListItem($id,$lenght)
+	function getListItem($id,$lenght,$lang)
 	{
 			try{
 			
-			$sql = " select * from downloads where active=1  and type = ".$id . " order by create_date";
+			$sql = " select id,title_".$lang." as title,thumbnail,link from downloads where active=1  and type = ".$id . " order by create_date";
 
 			if(isset($lenght) && !empty($lenght)){
 				$sql .= " limit ". $lenght;

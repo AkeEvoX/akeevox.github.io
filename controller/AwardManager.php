@@ -1,9 +1,8 @@
 <?php
-include("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class AwardManager{
-
+	
 	protected $mysql;
 	function __construct(){
 
@@ -24,26 +23,26 @@ class AwardManager{
 	}
 
 	function getItem($id,$lang){
-
+		
 		try{
 
 			$sql = " select id,title_".$lang." as title,detail_".$lang." as detail ,thumbnail ,update_date ";
 			$sql .= "from award where active=1 and id='".$id."' order by update_date desc ";
 			$result = $this->mysql->execute($sql);
-
+			
 			return  $result;
 		}
 		catch(Exception $e){
 			echo "Cannot Get  Award : ".$e->getMessage();
 		}
-
+		
 	}
 
 	function getListItem($lang)
 	{
 			try{
-
-			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail ,update_date as date,type ";
+			
+			$sql = "select id,thumbnail,update_date,type ";
 			$sql .= "from award where active=1 order by update_date desc ";
 
 			$result = $this->mysql->execute($sql);
@@ -53,7 +52,7 @@ class AwardManager{
 			echo "Cannot Get List Award : ".$e->getMessage();
 		}
 	}
-
+	
 }
 
 ?>

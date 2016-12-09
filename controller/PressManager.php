@@ -1,6 +1,5 @@
 <?php
-include("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class PressManager{
 	

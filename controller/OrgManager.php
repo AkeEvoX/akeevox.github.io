@@ -1,6 +1,5 @@
 <?php
-require_once("../lib/database.php");
-//include("../../../controller/logger.php");
+require_once($base_dir."/lib/database.php");
 
 class OrgManager{
 
@@ -39,6 +38,37 @@ class OrgManager{
 
 	}
 
+	function getPersonalList(){
+
+		try{
+
+			$sql = "select * ";
+			$sql .= " from organization_executive where active=1 order by create_date desc ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Perosonal List : ".$e->getMessage();
+		}
+
+	}
+	
+	function getPersonal($id){
+		
+			try{
+
+			$sql = "select * ";
+			$sql .= " from organization_executive where where id=$id order by create_date desc ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Perosonal : ".$e->getMessage();
+		}
+	}
+	
 	function getchart($lang)
 	{
 		try{
@@ -132,10 +162,6 @@ class OrgManager{
 		}
 
 	}
-
-
-
-
 
 }
 
