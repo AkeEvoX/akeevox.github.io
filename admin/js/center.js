@@ -6,21 +6,40 @@ control.init = function(){
 }
 
 control.menutab = function(page){
+	
 	$('#viewcontent').load(page, { '_' : new Date().getMilliseconds()} ,function(result,status,xhr){
 		if(validatemenu(result,status,xhr))
+		{
+			
 			setup_activepage();//set pagetab redirect
+			//$('.nav-pills > li > a').unbind('click');
+		}
+		//
 	});
 	
+	//
+	
+	
+	//$('#viewcontent').unbind('load');
 }
 
-control.pagetab = function(page){
+control.pagetab = function(page,object){
 	
-	$('#viewpage').load(page, { '_' : new Date().getMilliseconds()},validatepage);
-	setuppage();
+	//$('#viewpage').unbind('load');
+	$('#parameter').val(object);
+	$('#viewpage').load(page, { '_' : new Date().getMilliseconds()},function(result,status,xhr){
+		console.log('select pagetab');
+		if(validatepage(result,status,xhr)){
+			//setuppage();
+		}
+			
+	});
 	
 };
 
 function setup_activepage(){
+	
+	//$('.nav-pills > li > a').unbind('click');
 	
 	$('.nav-pills > li > a').click( function() {
 		
@@ -28,9 +47,12 @@ function setup_activepage(){
 		$(this).parent().addClass('active');
 		
 		var link  = $(this).attr('data-page');
-		console.log(link);
-		control.pagetab(link);
 		
+		console.log(link);
+		if(link!=undefined)
+			control.pagetab(link);
+		else
+			console.log('page not found');
 	} );
 	
 	
@@ -47,19 +69,6 @@ function setuplink(){
 			control.menutab(link);
 		else
 			alert('page not found');
-	});
-	
-}
-
-function setuppage(){
-	
-	$('.pagetab').click(function(){
-		
-		var link = $(this).attr('data-page');
-		//var parent  = $(this).attr('data-parent');
-		//var view =$('#'+parent).find('.viewcontent');
-		if(link!=undefined)
-			control.pagetab(link);
 	});
 	
 }

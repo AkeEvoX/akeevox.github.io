@@ -1,6 +1,6 @@
 <div class='col-md-12' >
 	<h3>จัดการหน้าหมวดหมู่สินค้า</h3><hr/>
-	<h4><span class='glyphicon glyphicon-stop'></span>เพิ่มหมวดหมู่</h4>
+	<h4><span class='glyphicon glyphicon-stop'></span>แก้ไขหมวดหมู่</h4>
 	<div class='row'>
 		<div class="form-horizontal">
 		<div class="form-group">
@@ -26,14 +26,17 @@
 		</div>
 	</div>
 	<div class='row'>
-		<span class='btn btn-success btn-sm' onclick='cate.add();'  >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html')  >ยกเลิก</span>
+		<span class='btn btn-success btn-sm' onclick='cate.edit();' >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html') >ยกเลิก</span>
 	</div>
+	
 </div>
 <script src='js/category-manager.js'></script>
 <script>
-
  $(document).ready(function(){
-	cate.loadoptions();
+ 
+	var id = utility.querystr("id",$('#parameter').val()); /*lookup in center.js */
+	cate.loaditem(id);
  });
-
+ 
+  
 </script>

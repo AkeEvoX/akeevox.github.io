@@ -1,6 +1,29 @@
 
 var personal = {};
 
+personal.add = function(){
+	
+	
+	var endpoint = "services/personal.php";
+	var method = "POST";
+	//var args =  {'_':new Date().getMilliseconds(),'type':'add','th':$('#form_th').serialize()};
+	/*
+	utility.service(endpoint,method,args,function(data){
+		console.debug(data);
+		alert(data.result);
+	});*/
+	
+	var args =  {'_':new Date().getMilliseconds()
+	,'type':'add'
+	,'th': {'name':$('#name_th').val() , 'position':$('#position_th').val(), 'education':$('#education_th').val() ,'work':$('#work_th').val() }
+	,'en': {'name':$('#name_en').val() , 'position':$('#position_en').val(), 'education':$('#education_en').val() ,'work':$('#work_en').val() }
+	};
+	
+	console.log(args);
+	
+	
+}
+
 personal.reset = function(){
 	$('#title_th').val('');
 	$('#title_en').val('');

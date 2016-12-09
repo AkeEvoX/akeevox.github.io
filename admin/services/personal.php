@@ -17,6 +17,8 @@ if(isset($_POST["type"])) $type = $_POST["type"];
 if(isset($_GET["id"])) $id = $_GET["id"]; 
 if(isset($_POST["id"])) $id = $_POST["id"]; 
 
+print_r($_POST["type"]);
+
 $result = "";
 
 switch($type){
