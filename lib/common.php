@@ -4,18 +4,23 @@ date_default_timezone_set('America/Los_Angeles');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);
-error_reporting(E_ALL);
-/*E_PARSE | E_WARNING | E_NOTICE , E_ALL*/
+error_reporting(E_ERROR | E_WARNING | E_CORE_ERROR | E_COMPILE_ERROR | E_PARSE) ;
+/*E_PARSE | E_WARNING | E_NOTICE , E_ALL | E_ERROR | E_CORE_ERROR | E_COMPILE_ERROR*/
 
-//$lang="en";
 
+/*define variable globle for client;*/
+$base_dir = "../";
+	
 if(!isset($_SESSION["lang"]) or empty($_SESSION["lang"])){
 	$_SESSION["lang"] = "en";
-	$lang = $_SESSION["lang"];
+	//$lang = $_SESSION["lang"];
 } 
 
+if(isset($_SESSION["lang"]))
+	$lang = $_SESSION["lang"];
 
-function SendMail($sender,$subject,$message)
+
+function SendMail($redirect,$sender,$subject,$message,$custname)
 {
 		$mail = new PHPMailer();
 
@@ -23,33 +28,39 @@ function SendMail($sender,$subject,$message)
 
 		$mail->Subject = $subject;
 		$mail->MsgHTML($message);//body mail
-
+	
 		$mail->CharSet = "utf-8";
 		$mail->Host="mail.baankunnan.com";
-		$mail->SMTPAuth = false;
+		$mail->SMTPAuth = true;
 		$mail->IsHTML(true);
-		//$mail->Username = "contact@baankunnan.com"; 
-		//$mail->Password = "hmcKxJfCj"; 
-		$mail->SetFrom("contact@baankunnan.com", "starsanitaryware.com");
-		//$mail->AddBcc("Andamantaxis@gmail.com", "notify to admin");
+		$mail->Username = "contact@baankunnan.com"; 
+		$mail->Password = "hmcKxJfCj"; 
+		$mail->SetFrom($sender, $custname);
+		//$mail->SetFrom("contact@baankunnan.com", "starsanitaryware.com");
+		$mail->AddBcc("contact@baankunnan.com", "contact :: starsanitaryware");
 		//$mail->AddReplyTo("mail@andamantaxis.com", "admin");
-
-		$mail->AddAddress($sender); 
-
-		//$mail->Send();
+		$mail->AddAddress("sales@starsanitaryware.com"); 
 		
 		if(!$mail->Send()) {
 			//echo "Mailer Error: " . $mail->ErrorInfo;
 			if($_SESSION["lang"]!="en")
 				echo "<script>alert('ขออภัยระบบขัดข้องค่ะ');</script>";
 			else 
-				echo "<script>alert('Send mail Error.');</script>";
+				echo "<script>alert('Sorry !! , Send Feedback Error.');</script>";
 		} else {
 			if($_SESSION["lang"]!="en")
 				echo "<script>alert('ข้อมูลของคุณส่งเรียบร้อยแล้วค่ะ');</script>";
 			else 
-				echo "<script>alert('Send mail completed');</script>";
+				echo "<script>alert('Thankyou for feedback.');</script>";
 		}
+		
+		echo "<script>window.location.href='".$redirect."';</script>";
 }
 
+function replace_specialtext($message){
+	
+	$result = str_replace("'","\'",$message);
+	
+	return $result;
+}
 ?>

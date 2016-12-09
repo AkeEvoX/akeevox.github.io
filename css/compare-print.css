@@ -1,4 +1,15 @@
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
 
+    /* this affects the margin in the printer settings */ 
+	/*top right buttom left*/
+    margin: 5mm 5mm 5mm 5mm;  
+} 
+
+body{
+	margin:30px;
+}
 .title_control{
     position:absolute;top:45px;right:0px;
 }

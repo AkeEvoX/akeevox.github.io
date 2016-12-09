@@ -1,34 +1,28 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/AboutManager.php");
 include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
+require_once("../controller/AboutManager.php");
 
 $about = new AboutManager();
 
-//$lang = "th";
+//$lang = "th"; 
 if(isset($_SESSION['lang']) && !empty($_SESSION['lang'])) {
 	$lang = $_SESSION["lang"];
 }
 
-//$req_id = $_GET["id"];
 $item = "";
 $item = $about->getItem($lang);
 
 $result = null;
 $row = $item->fetch_object();
 
-//$row->link
-
-$media = $row->link;
+//$media = $row->link;
 
 $data = array("id"=>$row->id
 							,"title"=>$row->title
 							,"detail"=>$row->detail
-							,"media"=>$media
+							,"link"=>$row->link
 							,"type"=>$row->type
 							,"date"=>$row->update_date);
 

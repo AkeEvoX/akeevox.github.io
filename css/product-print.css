@@ -1,14 +1,23 @@
 
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+	/*top right buttom left*/
+    margin: 5mm 5mm 20mm 5mm;  
+} 
+
+body  
+{ 
+    /* this affects the margin on the content before sending to printer */ 
+    /*๕margin: 0px;  */
+} 
+
 .share-popup {
 	float:right;
 	position: relative;
 	padding-right:5px;
-	/*
-	float:right;
-	border:1px solid;
-	height:32px;
-	width: 130px;
-	position: relative;*/
 }
 
 .share-popup2 img {
@@ -174,12 +183,12 @@
 
 /*tablet*/
 @media(min-width:900px) and (max-width:1000px) {
-	#view-content {width:70%;}
+	/*#view-content {width:70%;}*/
 }
 
 /* laptop */
 @media(min-width:600px) and (max-width:900px){
-	#view-content {width:70%;}
+	/*#view-content {width:70%;}*/
 }
 
 /*mobile*/
@@ -187,13 +196,6 @@
 
 	/*#navtree { display:block; } */
 
-	#listattribute label {
-		width:100%;
-	}
-
-	#listattribute div {
-		width:100%;
-	}
 
 	.content-slider {
 
@@ -217,8 +219,25 @@
 		height:150px;
 		width:150px;
 	}
+	/*
+	#listattribute div {
+		width:100%;
+	}
+	*/
+	#listattribute label {
+		width:100%;
+	}
+	/*
+	
+	#listattribute label {
+		width:100%;
+	}
 
 
 
+	#listattribute > div > .col-xs-* {
+		height:30px;
+	}
+*/
 }
 

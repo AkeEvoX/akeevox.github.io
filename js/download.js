@@ -41,7 +41,7 @@ function setview(data)
 	});
 
 	row += itemview ;
-	row += "<a class='btn btn-warning pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
+	row += "</div><div class='row'><a class='btn btn-warning pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
 
 	//console.log(row);
 	$('#list').append(row);

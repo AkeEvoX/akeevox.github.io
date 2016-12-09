@@ -1,10 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/GalleryManager.php");
 include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
+include("../controller/GalleryManager.php");
 
 
 $gallery = new GalleryManager();
@@ -30,7 +28,7 @@ $result = null;
 
 while($row = $item->fetch_object()){
 
-	$data = array("id"=>$row->id,"title"=>$row->title,"thumbnail"=>$row->thumbnail,"date"=>$row->update_date);
+	$data = array("id"=>$row->id,"title"=>$row->title,"thumbnail"=>$row->thumbnail,"image"=>$row->image,"date"=>$row->update_date);
 	$result[] = $data;
 }
 

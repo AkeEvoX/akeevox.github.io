@@ -11,16 +11,9 @@ $message .= "Customer : " . $custname."<br/>";
 $message .= "Phone : " . $phone."<br/>";
 $message .= "Email : " . $email ."<br/>";
 $message .= "Detail :" .$desc;
-$subject = "Feedback or contact";
+$subject = "Feedback Starsanitaryware";
 
-echo $message ."<br/>";
-
-Sendmail($email,$subject,$message);
-
-
-
-//header( "location: contact.html" );
-
-//echo "<script>window.location.href='../contact.html'</script>";
+$redirect = "../contact.html";
+Sendmail($redirect,$email,$subject,$message,$custname);
 
 ?>

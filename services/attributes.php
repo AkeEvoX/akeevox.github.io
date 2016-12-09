@@ -1,13 +1,9 @@
 <?php
 Session_Start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/AttributeManager.php");
-//include("../controller/MenuManager.php");
-include("../controller/ContactManager.php");
 include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
+include("../controller/AttributeManager.php");
+include("../controller/ContactManager.php");
 
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
@@ -16,7 +12,8 @@ if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 $attrMgr = new AttributeManager();
 $result = null;
 $type=$_GET["type"];
-
+$opton = "";
+if(isset($_GET["option"])) $option=$_GET["option"];
 switch($type)
 {
 	case "menu":
@@ -135,6 +132,13 @@ switch($type)
 		while($row = $itemattr->fetch_object())
 		{
 			$result[] = array("name"=>$row->name,"value"=>$row->title);
+		}
+	break;
+	case "other" :
+		$itemattr = $attrMgr->getattrs($lang,$option);
+		while($row = $itemattr->fetch_object())
+		{
+			$result[] = array("name"=>$row->name,"value"=>$row->title,"option"=>$row->options);
 		}
 	break;
 	default :

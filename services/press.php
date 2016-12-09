@@ -1,10 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+require_once("../lib/common.php");
+require_once("../lib/logger.php");
 include("../controller/PressManager.php");
-include("../lib/common.php");
-include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
 
 
 $press = new PressManager();
@@ -32,6 +30,7 @@ else //if(!isset($req_id) && empty($req_id))  //no request id
 {
 	$item = $press->getListItem($lang);
 }
+
 
 $result = null;
 

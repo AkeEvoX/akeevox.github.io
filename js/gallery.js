@@ -17,9 +17,9 @@ function setview(data)
 {
 	$('#list').html("");
 	$.each(data.result,function(i,val){
-
+		console.log(val.image);
 		var itemview = "";
-		itemview += "<a class='item' href='#' onclick=utility.modalimage(null,'"+val.thumbnail+"'); ><img src='"+val.thumbnail+"' class='img-responsive' /></a>";
+		itemview += "<a class='item' href='javascript:void(0);' onclick=utility.modalimage(null,'"+val.image+"'); ><img src='"+val.thumbnail+"' class='img-responsive' onerror=this.src='images/common/unavaliable.jpg'  /></a>";
 		$('#list').append(itemview);
 	});
 

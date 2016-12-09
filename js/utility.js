@@ -43,8 +43,8 @@ utility.initial = function(){
 		utility.loadbuttommenu();
 	});
 	
-	
-	
+	//$('span[data-link')
+
 }
 
 utility.service = function(url,method,args,success_callback,complete_callback){
@@ -104,7 +104,18 @@ utility.setpage = function(page){
 	
   var endpoint = "services/attributes.php";
   var args = {'_':new Date().getHours(),'type':page};
-  utility.service(endpoint,'GET',args, bindpage,null);
+  utility.service(endpoint,'GET',args, bindpage,function(){
+	
+	/*apply customize attribute*/  	
+	$('[data-type="link"]').on('click',function(){
+		
+		if($(this).attr('popup')=="true")
+			window.open($(this).attr('url'),'_blank');
+		else
+			window.location.href=$(this).attr('url');
+	});
+	
+  });
   
 }
 
@@ -124,12 +135,15 @@ utility.modalimage = function(title,url){
 	if(title!=null)
 		$('#modaltitle').html(title);
 
-	$('.modal').on('show.bs.modal', centerModal);
+	//$('.modal').on('show.bs.modal', centerModal);
 
-	$('#modalcontent').html("<img src='"+url+"' class='img-fluid' /> ");
+	$('#modalcontent').html("<img src='"+url+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-responsive' /> ");
+	//$('.modal').on('show.bs.modal', centerModal);
 	$('#modaldialog').modal('show');
 
-	$('.modal:visible').each(centerModal);
+	//$('.modal:visible').each(centerModal);
+	
+	
 
 }
 
@@ -149,8 +163,8 @@ function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");
 
-	var imgwidth = $(this).find('.modal-body img').width();
-	$dialog.css({width:imgwidth+35});
+	//var imgwidth = $(this).find('.modal-body img').width();
+	//$dialog.css({width:imgwidth+35});
 
     var offset = ($(window).height() - $dialog.height()) / 2;
     // Center modal vertically in window

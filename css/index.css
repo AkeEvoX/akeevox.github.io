@@ -105,11 +105,13 @@
 }
 
 #press-control {
-	background-color:#f4e1c0 ;
+	/*background-color:#f4e1c0 ;*/
 }
 
 #press-header{
 	color:#b28b22;	
+	background-color:#f4e1c0 ;
+	padding:20px 0px 20px 0px;
 }
 
 h2 div {
@@ -215,7 +217,9 @@ h2 div :after {
 			padding:3px 15px;
 	}
 	
-	
+	#press-header {
+		padding:20px 0px 20px 0px;
+	}
 	
 }
 @media(min-width:600px) and (max-width:900px){

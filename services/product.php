@@ -1,10 +1,10 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+//date_default_timezone_set('America/Los_Angeles');
 include("../lib/common.php");
-include("../controller/ProductManager.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
+include("../controller/ProductManager.php");
+//header("Content-Type: application/json;  charset=UTF8");
 
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
@@ -135,14 +135,6 @@ function setShowRoom($lang,$id) {
 
 		$product = new ProductManager();
 
-		//set id default if is null
-/*
-		if(empty($id))
-		{
-			$data=$product->getSeriesDefault($lang);
-			$row = $data->fetch_object();
-			$id = $row->id;
-		}*/
 		//call infor by type series
 		$data = $product->getProductType($lang,$id);
 		$row = $data->fetch_object();

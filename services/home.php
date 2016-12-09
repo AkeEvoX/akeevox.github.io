@@ -1,9 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+include("../lib/common.php");
+include("../lib/logger.php");
 require_once("../controller/HomeManager.php");
-require_once("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
 
 
 $home = new HomeManager();

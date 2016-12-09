@@ -1,10 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/DealerManager.php");
 include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
+include("../controller/DealerManager.php");
 
 
 $dealer = new DealerManager();
@@ -12,7 +10,8 @@ $dealer = new DealerManager();
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }else{
-	/* $_SESSION["lang"] = $lang;*/
+	$lang = "th";
+	 $_SESSION["lang"] = $lang;
 }
 
 $req_id = $_GET["id"];

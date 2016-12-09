@@ -13,7 +13,9 @@ class database {
 
 	function __construct(){
 
-		$config = parse_ini_file("../config/datasource.ini");
+		/*require lib/common.php */
+		$path_cfg = "datasource.ini";
+		$config = parse_ini_file($path_cfg);
 		
 		$this->host = $config["host"];
 		$this->port = $config["port"];
@@ -67,8 +69,12 @@ class database {
 
 		try{
 
-			if($this->result!=null)
-				$this->result->free();
+			if($this->result!=null){
+				
+				if($this->result!="1"){
+						$this->result->free();
+				}
+			}
 		
 			if($this->conn!=null)
 				$this->conn->close();

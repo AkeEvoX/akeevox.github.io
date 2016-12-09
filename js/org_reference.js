@@ -2,34 +2,23 @@
 function setup_slider()
 {
 	
-	//inter-slider
+	
 	$("#inter-slider").lightSlider({
 		autoWidth: true
-		,adaptiveHeight:true
+		,adaptiveHeight:false
 	    ,loop:true
 	    ,keyPress:true
 	 });
 	 
-	 //local-slider
+	 
 	$("#local-slider").lightSlider({
 		autoWidth: true
-		,adaptiveHeight:true
+		,adaptiveHeight:false
 	    ,loop:true
 	    ,keyPress:true
 	 });
 
-	//activateSliders();
-}
 
-function activateSliders() {
-
-    $('.slider').each(function(){
-
-       var sliderId =  $(this).attr('id');
-		console.log(sliderId);
-       $("#" + sliderId).lightSlider();
-
-    });
 }
 
 function loadprojectlist(local)
@@ -65,7 +54,7 @@ function loadreference()
 	var method = "get";
 	var args = {"_": new Date().getHours() , "type":"refer"};
 	
-	utility.service(endpoint,method,args,seperateproject);
+	utility.service(endpoint,method,args,seperateproject,setup_slider,setup_slider);
 	
 
 	/*
@@ -136,11 +125,11 @@ function displayinter(data){
 	var project ="";
 	$.each(data,function(idx,val){
 
-		item= "<li ><a href='refer-info.html?id="+val.id+"&local=0'>";
+		item+= "<li ><a href='refer-info.html?id="+val.id+"&local=0'>";
 		item+= "<img src='"+val.thumbnail+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
 		item+= "</a></li>";
-		view.append(item);
+
 		project += "<tr>";
 		project += "<td>"+val.title+"</td>";
 		project += "<td>"+val.detail+"</td>";
@@ -149,16 +138,8 @@ function displayinter(data){
 	});
 
 
-	
+	view.append(item);
 	list.append(project);
-	
-	view.lightSlider({
-		autoWidth: true
-		,adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	 });
-	 
 }
 
 
@@ -169,28 +150,18 @@ function displaylocal(data) {
 	var item = "";
 	var project ="";
 	$.each(data,function(idx,val){
-		item= "<li><a href='refer-info.html?id="+val.id+"&local=1'>";
+		item+= "<li><a href='refer-info.html?id="+val.id+"&local=1'>";
 		item+= "<img src='"+val.thumbnail+"'  onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
 		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
 		item+= "</a></li>";
-		view.append(item);
-		
+
 		project += "<tr>";
 		project += "<td>"+val.title+"</td>";
 		project += "<td>"+val.detail+"</td>";
 		project += "</tr>";
-		
-		
 	});
-	
+	view.append(item);
 	list.append(project);
-	
-	view.lightSlider({
-		autoWidth: true
-		,adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	 });
 	
 }
 

@@ -1,3 +1,20 @@
+$(document).ready(function(){
+	
+	$('#btn_compare').on('click',function(){
+		product.compare();
+	});
+	
+	$('#btn_pring').on('click',function(){
+		//window.print();
+		window.open('product_print.html?id='+utility.querystr('id'), 'sharer', 'toolbar=0, status=0, width=576, height=798');
+	});
+
+	$('span[id="productdetail.compare.reset"]').on('click',function(){
+		product.compare_reset();
+	});
+	
+});
+
 var product = function(){};
 
 product.listmenu = function(){
@@ -17,6 +34,69 @@ product.listmenu = function(){
 	});
 }
 
+
+product.compare = function(){
+
+	var id = $('#btn_compare').attr('data-id');
+	var thumb = $('#btn_compare').attr('data-thumb');
+
+	var endpoint = 'services/compare.php';
+	var method ='get';
+	var args = {'_':new Date().getMilliseconds(),'id':id,'thumb':thumb};
+	utility.service(endpoint,method,args,setViewCompare,setting_slider);
+
+}
+
+product.compare_reset = function(){
+	var endpoint = 'services/clearcache.php';
+	var method ='get';
+	var args = {'_':new Date().getMilliseconds()};
+	utility.service(endpoint,method,args);
+
+	$('#control_compare').hide();
+}
+
+product.compare_remove = function(id){
+	var endpoint = 'services/compare.php';
+	var method = 'get';
+	var args = {'_':new Date().getMilliseconds(),'type':'remove','id':id};
+	
+	utility.service(endpoint,method,args,setViewCompare,setting_slider);
+}
+
+function setting_slider(data){
+	
+	if(data.responseJSON.result==null || data.responseJSON.result.length=="0" ){
+		$('#control_compare').hide();
+		return;
+	}
+		
+	$('#control_compare').show();
+	/*adjust image slider*/
+	$("#compare-slider").lightSlider({
+				autoWidth: true
+				,adaptiveHeight:true
+				,loop:true
+				,keyPress:false
+				,pager:false
+				,slideMargin:5
+	});
+	/*setting remove compare*/
+	$('.icon_close').on('click',function(){			
+			var id = $(this).attr('data-id');
+			console.log("remove id = "+id);
+			product.compare_remove(id);
+	});
+
+}
+
+function remove_compare(id){
+	var endpoint = 'services/compare.php';
+	var method = 'get';
+	var args = {'_':new Date().getMilliseconds(),'type':'remove','id':id};
+	
+}
+
 function viewmenu(data){
 
 	var list = $('#productlist');
@@ -24,6 +104,7 @@ function viewmenu(data){
 	var parent = data.result.filter(function(item){ return item.parent=="0"; });
 	
 	var menu = "";
+	
 	$.each(parent,function(i,val){
 
 		var child = data.result.filter(function(item){ return item.parent==val.id; });
@@ -84,7 +165,6 @@ function loadcategorylist(id) {
 }
 
 //function load
-
 function setproductcover(resp)
 {
 	console.info("set product conver");
@@ -279,6 +359,34 @@ function setViewReleated(data){
 	}
 }
 
+function setViewCompare(data){
+
+	console.debug(data);
+	var view = $('#compare-slider');
+	view.html('');
+	if(data!==undefined && data.result!=null){
+		$.each(data.result,function(i,val){
+
+			var item = "";
+			item += "<li  ><div class='icon_close' data-id='"+val.id+"' ><img style='width:24px;height:24px;' src='images/common/close.png' /></div>";
+			item += "<a href='javascript:void(0);' >";
+			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-responsive' >";
+			//item += "<div class='lightslider-title'><label>&nbsp;</label></div>";
+			//item += "<ul class='lightslider-desc'>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "<li>&nbsp;</li>";
+			//item += "</ul>";
+			item += "</a></li>";
+
+			view.append(item);
+
+		});
+	}
+}
+
 function setViewAttribute(data)
 {
 		var view = $('#listattribute');
@@ -286,9 +394,9 @@ function setViewAttribute(data)
 
 		$.each(data.result,function(i,val){
 			var item = "";
-			item += "<div class='col-xs-6' style='height:70px;'>"
+			item += "<div class='col-xs-6 col-sm-6' style='height:70px;'>"
 			item += "<label class='col-xs-6 control-label' >"+val.label+"</label>";
-			item += "<div class='col-xs-6'><p lass='form-control'>"+val.title+"</p></div>";
+			item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+val.title+"</p></div>";
 			item += "</div>"
 			//console.warn(item);
 			view.append(item);
@@ -308,6 +416,8 @@ function setviewitem(data)
 
 		$('#plan').attr('src',data.plan);
 		$('#doc_link').attr('href',data.doc);
+		$('#btn_compare').attr('data-id',data.id);//data-thumb
+		$('#btn_compare').attr('data-thumb',data.thumb);
 		
 		var colors = $('#productcolor');
 		colors.html("");

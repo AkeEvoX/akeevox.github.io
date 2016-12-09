@@ -43,10 +43,10 @@ type : info , debug , error ,warning
 	{
 		
 		$parts = explode('/', $filename);
-    $file = array_pop($parts);
-    $dir = '';
+        $file = array_pop($parts);
+        $dir = '';
 		
-    foreach($parts as $part)
+        foreach($parts as $part)
 		{
 			
 			if($part=="..")
@@ -55,7 +55,7 @@ type : info , debug , error ,warning
 				$dir .= "\\$part";
 		
 			$checkDir = $dir;
-			if(!is_dir($checkDir))
+			if(!is_dir($checkDir)) 
 			{
 				mkdir($checkDir,0777,true);
 			}

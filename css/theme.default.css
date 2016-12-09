@@ -66,12 +66,12 @@ body
 	position:relative;
 	right:0;
 }
-
+/*
 .contactseller {
 padding:2px 33px;
 margin-right:48px;
 }
-
+*/
 
 #linegradient
 {
@@ -145,7 +145,7 @@ label {
 	/*#searchbar { background-color:transparent;  }*/
 	/*override class*/
 	#navbar ul.nav.navbar-nav { padding-left:0px; } /*adjust menu*/
-	.navbar { height:100px; }
+	/*.navbar { height:0px; }*/
 	#navbar {padding-top:0px;}
 }
 
@@ -154,6 +154,9 @@ label {
 }
 @media(min-width:900px) and (max-width:1000px) {
 	/*#searchbar { display:none; }*/
+	
+	.navbar-default {	font-size:.5em; }
+	.navbar-default .navbar-nav > li > a { padding:10px;}
 	.input-xs { max-width:100px; float:left;} 
 }
 

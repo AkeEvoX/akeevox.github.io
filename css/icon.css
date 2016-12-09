@@ -7,6 +7,15 @@ span.bigger.glyphicon-zoom-in{
     font-size: 5.2em;
 }
 
+.icon_close {
+	position:absolute;
+}
+
+.icon_close img {
+	width:20px;
+	height:20px;
+}
+
 #socialbar {
 	display:block;
 	position:absolute;
@@ -56,13 +65,6 @@ height:70px;
 padding-right:30px;
 box-shadow:2px 2px 2px #ccc;
 }
-/*
-position:absolute;
-	top:5px;
-	left:130px;
-	width:70px;
-	box-shadow:2px 2px 2px #ccc;
-*/
 
 #iconsearch {
 	
@@ -82,5 +84,8 @@ margin-top:-3px;
 .blue { color: blue; }
 .green {color:green;}
 .red {color:red;}
+.brown { color:#976935; }
+.white { color:#fffff;}
 
 
+.bg-brown {background-color:#976935; }

@@ -86,7 +86,7 @@ function setmostview(data)
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";
-		itemview += "<div class='media-left'><a href='faq_detail?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
+		itemview += "<div class='media-left'><a href='faq_detail.html?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
 		itemview += "<div class='media-body'>";
 		itemview += "<h4 class='media-heading'>"+val.date+"</h4>";
 		itemview += val.title + "</div >";//media-body
@@ -105,7 +105,7 @@ function setrecentview(data)
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";
-		itemview += "<div class='media-left'><a href='faq_detail?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
+		itemview += "<div class='media-left'><a href='faq_detail.html?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
 		itemview += "<div class='media-body'>";
 		itemview += "<h4 class='media-heading'>"+val.date+"</h4>";
 		itemview += val.title + "</div >";//media-body
