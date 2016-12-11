@@ -17,12 +17,30 @@ if(isset($_POST["type"])) $type = $_POST["type"];
 if(isset($_GET["id"])) $id = $_GET["id"]; 
 if(isset($_POST["id"])) $id = $_POST["id"]; 
 
-print_r($_POST["type"]);
+if($type==""){
+	
+	$type = $_POST["data"]["type"];
+	
+}
+
+	
+	//print_r(json_decode(json_encode($_POST),true));
+	//print_r($_POST);
+	//print_r($_FILES['file_upload']);
+	//log_warning('personal service > ');
+	
+	//.var_dump($_POST)
 
 $result = "";
 
 switch($type){
-	case "edit-page":
+	
+	case "add":
+		
+		//print_r($_FILES['file_upload']);
+		
+	break;
+	case "edit_page":
 		
 		$items = $_POST["item"];
 		$result = Update_Page($items);

@@ -5,13 +5,15 @@
 
     /* this affects the margin in the printer settings */ 
 	/*top right buttom left*/
-    margin: 5mm 5mm 20mm 5mm;  
+    /*margin: 5mm 5mm 20mm 5mm;  */
+	 margin: 0px;
 } 
 
 body  
 { 
+	margin-top:20px;
     /* this affects the margin on the content before sending to printer */ 
-    /*๕margin: 0px;  */
+    /*margin: 0px;  */
 } 
 
 .share-popup {
@@ -171,7 +173,7 @@ body
 }
 
 .title_control{
-	position:absolute;top:45px;right:0px;
+	position:absolute;top:-25px;right:0px;
 }
 
 

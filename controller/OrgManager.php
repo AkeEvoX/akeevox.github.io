@@ -27,7 +27,7 @@ class OrgManager{
 		try{
 
 			$sql = "select id,name_".$lang." as name,position_".$lang." as position, education_".$lang." as education ,work_".$lang." as work,shareholder,image,age ";
-			$sql .= " from organization_executive where active=1 order by create_date desc ";
+			$sql .= " from organization_personal where active=1 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -43,7 +43,7 @@ class OrgManager{
 		try{
 
 			$sql = "select * ";
-			$sql .= " from organization_executive where active=1 order by create_date desc ";
+			$sql .= " from organization_personal where active=1 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -59,7 +59,7 @@ class OrgManager{
 			try{
 
 			$sql = "select * ";
-			$sql .= " from organization_executive where where id=$id order by create_date desc ";
+			$sql .= " from organization_personal where where id=$id order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;

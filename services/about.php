@@ -15,18 +15,20 @@ $item = "";
 $item = $about->getItem($lang);
 
 $result = null;
+if($item){
 $row = $item->fetch_object();
 
 //$media = $row->link;
 
-$data = array("id"=>$row->id
-							,"title"=>$row->title
-							,"detail"=>$row->detail
-							,"link"=>$row->link
-							,"type"=>$row->type
-							,"date"=>$row->update_date);
+	$data = array("id"=>$row->id
+								,"title"=>$row->title
+								,"detail"=>$row->detail
+								,"link"=>$row->link
+								,"type"=>$row->type
+								,"date"=>$row->update_date);
 
-$result = $data;
+	$result = $data;
+}
 
 log_debug("get list about > " . print_r($result,true));
 

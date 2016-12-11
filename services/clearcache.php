@@ -1,6 +1,4 @@
 <?php
-//require_once("include/connect.php");
-//require_once("include/function.php");
 // Initialize the session.
 // If you are using session_name("something"), don't forget it now!
 session_start();
@@ -21,5 +19,6 @@ if (ini_get("session.use_cookies")) {
 
 // Finally, destroy the session.
 session_destroy();
-
+$result = "clear cache success.";
+echo json_encode(array("result"=> $result ,"code"=>"0"));
 ?>

@@ -22,7 +22,7 @@
 
 }
 .navbar-default .navbar-nav > li > a {
-  color: #606163; /*b28b22*/
+  color: #606163; /*606163*/
 }
 .navbar-default .navbar-nav > li > a:hover,
 .navbar-default .navbar-nav > li > a:focus {
@@ -36,7 +36,7 @@
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:hover,
 .navbar-default .navbar-nav > li > .dropdown-menu > li > a:focus {
-  color: #d2aa5c;
+  color: #fff;/*d2aa5c*/
   background-color: #703316;/*#ffffff*/
 }
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {

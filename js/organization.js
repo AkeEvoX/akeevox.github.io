@@ -36,12 +36,29 @@ function view_profile(resp){
 		
 		$('#dataview_left').html("");
 		$('#dataview_right').html("");
+		
+		var bg_right = "well-brown-light";
+		var bg_left = "well-brown-bold";
 		$.each(resp.result,function(i,val){
 			
 				if((i % 2) == 0){
-					profile_right(val);
+					
+					if(bg_right=="well-brown-light")
+						bg_right="well-brown-bold";
+					else
+						bg_right="well-brown-light";
+					
+					profile_right(val,bg_right);
+					
 				}else{
-					profile_left(val);
+					
+					if(bg_left=="well-brown-bold")
+						bg_left="well-brown-light";
+					else
+						bg_left="well-brown-bold";
+					
+					profile_left(val,bg_left);
+					
 				}
 			
 		});
@@ -50,7 +67,7 @@ function view_profile(resp){
 	
 }
 
-function profile_left(val)
+function profile_left(val,bg)
 {
 	//console.log(data.result);
 	var view = $('#dataview_left');
@@ -67,13 +84,13 @@ function profile_left(val)
 		item += "<div class='media-right' >";
 		item += "<a href='#'><img src='"+val.image+"' class='media-object'></a>";
 		item += "</div>";
-		item += "</div><div class='well well-sm'>"+val.name+"</div></div>";
+		item += "</div><div class='well well-sm "+bg+"'>"+val.name+"</div></div>";
 		view.append(item);
 	//});
 
 }
 
-function profile_right(val){
+function profile_right(val,bg){
 
 	var view = $('#dataview_right');
 	//$.each(data.result,function(idx,val){
@@ -89,7 +106,7 @@ function profile_right(val){
 		item += "<h4 class='media-heading orange'>Education Qualifications  : </h4>"+val.education+"<br/>";
 		item += "<h4 class='media-heading orange'>Work Experience : </h4>"+val.work+"<br/>";
 		item += "</div>";
-		item += "</div><div class='well well-sm'>"+val.name+"</div></div>";
+		item += "</div><div class='well well-sm "+bg+"''>"+val.name+"</div></div>";
 		view.append(item);
 	//});
 

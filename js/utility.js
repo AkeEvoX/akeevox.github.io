@@ -55,6 +55,8 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
 		type:method,
 		dataType:'json',
+		cache:false,
+		//processData:false,
 		success:success_callback,
 		complete:complete_callback,
 		error:function(xhr,status,error){
@@ -64,10 +66,25 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 								 ,'msg':xhr.responseText};
 
 			console.error(result);
-      alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
+			alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
 		}
 	});
 
+}
+
+utility.uploads = function(endpoint,files,success_callback){
+	
+	$.ajax({
+		url:endpoint,
+		type:'post',
+		data:files,
+		contentType:false,
+		cache:false,
+		processData:false,
+		success:success_callback
+	});
+	
+	/*https://www.formget.com/ajax-image-upload-php/*/
 }
 
 utility.log = function(type,message){
@@ -100,13 +117,13 @@ utility.querystr = function(name,url){
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-utility.setpage = function(page){
+utility.setpage = function(page,callback){
 	
   var endpoint = "services/attributes.php";
   var args = {'_':new Date().getHours(),'type':page};
-  utility.service(endpoint,'GET',args, bindpage,function(){
-	
-	/*apply customize attribute*/  	
+  utility.service(endpoint,'GET',args, bindpage,callback);
+  
+  	/*apply customize attribute*/  	
 	$('[data-type="link"]').on('click',function(){
 		
 		if($(this).attr('popup')=="true")
@@ -114,8 +131,6 @@ utility.setpage = function(page){
 		else
 			window.location.href=$(this).attr('url');
 	});
-	
-  });
   
 }
 

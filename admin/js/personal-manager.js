@@ -1,25 +1,29 @@
 
 var personal = {};
 
-personal.add = function(){
+personal.add = function(args){
 	
 	
 	var endpoint = "services/personal.php";
 	var method = "POST";
 	//var args =  {'_':new Date().getMilliseconds(),'type':'add','th':$('#form_th').serialize()};
-	/*
+	
+	
+	//var args =  {'_':new Date().getMilliseconds(),'data':data};
 	utility.service(endpoint,method,args,function(data){
 		console.debug(data);
-		alert(data.result);
-	});*/
+	});
+	//utility.uploads(endpoint,args,function(data){
+		//console.debug(data);
+		//alert(data.result);
+	//});
 	
-	var args =  {'_':new Date().getMilliseconds()
-	,'type':'add'
+	/*
 	,'th': {'name':$('#name_th').val() , 'position':$('#position_th').val(), 'education':$('#education_th').val() ,'work':$('#work_th').val() }
 	,'en': {'name':$('#name_en').val() , 'position':$('#position_en').val(), 'education':$('#education_en').val() ,'work':$('#work_en').val() }
-	};
+	*/
 	
-	console.log(args);
+	//console.log(args);
 	
 	
 }
@@ -69,6 +73,15 @@ personal.list = function(){
 	utility.service(endpoint,method,args,set_view_list);
 }
 
+personal.upload = function(args){
+	
+	var endpoint = "services/upload_img_personal.php";
+	
+	utility.uploads(endpoint,args,function(){
+		alert('upload success');
+	});
+	
+}
 function set_view(data){
 	
 	console.log(data);

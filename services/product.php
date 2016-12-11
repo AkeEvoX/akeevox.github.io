@@ -1,10 +1,9 @@
 <?php
 session_start();
-//date_default_timezone_set('America/Los_Angeles');
 include("../lib/common.php");
 include("../lib/logger.php");
+//$base_dir = "../../";
 include("../controller/ProductManager.php");
-//header("Content-Type: application/json;  charset=UTF8");
 
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];

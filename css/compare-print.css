@@ -4,7 +4,8 @@
 
     /* this affects the margin in the printer settings */ 
 	/*top right buttom left*/
-    margin: 5mm 5mm 5mm 5mm;  
+    /*margin: 5mm 5mm 5mm 5mm;  */
+	margin:0px;
 } 
 
 body{

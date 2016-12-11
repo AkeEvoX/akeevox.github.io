@@ -1,10 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/AwardManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
+include("../controller/AwardManager.php");
 
 $award = new AwardManager();
 
@@ -29,20 +27,20 @@ else
 }
 
 $result = null;
+if($item){
+	while($row = $item->fetch_object()){
 
-while($row = $item->fetch_object()){
-
-	$data = array(
-	"id"=>$row->id
-	,"title"=>$row->title
-	,"thumbnail"=>$row->thumbnail
-	,"detail"=>$row->detail
-	,"date"=>$row->update_date
-	,"type"=>$row->type
-	);
-	$result[] = $data;
+		$data = array(
+		"id"=>$row->id
+		,"title"=>$row->title
+		,"thumbnail"=>$row->thumbnail
+		,"detail"=>$row->detail
+		,"date"=>$row->update_date
+		,"type"=>$row->type
+		);
+		$result[] = $data;
+	}
 }
-
 log_debug("get list award > " . print_r($result,true));
 
 echo json_encode(array("result"=> $result ,"code"=>"0"));

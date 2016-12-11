@@ -36,7 +36,7 @@ product.listmenu = function(){
 
 
 product.compare = function(){
-
+	
 	var id = $('#btn_compare').attr('data-id');
 	var thumb = $('#btn_compare').attr('data-thumb');
 
@@ -51,9 +51,11 @@ product.compare_reset = function(){
 	var endpoint = 'services/clearcache.php';
 	var method ='get';
 	var args = {'_':new Date().getMilliseconds()};
-	utility.service(endpoint,method,args);
+	utility.service(endpoint,method,args,function(){
+		$('#control_compare').hide(); 
+	});
 
-	$('#control_compare').hide();
+	
 }
 
 product.compare_remove = function(id){
@@ -314,12 +316,16 @@ function setviewlist(data)
 
 		$.each(data.result,function(i,val){
 			var item = "";
-
+			var name = val.name;
+			
+			if(name.length > 10)
+				name = name.slice(0,10)+"..";
+			
 			item += "<li class='col-md-3 col-sm-6 col-xs-12' >";
 			item += "<div class='port-1 effect-2' >";
 			item += "<div class='image-box' >";
 			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid h150' alt=''>";
-			item += "<div class='thumbnail-desc'><label>"+val.name+"</label><span>"+val.code+"</span></div>";
+			item += "<div class='thumbnail-desc'><label>"+name+"</label><span>"+val.code+"</span></div>";
 			item += "</div>";
 			item += "<div class='text-desc'>";
 			item += "<p><span class='bigger glyphicon glyphicon-zoom-in orange topbar'></span><p/>";
@@ -394,7 +400,7 @@ function setViewAttribute(data)
 
 		$.each(data.result,function(i,val){
 			var item = "";
-			item += "<div class='col-xs-6 col-sm-6' style='height:70px;'>"
+			item += "<div class='col-xs-6 col-sm-6' style='height:40px;'>"
 			item += "<label class='col-xs-6 control-label' >"+val.label+"</label>";
 			item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+val.title+"</p></div>";
 			item += "</div>"

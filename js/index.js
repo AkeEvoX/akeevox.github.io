@@ -23,7 +23,10 @@ function showcover()
 
 function viewtop(resp)
 {
-	if(resp!=undefined){
+	if(resp.result!=undefined || resp.result==null){
+		
+		return false;
+	}
 
 		var view = $('#viewtop');
 		var viewindex = $('#index-carousel');
@@ -31,6 +34,9 @@ function viewtop(resp)
 		view.html("");
 	
 		console.warn(resp.result);
+		
+		
+		
 		$.each(resp.result,function(i,val){
 			
 			if(result==""){
@@ -53,9 +59,6 @@ function viewtop(resp)
 		
 		view.html(result);
 
-
-
-	}
 }
 
 function viewbottom(resp){

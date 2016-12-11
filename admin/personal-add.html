@@ -1,85 +1,98 @@
 <link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
 <div class='col-md-12' >
-	<h3>จัดการคณะผู้บริหาร</h3><hr/>
-	<div class="form-group">
-		<label for="image_profile" class='col-md-3'>ภาพผู้บริหาร</label>
-		<div class='col-md-5'>
-			<input type="file" class="form-control" id="image_profile"  />
+	<h3>จัดการคณะผู้บริหาร</h3>
+	<hr/>
+	<form id='personal_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="image_profile" class='col-md-3'>ภาพผู้บริหาร</label>
+			<div class='col-md-5'>
+				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
+			</div>
+			<!--<div class='col-md-2'>
+				<input type='submit'  class='btn btn-default' value='upload' />
+				
+			</div>
+			</form>
+			-->
+
 		</div>
-	</div>
-	<ul id='menutab' class="nav nav-tabs nav-default">
-	  <li role="presentation" class='active'><a class='menutab' href="#th" data-toggle="tab">TH</a></li>
-	  <li role="presentation"><a class='menutab' href="#en" data-toggle="tab">EN</a></li>
-	</ul>
-	<div class='tab-content' style='margin-top:10px;'>
-		
-		<div id='th' class="tab-pane fade in active">
-			
-			<div class='col-md-12'>
-				<div class="form-group">
-					<label for="name_th" class='col-md-3'>ชื่อ - สกุล</label>
-					<div class='col-md-5'>
-						<input type="text" class="form-control" id="name_th" name='name_th_2' placeholder="ชื่อ และ นามสกุล" value='' />
+		<ul id='menutab' class="nav nav-tabs nav-default">
+			<li role="presentation" class='active'>
+				<a class='menutab' href="#th" data-toggle="tab">TH</a>
+			</li>
+			<li role="presentation">
+				<a class='menutab' href="#en" data-toggle="tab">EN</a>
+			</li>
+		</ul>
+
+		<div class='tab-content' style='margin-top:10px;'>
+			<div id='th' class="tab-pane fade in active">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="name_th" class='col-md-3'>ชื่อ - สกุล</label>
+						<div class='col-md-5'>
+							<input type="text" class="form-control" id="name_th" name='name_th' placeholder="ชื่อ และ นามสกุล" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="position_th" class='col-md-3'>ตำแหน่ง</label>
+						<div class='col-md-5'>
+							<input type="text" class="form-control" id="position_th" placeholder="ตำแหน่ง" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="education_th" class='col-md-3'>ประวัติการศึกษา</label>
+						<div class='col-md-5'>
+							<textarea rows='7' class="form-control" id="education_th" placeholder="ประวัติการศึกษา" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="work_th" class='col-md-3'>ประสบการณ์การทำงาน</label>
+						<div class='col-md-5'>
+							<textarea rows='7' class="form-control" id="work_th" placeholder="ประสบการณ์การทำงาน" />
+						</div>
 					</div>
 				</div>
-				<div class="form-group">
-					<label for="position_th" class='col-md-3'>ตำแหน่ง</label>
-					<div class='col-md-5'>
-						<input type="text" class="form-control" id="position_th" placeholder="ตำแหน่ง" />
-					</div>
-				 </div>
-				 <div class="form-group">
-					<label for="education_th" class='col-md-3'>ประวัติการศึกษา</label>
-					<div class='col-md-5'>
-						<textarea rows='7' class="form-control" id="education_th" placeholder="ประวัติการศึกษา" ></textarea>
-					</div>
-				 </div>
-				 <div class="form-group">
-					<label for="work_th" class='col-md-3'>ประสบการณ์การทำงาน</label>
-					<div class='col-md-5'>
-						<textarea rows='7' class="form-control" id="work_th" placeholder="ประสบการณ์การทำงาน" ></textarea>
-					</div>
-				 </div>
 			</div>
-		
-		</div>
-		<div id='en' class="tab-pane fade">
-			<!--<form id='form-en' >-->
+			<div id='en' class="tab-pane fade">
 				<div class='col-md-12'>
 					<div class="form-group">
 						<label for="name_en" class='col-md-3'>Fullname</label>
 						<div class='col-md-5'>
-							<input type="text" class="form-control" id="name_en" placeholder="fullname" />
+							<input type="text" class="form-control" id="name_en" name="name_en"  placeholder="fullname" />
 						</div>
 					</div>
 					<div class="form-group">
 						<label for="position_en" class='col-md-3'>Position</label>
 						<div class='col-md-5'>
-							<input type="text" class="form-control" id="position_en" placeholder="position" />
+							<input type="text" class="form-control" id="position_en" name="position_en" placeholder="position" />
 						</div>
-					 </div>
-					 <div class="form-group">
+					</div>
+					<div class="form-group">
 						<label for="education_en" class='col-md-3'>Education</label>
 						<div class='col-md-5'>
-							<textarea rows='7' class="form-control" id="education_en" placeholder="education" ></textarea>
+							<textarea rows='7' class="form-control" id="education_en" placeholder="education" />
 						</div>
-					 </div>
-					 <div class="form-group">
+					</div>
+					<div class="form-group">
 						<label for="work_en" class='col-md-3'>Experiences</label>
 						<div class='col-md-5'>
-							<textarea rows='7' class="form-control" id="work_en" placeholder="work" ></textarea>
+							<textarea rows='7' class="form-control" id="work_en" placeholder="work" />
 						</div>
-					 </div>
+					</div>
 				</div>
-			<!--</form>-->
+			</div>
+
 		</div>
-	
-	</div>
-	
-	<div class='row text-center'>
-		<span class='btn btn-warning btn-sm' onclick="personal.add();" >บันทึก</span>&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
-	</div>
-	<input type='hidden' id='primary_id' />
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='route' name='route'  value='add' />
+		<input type='hidden' id='primary_id' />
+
+	</form>
+
 
 </div>
 <script src='js/personal-manager.js' ></script>
@@ -90,12 +103,32 @@
 
 $(document).ready(function(){
 
-	$('#form_th').on('submit',function(){
-	
-		personal.data = $('#form_th').serializeArray();
-		personal.add();
+	$('#uploadimage').on('submit',function(e){
+		e.preventDefault();
 		
-		return false;
+		//var data = new FormData(this);
+		//console.log(data);
+		var args = new FormData(this);
+		console.log(args);
+		personal.upload(args);
+		/*
+		var endpoint = "services/upload_img_personal.php";
+		var args = new FormData(this);
+	
+		utility.uploads(endpoint,args,function(){
+			alert('upload success');
+		});
+		*/
+		//personal.upload(e);
+	});
+	
+	$('#personal_form').on('submit',function(e){
+		e.preventDefault();
+		
+		var args = JSON.stringify($('#personal_form').serializeArray());
+		//var args = new FormData(this);
+		console.log(args);
+		personal.add(args);
 	});
 	
 	//personal.load();
