@@ -327,7 +327,7 @@ class ProductManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get  Category Product : ".$e->getMessage();
+			echo "Cannot Search  Product  : ".$e->getMessage();
 		}
 	}
 }
