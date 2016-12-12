@@ -43,6 +43,9 @@ switch($type)
 	case "series":
 		$result = setSeriesInfo($lang,$id);
 	break;
+	case "list_series":
+		$result = setListSeries($lang,$id);
+	break;
 	case "showroom":
 		$result = setShowRoom($lang,$id);
 	break;
@@ -123,9 +126,37 @@ function setSeriesInfo($lang,$id) {
 	}
 	catch(Exception $e)
 	{
-		echo "Cannot Get ProductType : ".$e->getMessage();
+		echo "Cannot Get Series : ".$e->getMessage();
 	}
 
+}
+
+function setListSeries($lang,$id){
+	try
+	{
+		$product = new ProductManager();
+		$data = $product->getSeriestList($lang,$id);
+		$items = null;
+		if($data){
+			while($row = $data->fetch_object())
+			{
+				$items[] = array(
+					"id"=>$row->id
+					,"title"=>$row->title
+					,"typeid"=>$row->typeid
+					,"thumb"=>$row->thumb
+					,"plan"=>$row->plan
+					,"code"=>$row->code
+					,"name"=>$row->name
+					);
+			}
+		}
+		return $items;
+	}
+	catch(Exception $e)
+	{
+		echo "Cannot Get Series List : ".$e->getMessage();
+	}
 }
 
 function setShowRoom($lang,$id) {

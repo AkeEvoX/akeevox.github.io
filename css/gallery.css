@@ -14,3 +14,7 @@
     min-width: 250px;   
 	max-width:98%;
 }
+
+.gallery_album img {
+	min-height:200px;
+}

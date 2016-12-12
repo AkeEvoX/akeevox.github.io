@@ -14,7 +14,7 @@ class ProductManager{
 		}
 		catch(Exception $e)
 		{
-			die("initial about manager error : ". $e->getMessage());
+			die("initial Product manager error : ". $e->getMessage());
 		}
 	}
 
@@ -111,6 +111,25 @@ class ProductManager{
 			$sql = " select id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover ";
 			$sql .= " from product_type ";
 			$sql .= " where active=1 order by id asc limit 1;";
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Series List : ".$e->getMessage();
+		}
+	}
+	
+	function getSeriestList($lang,$id){
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name ";
+			$sql .= " from series s ";
+			$sql .= " inner join products p on s.pro_id=p.id ";
+			$sql .= " inner join product_detail pd on p.id = pd.proid ";
+			$sql .= " where s.active=1 and s.series_id='".$id."' order by pd.code ; ";
+			
+			log_debug($sql);
+						
 			$result = $this->mysql->execute($sql);
 			return  $result;
 		}

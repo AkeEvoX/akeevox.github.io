@@ -63,4 +63,23 @@ function replace_specialtext($message){
 	
 	return $result;
 }
+
+function GetParameter($id){
+	
+	$result = "";
+	if(isset($_POST)){
+		if(isset($_POST[$id]))
+		{
+			$result =$_POST[$id];
+		}
+	}
+	
+	if(isset($_GET)){
+		if(isset($_GET[$id]))
+		{
+			$result =$_GET[$id];
+		}
+	}
+	return $result;
+}
 ?>

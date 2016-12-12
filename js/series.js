@@ -2,77 +2,86 @@
 function loadseriesinfo(id)
 {
 	console.info('series id = '+id);
-	$.ajax({
-		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"type":"series","id":id},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			setviewinfo(data.result);
-			//console.warn()
-		},
-		complete:function(obj){
-			var data = obj.responseJSON.result;
-			loadserieslist(data.id);
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load series list error : "+ xhr.responseText);
-		}
+	var endpoint = "services/product.php";
+	var method='get';
+	var args = {"_": new Date().getMilliseconds() ,"type":"series","id":id};
+	
+	utility.service(endpoint,method,args,setviewinfo,function(){
+		loadserieslist(id);
 	});
+
 }
 
 function loadserieslist(id)
 {
 	console.log('cate='+id);
-	$.ajax({
-		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"type":"list","cate":id},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			setviewlist(data.result);
-			//console.warn()
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load series list error : "+ xhr.responseText);
-		}
+	
+	var endpoint = "services/product.php";
+	var method='GET';
+	var args = {"_": new Date().getMilliseconds() ,"type":"list_series","id":id};//list_series
+	
+	utility.service(endpoint,method,args,setviewlist,function(){
+		explain_mobile();
 	});
-
+	
 }
 
 function setviewinfo(data){
-	$('span[id="productname"]').text(data.title);
-	$('#series_title').text(data.title);
-	$('#series_detail').text(data.detail);
-	//console.log(data.cover);
-	$('#series_cover').attr('src',data.cover);
+	
+	if(data.result==undefined ||data.result==null)
+		return;
+	
+	var item = data.result;
+	
+	$('span[id="productname"]').text(item.title);
+	$('#series_title').text(item.title);
+	$('#series_detail').text(item.detail);
+	$('#series_cover').attr('src',item.cover);
 }
 
 function setviewlist(data)
 {
+	if(data.result==undefined ||data.result==null)
+		return;
+	
 	var view = $('#viewproduct');
-	$.each(data,function(i,val){
-		var item = "";
+	var item = "";
+	
+	console.log(data.result);
+	
+	$.each(data.result,function(i,val){
 
-		item += "<div class='row'>";
-		item += "<label for='code' class='col-md-3 control-label'>"+val.title+"</label>";
-		item += "<div class='col-md-9'><div class='controls'><p class='form-control-static'> "+val.detail+"</p></div></div>";
+		item += "<div class='row'><hr/>";
+		item += "<label for='code' class='col-md-3'>"+val.name+" "+val.code+"</label>";
+		//item += "<label for='code' class='col-md-3 control-label'>"+val.name+" "+val.code+"</label>";
+		item += "<div class='col-md-9'><span> "+val.title+"</span></div>";
+		//item += "<div class='col-md-9'><div class='controls'><p class='form-control-static'> "+val.title+"</p></div></div>";
 		item += "</div><hr/><div class='row'>";
-		item += "<div class='col-md-3' ><img src='"+val.thumb+"' class='img-responsive' /></div>";
-		item += "<div class='col-md-9' ><img src='"+val.plan+"' class='img-responsive' /></div>";
+		item += "<div class='col-sm-3 col-md-3 thumb' ><img src='"+val.thumb+"' title='"+val.typeid+"' class='img-responsive' onerror=this.src='images/common/unavaliable.jpg' /></div>";
+		item += "<div class='col-xs-12 col-sm-9 col-md-9 plan' ><img src='"+val.plan+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' /></div>";
 		item += "</div>";
-		;
+		
+	});
+	
+			view.append(item);
+}
 
-		view.append(item);
+function explain(obj){
+	
+	var src = $(obj).attr('src');
+	console.log(src);
+	if(src!="images/common/unavaliable.jpg")
+	{
+		$(obj).css({'min-width':'500px'});
+	}
+	
+	
+}
 
+function explain_mobile(){
+	
+	$('.plan').find('img').on('error',function(){
+		$(this).css({'min-width':'200px'});
 	});
 
 }

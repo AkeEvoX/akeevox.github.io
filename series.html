@@ -11,6 +11,7 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
 	<link href="css/product.css" rel="stylesheet" type="text/css" />
+	<link href="css/series.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
 <div id='view-navbar'></div>
@@ -42,7 +43,7 @@
 									<h5 class='text'><span id='series_detail'></span>Text Text Text </h5>
 								</div>
 								<div class='col-md-12'>
-									<img id='series_cover'  data-src='holder.js/1260x450' class='img-responsive' />
+									<img id='series_cover'  class='img-responsive' />
 								</div>
 							</div>
 							<div class='row'>
@@ -70,7 +71,7 @@
 		utility.setpage('series');
 		product.listmenu();
 		loadseriesinfo(utility.querystr('id'));
-
 	});
+	
 </script>
 </body>
