@@ -1,6 +1,15 @@
 
 function loadshowroominfo(id)
 {
+	var endpoint = "services/product.php";
+	var method='get';
+	var args = {"_": new Date().getMilliseconds() ,"type":"showroom","id":id};
+	
+	utility.service(endpoint,method,args,setviewinfo,function(){
+		loadserieslist(id);
+	});
+
+	/*
 	$.ajax({
 		url:"services/product.php",
 		data:{"_": new Date().getHours() ,"type":"showroom","id":id},
@@ -21,12 +30,22 @@ function loadshowroominfo(id)
 			console.error(xhr.responseText);
 			alert("load series list error : "+ xhr.responseText);
 		}
-	});
+	});*/
 }
 
 function loadshowroomlist(id)
 {
+	
 	console.log('cate='+id);
+	
+	var endpoint = "services/product.php";
+	var method='GET';
+	var args = {"_": new Date().getMilliseconds() ,"type":"list_room","id":id};//list_series
+	utility.service(endpoint,method,args,setviewlist,function(){
+		explain_mobile();
+	});
+	
+	/*
 	$.ajax({
 		url:"services/product.php",
 		data:{"_": new Date().getHours() ,"type":"list","cate":id},
@@ -44,32 +63,40 @@ function loadshowroomlist(id)
 			alert("load series list error : "+ xhr.responseText);
 		}
 	});
-
+	*/
 }
 
 function setviewinfo(data){
+	
+	if(data.result==undefined ||data.result==null)
+		return;
+	
+	var item = data.result;
 
-	$('span[id="productname"]').text(data.title);
-	$('#showroom_title').text(data.title);
-	$('#showroom_detail').text(data.detail);
+	$('span[id="productname"]').text(item.title);
+	$('#showroom_title').text(item.title);
+	$('#showroom_detail').text(item.detail);
 	//console.log(data.cover);
-	$('#showroom_cover').attr('src',data.cover);
+	$('#showroom_cover').attr('src',item.cover);
 }
 
 function setviewlist(data)
 {
+	if(data.result==undefined ||data.result==null)
+		return;
+	
 	var view = $('#viewproduct');
 	$.each(data,function(i,val){
 		var item = "";
 
 		item += "<div class='row'>";
-		item += "<label for='code' class='col-md-3 control-label'>"+val.title+"</label>";
-		item += "<div class='col-md-9'><div class='controls'><p class='form-control-static'> "+val.detail+"</p></div></div>";
+		item += "<label for='code' class='col-md-4 control-label'>"+val.title+" " +val.code+"</label>";
+		item += "<div class='col-md-8'><span>"+val.detail+"</span></div>";
 		item += "</div><hr/><div class='row'>";
-		item += "<div class='col-md-3' ><img src='"+val.thumb+"' class='img-responsive' /></div>";
-		item += "<div class='col-md-9' ><img src='"+val.plan+"' class='img-responsive' /></div>";
+		item += "<div class='col-md-3 thumb' ><img src='"+val.thumb+"' title='"+val.typeid+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-responsive' /></div>";
+		item += "<div class='col-md-9 plan' ><img src='"+val.plan+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-fluid' /></div>";
 		item += "</div>";
-		;
+		
 
 		view.append(item);
 
@@ -89,6 +116,14 @@ function setviewitem(data)
 		var item = "";
 		item += "<img src='"+val.image+"' data-image='"+val.image+"' data-description=''  />";
 		view.append(item);
+	});
+
+}
+
+function explain_mobile(){
+	
+	$('.plan').find('img').on('error',function(){
+		$(this).css({'min-width':'200px'});
 	});
 
 }

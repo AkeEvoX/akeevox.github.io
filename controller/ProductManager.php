@@ -259,7 +259,6 @@ class ProductManager{
 		}
 	}
 	
-	
 	function delete_product_type($id){
 		try{
 			/*flag delete 
@@ -294,6 +293,24 @@ class ProductManager{
 		}
 	}
 
+	function search_fetch_product($lang,$search_type,$search_text,$start_fetch,$max_fetch){
+		
+		try{
+			//$max_fetch = 10;
+
+			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
+			$sql .= " from product_type a ";
+			$sql .= " where active=1 ";
+			$sql .= " order by a.id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Category Product : ".$e->getMessage();
+		}
+	}
 }
 
 ?>
