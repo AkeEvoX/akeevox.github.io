@@ -49,6 +49,10 @@ switch($type)
 	case "showroom":
 		$result = setShowRoom($lang,$id);
 	break;
+	case "list_room":
+		$result = setListShowRoom($lang,$id);
+	break;
+	
 	case "menu":
 		//echo "route to menu ";
 		$result = setMenu($lang);
@@ -182,6 +186,34 @@ function setShowRoom($lang,$id) {
 		echo "Cannot Get Showroom  : ".$e->getMessage();
 	}
 
+}
+
+function setListShowRoom($lang,$id){
+	try
+	{
+		$product = new ProductManager();
+		$data = $product->getShowRoomList($lang,$id);
+		$items = null;
+		if($data){
+			while($row = $data->fetch_object())
+			{
+				$items[] = array(
+					"id"=>$row->id
+					,"title"=>$row->title
+					,"typeid"=>$row->typeid
+					,"thumb"=>$row->thumb
+					,"plan"=>$row->plan
+					,"code"=>$row->code
+					,"name"=>$row->name
+					);
+			}
+		}
+		return $items;
+	}
+	catch(Exception $e)
+	{
+		echo "Cannot Get ShowRoom List : ".$e->getMessage();
+	}
 }
 
 function setProductRelated($lang,$cate) {

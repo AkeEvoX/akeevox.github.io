@@ -138,6 +138,25 @@ class ProductManager{
 		}
 	}
 
+	function getShowRoomList($lang,$id){
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name ";
+			$sql .= " from showroom s ";
+			$sql .= " inner join products p on s.pro_id=p.id ";
+			$sql .= " inner join product_detail pd on p.id = pd.proid ";
+			$sql .= " where s.active=1 and s.room_id='".$id."' order by pd.code ; ";
+			
+			log_debug($sql);
+						
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get ShowRoome List : ".$e->getMessage();
+		}
+	}
+	
 	function getProductReleated($lang,$cate) {
 		try{
 

@@ -6,7 +6,7 @@ function loadshowroominfo(id)
 	var args = {"_": new Date().getMilliseconds() ,"type":"showroom","id":id};
 	
 	utility.service(endpoint,method,args,setviewinfo,function(){
-		loadserieslist(id);
+		load_showroom_list(id);
 	});
 
 	/*
@@ -33,7 +33,7 @@ function loadshowroominfo(id)
 	});*/
 }
 
-function loadshowroomlist(id)
+function load_showroom_list(id)
 {
 	
 	console.log('cate='+id);
@@ -84,6 +84,8 @@ function setviewlist(data)
 {
 	if(data.result==undefined ||data.result==null)
 		return;
+	
+	console.debug(data);
 	
 	var view = $('#viewproduct');
 	$.each(data,function(i,val){
