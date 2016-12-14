@@ -312,15 +312,20 @@ class ProductManager{
 		}
 	}
 
-	function search_fetch_product($lang,$search_type,$search_text,$start_fetch,$max_fetch){
+	function search_fetch_product($lang,$search_text,$search_fillter,$start_fetch,$max_fetch){
 		
 		try{
 			//$max_fetch = 10;
 
-			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
-			$sql .= " from product_type a ";
-			$sql .= " where active=1 ";
-			$sql .= " order by a.id ";
+			$sql = " select proid,code,name,rough,systems,seat,comsumption,overflow,size,shape,faucet,type,outlet ";
+			$sql .= " from search_product_".$lang."  ";
+			$sql .= " where 1=1 ";
+			$sql .= " and name like '%".$search_text."%' ";
+			$sql .= " or code like '%".$search_text."%' ";
+			$sql .= " or type like '%".$search_text."%' ";
+			$sql .= " or systems like '%".$search_text."%' ";
+			$sql .= " or size like '%".$search_text."%' ";
+			$sql .= " order by name ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			
 			$result = $this->mysql->execute($sql);
