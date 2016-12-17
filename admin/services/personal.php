@@ -187,7 +187,7 @@ function Update_Page($items){
 	
 }
 
-function upload_image($source,$distination){
+function upload_image_bak($source,$distination){
 	
 	if(move_uploaded_file($source,$distination))
 	{

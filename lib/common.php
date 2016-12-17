@@ -82,4 +82,16 @@ function GetParameter($id){
 	}
 	return $result;
 }
+
+function upload_image($source,$distination){
+	
+	if(move_uploaded_file($source,$distination))
+	{
+		log_debug('upload personal image success. > '.$distination);
+	}
+	else{
+		log_debug('upload personal image Failed. >'.$distination);
+	}
+}
+
 ?>

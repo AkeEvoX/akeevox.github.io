@@ -84,6 +84,20 @@ class OrgManager{
 		}
 
 	}
+	
+	function get_chart_info($id){
+		try{
+
+			$sql = "select id,chart_th,chart_en ";
+			$sql .= " from organization_chart where active=1 order by update_date desc ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Chart info: ".$e->getMessage();
+		}
+	}
 
 
 	function getintermarket()
@@ -248,6 +262,40 @@ class OrgManager{
 		}
 	}
 	
+	function update_chart($items){
+		try{
+			
+			$chart_th = "";
+			$chart_en = "";
+			$id = $items["id"];
+			if($items["chart_th"]){
+				$chart_th=" ,chart_th='".$items["chart_th"]."' ";	
+			}
+				if($items["chart_en"]){
+				$chart_en=" ,chart_en='".$items["chart_en"]."' ";	
+			}
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update organization_chart set  ";
+			$sql .= "update_by=$update_by,update_date=$update_date " ;
+			$sql .= $chart_th ;
+			$sql .= $chart_en;
+			$sql .= "where id=$id; ";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_chart > " .$sql);
+
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization Chart : ".$e->getMessage();
+		}
+	}
+	
 	function delete_personal($id){
 		
 		try{
@@ -264,6 +312,7 @@ class OrgManager{
 		}
 	}
 
+	
 }
 
 ?>

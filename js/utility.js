@@ -78,6 +78,7 @@ utility.data = function (endpoint,method,args,success_callback,complete_callback
 		$.ajax({
 		url:endpoint,
 		type:'post',
+		// dataType:'json',
 		data:args,
 		contentType:false,
 		cache:false,
