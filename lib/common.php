@@ -1,6 +1,6 @@
 <?php 
 require_once('class.phpmailer.php');
-date_default_timezone_set('America/Los_Angeles');
+date_default_timezone_set('Asia/Bangkok');
 
 ini_set('display_errors', 1);
 ini_set('display_startup_errors', 1);

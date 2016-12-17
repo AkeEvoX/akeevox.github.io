@@ -64,7 +64,7 @@ cate.delete = function(){
 		 //$('#row'+id).remove();
 		 console.log('id='+id);
 	 });
-	 
+	 alert('delete success.');
 	 cate.loadlist();
 }
 

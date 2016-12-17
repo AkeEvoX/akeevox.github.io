@@ -15,13 +15,13 @@ class database {
 
 		/*require lib/common.php */
 		$path_cfg = "datasource.ini";
-		$config = parse_ini_file($path_cfg);
+		$config = parse_ini_file($path_cfg,true);
 		
-		$this->host = $config["host"];
-		$this->port = $config["port"];
-		$this->user = $config["user"];
-		$this->pass = $config["pass"];
-		$this->base = $config["base"];
+		$this->host = $config["DATABASE"]["host"];
+		$this->port = $config["DATABASE"]["port"];
+		$this->user = $config["DATABASE"]["user"];
+		$this->pass = $config["DATABASE"]["pass"];
+		$this->base = $config["DATABASE"]["base"];
 		
 	}
 

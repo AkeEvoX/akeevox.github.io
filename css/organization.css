@@ -1,3 +1,8 @@
+
+.media img {
+	max-width:100px;
+}
+
 /*pc default : 1200*/
 @media(min-width:900px) {
 	

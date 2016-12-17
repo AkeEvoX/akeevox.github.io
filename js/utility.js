@@ -46,7 +46,7 @@ utility.initial = function(){
 	//$('span[data-link')
 
 }
-
+/*for view data only*/
 utility.service = function(url,method,args,success_callback,complete_callback){
 
 	$.ajax({
@@ -70,6 +70,30 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 		}
 	});
 
+}
+
+
+//for insert/update/delete data
+utility.data = function (endpoint,method,args,success_callback,complete_callback){
+		$.ajax({
+		url:endpoint,
+		type:'post',
+		data:args,
+		contentType:false,
+		cache:false,
+		processData:false,
+		success:success_callback,
+		complete:complete_callback,
+		error:function(xhr,status,error){
+
+			var result = {'page':url
+									,'args':args
+								 ,'msg':xhr.responseText};
+
+			console.error(result);
+			alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
+		}
+	});
 }
 
 utility.uploads = function(endpoint,files,success_callback){

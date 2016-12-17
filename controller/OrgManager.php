@@ -43,7 +43,7 @@ class OrgManager{
 		try{
 
 			$sql = "select * ";
-			$sql .= " from organization_personal where active=1 order by create_date desc ";
+			$sql .= " from organization_personal order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -58,10 +58,10 @@ class OrgManager{
 		
 			try{
 
-			$sql = "select * ";
-			$sql .= " from organization_personal where where id=$id order by create_date desc ";
+			$sql = "select * from organization_personal ";
+			$sql .= "where id=$id order by create_date desc ";
 			$result = $this->mysql->execute($sql);
-
+			log_debug("OrgManager > getPersonal > " .$sql);
 			return  $result;
 		}
 		catch(Exception $e){
@@ -161,6 +161,107 @@ class OrgManager{
 			echo "Cannot Get Organization Reference Project List : ".$e->getMessage();
 		}
 
+	}
+	
+	function insert_personal($items){
+		
+		try{
+			
+			$name_th =$items["name_th"];
+			$position_th=$items["position_th"];
+			$education_th=$items["education_th"];
+			$work_th=$items["work_th"];
+			$name_en=$items["name_en"];
+			$position_en=$items["position_en"];
+			$education_en=$items["education_en"];
+			$work_en=$items["work_en"];
+			$shareholder=$items["shareholder"];
+			$image=$items["image"];
+			$age=$items["age"];
+			
+			
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into organization_personal (name_th,position_th,education_th,work_th,name_en,position_en,education_en,work_en,shareholder,image,active,create_by,create_date) ";
+			$sql .= "values('$name_th','$position_th','$education_th','$work_th','$name_en','$position_en','$education_en','$work_en','$shareholder','$image',$active,$create_by,$create_date); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("OrgManager > insert_personal > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Personal : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_personal($items){
+		try{
+			$id = $items["id"];
+			$name_th =$items["name_th"];
+			$position_th=$items["position_th"];
+			$education_th=$items["education_th"];
+			$work_th=$items["work_th"];
+			$name_en=$items["name_en"];
+			$position_en=$items["position_en"];
+			$education_en=$items["education_en"];
+			$work_en=$items["work_en"];
+			$shareholder=$items["shareholder"];
+			$image = "";
+			
+			if($items["image"]){
+				$image=",image='".$items["image"]."' ";	
+			}
+			
+			$age=$items["age"];
+			
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update organization_personal set  ";
+			$sql .= "name_th='$name_th',position_th='$position_th',education_th='$education_th',work_th='$work_th' ";
+			$sql .= ",name_en='$name_en',position_en='$position_en',education_en='$education_en',work_en='$work_en' $image ,active=$active,update_by=$update_by,update_date=$update_date  ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_personal > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Personal : ".$e->getMessage();
+		}
+	}
+	
+	function delete_personal($id){
+		
+		try{
+			/*flag delete 
+			** can delete manual with your self. prevent data is lost
+			*/
+			$sql = "delete from organization_personal where id=$id ; ";
+			log_debug("OrgManager > delete_personal > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete personal : ".$e->getMessage();
+		}
 	}
 
 }

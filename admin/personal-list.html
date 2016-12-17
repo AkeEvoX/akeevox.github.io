@@ -10,9 +10,10 @@
 			<tr>
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
-				<th>ชื่อ</th>
-				<th>Name</th>
-				<th class='col-md-2'></th>
+				<th class='col-md-3'>ชื่อ</th>
+				<th class='col-md-3'>Name</th>
+				<th class='col-md-1'>Status</th>
+				<th class='col-md-1'></th>
 			</tr>
 		</table>
 		<input type='hidden' id='counter' value='0' />
@@ -24,7 +25,7 @@
 
 $(document).ready(function(){
 	//$(window).unbind('scroll');	
-	$(btn_del).unbind('click'); /*clear event handle*/
+	$('#btn_del').unbind('click'); /*clear event handle*/
 	$('#btn_del').on('click',personal.delete);
 	personal.list();
 });

@@ -8,26 +8,6 @@ function loadorganization()
 
 	utility.service(endpoint,method,args,view_profile);
 
-	//args = {"_": new Date().getHours() , "type":"org","align":"right"};
-	//utility.service(endpoint,method,args,profile_right);
-/*
-	$.ajax({
-		url:"services/organization.php",
-		data:{"_": new Date().getHours() , "type":"org"},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			gendata(data.result);
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load organization information error : "+ xhr.responseText);
-		}
-	});*/
-
 }
 
 function view_profile(resp){
