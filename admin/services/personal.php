@@ -137,7 +137,7 @@ function Insert_data($items){
 	$org = new OrgManager();
 	//1)insert data
 	$id = $org->Insert_personal($items);
-	//2)upload image personal
+	//2)upload image 
 	upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
@@ -156,9 +156,9 @@ function Update_data($items){
 	
 	
 	$org = new OrgManager();
-	//1)insert data
+	//1)update data
 	$id = $org->update_personal($items);
-	//2)upload image personal
+	//2)upload image 
 	if($items["image"]){
 		upload_image($source,$distination);
 	}

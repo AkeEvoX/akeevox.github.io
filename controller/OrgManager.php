@@ -99,6 +99,19 @@ class OrgManager{
 		}
 	}
 
+	function get_refer_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from organization_reference where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Reference info: ".$e->getMessage();
+		}
+	}
 
 	function getintermarket()
 	{
@@ -177,6 +190,23 @@ class OrgManager{
 
 	}
 	
+	function get_list_reference_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from organization_reference a ";
+			// $sql .= " where active=1 ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("OrgManager > get_list_reference_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list reference  : ".$e->getMessage();
+		}
+	}
+	
 	function insert_personal($items){
 		
 		try{
@@ -216,6 +246,89 @@ class OrgManager{
 			echo "Cannot Insert Organization Personal : ".$e->getMessage();
 		}
 		
+	}
+	
+	function insert_reference($items){
+		
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$contury_th =$items["contury_th"];
+			$contury_en =$items["contury_en"];
+			$islocal  =$items["islocal"];
+			$thumbnail= $items["thumbnail"];
+			$image =  $items["image"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into organization_reference (title_th  ,title_en  ,detail_th ,detail_en ,contury_th ,contury_en ,thumbnail ,image  ,islocal  ,create_by  ,create_date  ,active ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en' ,'$contury_th' ,'$contury_en' ,'$thumbnail' ,'$image'  ,$islocal  ,$create_by  ,$create_date  ,$active); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("OrgManager > insert_reference > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Reference : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_reference($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$contury_th =$items["contury_th"];
+			$contury_en =$items["contury_en"];
+			$islocal  =$items["islocal"];
+			$thumbnail= $items["thumbnail"];
+			$image = "";
+			
+			if($items["image"]){
+				$image=",image='".$items["image"]."' ";	
+			}
+			
+			if($items["thumbnail"]){
+				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+			}
+		
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+			//'$'  ,'$'  ,'$' ,'$' ,'$' ,'$' ,'$thumbnail' ,'$image'  ,$  ,$create_by  ,$create_date  ,$active
+			
+			$sql = "update organization_reference set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
+			$sql .= ",contury_th='$contury_th' ,contury_en='$contury_en' ,islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  $image $thumbnail ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_reference> " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization Reference : ".$e->getMessage();
+		}
 	}
 	
 	function update_personal($items){
@@ -258,7 +371,7 @@ class OrgManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Insert Organization Personal : ".$e->getMessage();
+			echo "Cannot Update Organization Personal : ".$e->getMessage();
 		}
 	}
 	
@@ -296,12 +409,23 @@ class OrgManager{
 		}
 	}
 	
+	function delete_reference($id){
+		
+		try{
+			$sql = "delete from organization_reference where id=$id ; ";
+			log_debug("OrgManager > delete_reference > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Reference : ".$e->getMessage();
+		}
+	}
+	
 	function delete_personal($id){
 		
 		try{
-			/*flag delete 
-			** can delete manual with your self. prevent data is lost
-			*/
+
 			$sql = "delete from organization_personal where id=$id ; ";
 			log_debug("OrgManager > delete_personal > " .$sql);
 			$result = $this->mysql->execute($sql);

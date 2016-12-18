@@ -6,7 +6,7 @@ control.init = function(){
 }
 
 control.menutab = function(page){
-	
+	$('#viewcontent').html('');
 	$('#viewcontent').load(page, { '_' : new Date().getMilliseconds()} ,function(result,status,xhr){
 		if(validatemenu(result,status,xhr))
 		{
@@ -27,6 +27,8 @@ control.pagetab = function(page,object){
 	
 	//$('#viewpage').unbind('load');
 	$('#parameter').val(object);
+	$('#viewpage').html('');
+	$(window).unbind('scroll');	
 	$('#viewpage').load(page, { '_' : new Date().getMilliseconds()},function(result,status,xhr){
 		console.log('select pagetab');
 		if(validatepage(result,status,xhr)){

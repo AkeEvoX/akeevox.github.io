@@ -85,12 +85,14 @@ function GetParameter($id){
 
 function upload_image($source,$distination){
 	
+	if($source=="") return;
+	
 	if(move_uploaded_file($source,$distination))
 	{
-		log_debug('upload personal image success. > '.$distination);
+		log_debug('upload image success. > '.$distination);
 	}
 	else{
-		log_debug('upload personal image Failed. >'.$distination);
+		log_debug('upload image Failed. >'.$distination);
 	}
 }
 
