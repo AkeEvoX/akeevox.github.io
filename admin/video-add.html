@@ -1,0 +1,85 @@
+<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+<div class='col-md-12' >
+	<h3>จัดการเพิ่ม VIDEO</h3>
+	<hr/>
+	<form id='video_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="file_upload" class='col-md-3'>รูปภาพ / Image</label>
+			<div class='col-md-7'>
+				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="detail_th" class='col-md-3'>URL Video</label>
+			<div class='col-md-9'>
+				<input type="text" class="form-control" id="link" name='link' placeholder="URL Video" value='' />
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
+			<div class='col-md-5'>
+				<input type="checkbox" id="active" name="active"  />
+			</div>
+		</div>
+		<ul id='menutab' class="nav nav-tabs nav-default">
+			<li role="presentation" class='active'>
+				<a class='menutab' href="#th" data-toggle="tab">TH</a>
+			</li>
+			<li role="presentation">
+				<a class='menutab' href="#en" data-toggle="tab">EN</a>
+			</li>
+		</ul>
+
+		<div class='tab-content' style='margin-top:10px;'>
+			<div id='th' class="tab-pane fade in active">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="name_th" class='col-md-3'>ชื่อเรื่อง</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="name_th" name='name_th' placeholder="ชื่อ และ นามสกุล" value='' />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='en' class="tab-pane fade">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="name_en" class='col-md-3'>Subject</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="name_en" name='name_en' placeholder="Subject" value='' />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+
+	</form>
+
+
+</div>
+<script src='js/video-manager.js' ></script>
+<script src='js/underscore-min.js' ></script>
+<script src='../plugin/jquery/summernote/summernote.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+
+	$('#video_form').on('submit',function(e){
+		e.preventDefault();
+
+		var args = new FormData(this);
+		args.append('type', 'add');
+		console.log(args);
+		video_form.add(args);
+	});
+
+});
+
+</script>

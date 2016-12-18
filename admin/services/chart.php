@@ -10,12 +10,6 @@ include("../../controller/OrgManager.php");
 $type="";
 $id="";
 
-//if(isset($_GET["type"])) $type = $_GET["type"]; 
-//if(isset($_POST["type"])) $type = $_POST["type"]; 
-
-//if(isset($_GET["id"])) $id = $_GET["id"]; 
-//if(isset($_POST["id"])) $id = $_POST["id"]; 
-
 $id = GetParameter('id');
 $type = GetParameter('type');
 

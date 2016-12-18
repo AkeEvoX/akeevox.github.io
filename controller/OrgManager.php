@@ -12,8 +12,7 @@ class OrgManager{
 			$this->mysql->connect();
 			//echo "initial database.";
 		}
-		catch(Exception $e)
-		{
+		catch(Exception $e)		{
 			die("initial Organization manager error : ". $e->getMessage());
 		}
 	}
@@ -69,8 +68,7 @@ class OrgManager{
 		}
 	}
 	
-	function getchart($lang)
-	{
+	function getchart($lang){
 		try{
 
 			$sql = "select id, chart_".$lang." as chart ,update_date ";
@@ -84,40 +82,11 @@ class OrgManager{
 		}
 
 	}
-	
-	function get_chart_info($id){
+
+	function getintermarket($lang){
 		try{
 
-			$sql = "select id,chart_th,chart_en ";
-			$sql .= " from organization_chart where active=1 order by update_date desc ";
-			$result = $this->mysql->execute($sql);
-
-			return  $result;
-		}
-		catch(Exception $e){
-			echo "Cannot Get Organization Chart info: ".$e->getMessage();
-		}
-	}
-
-	function get_refer_info($id){
-		try{
-
-			$sql = "select * ";
-			$sql .= " from organization_reference where id=$id ";
-			$result = $this->mysql->execute($sql);
-
-			return  $result;
-		}
-		catch(Exception $e){
-			echo "Cannot Get Organization Reference info: ".$e->getMessage();
-		}
-	}
-
-	function getintermarket()
-	{
-		try{
-
-			$sql = "select id, chart ,update_date ";
+			$sql = "select id, chart_".$lang."  as chart,update_date ";
 			$sql .= " from organization_intermarket where active=1 order by update_date desc ";
 			$result = $this->mysql->execute($sql);
 
@@ -143,8 +112,7 @@ class OrgManager{
 		}
 	}
 
-	function getReferenceList($lang)
-	{
+	function getReferenceList($lang){
 		try{
 
 			$sql = "select id,title_".$lang." as title , detail_".$lang." as detail ,contury_".$lang." as contury , thumbnail,image , update_date ,islocal ";
@@ -158,8 +126,7 @@ class OrgManager{
 		}
 	}
 
-	function getReferalID($lang,$id)
-	{
+	function getReferalID($lang,$id){
 		try{
 
 			$sql = "select id,title_".$lang." as title , detail_".$lang." as detail ,contury_".$lang." as contury ,thumbnail,image , update_date ,islocal ";
@@ -189,13 +156,82 @@ class OrgManager{
 		}
 
 	}
+		
+	function get_chart_info($id){
+		try{
+
+			$sql = "select id,chart_th,chart_en ";
+			$sql .= " from organization_chart where active=1 order by update_date desc ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Chart info: ".$e->getMessage();
+		}
+	}
+
+	function get_refer_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from organization_reference where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Reference info: ".$e->getMessage();
+		}
+	}
 	
+	function get_project_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from project_reference where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Project info: ".$e->getMessage();
+		}
+	}
+	
+	function get_market_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from org_market_countries where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Market info: ".$e->getMessage();
+		}
+	}
+	
+	function get_award_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from award where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Organization Award info: ".$e->getMessage();
+		}
+	}
+
 	function get_list_reference_fetch($start_fetch,$max_fetch){
 			try{
 
 			$sql = " select * ";
 			$sql .= " from organization_reference a ";
-			// $sql .= " where active=1 ";
 			$sql .= " order by id desc" ;
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			log_debug("OrgManager > get_list_reference_fetch > ".$sql);
@@ -204,6 +240,54 @@ class OrgManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Get  list reference  : ".$e->getMessage();
+		}
+	}
+	
+	function get_list_project_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from project_reference a ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("OrgManager > get_list_project_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list project  : ".$e->getMessage();
+		}
+	}
+	
+	function get_list_market_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from org_market_countries a ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("OrgManager > get_list_market_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list market  : ".$e->getMessage();
+		}
+	}
+	
+	function get_list_award_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from award a ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("OrgManager > get_list_award_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list award  : ".$e->getMessage();
 		}
 	}
 	
@@ -285,6 +369,205 @@ class OrgManager{
 		
 	}
 	
+	function insert_project($items){
+		
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$location_th =$items["location_th"];
+			$location_en =$items["location_en"];
+			$islocal  =$items["islocal"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into project_reference (title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$location_th' ,'$location_en' ,$islocal  ,$active ,$create_by  ,$create_date ); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("OrgManager > insert_project  > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Project : ".$e->getMessage();
+		}
+		
+	}
+	
+	function insert_market($items){
+		
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into org_market_countries (title_th ,title_en ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en' ,$active ,$create_by  ,$create_date ); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("OrgManager > insert_market  > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Market : ".$e->getMessage();
+		}
+		
+	}
+	
+	function insert_award($items){
+		
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$thumbnail= $items["thumbnail"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into award (title_th  ,title_en  ,detail_th ,detail_en ,thumbnail ,create_by  ,create_date  ,active ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en' ,'$thumbnail'   ,$create_by  ,$create_date  ,$active); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("OrgManager > insert_award > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Organization Award : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_award($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$thumbnail= "";
+
+			if($items["thumbnail"]){
+				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+			}
+		
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+		
+			$sql = "update award set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $thumbnail ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_award> " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization Award : ".$e->getMessage();
+		}
+	}
+	
+	function update_market($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
+			
+			$sql = "update org_market_countries set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_market> " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization Market : ".$e->getMessage();
+		}
+	}
+	
+	function update_project($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$location_th =$items["location_th"];
+			$location_en =$items["location_en"];
+			$islocal  =$items["islocal"];
+		
+		
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
+			
+			$sql = "update project_reference set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,location_th='$location_th' ,location_en='$location_en' ";
+			$sql .= ",islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > update_project> " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization Project : ".$e->getMessage();
+		}
+	}
+	
 	function update_reference($items){
 		try{
 			$id = $items["id"];
@@ -312,8 +595,7 @@ class OrgManager{
 			
 			$update_by='0';
 			$update_date='now()';
-			//'$'  ,'$'  ,'$' ,'$' ,'$' ,'$' ,'$thumbnail' ,'$image'  ,$  ,$create_by  ,$create_date  ,$active
-			
+		
 			$sql = "update organization_reference set  ";
 			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
 			$sql .= ",contury_th='$contury_th' ,contury_en='$contury_en' ,islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  $image $thumbnail ";
@@ -409,6 +691,79 @@ class OrgManager{
 		}
 	}
 	
+	function update_market_page($items){
+		try{
+			
+			$chart_th = "";
+			$chart_en = "";
+			$id = $items["id"];
+			if($items["chart_th"]){
+				$chart_th=" ,chart_th='".$items["chart_th"]."' ";	
+			}
+				if($items["chart_en"]){
+				$chart_en=" ,chart_en='".$items["chart_en"]."' ";	
+			}
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update organization_intermarket set  ";
+			$sql .= "update_by=$update_by,update_date=$update_date " ;
+			$sql .= $chart_th ;
+			$sql .= $chart_en;
+			$sql .= "where id=$id; ";
+			$this->mysql->execute($sql);
+			
+			log_debug("OrgManager > InterMarket Page > " .$sql);
+
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Organization InterMarket Page : ".$e->getMessage();
+		}
+	}
+	
+	function delete_award($id){
+		
+		try{
+			$sql = "delete from award where id=$id ; ";
+			log_debug("OrgManager > delete_award > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Organization Award : ".$e->getMessage();
+		}
+	}
+	
+	function delete_market($id){
+		
+		try{
+			$sql = "delete from org_market_countries where id=$id ; ";
+			log_debug("OrgManager > delete_market > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Organization Market : ".$e->getMessage();
+		}
+	}
+	
+	function delete_project($id){
+		
+		try{
+			$sql = "delete from project_reference where id=$id ; ";
+			log_debug("OrgManager > delete_project > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Organization Project : ".$e->getMessage();
+		}
+	}
+	
 	function delete_reference($id){
 		
 		try{
@@ -418,7 +773,7 @@ class OrgManager{
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Reference : ".$e->getMessage();
+			echo "Cannot Delete Organization Reference : ".$e->getMessage();
 		}
 	}
 	
@@ -432,11 +787,10 @@ class OrgManager{
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete personal : ".$e->getMessage();
+			echo "Cannot Delete Organization Personal : ".$e->getMessage();
 		}
 	}
 
-	
 }
 
 ?>

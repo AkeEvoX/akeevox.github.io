@@ -1,0 +1,83 @@
+<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+<div class='col-md-12' >
+	<h3>จัดการเนื้อหา Intro</h3>
+	<hr/>
+	<form id='home_form' action='' method='post' enctype="multipart/form-data">
+		<ul id='menutab' class="nav nav-tabs nav-default">
+			<li role="presentation" class='active'>
+				<a class='menutab' href="#th" data-toggle="tab">TH</a>
+			</li>
+			<li role="presentation">
+				<a class='menutab' href="#en" data-toggle="tab">EN</a>
+			</li>
+		</ul>
+
+		<div class='tab-content' style='margin-top:10px;'>
+			<div id='th' class="tab-pane fade in active">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="intro_th" class='col-md-3'>เนื้อหา Intro</label>
+						<div class='col-md-12'>
+							<textarea rows='7' class="form-control" id="intro_th" name="intro_th" placeholder="" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="series_th" class='col-md-3'>เนื้อหา Series</label>
+						<div class='col-md-12'>
+							<textarea rows='7' class="form-control" id="series_th"  name="series_th"placeholder="" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='en' class="tab-pane fade">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="intro_en" class='col-md-3'>Content Intro</label>
+						<div class='col-md-12'>
+							<textarea rows='7' class="form-control" id="intro_en" name="intro_en" placeholder="" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="series_en" class='col-md-3'>Content Series</label>
+						<div class='col-md-12'>
+							<textarea rows='7' class="form-control" id="series_en"  name="series_en" placeholder="" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='id' name='id'  />
+
+	</form>
+
+
+</div>
+<script src='js/home-manager.js' ></script>
+<script src='js/underscore-min.js' ></script>
+<script src='../plugin/jquery/summernote/summernote.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+	$('#intro_th').summernote({ height: 200 });
+	$('#intro_en').summernote({ height: 200 });
+	$('#series_th').summernote({ height: 200 });
+	$('#series_en').summernote({ height: 200 });
+	
+	$('#home_form').on('submit',function(e){
+		e.preventDefault();
+		
+		//var args = JSON.stringify($('#personal_form').serializeArray());
+		var args = new FormData(this);
+		args.append('type', 'edit_content');
+		console.log(args);
+		home.edit_content(args);
+	});
+
+});
+
+</script>

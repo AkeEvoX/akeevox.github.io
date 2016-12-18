@@ -21,43 +21,40 @@ function showcover()
 
 }
 
-function viewtop(resp)
+function viewtop(data)
 {
-	if(resp.result!=undefined || resp.result==null){
-		
+
+	if(data.result == undefined || data.result == "null"){
+		console.log('viewtop not found.');
 		return false;
 	}
 
 		var view = $('#viewtop');
 		var viewindex = $('#index-carousel');
-		var result = "";
+		var item = "";
 		view.html("");
 	
-		console.warn(resp.result);
-		
-		
-		
-		$.each(resp.result,function(i,val){
+		$.each(data.result,function(i,val){
 			
-			if(result==""){
-				result += '<div class="item active"> ';
+			if(item==""){
+				item += '<div class="item active"> ';
 				viewindex.append('<li data-target="#myCarousel" data-slide-to="'+i+'" class="active"></li>');
 			}
 			else{
 				
-				result += '<div class="item"> ';
+				item += '<div class="item"> ';
 				viewindex.append('<li data-target="#myCarousel" data-slide-to="'+i+'" ></li>');
 			}
 				
 			
-			 result += '<img src="'+val.cover+'" style="width:100%" >';
-			 result += '<div class="container">&nbsp;</div>';
-			 result += '</div></div>';
+			 item += '<img src="'+val.cover+'" style="width:100%" >';
+			 item += '<div class="container">&nbsp;</div>';
+			 item += '</div></div>';
 		});
 		
 		
 		
-		view.html(result);
+		view.html(item);
 
 }
 

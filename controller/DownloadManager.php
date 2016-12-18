@@ -23,8 +23,7 @@ class DownloadManager{
 	}
 
 	function getType($lang,$id){
-		
-		try{
+	try{
 
 			$sql = " select id,".$lang." as name from download_type where active=1  ";
 
@@ -44,8 +43,7 @@ class DownloadManager{
 		
 	}
 
-	function getListItem($id,$lenght,$lang)
-	{
+	function getListItem($id,$lenght,$lang){
 			try{
 			
 			$sql = " select id,title_".$lang." as title,thumbnail,link from downloads where active=1  and type = ".$id . " order by create_date";
@@ -62,6 +60,227 @@ class DownloadManager{
 			echo "Cannot Get List Download : ".$e->getMessage();
 		} 
 	}
+	
+	
+	function get_list_type_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from download_type  ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("DownloadManager > get_list_type_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get DownloadManager list type download  : ".$e->getMessage();
+		}
+	}
+	
+	function get_list_download_fetch($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from downloads  ";
+			$sql .= " order by id desc" ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("DownloadManager > get_list_download_fetch > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  DownloadManager list download  : ".$e->getMessage();
+		}
+	}
+	
+	function get_download_type($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from download_type where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get DownloadManager Type info: ".$e->getMessage();
+		}
+	}
+	
+	function get_download_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from downloads where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get DownloadManager Download info: ".$e->getMessage();
+		}
+	}
+	
+	function insert_type_download($items){		
+	
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into download_type (title_th ,title_en ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en' ,$active ,$create_by  ,$create_date ); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("DownloadManager > insert_type_download  > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert DownloadManager Type Download : ".$e->getMessage();
+		}
+		
+	}
+	
+	function insert_download($items){
+		
+		try{
+			
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$thumbnail= $items["thumbnail"];
+			$link= $items["link"];
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$create_by='0';
+			$create_date='now()';
+			
+			$sql = "insert into downloads (title_th  ,title_en ,thumbnail ,link ,create_by  ,create_date  ,active ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$thumbnail'   ,$create_by  ,$create_date  ,$active); ";
+			$this->mysql->execute($sql);
+			//echo $sql;
+			
+			log_debug("DownloadManager > insert_download > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert DownloadManager Download : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_download($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			$thumbnail= "";
+			$link= "";
+
+			if($items["thumbnail"]){
+				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+			}
+			
+			if($items["link"]){
+				$link=",link='".$items["link"]."' ";	
+			}
+		
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+		
+			$sql = "update downloads set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $thumbnail $link ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("DownloadManager > update_download> " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update DownloadManager Download  : ".$e->getMessage();
+		}
+	}
+	
+	function update_type_download($items){
+		try{
+			$id = $items["id"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
+			
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update download_type set  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			log_debug("DownloadManager > update_type_download > " .$sql);
+			//get insert id
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update DownloadManager Type Download : ".$e->getMessage();
+		}
+	}
+
+	function delete_download($id){
+		
+		try{
+			$sql = "delete from downloads where id=$id ; ";
+			log_debug("DownloadManager > delete_download > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete DownloadManager Download : ".$e->getMessage();
+		}
+	}
+	
+	function delete_type_download($id){
+		
+		try{
+			$sql = "delete from download_type where id=$id ; ";
+			log_debug("OrgManager > delete_type_download > " .$sql);
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete DownloadManager Type Download : ".$e->getMessage();
+		}
+	}
+	
+	
 	
 }
 

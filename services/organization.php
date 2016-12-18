@@ -55,7 +55,7 @@ switch($type){
 	break;
 	case "inter" :
 
-		$item = $Org->getintermarket();
+		$item = $Org->getintermarket($lang);
 		$row= $item->fetch_object();
 
 		$data = array (

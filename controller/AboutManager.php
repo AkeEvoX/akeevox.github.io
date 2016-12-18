@@ -54,7 +54,6 @@ class AboutManager{
 		
 	}
 	
-	
 	function update_about($items){
 		
 		try{
@@ -86,7 +85,7 @@ class AboutManager{
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update About Info: ".$e->getMessage();
+			echo "Cannot Update AboutManager Info: ".$e->getMessage();
 		}
 	}
 	

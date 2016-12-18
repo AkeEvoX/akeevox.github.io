@@ -1,72 +1,41 @@
-<div class='col-md-12'>
-<h3>จัดการสินค้า</h3><hr/>
-<div class='row'>
-	<div class="form-horizontal">
-		<div class="form-group">
-				<label for="inputBanner1" class="col-sm-5 control-label">แบนเนอร์ 1</label>
-				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner1" placeholder="Upload Banner">
-				</div>
+<div class='col-md-12' >
+	<form id='intro_form' method='post' action='' enctype="multipart/form-data" >
+		<h3>จัดการหน้า Landing Page</h3><hr/>
+		<div class='row rowspan'>
+			<label class='col-md-3' >ภาพตัวอย่าง / preview</label>
+			<div class='col-md-9'>
+				<img class='img-responsive' id='image'  onerror=this.src='../../images/common/unavaliable.jpg'  />
 			</div>
-			<div class="form-group">
-				<label for="inputLink1" class="col-sm-5 control-label">Link แบนเนอร์ 1</label>
-				<div class="col-sm-7">
-				  <input type="text" class="form-control" id="inputLink1" placeholder="link">
-				</div>
+		</div>
+		<div class='row rowspan'>
+			<label class='col-md-3' >ชื่อหัวข้อ</label>
+			<div class='col-md-9'>
+				<input type='file' class='form-control' id='file_upload' name='file_upload'/>
 			</div>
-	 </div>
+		</div>
+		<div class='row rowspan'>
+			<label class='col-md-3' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-9'>
+				<input type='checkbox' name='active' id='active'/>
+			</div>
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />
+			&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='id' name='id' value='1'/>
+	</form>
 </div>
-<div class='row'>
-	<div class="form-horizontal">
-		<div class="form-group">
-				<label for="inputBanner2" class="col-sm-5 control-label">แบนเนอร์ 2</label>
-				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner2" placeholder="Upload Banner">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputLink2" class="col-sm-5 control-label">Link แบนเนอร์ 2</label>
-				<div class="col-sm-7">
-				  <input type="text" class="form-control" id="inputLink2" placeholder="link">
-				</div>
-			</div>
-	 </div>
-</div>
-<div class='row'>
-	<div class="form-horizontal">
-		<div class="form-group">
-				<label for="inputBanner3" class="col-sm-5 control-label">แบนเนอร์ 3</label>
-				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner3" placeholder="Upload Banner">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputLink3" class="col-sm-5 control-label">Link แบนเนอร์ 3</label>
-				<div class="col-sm-7">
-				  <input type="text" class="form-control" id="inputLink3" placeholder="link">
-				</div>
-			</div>
-	 </div>
-</div>
-<div class='row'>
-	<div class="form-horizontal">
-		<div class="form-group">
-				<label for="inputBanner4" class="col-sm-5 control-label">แบนเนอร์ 4</label>
-				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner4" placeholder="Upload Banner">
-				</div>
-			</div>
-			<div class="form-group">
-				<label for="inputLink4" class="col-sm-5 control-label">Link แบนเนอร์ 4</label>
-				<div class="col-sm-7">
-				  <input type="text" class="form-control" id="inputLink4" placeholder="link">
-				</div>
-			</div>
-	 </div>
-</div>
-<div class='row'>
-	<div class='text-center'>
-		<button class='btn btn-warning' >บันทึกข้อมูล</button>&nbsp;<button class='btn btn-warning' >ยกเลิก</button>
-	</div>
-</div>
-</div>
+<script src='js/home-manager.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+	
+	//home.load_intro();
+	//$('#detail_th').summernote({ height: 200 });
+	//$('#detail_en').summernote({ height: 200 });
+	
+});
+
+</script>

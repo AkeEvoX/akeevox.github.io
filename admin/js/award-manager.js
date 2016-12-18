@@ -1,9 +1,9 @@
 
-var refer = {};
+var award = {};
 
-refer.add = function(args){
+award.add = function(args){
 	
-	var endpoint = "services/reference.php";
+	var endpoint = "services/award.php";
 	var method = "POST";
 
 	utility.data(endpoint,method,args,function(data){
@@ -11,28 +11,28 @@ refer.add = function(args){
 		var response = JSON.parse(data);
 		console.debug(response);
 		alert(response.result);
-		control.pagetab('reference-manager.html');
+		control.pagetab('award-manager.html');
 	});
 	
 }
 
-refer.edit = function(args){
+award.edit = function(args){
 	
-	var endpoint = "services/reference.php";
+	var endpoint = "services/award.php";
 	var method = "POST";
 	
 	utility.data(endpoint,method,args,function(data){
 		var response = JSON.parse(data);
 		console.debug(response);
 		alert(response.result);
-		control.pagetab('reference-manager.html');
+		control.pagetab('award-manager.html');
 	});
 	
 }
 
-refer.delete = function(){
+award.delete = function(){
 	console.log('call delete');
-	var endpoint = "services/reference.php";
+	var endpoint = "services/award.php";
 	var method = "POST";
 	var args = "";
 	 $('input[name="mark[]"]:checked').each(function(){
@@ -45,23 +45,23 @@ refer.delete = function(){
 		 
 	 });
 	 alert('DELETE SUCCESS.');
-	 //refer.loadlist();
+	 //award.loadlist();
 }
 
-refer.loadlist = function(){
+award.loadlist = function(){
 	//$('#data_list').html('');
-	console.log('call list reference.');
-	var endpoint = "services/reference.php";
+	console.log('call list award.');
+	var endpoint = "services/award.php";
 	var method = "GET";
 	//var args = {'_':new Date().getMilliseconds(),'type':'list'};
 	var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'20'};
-	utility.service(endpoint,method,args,view_list_reference);
+	utility.service(endpoint,method,args,view_list_award);
 	
 }
 
-refer.loaditem = function(id){
+award.loaditem = function(id){
 	$('#id').val(id);
-	var endpoint = "services/reference.php";
+	var endpoint = "services/award.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,view_item);
@@ -70,7 +70,7 @@ refer.loaditem = function(id){
 function view_item(data){
 	
 	if(data.result==undefined || data.result=="") {
-		console.log("reference-manager > item reference :: data not found.");
+		console.log("award-manager > item award :: data not found.");
 		return;
 	}
 	
@@ -90,13 +90,13 @@ function view_item(data){
 	
 }
 
-function view_list_reference(data){
+function view_list_award(data){
 	
 	var view = $('#data_list');
 	var item = "";
 	
 	if(data.result==undefined || data.result=="") {
-		console.log("reference-manager > list reference :: data not found.")
+		console.log("award-manager > list award :: data not found.")
 		return;
 	}
 	var max_item = $('#counter').val();
@@ -112,7 +112,7 @@ function view_list_reference(data){
 		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.title_en+"</td>";
 		item+="<td>"+active+"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('reference-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('award-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 
 		max_item++;

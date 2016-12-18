@@ -1,0 +1,52 @@
+<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+<div class='col-md-12' >
+	<h3>จัดการเพิ่มสถานที่ Around the world</h3>
+	<hr/>
+	<form id='market_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="title_th" class='col-md-3'>ชื่อประเทศ</label>
+			<div class='col-md-9'>
+				<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อประเทศ" value='' />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="title_en" class='col-md-3'>Country  name</label>
+			<div class='col-md-9'>
+				<input type="text" class="form-control" id="title_en" name='title_en' placeholder="Country  name" value='' />
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
+			<div class='col-md-5'>
+				<input type="checkbox" id="active" name="active"  />
+			</div>
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+
+	</form>
+
+
+</div>
+<script src='js/market-manager.js' ></script>
+<script src='js/underscore-min.js' ></script>
+<script src='../plugin/jquery/summernote/summernote.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+
+	$('#market_form').on('submit',function(e){
+		e.preventDefault();
+
+		var args = new FormData(this);
+		args.append('type', 'add');
+		console.log(args);
+		project.add(args);
+	});
+
+});
+
+</script>
