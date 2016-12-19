@@ -38,6 +38,21 @@ class ContactManager{
 		
 	}
 	
+	function get_list_contact_message(){
+		
+			try{
+			
+			$sql = " select contact_to,contact_alias ";
+			$sql .= " from contact_list where c.active=1 ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  List Contact Message : ".$e->getMessage();
+		} 
+	}
+	
 	function get_list_contact_fetch($start_fetch,$max_fetch){
 			try{
 

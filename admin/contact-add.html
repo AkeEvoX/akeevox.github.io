@@ -1,0 +1,41 @@
+<div class='col-md-12' >
+	<h3>จัดการข้อมูล ติดต่อ / contact</h3><hr/>
+	<h4><span class='glyphicon glyphicon-stop'></span>เพิ่มข้อมูล Contact</h4>
+	<form id='contact_form' method='post' encrypt='media' >
+	<div class='row'>
+		<div class="form-horizontal">
+		<div class="form-group">
+				<label for="cateid" class="col-sm-3 control-label">ภายใต้หมวดหมู่</label>
+				<div class="col-sm-7">
+					<select class='form-control' id="cate_id" name='cate_id' >
+						<option value='-1'>Empty</option>
+					</select>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="cate_th" class="col-sm-3 control-label">TH</label>
+				<div class="col-sm-7">
+				  <input type="text" class="form-control" id="cate_th" placeholder="category thai">
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="cate_en" class="col-sm-3 control-label">EN</label>
+				<div class="col-sm-7">
+				  <input type="text" class="form-control" id="cate_en" placeholder="category eng">
+				</div>
+			</div>
+		</div>
+	</div>
+	<div class='row'>
+		<span class='btn btn-success btn-sm' onclick='cate.add();'  >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html')  >ยกเลิก</span>
+	</div>
+	</form>
+</div>
+<script src='js/category-manager.js'></script>
+<script>
+
+ $(document).ready(function(){
+	cate.loadoptions();
+ });
+
+</script>

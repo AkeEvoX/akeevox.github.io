@@ -20,7 +20,7 @@ if(isset($_SESSION["lang"]))
 	$lang = $_SESSION["lang"];
 
 
-function SendMail($redirect,$sender,$subject,$message,$custname)
+function SendMail($redirect,$receive,$sender,$subject,$message,$custname)
 {
 		$mail = new PHPMailer();
 
@@ -39,7 +39,13 @@ function SendMail($redirect,$sender,$subject,$message,$custname)
 		//$mail->SetFrom("contact@baankunnan.com", "starsanitaryware.com");
 		$mail->AddBcc("contact@baankunnan.com", "contact :: starsanitaryware");
 		//$mail->AddReplyTo("mail@andamantaxis.com", "admin");
-		$mail->AddAddress("sales@starsanitaryware.com"); 
+		
+		/*list receive email */
+		foreach($receive as $key=>$item){
+			$mail->AddAddress($item->email,$item->alias); 
+		}
+		
+		//$mail->AddAddress("sales@starsanitaryware.com"); 
 		
 		if(!$mail->Send()) {
 			//echo "Mailer Error: " . $mail->ErrorInfo;
