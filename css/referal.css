@@ -1,6 +1,33 @@
-	#content-data {
-		-webkit-column-count: 2; /* Chrome, Safari, Opera */
-    	-moz-column-count: 2; /* Firefox */
-    	column-count: 2;
-    	min-height:100px;
-	}
+#content-data {
+	-webkit-column-count: 2; /* Chrome, Safari, Opera */
+	-moz-column-count: 2; /* Firefox */
+	column-count: 2;
+	min-height:100px;
+}
+
+.well-white {
+	padding:0px;
+}
+
+
+
+#refer-list tr {
+	border-top:1px solid #c2c2a3;
+	
+	
+}
+
+#refer-list th{
+	padding:20px;
+}
+
+#refer-list td{
+	padding-left:20px;
+}
+
+#refer-list .firstrow {
+	background-color: #fff2cc;
+}
+#refer-list .firstrow th {
+	font-size:16px;
+}

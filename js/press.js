@@ -159,7 +159,7 @@ function setviewdetail(data)
 	
 	$('span[id="pressdetail"]').text(press.title);
 	itemview += "<div class='col-md-12'>";
-	itemview += "<h4 class='media-heading' style='color:orange'>"+press.title+"</h4>";
+	itemview += "<h4 class='media-heading orange' >"+press.title+"</h4>";
 	itemview += "<img src='"+press.coverpage+"' class='img-responsive' />"; //1240x500
 	itemview += "<div class='media-body' >"+press.detail+"</div>"; //detail new
 	itemview += "</div >"; //column

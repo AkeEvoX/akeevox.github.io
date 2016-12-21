@@ -20,6 +20,10 @@ textarea{
 }
 
 .form-horizontal input, .form-horizontal textarea {
+	background-color:#f8f3ed;
+	border:1px solid #bd9b76;
+	/*
 	background-color:#fff2cc;
 	border:1px solid #a58b5d;
+	*/
 }

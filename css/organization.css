@@ -3,6 +3,10 @@
 	max-width:100px;
 }
 
+.media-body {	
+	color:#a58b5d;
+}
+
 /*pc default : 1200*/
 @media(min-width:900px) {
 	

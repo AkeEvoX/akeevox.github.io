@@ -400,9 +400,10 @@ function setViewAttribute(data)
 
 		$.each(data.result,function(i,val){
 			var item = "";
-			item += "<div class='col-xs-6 col-sm-6' style='height:40px;'>"
+			var title = val.title == "" ? "&nbsp;" : val.title ; 
+			item += "<div class='col-xs-6 col-sm-6' >"
 			item += "<label class='col-xs-6 control-label' >"+val.label+"</label>";
-			item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+val.title+"</p></div>";
+			item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+title+"</p></div>";
 			item += "</div>"
 			//console.warn(item);
 			view.append(item);

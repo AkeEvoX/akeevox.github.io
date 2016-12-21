@@ -126,7 +126,7 @@ function setviewdetail(data)
 	
 	$('span[id="faqdetail"]').text(faq.title);
 	itemview += "<div class='col-md-12'>";
-	itemview += "<h4 class='media-heading' style='color:orange'>"+faq.title+"</h4>";
+	itemview += "<h4 class='media-heading orange' >"+faq.title+"</h4>";
 	itemview += "<img src='"+faq.thumbnail+"' class='img-responsive' />"; //1240x500
 	itemview += "<div class='media-body' >"+faq.detail+"</div>"; //detail new
 	itemview += "</div >"; //column

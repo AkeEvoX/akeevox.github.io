@@ -99,15 +99,22 @@
 }
 
 .productdesc {
-	background-color:#CAC7AB  ; 
+	padding-left:0px;
+	background-color:#FFF  ; /*CAC7AB*/
+	color:gray;
 }
 
 .productdesc .control-label{
-	color:white;
+	/* color:#CAC7AB; */
+	background-color:#CAC7AB;
+	padding:10px 0px 10px 10px;
+	border-bottom:2px solid #FFF;
 }
 
 .productdesc p {
 	color:#76764 ;
+	border-bottom:2px solid #CAC7AB;
+	padding:10px 0px 10px 0px;
 }
 
 .sharezone {
