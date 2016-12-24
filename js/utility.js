@@ -43,8 +43,6 @@ utility.initial = function(){
 		utility.loadbuttommenu();
 	});
 	
-	//$('span[data-link')
-
 }
 /*for view data only*/
 utility.service = function(url,method,args,success_callback,complete_callback){
@@ -147,15 +145,6 @@ utility.setpage = function(page,callback){
   var endpoint = "services/attributes.php";
   var args = {'_':new Date().getHours(),'type':page};
   utility.service(endpoint,'GET',args, bindpage,callback);
-  
-  	/*apply customize attribute*/  	
-	$('[data-type="link"]').on('click',function(){
-		
-		if($(this).attr('popup')=="true")
-			window.open($(this).attr('url'),'_blank');
-		else
-			window.location.href=$(this).attr('url');
-	});
   
 }
 
@@ -265,8 +254,8 @@ function getmenubar(data){
         item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
       }
       else {
-        item = "<li id='"+val.id+"' class='dropdown' >";
-				item += "<a href='"+val.link+"' onclick=loadchildmenu("+val.id+") class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>"+val.name+"</a>";
+        item = "<li id='"+val.id+"' class='dropdown' >"; //onclick=loadchildmenu("+val.id+")  data-toggle='dropdown' 
+				item += "<a href='javascript:void(0);' onclick='return false;' class='dropdown-toggle'  role='button' aria-haspopup='false' aria-expanded='false'>"+val.name+"</a>";
 
           item += "<ul class='dropdown-menu'>";
           $.each(sub,function(subid,subval){

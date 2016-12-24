@@ -27,7 +27,7 @@
 			</div><!--end tree menu-->
 			<a href='download.html' class='btn btn-warning' style='background-color:#a2644d;' ><span class='glyphicon glyphicon-list-alt'></span>&nbsp;<span id='nav.download'></span></a>
 		</div>
-		<div class='col-md-9' id='view-content' >
+		<div class='col-xs-12 col-sm-12 col-md-9' id='view-content' >
 			<div class='row'>
 				<div class='col-md-12'>
 					<ol class="breadcrumb">
@@ -63,7 +63,8 @@
 					</div>
 				</div>
 				<div class='row'><!--product gallery-->
-					<div id="productgallery" style="display:none;">
+					<div class='col-xs-12 col-sm-12'>
+						<div id="productgallery" style="display:none;"></div>
 					</div>
 				</div>
 				<h4><span class='glyphicon glyphicon-stop'></span><span id='nav.category'></span> : <span id='productname'></span><hr/></h4>
@@ -95,19 +96,30 @@
 				<div class='row'>
 					<div class='col-md-12' style='position: relative;float:right;'>
 							<ul class='sharezone'>
-							<li>
+							<!--<li>
 								<ul class='downloadlist text-right'>
 									<li><a href='#'><img src='images/products/icon_dwg.png'></a></li>
 									<li><a id='doc_link' ><img src='images/products/icon_pdf.png'></a></li>
 								</ul>
-							</li>
+							</li>-->
 							<li>
 								<ul class='sociallist'  >
-									<li style='top:-20px;position:relative;'><a href='#'><img src='images/products/icon_share.png'></a></li>
-									<li ><img src='images/products/icon_google.png' id='google' style='cursor:pointer;'></li>
-									<li ><img src='images/products/icon_twitter.png' id='twitter' style='cursor:pointer;'></li>
-									<li ><img src='images/common/line_share.png' width='99px' height='33px' id='line' style='cursor:pointer;'></li>
-									<li ><img src='images/products/icon_facebook.png' id='facebook' style='cursor:pointer;'></li>
+									<!--<li style='top:-20px;position:relative;'><a href='#'><img src='images/products/icon_share.png'></a></li>-->
+									<li><a href='#'><img src='images/logos/line.png'></a></li>
+									<li >
+									<span style='color:black;position:absolute;top:-5px;'>Share</span>
+									<img src='images/logos/fb.png' id='facebook' style='cursor:pointer;' class='icon'></li>
+									<li ><img src='images/logos/tweet.png' id='twitter' style='cursor:pointer;' class='icon'></li>
+									<li ><img src='images/logos/gplus.png' id='google' style='cursor:pointer;' class='icon'></li>
+									
+									<!--<li ><img src='images/common/line_share.png' width='99px' height='33px' id='line' style='cursor:pointer;'></li>-->
+									
+									<li><img src='images/logos/line.png'></li>
+									<li>
+									<span style='color:black;position:absolute;top:-5px;'>Document</span>
+									<a href='javascript:void(0);' ><img src='images/logos/pdf.png' class='icon_doc'></a></li>
+									<li><a href='javascript:void(0);' ><img src='images/logos/jpg.png' class='icon_doc'></a></li>
+									<li><a href='javascript:void(0);' ><img src='images/logos/dwg.png' class='icon_doc'></a></li>
 								</ul>
 							</li>
 						</ul>

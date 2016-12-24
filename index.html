@@ -93,7 +93,19 @@
 <script src='js/index.js'></script>
 	<script>
 		$(document).ready(function(){
-			utility.setpage('index');
+			utility.setpage('index',function(){
+				
+				
+				$('[data-type="link"]').on('click',function(){		
+					console.log('link to ' + $(this).attr('url')); 
+					if($(this).attr('popup')=="true")
+						window.open($(this).attr('url'),'_blank');
+					else
+						window.location.href=$(this).attr('url');
+					
+				});
+				
+			});
 			showcover();
 			//loadvideomain();
 			

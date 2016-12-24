@@ -16,6 +16,12 @@ span.bigger.glyphicon-zoom-in{
 	height:20px;
 }
 
+.btn-star{
+	background-color:#bd9b76;
+	color: #f8f3ed;
+	border:1px solid #bd9b76;
+}
+
 #socialbar {
 	display:block;
 	position:absolute;
@@ -41,14 +47,14 @@ span.bigger.glyphicon-zoom-in{
 	left:100%;
 	float:right;
 	
-}
+	}
 
-#socialbar ul {
-	list-style:none;
-	padding:0px;
-	margin-left:-24px;
-	box-shadow:-5px -5px 5px grey;
-}
+	#socialbar ul {
+		list-style:none;
+		padding:0px;
+		margin-left:-24px;
+		box-shadow:-5px -5px 5px grey;
+	}
 	
 }
 

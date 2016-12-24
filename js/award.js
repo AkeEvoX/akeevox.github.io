@@ -59,21 +59,31 @@ function setview(data){
 function setaward(data){
 
 	var award = $('#immersive_slider');
+	award.html('');
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
+	
+	var w = window.innerWidth;
+	var item = 13;
+	var row = 4;
+	
+	if(w < 700) { item = 3;	row =1; }
+	else if(w < 900) { item = 6;	row =2; }
+	else if(w < 1000) { item = 8;	row =2; }
+	
 	$.each(data,function(idx,val){
 
 		 //item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
 
 		//row
-		 if(((idx +1) % 4) == 0)
+		 if(((idx +1) % row) == 0) //if(((idx +1) % 4) == 0)
 		 {
-			 itemview += "</div><div class='row' >";
+			 //itemview += "</div><div class='row' >";
 		 }
 
 		  //page slide
-		 if(((idx+1) % 13) == 0)
+		 if(((idx+1) % item) == 0) //if(((idx+1) % 13) == 0)
 		 {
 			 itemview += "</div></div><div class='slide' data-blurred='' ><div class='content' ><div class='row'> ";
 		 }
@@ -81,8 +91,10 @@ function setaward(data){
 	});
 
 	itemview += "</div>";//close tag contact
+	
+	
 
-	if(data.length<=12) //12 item :: page
+	if(data.length<=item) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}
@@ -116,22 +128,30 @@ function apply_slider(){
 function setstandard(data) {
 
 	var standard = $('#standard_slide');
+	standard.html('');
 	//console.log(data.result);
+	var w = window.innerWidth;
+	var row = 4;
+	
+	if(w < 700) { item = 3;	row =1; }
+	else if(w < 900) { item = 6;	row =2; }
+	else if(w < 1000) { item = 8;	row =2; }
+	
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
 
 		//row
-		 if(((idx +1) % 4) === 0)
+		 if(((idx +1) % row) === 0)
 		 {
-			 itemview += "</div><div class='row' >";
+			 //itemview += "</div><div class='row' >";
 		 }
 
 		  //page slide
-		 if(((idx+1) % 13) === 0)
+		 if(((idx+1) % item) === 0)
 		 {
 			 itemview += "</div></div><div class='slide' data-blurred='' ><div class='content' ><div class='row'> ";
 		 }
@@ -140,7 +160,7 @@ function setstandard(data) {
 
 	itemview += "</div>";//close tag contact
 
-	if(data.length<=12) //12 item :: page
+	if(data.length<=item) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}

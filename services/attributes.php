@@ -5,9 +5,10 @@ include("../lib/logger.php");
 include("../controller/AttributeManager.php");
 include("../controller/ContactManager.php");
 
+/*
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
-}
+}*/
 
 $attrMgr = new AttributeManager();
 $result = null;

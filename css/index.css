@@ -229,6 +229,15 @@ h2 div :after {
 			padding:3px 15px;
 	}
 	
+	#viewseries img{
+		height:300px;
+		width:100%;
+	}
+	
+	#press-control {
+		padding-top:30px;
+	}
+	
 }
 
 @media(max-width:600px) {

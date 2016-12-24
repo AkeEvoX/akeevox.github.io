@@ -89,5 +89,14 @@ $(document).ready(function(){
 	utility.setpage('award');
 	loadList();
 });
+
+$(window).on('resize',function(){
+	
+	var win = $(this); //this = window
+	   if (win.width() > 1200 ) { loadList(); }
+      else if (win.width() < 1000 ) { loadList(); }
+      else if (win.width() < 600 ) {  loadList(); }
+	  
+});
 </script>
 </body>
