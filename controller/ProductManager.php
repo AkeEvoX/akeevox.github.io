@@ -312,6 +312,27 @@ class ProductManager{
 		}
 	}
 
+	function get_fetch_product($lang,$start_fetch,$max_fetch){
+		try{
+			//$max_fetch = 10;
+
+			$sql = " select p.id,p.title_".$lang." as title,t.title_".$lang." category,p.thumb,p.create_date ";
+			$sql .= " from products p ";
+			$sql .= " inner join product_type t on t.id = p.typeid ";
+			$sql .= " where t.parent not in ('2','3') ";
+			$sql .= " order by p.id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+
+			log_debug($sql);
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product : ".$e->getMessage();
+		}
+	}
+
 	function search_fetch_product($lang,$search_text,$search_fillter,$start_fetch,$max_fetch){
 		
 		try{
