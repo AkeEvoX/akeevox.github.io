@@ -52,7 +52,7 @@ type : info , debug , error ,warning
 			if($part=="..")
 				$dir="..";
 			else
-				$dir .= "\\$part";
+				$dir .= "/$part";
 		
 			$checkDir = $dir;
 			if(!is_dir($checkDir)) 

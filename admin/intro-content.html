@@ -11,7 +11,6 @@
 				<a class='menutab' href="#en" data-toggle="tab">EN</a>
 			</li>
 		</ul>
-
 		<div class='tab-content' style='margin-top:10px;'>
 			<div id='th' class="tab-pane fade in active">
 				<div class='col-md-12'>
@@ -68,6 +67,8 @@ $(document).ready(function(){
 	$('#series_th').summernote({ height: 200 });
 	$('#series_en').summernote({ height: 200 });
 	
+	home.load();
+	
 	$('#home_form').on('submit',function(e){
 		e.preventDefault();
 		
@@ -75,7 +76,9 @@ $(document).ready(function(){
 		var args = new FormData(this);
 		args.append('type', 'edit_content');
 		console.log(args);
-		home.edit_content(args);
+		//home.edit_content(args);
+		alert('update complete.');
+		return false;
 	});
 
 });

@@ -1,8 +1,8 @@
 
 <div class='col-md-12'>
-	<h3>จัดการหน้าหมวดหมู่สินค้า</h3><hr/>
+	<h3>จัดการสีผลิตภัณฑ์</h3><hr/>
 	<div class='row'>
-		<span class='btn btn-warning btn-sm pagetab' onclick=control.pagetab('category-add.html') >เพิ่ม</span>
+		<span class='btn btn-warning btn-sm ' onclick=control.pagetab('color-add.html') >เพิ่ม</span>
 		<span class='btn btn-warning btn-sm' id='btn_del' >ลบ</span>
 	</div>
 	<div class='row'>
@@ -11,30 +11,33 @@
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
 				<th>รายการ</th>
-				<th class='col-md-2'></th>
+				<th>Status</th>
+				<th class='col-md-1'></th>
 			</tr>
 		</table>
 		<input type='hidden' id='counter' value='0' />
 	</div>
 </div>
-<script src='js/product-manager.js' ></script>
+<script src='js/download-manager.js' ></script>
 <script>
 
 
 $(document).ready(function(){
-	//$(window).unbind('scroll');	
+	$(window).unbind('scroll');	
+	
 	$('#btn_del').unbind('click'); /*clear event handle*/
-	$('#btn_del').on('click',cate.delete);
-	cate.loadlist();
+	//$('#btn_del').on('click',faq.delete);
+	
+	//faq.loadlist();
 });
 
-/*
+
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  cate.loadlist();
+		  //faq.loadlist();
 	} 
 });
-*/
+
 
 </script>

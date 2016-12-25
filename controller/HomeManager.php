@@ -22,11 +22,11 @@ class HomeManager{
 		$this->mysql->disconnect();
 	}
 
-	function getConverTop(){
+	function getCoverTop(){
 
 		try{
 
-			$sql = "select cover ";
+			$sql = "select id,cover ";
 			$sql .= "from home where active=1 and align=0 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 
@@ -42,7 +42,7 @@ class HomeManager{
 
 		try{
 
-			$sql = "select cover ";
+			$sql = "select id,cover ";
 			$sql .= "from home where active=1 and align=1 order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 

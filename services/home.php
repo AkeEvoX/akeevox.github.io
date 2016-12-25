@@ -2,7 +2,6 @@
 session_start();
 include("../lib/common.php");
 include("../lib/logger.php");
-//$base_dir = "../";
 require_once("../controller/HomeManager.php");
 
 $home = new HomeManager();
@@ -13,7 +12,7 @@ $item = "";
 switch($type)
 {
 	case "top":
-		$item = $home->getConverTop();
+		$item = $home->getCoverTop();
 	break;
 	case "bottom":
 		$item = $home->getCoverBottom();
@@ -21,11 +20,12 @@ switch($type)
 }
 
 $result = null;
-//$row = $item->fetch_object();
+
 if($item){
 	while($row = $item->fetch_object())
 	{
-		$data = array("cover"=>$row->cover);
+		$data = array("id"=>$row->id,
+							"cover"=>$row->cover);
 		$result[] = $data;
 	}
 }

@@ -32,10 +32,12 @@
 
 $(document).ready(function(){
 	
-	//home.load_intro();
-	//$('#detail_th').summernote({ height: 200 });
-	//$('#detail_en').summernote({ height: 200 });
+	home.load_landing();
 	
+	$('#intro_form').on('submit',function(){
+		alert('Update Complete.');
+		return false;
+	});
 });
 
 </script>

@@ -10,9 +10,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-				<label for="inputBanner1" class="col-sm-4 control-label">แบนเนอร์ 1</label>
+				<label for="file_upload1" class="col-sm-4 control-label">แบนเนอร์ 1</label>
 				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner1" placeholder="Upload Banner">
+				  <input type="file" class="form-control" id="file_upload1" name='file_upload1' placeholder="Upload Banner">
 				</div>
 			</div>
 	 </div>
@@ -26,9 +26,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-				<label for="inputBanner2" class="col-md-4 control-label">แบนเนอร์ 2</label>
+				<label for="file_upload3" class="col-md-4 control-label">แบนเนอร์ 2</label>
 				<div class="col-md-7">
-				  <input type="file" class="form-control" id="inputBanner2" placeholder="Upload Banner">
+				  <input type="file" class="form-control" id="file_upload2"name='file_upload3' placeholder="Upload Banner">
 				</div>
 			</div>
 	 </div>
@@ -42,9 +42,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-				<label for="inputBanner3" class="col-sm-4 control-label">แบนเนอร์ 3</label>
+				<label for="file_upload3" class="col-sm-4 control-label">แบนเนอร์ 3</label>
 				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner3" placeholder="Upload Banner">
+				  <input type="file" class="form-control" id="file_upload3" name='file_upload3' placeholder="Upload Banner">
 				</div>
 			</div>
 	 </div>
@@ -58,9 +58,9 @@
 			</div>
 		</div>
 		<div class="form-group">
-				<label for="inputBanner4" class="col-sm-4 control-label">แบนเนอร์ 4</label>
+				<label for="file_upload4" class="col-sm-4 control-label">แบนเนอร์ 4</label>
 				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="inputBanner4" placeholder="Upload Banner">
+				  <input type="file" class="form-control" id="file_upload4" name='file_upload4' placeholder="Upload Banner">
 				</div>
 			</div>
 	 </div>
@@ -75,16 +75,18 @@
 <script src='js/home-manager.js' ></script>
 <script>
 $(document).ready(function(){
-
-	//home.load_banner();
+	console.log('load pang banner');
+	home.load_banner();
 
 	$('#home_form').on('submit',function(e){
 		e.preventDefault();
 		
 		var args = new FormData(this);
-		args.append('type', 'edit_banner');
-		console.log(args);
-		home.edit_banner(args);
+		//args.append('type', 'edit_banner');
+		//console.log(args);
+		//home.edit_banner(args);
+		alert('upload complete.');
+		return false;
 	
 	});
 

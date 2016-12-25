@@ -43,32 +43,72 @@ home.edit = function(){
 home.load = function(){
 	var endpoint = "services/home.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'info'};
-	utility.service(endpoint,method,args,set_view);
+	var args = {'_':new Date().getMilliseconds(),'type':'intro'};
+	utility.service(endpoint,method,args,view_info);
 }
 
-home.load_intro = function(){
+home.load_landing = function(){
 	
 	var endpoint = "services/home.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'intro'};
+	var args = {'_':new Date().getMilliseconds(),'type':'landing'};
 	utility.service(endpoint,method,args,view_intro);
+	
+}
+
+home.load_banner = function(){
+	console.log("call banner info.");
+	var endpoint = "services/home.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'banner'};
+	utility.service(endpoint,method,args,view_banner);
 	
 }
 
 function view_intro(data){
 	
-	console.log(data);
+	//console.log(data);
 	
 	if(data.result==undefined) return;
 	
 	home.data = data.result;
+	console.log(home.data["intro.cover"].en);
+	$('#image').attr('src',"../"+home.data["intro.cover"].en);
 	
-	$('#image').attr('src',home.data.result["intro.cover"]);
-	
-	if(home.data.result["intro.enable"]=="1")
+	console.log("enable="+home.data["intro.enable"].en);
+	if(home.data["intro.enable"].en=="1")
 		$('#active').prop('checked',true);
 	
+}
+
+function view_info(data){
+	
+	console.log(data);
+	if(data.result==undefined) return;
+	
+	home.data = data.result;
+	
+	$('#intro_th').summernote('code',home.data["index.top_detail"].th );
+	$('#series_th').summernote('code',home.data["index.series.detail"].th);
+	$('#intro_en').summernote('code',home.data["index.top_detail"].en );
+	$('#series_en').summernote('code',home.data["index.series.detail"].en);
+	
+}
+
+function view_banner(data){
+	
+	console.log("load view banner info.");
+	console.log(data);
+	if(data.result==undefined) return;
+	
+	//home.data = data.result;
+	
+	$.each(data.result,function(id,val){
+		console.debug('id='+val.id);
+		$('#image'+val.id).attr('src',val.cover);
+	});
+	
+	console.log("load view banner info complete.");
 }
 
 //update data and image
