@@ -11,6 +11,7 @@
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
 				<th>รายการ</th>
+				<th>Name</th>
 				<th>Status</th>
 				<th class='col-md-1'></th>
 			</tr>
@@ -18,7 +19,7 @@
 		<input type='hidden' id='counter' value='0' />
 	</div>
 </div>
-<script src='js/download-manager.js' ></script>
+<script src='js/showroom-manager.js' ></script>
 <script>
 
 
@@ -26,16 +27,16 @@ $(document).ready(function(){
 	$(window).unbind('scroll');	
 	
 	$('#btn_del').unbind('click'); /*clear event handle*/
-	//$('#btn_del').on('click',faq.delete);
+	$('#btn_del').on('click',showroom.delete);
 	
-	//faq.loadlist();
+	showroom.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //faq.loadlist();
+		  showroom.loadlist();
 	} 
 });
 

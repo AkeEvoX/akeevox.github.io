@@ -34,12 +34,8 @@ $(document).ready(function(){
 		
 		if($(window).scrollTop() + $(window).height() >= $(document).height()) {
 
-			if(loading==0){
-				product.loadlist();	
-				loading=1;
-			}
-			loading=0;
-			  //product.loadlist();
+			product.loadlist();	
+
 		}
 	});
 });

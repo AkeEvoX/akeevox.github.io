@@ -201,6 +201,20 @@ class ProductManager{
 			echo "Cannot Get Product Color : ". $e->getMessage();
 		}
 	}
+	
+	function getColorMaster($id){
+		try{
+
+			$sql = " select * from color_master  ";
+			$sql .= " where id='".$id."' ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Color Master: ". $e->getMessage();
+		}
+	}
 
 	function getMenu($lang)
 	{
@@ -243,6 +257,65 @@ class ProductManager{
 			echo "Cannot Insert Product Type: ".$e->getMessage();
 		}
 	}
+	function insert_color($items){
+		try{
+			$title_th = $items["title_th"];
+			$title_en = $items["title_en"];
+			$thumb = $items["thumb"];
+			$active = "1";
+			$create_by = "0";
+			$create_date = "now()";
+			
+			$sql = "insert into color_master(title_th,title_en,thumb,active,create_by,create_date) ";
+			$sql .= "values('$title_th','$title_en','$thumb',$active,$create_by,$create_date); ";
+			
+			log_debug($sql); 
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Color Master : ".$e->getMessage();
+		}
+	}
+	
+	function update_color($items){
+		try{
+			
+			$id = $items["id"];
+			$title_th = $items["title_th"];
+			$title_en = $items["title_en"];
+			$thumb = "";
+			
+			if($items["thumb"]){
+				$thumb = ",thumb='".$items["thumb"]."' ";	
+			}
+		
+			$active='0';
+			
+			if(isset($items["active"]))	$active='1';
+			
+			$update_by = "0";
+			$update_date = "now()";
+			
+			$sql = "update color_master set  ";
+			$sql .= "title_th='$title_th' ";
+			$sql .= ",title_en='$title_en' ";
+			$sql .= $thumb;
+			$sql .= ",active=$active ";
+			$sql .= ",update_by=$update_by ";
+			$sql .= ",update_date=$update_date ";
+			$sql .= "where id=$id ;";
+			
+			log_warning("update color master > " . $sql);
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Color Master : ".$e->getMessage();
+		}
+	}
 	
 	function update_product_type($items){
 		try{
@@ -275,6 +348,19 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Update Product Type: ".$e->getMessage();
+		}
+	}
+	
+	function delete_color($id){
+		try{
+
+			$sql = "delete from color_master where id=$id ;";
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Color Master : ".$e->getMessage();
 		}
 	}
 	
@@ -329,7 +415,63 @@ class ProductManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get Product : ".$e->getMessage();
+			echo "Cannot Get Fetch Product : ".$e->getMessage();
+		}
+	}
+	
+	function get_fetch_series($lang,$start_fetch,$max_fetch){
+		try{
+			//$max_fetch = 10;
+
+			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover,p.create_date  ";
+			$sql .= " from product_type p ";
+			$sql .= " where p.parent in ('2') ";
+			$sql .= " order by p.id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+
+			log_debug($sql);
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Fetch Series  : ".$e->getMessage();
+		}
+	}
+	
+	function get_fetch_showroom($lang,$start_fetch,$max_fetch){
+		try{
+
+			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover,p.create_date  ";
+			$sql .= " from product_type p ";
+			$sql .= " where p.parent in ('3') ";
+			$sql .= " order by p.id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+
+			log_debug($sql);
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Fetch ShowRoom  : ".$e->getMessage();
+		}
+	}
+	
+	function get_fetch_color($lang,$start_fetch,$max_fetch){
+		try{
+
+			$sql = " select * from color_master  ";
+			$sql .= " order by id ";
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+
+			log_debug($sql);
+			
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Fetch Color  : ".$e->getMessage();
 		}
 	}
 

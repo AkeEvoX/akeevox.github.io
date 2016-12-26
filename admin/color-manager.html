@@ -12,13 +12,14 @@
 				<th class='col-md-1'>ID.</th>
 				<th>รายการ</th>
 				<th>Status</th>
+				<th>Color</th>
 				<th class='col-md-1'></th>
 			</tr>
 		</table>
 		<input type='hidden' id='counter' value='0' />
 	</div>
 </div>
-<script src='js/download-manager.js' ></script>
+<script src='js/color-manager.js' ></script>
 <script>
 
 
@@ -26,16 +27,15 @@ $(document).ready(function(){
 	$(window).unbind('scroll');	
 	
 	$('#btn_del').unbind('click'); /*clear event handle*/
-	//$('#btn_del').on('click',faq.delete);
-	
-	//faq.loadlist();
+	$('#btn_del').on('click',color.delete);
+	color.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //faq.loadlist();
+		  color.loadlist();
 	} 
 });
 
