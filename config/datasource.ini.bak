@@ -1,0 +1,11 @@
+[DATABASE]
+host=www.baankunnan.com
+port=3306
+user=baankun1_stardb
+pass=aNqU7wxm
+base=baankun1_stardev
+
+[LOG]
+debug=true
+logdir=logs/
+error_page=error.php

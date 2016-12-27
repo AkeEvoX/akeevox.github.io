@@ -31,10 +31,15 @@ function find(name)
 
 function setview(resp)
 {
+	
 	try{
+		
+	$('#listview').find("tr:gt(0)").remove();
+	var result = "";
 	 if(resp.result!=undefined)
 	 {
-		 	var result = "";
+		 
+		 	
 
 		  $.each(resp.result,function(i,val){
 					result += "<tr>";
@@ -45,9 +50,18 @@ function setview(resp)
 					result += "</tr>";
 			});
 	 }
-	 else { result = "";}
+	 else { 
+		var rowCount = $('#listview tr').length;
+		if(rowCount==1){			
+			result += "<tr>"; 
+			result += "<td class='col-md-12 text-center' >"; 
+			result += "Data Not Found."; 
+			result += "</td>"; 
+			result += "</tr>"; 
+		}
+	}
 
-	 $('#listview').html(result);
+	 $('#listview').append(result);
  	}
 	catch(err)
 	{

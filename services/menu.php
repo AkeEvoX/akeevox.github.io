@@ -1,25 +1,23 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/MenuManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
+include("../controller/MenuManager.php");
 
 if(isset($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
 else {
-
-	$_SESSION["lang"] = "th";
-	$lang = $_SESSION["lang"];
+	//$lang = "en";
+	//$_SESSION["lang"] = $lang;
 }
 
 $menu = new MenuManager();
 
-$id = $_GET["id"];
 $item = "";
 $result = null;
+
+if(isset($_GET["id"])) $id = $_GET["id"] ; else $id="";
 
 if(isset($id) && !empty($id))
 {
@@ -33,7 +31,8 @@ else
 
 while($row = $item->fetch_object()){
 
-	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"child"=>$row->child,"link"=>$row->link);
+	//$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"child"=>$row->child,"link"=>$row->link);
+	$data = array("id"=>$row->id,"name"=>$row->name,"seq"=>$row->seq,"parent"=>$row->parent,"link"=>$row->link);
 	$result[] = $data;
 }
 

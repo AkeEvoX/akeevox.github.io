@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Welcome to Starsanitaryware</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<style>
+	.img-responsive {
+		margin: 0 auto;
+		box-shadow: 0px 0px 5px #aaa;
+	}
+	.media-heading {padding-bottom:10px;}
+	.media-body {padding-top:15px;}
+
+	</style>
+</head>
+<body>
+<div id='view-navbar'></div><!--navigator-->
+<div class='container'>
+	<div class='row'>
+				<div class='col-md-12'>
+					<ol class="breadcrumb">
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
+					  <li><a href="faq.html"><span id='faq.title'></span></a></li>
+						<li class='active'><span id='faqdetail'></span></li>
+					</ol>
+				</div>
+			</div>
+	<div class='header'>
+		<h3 class='text-center'><span id='faq.title'></span></h3>
+	</div>
+	<div id='list' class='row'>
+	</div>
+
+</div> <!--end container fluid-->
+<div id='view-footer'></div><!--nav footer-->
+<script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/holder.js' ></script>
+<script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='js/utility.js'></script>
+<script src='js/faq.js' ></script>
+<script>
+$(document).ready(function(){
+	utility.setpage('faq');
+	LoadItem(utility.querystr("id"));
+});
+		
+</script>
+</body>

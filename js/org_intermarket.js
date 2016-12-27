@@ -1,11 +1,3 @@
-$(document).ready(function(){
-	utility.setpage('inter');
-	utility.loadmenu();
-	utility.loadbuttommenu();
-	loadview();
-});
-
-
 function loadview()
 {
 
@@ -49,4 +41,29 @@ function loadinfo()
 		}
 	});
 
+}
+
+function loadcountry(){
+	
+	var endpoint = "services/organization.php";
+	var method = "GET";
+	var args = {"_": new Date().getHours() , "type":"country"} ;
+	
+	utility.service(endpoint,method,args,showcountry);
+}
+
+
+function showcountry(resp){
+	
+	console.log(resp);
+if(resp.result!=undefined){
+	var view = $('#content-data');
+	$.each(resp.result,function(id,val){
+		
+		var item = val.title+"<br/>";
+		view.append(item);
+		
+	});
+}
+	
 }

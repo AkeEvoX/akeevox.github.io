@@ -1,20 +1,23 @@
 
 function setup_slider()
 {
-
+	
+	
 	$("#inter-slider").lightSlider({
-		autoWidth: false
-		,adaptiveHeight:true
+		autoWidth: true
+		,adaptiveHeight:false
+	    ,loop:true
+	    ,keyPress:true
+	 });
+	 
+	 
+	$("#local-slider").lightSlider({
+		autoWidth: true
+		,adaptiveHeight:false
 	    ,loop:true
 	    ,keyPress:true
 	 });
 
-	$("#local-slider").lightSlider({
-		autoWidth: false
-		,adaptiveHeight:true
-	    ,loop:true
-	    ,keyPress:true
-	 });
 
 }
 
@@ -38,7 +41,7 @@ function viewprojectlist(resp){
 	$.each(resp.result,function(i,val){
 		item += "<tr>";
 		item += "<td>"+val.title+"</td>";
-		item += "<td>"+val.contury+"</td>";
+		item += "<td>"+val.location+"</td>";
 		item += "</tr>";
 	});
 
@@ -47,17 +50,27 @@ function viewprojectlist(resp){
 
 function loadreference()
 {
+	var endpoint = "services/organization.php";
+	var method = "get";
+	var args = {"_": new Date().getHours() , "type":"refer"};
+	
+	utility.service(endpoint,method,args,seperateproject,setup_slider,setup_slider);
+	
+
+	/*
 	$.ajax({
 		url:"services/organization.php",
 		data:{"_": new Date().getHours() , "type":"refer"},
 		dataType:'json',
 		type:"GET",
 		success: function(data){
+			
 			try{
 				console.log(data.result);
 
 				if(data.result != undefined)
 				{
+
 					var inter = data.result.filter(function(item){ return item.local=="0"; });
 
 
@@ -86,6 +99,23 @@ function loadreference()
 			alert("load organization reference error : "+ xhr.responseText);
 		}
 	});
+	*/
+}
+
+function seperateproject(resp){
+		if(resp.result != undefined)
+				{
+
+					var inter = resp.result.filter(function(item){ return item.local=="0"; });
+
+
+					var local = $.grep(resp.result,function(value,i){
+						return (value.local == "1") ;
+					});
+
+					displaylocal(local);
+					displayinter(inter);
+				}
 }
 
 function displayinter(data){
@@ -96,8 +126,8 @@ function displayinter(data){
 	$.each(data,function(idx,val){
 
 		item+= "<li ><a href='refer-info.html?id="+val.id+"&local=0'>";
-		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
-		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
+		item+= "<img src='"+val.thumbnail+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
+		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
 		item+= "</a></li>";
 
 		project += "<tr>";
@@ -114,14 +144,15 @@ function displayinter(data){
 
 
 function displaylocal(data) {
+
 	var view = $('#local-slider');
 	var list = $('#refer-local-list');
 	var item = "";
 	var project ="";
 	$.each(data,function(idx,val){
 		item+= "<li><a href='refer-info.html?id="+val.id+"&local=1'>";
-		item+= "<img src='"+val.thumbnail+"' class='img-fluid' />";
-		item+= "<div class='lightslider-desc'><label>"+val.title+"</label></div>";
+		item+= "<img src='"+val.thumbnail+"'  onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
+		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
 		item+= "</a></li>";
 
 		project += "<tr>";
@@ -131,6 +162,7 @@ function displaylocal(data) {
 	});
 	view.append(item);
 	list.append(project);
+	
 }
 
 

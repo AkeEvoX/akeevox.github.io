@@ -5,7 +5,7 @@ function loadList()
 	CallService(service,data,setview);
 }
 
-function loadItem(id)
+function LoadItem(id)
 {
 	var service = 'services/faq.php' ;
 	var data = {"_": new Date().getMilliseconds(),"id":id}
@@ -71,7 +71,7 @@ function setview(data)
 		itemview += "<label>"+val.date+"</label>";
 		itemview += "<img src='"+val.thumbnail+"' class='img-responsive' />";
 		itemview += "<span>"+val.detail+"</span>";
-		itemview += "<br/><a class='btn btn-warning' href='#'>VIEW</a>";
+		itemview += "<br/><a class='btn btn-warning' href='faq_detail.html?id="+val.id+"'>VIEW</a>";
 		itemview += "</div >";
 		$('#list').append(itemview);
 	});
@@ -86,7 +86,7 @@ function setmostview(data)
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";
-		itemview += "<div class='media-left'><a href='faq_detail?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
+		itemview += "<div class='media-left'><a href='faq_detail.html?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
 		itemview += "<div class='media-body'>";
 		itemview += "<h4 class='media-heading'>"+val.date+"</h4>";
 		itemview += val.title + "</div >";//media-body
@@ -105,7 +105,7 @@ function setrecentview(data)
 		var itemview = "";
 		itemview += "<div class='row'>";
 		itemview += "<div class='media'>";
-		itemview += "<div class='media-left'><a href='faq_detail?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
+		itemview += "<div class='media-left'><a href='faq_detail.html?id="+val.id+"' ><img src='"+val.thumbnail+"' style='width:150px;' class='media-object' /></a></div>";
 		itemview += "<div class='media-body'>";
 		itemview += "<h4 class='media-heading'>"+val.date+"</h4>";
 		itemview += val.title + "</div >";//media-body
@@ -113,4 +113,25 @@ function setrecentview(data)
 		itemview += "<hr/></div >";//row
 		$('#recent').append(itemview);
 	});
+}
+
+function setviewdetail(data)
+{
+	//console.log(data);
+	$('#list').html("");
+	var itemview = "";
+	var detail
+	var faq = data.result[0];
+
+	
+	$('span[id="faqdetail"]').text(faq.title);
+	itemview += "<div class='col-md-12'>";
+	itemview += "<h4 class='media-heading orange' >"+faq.title+"</h4>";
+	itemview += "<img src='"+faq.thumbnail+"' class='img-responsive' />"; //1240x500
+	itemview += "<div class='media-body' >"+faq.detail+"</div>"; //detail new
+	itemview += "</div >"; //column
+	//previous and next
+	//itemview +=  "</br><div style='text-align:center;'><a href='press_detail.html?id="+(parseInt(press.id)-1)+"' class='btn btn-warning'>Previous</a> <a href='press_detail.html?id="+(parseInt(press.id)+1)+"' class='btn btn-warning'>Next</a></div>" ;
+
+$('#list').append(itemview);
 }

@@ -9,140 +9,112 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-
+	<link href="css/index.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
-<div class="container-fluid">
-			<div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-			<ul id='menubar' class="nav navbar-nav"></ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-				<span class="glyphicon glyphicon-search" ></span>
-				<ul style='list-style:none;'><!--padding-right:10px;-->
-					<li>
-						<div class='input-group'>
-							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
-							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
-								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en'>English</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
-					</li>
-				</ul>
-			</form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container-fluid -->
-      </nav>
-<div class='container'>
+<div id='view-navbar'></div>
+<div class="container">
 	<div class='row'>
 		<div class='col-md-12'>
 			<div id="myCarousel" class="carousel slide" data-ride="carousel">
-  <!-- Indicators -->
-			  <ol class="carousel-indicators">
-				<li data-target="#myCarousel" data-slide-to="0" class="active"></li>
-				<li data-target="#myCarousel" data-slide-to="1"></li>
-				<li data-target="#myCarousel" data-slide-to="2"></li>
-			  </ol>
-			  <div id='viewtop' class="carousel-inner">
-				 <div class="item active"> <img src="images/home/top1.png" style="width:100%" alt="First slide">
-				  <div class="container">
-				  </div>
-				</div>
-				<div class="item"> <img src="images/home/top2.png" style="width:100%" data-src="" alt="Second slide">
-				  <div class="container">
-				  </div>
-				</div>
-				<div class="item"> <img src="images/home/top3.png" style="width:100%" data-src="" alt="Third slide">
-				  <div class="container">
-				  </div>
+				 <ol id='index-carousel' class="carousel-indicators"></ol>
+				 <div id='viewtop' class="carousel-inner"></div>
+				 <div id='socialbar'>
+					<ul>
+						<li><a href='https://www.facebook.com/admstar.sanitaryware?ref=br_rs' target='_blank' ><img src='images/home/icon-fb.png' /></a></li>
+						<li><a href='https://www.youtube.com/user/starsanitaryware' target='_blank'><img src='images/home/icon-youtube.png' /></a></li>
+					</ul>
 				</div>
 			</div>
-					<!-- button navigator -->
-			  </div>
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<div class='col-md-12'>
+			<div class='title_top text-center' >
+				<h3><span id='index.top' class='top'></span></h3>
+				<span id='index.top_detail' class='detail'></span>
+			</div>
 		</div>
 	</div>
 	<div class='row'>
-		<div class='col-md-12'>
-			<div class='text-center' >
-				<h3><span id='index.top'></span></h3>
-				<h4><span id='index.top_detail'></span></h4>
+		<div id='viewmiddle' class='text-center'>
+			<div class='col-md-12'>
+				<span id='index.referal'></span>
+				<span id='index.award' ></span>
+				<span id='index.catalog'></span>
 			</div>
 		</div>
 	</div>
 	<div class='row'>
 		<div class='col-md-12'>
-			<img src='images/home/01.png' class='img-responsive' />
+			<img src='images/home/OL_WEB_COVER_STARS-03.png' class='img-responsive' />
 		</div>
 	</div>
-	<div class='row'>
+	<div class='row rowspan'>
 		<div class='col-md-12'>
-			<div class='text-center' >
-				<h3><span id='index.bottom'></span></h3>
-				<h4><span id='index.bottom_detail'></span></h4>
+			<div id='viewseries'>
+				<img src='images/home/buttom1_test.png' class='img-responsive'   />
+				<div class='title_series'>
+					<h2><span id='index.series.title' class='top'></span></h2>
+					<span id='index.series.detail' class='detail' ></span>
+					<div class='title_series_button' ><a href='series.html?id=4'><span id='index.series.button'></span></a></div>
+				</div>
 			</div>
 		</div>
 	</div>
+	<div class='row'>
+		<div id='press-control' class='col-md-12' style='display:block;margin:0 auto;' >
+		<h2 class='text-center' id='press-header' ><div>&nbsp;<span id='index.press.title'></span>&nbsp;</div></h2>
+			<span id='viewpress' ></span>
+		</div>
+	</div>
+	<!--
+	<div class='row'>
+		<div class='col-md-12'>
+			<div id='view_press'>
+				<img id='bg_press'  src='images/home/press-long.png' class='img-responsive' />
+				<div id='views_press_slide' class="lightslider-main">
+					<h3><span id='index.press.title'></span></h3>
+					<div class="item" >
+						<ul id="itemslide" class="content-slider" >
+						</ul>
+					</div>
+				</div><!- -end lightslider- ->
+			</div>
+		</div>
+	</div>
+	-->
 </div>
-<div class='container-fluid' id='buttommenu' >
-	<p>
-		<div class='container' >
-		 	<div class='col-md-4'>
-				<div id='menu.sitemap' class='rowspan' >
-					<label ></label>
-					<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.address' class='rowspan' >
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.email' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.social' class='rowspan'>
-				<label ></label>
-		 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.phone' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		</div>
-	</p>
-</div>
+<div id='view-footer'></div><!--nav footer-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js'></script>
 <script src='js/index.js'></script>
 	<script>
-		utility.loadmenu();
-		utility.loadbuttommenu();
-		utility.setpage('index');
-		//showtopconver();
+		$(document).ready(function(){
+			utility.setpage('index',function(){
+				
+				
+				$('[data-type="link"]').on('click',function(){		
+					console.log('link to ' + $(this).attr('url')); 
+					if($(this).attr('popup')=="true")
+						window.open($(this).attr('url'),'_blank');
+					else
+						window.location.href=$(this).attr('url');
+					
+				});
+				
+			});
+			showcover();
+			//loadvideomain();
+			
+			$.getScript("js/press.js",function(){
+				loadhomepress();
+			});
+			
+			
+		});
+	
 	</script>
 </body>

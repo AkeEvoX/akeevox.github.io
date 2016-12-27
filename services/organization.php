@@ -1,10 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+include("../lib/common.php");
+include("../lib/logger.php");
 require_once("../controller/OrgManager.php");
-require_once("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
 
 $Org = new OrgManager();
 
@@ -43,7 +41,7 @@ switch($type){
 	break;
 	case "chart":
 
-		$item = $Org->getchart();
+		$item = $Org->getchart($lang);
 		$row= $item->fetch_object();
 
 		$data = array (
@@ -57,7 +55,7 @@ switch($type){
 	break;
 	case "inter" :
 
-		$item = $Org->getintermarket();
+		$item = $Org->getintermarket($lang);
 		$row= $item->fetch_object();
 
 		$data = array (
@@ -68,6 +66,18 @@ switch($type){
 		$result = $data;
 
 	break;
+	case "country" :
+		$item = $Org->getmarketcontury($lang);
+		while($row= $item->fetch_object())
+		{
+			$data = array (
+			"id"=>$row->id
+			,"title"=>$row->title
+			);
+			$result[] = $data;
+		}
+	break;
+	
 	case "refer":
 
 		$item = $Org->getReferenceList($lang);
@@ -112,7 +122,7 @@ switch($type){
 		while($row= $item->fetch_object()){
 			$data = array("id"=>$row->id
 			,"title"=>$row->title
-			,"contury"=>$row->contury);
+			,"location"=>$row->location);
 		$result[] = $data;
 		}
 

@@ -1,0 +1,126 @@
+<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+<div class='col-md-12' >
+	<h3>จัดการคณะผู้บริหาร</h3>
+	<hr/>
+	<form id='personal_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="image_profile" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
+			<div class='col-md-5'>
+				<img class="img-responsive" id="image" onerror=this.src='../../images/common/unavaliable.jpg' name="image"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="image_profile" class='col-md-3'>ภาพผู้บริหาร / Image</label>
+			<div class='col-md-5'>
+				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="image_profile" class='col-md-3'>เปิดใช้งาน / Enable</label>
+			<div class='col-md-5'>
+				<input type="checkbox" id="active" name="active"  />
+			</div>
+		</div>
+		<ul id='menutab' class="nav nav-tabs nav-default">
+			<li role="presentation" class='active'>
+				<a class='menutab' href="#th" data-toggle="tab">TH</a>
+			</li>
+			<li role="presentation">
+				<a class='menutab' href="#en" data-toggle="tab">EN</a>
+			</li>
+		</ul>
+
+		<div class='tab-content' style='margin-top:10px;'>
+			<div id='th' class="tab-pane fade in active">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="name_th" class='col-md-3'>ชื่อ - สกุล</label>
+						<div class='col-md-7'>
+							<input type="text" class="form-control" id="name_th" name='name_th' placeholder="ชื่อ และ นามสกุล" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="position_th" class='col-md-3'>ตำแหน่ง</label>
+						<div class='col-md-7'>
+							<input type="text" class="form-control" id="position_th" name="position_th" placeholder="ตำแหน่ง" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="education_th" class='col-md-3'>ประวัติการศึกษา</label>
+						<div class='col-md-9'>
+							<textarea rows='7' class="form-control" id="education_th" name="education_th" placeholder="ประวัติการศึกษา" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="work_th" class='col-md-3'>ประสบการณ์การทำงาน</label>
+						<div class='col-md-9'>
+							<textarea rows='7' class="form-control" id="work_th"  name="work_th"placeholder="ประสบการณ์การทำงาน" />
+						</div>
+					</div>
+				</div>
+			</div>
+			<div id='en' class="tab-pane fade">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="name_en" class='col-md-3'>Fullname</label>
+						<div class='col-md-7'>
+							<input type="text" class="form-control" id="name_en" name="name_en"  placeholder="fullname" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="position_en" class='col-md-3'>Position</label>
+						<div class='col-md-7'>
+							<input type="text" class="form-control" id="position_en" name="position_en" placeholder="position" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="education_en" class='col-md-3'>Education</label>
+						<div class='col-md-9'>
+							<textarea rows='7' class="form-control" id="education_en" name="education_en"  placeholder="education" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="work_en" class='col-md-3'>Experiences</label>
+						<div class='col-md-9'>
+							<textarea rows='7' class="form-control" id="work_en" name="work_en" placeholder="work" />
+						</div>
+					</div>
+				</div>
+			</div>
+
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-list') >ยกเลิก</span>&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='id' name='id' />
+	
+	</form>
+
+
+</div>
+<script src='js/personal-manager.js' ></script>
+<script src='js/underscore-min.js' ></script>
+<script src='../plugin/jquery/summernote/summernote.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+
+	var id = utility.querystr("id",$('#parameter').val());
+	personal.loaditem(id);
+	
+	$('#personal_form').on('submit',function(e){
+		e.preventDefault();
+		
+		//var args = JSON.stringify($('#personal_form').serializeArray());
+		var args = new FormData(this);
+		args.append('type', 'edit');
+		personal.edit(args);
+	});
+	
+});
+
+</script>

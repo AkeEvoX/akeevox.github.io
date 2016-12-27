@@ -1,9 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+require_once("../lib/common.php");
+require_once("../lib/logger.php");
 include("../controller/PressManager.php");
-include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
 
 
 $press = new PressManager();
@@ -12,23 +11,26 @@ $press = new PressManager();
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }
-else
-{
-	$lang = "th";
-	$_SESSION["lang"] = $lang;
-}
 
 $req_id = $_GET["id"];
+$type=$_GET["type"];
 $item = "";
 
-if(!isset($req_id) && empty($req_id))  //no request id
-{
-	$item = $press->getListItem($lang);
+if($type=="slide"){
+	$item = $press->getSlideItem($lang);
 }
-else
+else if($type=="home"){
+	$item = $press->getHomeItem($lang);
+}
+else if(isset($req_id))
 {
 	$item = $press->getItem($req_id,$lang);
 }
+else //if(!isset($req_id) && empty($req_id))  //no request id
+{
+	$item = $press->getListItem($lang);
+}
+
 
 $result = null;
 

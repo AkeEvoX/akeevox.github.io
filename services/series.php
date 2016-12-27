@@ -1,9 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
+require_once("../lib/common.php");
+require_once("../lib/logger.php");
 include("../controller/SeriesManager.php");
-include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
 
 
 //$lang = "th"; 

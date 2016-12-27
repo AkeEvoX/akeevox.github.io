@@ -1,0 +1,84 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Welcome to Starsanitaryware</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/photogrid/photogrid.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/hover/css/style.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/hover/css/secondeffect.css" rel="stylesheet" type="text/css" />
+	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/gallery.css" rel="stylesheet" type="text/css" />
+</head>
+<body>
+<div id='view-navbar'></div><!--navigator-->
+<div class='container'>
+	<div class='row'>
+				<div class='col-md-12'>
+					<ol class="breadcrumb">
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li><a href="#"><span id='nav.media'></span></a></li>
+					  <li><a href="gallery.html"><span id='gallery.title'></span></a></li>
+					  <li class="active" ><span id='album.title'></span></li>
+					</ol>
+				</div>
+			</div>
+	<div class='header'>
+		<h3 class='text-center'><span id='gallery.title'></span></h3>
+	</div>
+	<div class='row'>
+		<div class='col-md-12'>
+			<div id='list' class='photoGrid clearfix'>
+			</div>
+		</div>
+	</div>
+</div> <!--end container fluid-->
+<div id='view-footer'></div><!--nav footer-->
+	
+<!--show modal-->
+<!-- Modal -->
+<div class="modal fade" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content" >
+			<!--<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modaltitle"><span id='gallery.title'></span></h4>
+			</div>-->
+			<div class="modal-body">
+				<div id="modalcontent">
+				.....
+				</div>
+			</div>
+		<div class='modal-footer'>
+				<button type="button" data-dismiss="modal" class="btn">Close</button>
+		</div>
+    </div>
+  </div>
+</div>
+	<!--show modal-->
+<script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/holder.js' ></script>
+<script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='plugin/jquery/photogrid/jquery.photogrid.js' ></script>
+<script src='js/utility.js' ></script>
+<script src='js/gallery.js' ></script>
+<script >
+
+var defaults = {
+	itemSelector: ".item", // item selecor
+	resize: true, // automatic reload grid on window size change
+	rowHeight: $(window).height() / 2, // looks best, but needs highres thumbs
+	callback: function() {} // fires when layouting grid is done
+};
+
+  $(document).ready(function() {
+	utility.setpage('gallery');
+	//loadList();
+	load_list_gallery(utility.querystr('id'));
+	$('span[id="album.title"]').html(utility.querystr('title'));
+  });
+</script>
+
+</body>

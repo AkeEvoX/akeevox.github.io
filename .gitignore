@@ -4,3 +4,12 @@ lib/Crypto.php
 *.ini
 
 config/datasource.ini
+lib/datasource.ini
+images/download/*
+images/gallery/*
+images/products/*
+images/organization/*
+images/series/*
+images/showroom/*
+images/press/*
+images/personal/*

@@ -1,0 +1,46 @@
+
+<div class='col-md-12'>
+	<h3>จัดการสินค้า</h3><hr/>
+	<div class='row'>
+		<span class='btn btn-warning btn-sm pagetab' onclick=control.pagetab('product-add.html') >เพิ่มสินค้า</span>
+		<span class='btn btn-warning btn-sm' id='btn_del' >ลบ</span>
+	</div>
+	<div class='row'>
+		<table class='table table-hover' id='data_list'>
+			<tr>
+				<th class='col-md-1'>เลือก</th>
+				<th class='col-md-1'>No.</th>
+				<th>category</th>
+				<th>รายการ</th>
+				<th class='col-md-1'></th>
+			</tr>
+		</table>
+		<input type='hidden' id='counter' value='0' />
+	</div>
+	
+</div>
+<script src='js/product-manager.js' ></script>
+<script>
+var loading = 0;
+
+$(document).ready(function(){	
+	$(window).unbind('scroll');	
+	$('#btn_del').unbind('click'); /*clear event handle*/
+	$('#btn_del').on('click',product.delete);
+	product.loadlist();
+
+
+	$(window).scroll(function() {
+		
+		if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+
+			product.loadlist();	
+
+		}
+	});
+});
+
+
+
+
+</script>

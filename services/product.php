@@ -1,22 +1,20 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/ProductManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
-
+//$base_dir = "../../";
+include("../controller/ProductManager.php");
 
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
 }else {
-	$lang = 'th';
 	$_SESSION["lang"] = $lang;
 }
 
+if(isset($_GET["type"])) $type = $_GET["type"]; else $type="";
+if(isset($_GET["cate"])) $cate = $_GET["cate"]; else $cate="";
+if(isset($_GET["id"])) $id = $_GET["id"] ; else $id="";
 
-$type = $_GET["type"];
-$cate = $_GET["cate"];
-$id =  $_GET["id"];//meaning is product
 switch($type)
 {
 	case "list" :
@@ -45,10 +43,18 @@ switch($type)
 	case "series":
 		$result = setSeriesInfo($lang,$id);
 	break;
+	case "list_series":
+		$result = setListSeries($lang,$id);
+	break;
 	case "showroom":
 		$result = setShowRoom($lang,$id);
 	break;
+	case "list_room":
+		$result = setListShowRoom($lang,$id);
+	break;
+	
 	case "menu":
+		//echo "route to menu ";
 		$result = setMenu($lang);
 	break;
 	case "info":
@@ -66,6 +72,8 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));  //return
 function setProductList($lang,$cate) {
 	try
 	{
+		if($cate=="") $cate=5;
+
 		$product = new ProductManager();
 		$data = $product->getProductList($lang,$cate);
 
@@ -122,24 +130,45 @@ function setSeriesInfo($lang,$id) {
 	}
 	catch(Exception $e)
 	{
-		echo "Cannot Get ProductType : ".$e->getMessage();
+		echo "Cannot Get Series : ".$e->getMessage();
 	}
 
 }
+
+function setListSeries($lang,$id){
+	try
+	{
+		$product = new ProductManager();
+		$data = $product->getSeriestList($lang,$id);
+		$items = null;
+		if($data){
+			while($row = $data->fetch_object())
+			{
+				$items[] = array(
+					"id"=>$row->id
+					,"title"=>$row->title
+					,"typeid"=>$row->typeid
+					,"thumb"=>$row->thumb
+					,"plan"=>$row->plan
+					,"code"=>$row->code
+					,"name"=>$row->name
+					);
+			}
+		}
+		return $items;
+	}
+	catch(Exception $e)
+	{
+		echo "Cannot Get Series List : ".$e->getMessage();
+	}
+}
+
 function setShowRoom($lang,$id) {
 	try
 	{
 
 		$product = new ProductManager();
 
-		//set id default if is null
-/*
-		if(empty($id))
-		{
-			$data=$product->getSeriesDefault($lang);
-			$row = $data->fetch_object();
-			$id = $row->id;
-		}*/
 		//call infor by type series
 		$data = $product->getProductType($lang,$id);
 		$row = $data->fetch_object();
@@ -157,6 +186,34 @@ function setShowRoom($lang,$id) {
 		echo "Cannot Get Showroom  : ".$e->getMessage();
 	}
 
+}
+
+function setListShowRoom($lang,$id){
+	try
+	{
+		$product = new ProductManager();
+		$data = $product->getShowRoomList($lang,$id);
+		$items = null;
+		if($data){
+			while($row = $data->fetch_object())
+			{
+				$items[] = array(
+					"id"=>$row->id
+					,"title"=>$row->title
+					,"typeid"=>$row->typeid
+					,"thumb"=>$row->thumb
+					,"plan"=>$row->plan
+					,"code"=>$row->code
+					,"name"=>$row->name
+					);
+			}
+		}
+		return $items;
+	}
+	catch(Exception $e)
+	{
+		echo "Cannot Get ShowRoom List : ".$e->getMessage();
+	}
 }
 
 function setProductRelated($lang,$cate) {
@@ -202,6 +259,8 @@ function setProduct($lang,$id) {
 			,"plan"=>$row->plan
 			,"code"=>$row->code
 			,"name"=>$row->name
+			,"doc"=>$row->doc_link
+			,"colors"=>setColor($id)
 			);
 	}
 	return $items;
@@ -212,9 +271,10 @@ function setProductType($lang,$id)
 	$product = new ProductManager();
 	$data = $product->getProductType($lang,$id);
 //id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover
-	$items = null;
+	$items = array();
 	if($data){
 	$row = $data->fetch_object();
+	//$id = ["id"];
 	$items = array(
 			"id"=>$row->id
 			,"title"=>$row->title
@@ -226,9 +286,26 @@ function setProductType($lang,$id)
 	return $items;
 }
 
+function setColor($id){
+	$product = new ProductManager();
+	$data = $product->getColor($id);
+	$item = "";
+	if($data){
+		while($row= $data->fetch_object())
+		{
+			$item[] = array(
+				"color"=>$row->thumb
+				);
+		}
+	}
+	return $item;
+}
+
 function setImages($id) {
+	
 	$product = new ProductManager();
 	$data = $product->getImages($id);
+	$item = "";
 	if($data){
 		while($row= $data->fetch_object())
 		{
@@ -260,42 +337,29 @@ function setAttribute($lang,$id) {
 }
 
 function setMenu($lang){
+
 	$product = new ProductManager();
 	$data = $product->getMenu($lang);
-
 	if($data){
 
-		//step 1 ) fillter all parent
-		while($row =  $data->fetch_object()){
+		while($row = $data->fetch_object()){
 
-			$id = $row->id;
-			$parent = $row->parent;
-			$isparent = $row->isparent;
 			$menu =  array("id"=>$row->id
-			,"parent"=>$row->parent
-			,"title"=>$row->title
-		  ,"link"=>$row->link);
+						,"parent"=>$row->parent
+						,"title"=>$row->title
+		  				,"link"=>$row->link);
 
-			if($isparent>0) // set main parent
-			{
-					$item[$id] = $menu;
-			}
-			else { //set child of parent
-					$item[$parent]["child"][] = $menu;
-			}
+			$result[] = $menu;
 		}
 
-		//step 2 ) move sub parent to main parent
-		foreach($item as $key=>$val){
-			$subparent = $val["parent"];
-			if($subparent != 0){
-					$item[$subparent]["child"][] = $val;
-					unset($item[$val["id"]]);
-			}
-		}
-		//print_r($item);
 	}
-	return $item;
+
+	return $result;
+}
+	
+function setchildmenu($item,$data)
+{
+	//if($data)
 }
 
 //move array with key
@@ -304,5 +368,4 @@ function movearray($arrs,$from,$to){
 	array_splice($arrs,$to,0,$out);
 	return $arrs;
 }
-
 ?>

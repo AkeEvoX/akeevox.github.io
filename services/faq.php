@@ -1,9 +1,8 @@
 <?php
 session_start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/FaqManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
+include("../controller/FaqManager.php");
 
 
 $faq = new FaqManager();

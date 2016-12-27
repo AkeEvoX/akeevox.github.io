@@ -1,0 +1,84 @@
+
+.iconbar { margin-top:-10px; padding-right:15px; width:34px; }
+
+.glyphicon-stop {  padding-right:10px;}
+/*icon cutomize*/
+span.bigger.glyphicon-zoom-in{
+    font-size: 5.2em;
+}
+
+#socialbar {
+	display:block;
+	position:absolute;
+	top:40%;
+	left:100%;
+	float:right;
+	
+}
+
+#socialbar ul{
+	list-style:none;
+	padding:0px;
+	margin-left:-24px;
+	box-shadow:-5px -5px 5px grey;
+}
+
+@media(max-width:600px) {
+	
+	#socialbar {
+	display:block;
+	position:absolute;
+	top:20%;
+	left:100%;
+	float:right;
+	
+}
+
+#socialbar ul {
+	list-style:none;
+	padding:0px;
+	margin-left:-24px;
+	box-shadow:-5px -5px 5px grey;
+}
+	
+}
+
+#iconbar {
+background: url('../images/logos/logo.png') left top;
+background-size: 70px;
+position:absolute;
+display: block;
+float:center;
+top:5px;
+left:-100px;
+width:70px;
+height:70px;
+padding-right:30px;
+box-shadow:2px 2px 2px #ccc;
+}
+/*
+position:absolute;
+	top:5px;
+	left:130px;
+	width:70px;
+	box-shadow:2px 2px 2px #ccc;
+*/
+
+#iconsearch {
+background: url('../images/logos/icon_search.png') left top;
+background-size:32px;
+width:32px;
+height:30px;
+display: block;
+float:left;
+padding-right:10px;
+/*background-image: linear-gradient();*/
+/*input-xs*/
+}
+
+.orange {color:orange;}
+.blue { color: blue; }
+.green {color:green;}
+.red {color:red;}
+
+

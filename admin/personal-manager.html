@@ -1,0 +1,44 @@
+<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+<div class='col-md-12' >
+	<h3>จัดการเนื้อหาหน้าคณะผู้บริหาร<div class='pull-right'><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-list.html')>จัดการผู้บริหาร</span></div></h3><hr/>
+	<div class='row rowspan'>
+		<label class='col-md-3' >ชื่อหัวข้อ</label>
+		<div class='col-md-4'>
+			<input type='text' class='form-control' id='title_th' />
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-3' >รายะเอียดเกี่ยวคณะผู้บริหาร</label>
+	</div>
+	<div class='row'>
+		<div id='detail_th'></div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-3' >Title Name</label>
+		<div class='col-md-4'>
+			<input type='text' class='form-control' id='title_en' />
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-3' >Management Info</label>
+	</div>
+	<div class='row'>
+		<div id='detail_en'></div>
+	</div>
+	<div class='row text-center'>
+		<span class='btn btn-warning btn-sm' onclick='personal.edit_page();' >บันทึก</span>&nbsp;<span class='btn btn-warning btn-sm' onclick='personal.reset();' >ล้างข้อมูล</span>
+	</div>
+	<input type='hidden' id='about_id' />
+</div>
+<script src='js/personal-manager.js' ></script>
+<script src='../plugin/jquery/summernote/summernote.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+	personal.load();
+	$('#detail_th').summernote({ height: 200 });
+	$('#detail_en').summernote({ height: 200 });
+});
+
+</script>

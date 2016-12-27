@@ -1,0 +1,43 @@
+<div class='col-md-12' >
+	<form id='intro_form' method='post' action='' enctype="multipart/form-data" >
+		<h3>จัดการหน้า Landing Page</h3><hr/>
+		<div class='row rowspan'>
+			<label class='col-md-3' >ภาพตัวอย่าง / preview</label>
+			<div class='col-md-9'>
+				<img class='img-responsive' id='image'  onerror=this.src='../../images/common/unavaliable.jpg'  />
+			</div>
+		</div>
+		<div class='row rowspan'>
+			<label class='col-md-3' >ชื่อหัวข้อ</label>
+			<div class='col-md-9'>
+				<input type='file' class='form-control' id='file_upload' name='file_upload'/>
+			</div>
+		</div>
+		<div class='row rowspan'>
+			<label class='col-md-3' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-9'>
+				<input type='checkbox' name='active' id='active'/>
+			</div>
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />
+			&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='id' name='id' value='1'/>
+	</form>
+</div>
+<script src='js/home-manager.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+	
+	home.load_landing();
+	
+	$('#intro_form').on('submit',function(){
+		alert('Update Complete.');
+		return false;
+	});
+});
+
+</script>

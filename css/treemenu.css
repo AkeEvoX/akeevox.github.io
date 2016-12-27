@@ -1,0 +1,18 @@
+.menulist,.topbar { padding-top:30px; }
+.mainmenu { color:#C79526; font-weight:bold; border-bottom:1px solid; width:200px; }
+.mainmenu a {color:#5d5d5d; }
+.submenu { color:#713315; font-weight:normal; padding-left:15px;   border-bottom:0px solid; }
+.submenu ul { padding-left:15px; list-style:square;}
+.submenu li a {color:#5d5d5d;  font-weight:normal;  }
+.submenu li a:hover { color:#713315; font-weight:bold;  }
+.tree-active { color:#5d5d5d;  font-weight:bold;}
+.nav > li > a { color:#5d5d5d;  }
+.nav > li > a:hover { color:#713315; font-weight:bold;   }
+
+ /*font-weight:normal;*/
+ 
+ /*
+ .submenu { color:#713315; font-weight:bold; padding-left:15px; }
+.submenu ul { padding-left:15px; }
+.submenu li a {color:#5d5d5d;  font-weight:normal;  }
+ */

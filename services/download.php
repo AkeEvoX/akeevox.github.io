@@ -1,8 +1,9 @@
 <?php
 session_start();
 date_default_timezone_set('America/Los_Angeles');
-include("../controller/DownloadManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
+include("../controller/DownloadManager.php");
 header("Content-Type: application/json;  charset=UTF8");
 
 
@@ -28,7 +29,7 @@ while($rowtype = $type->fetch_object()){
 		$lenght = 3;//get 3 record
 	}
 
-	$item = $download->getListItem($rowtype->id ,$lenght);
+	$item = $download->getListItem($rowtype->id ,$lenght,$lang);
 
 	while($rowitem = $item->fetch_object())
 	{

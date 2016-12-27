@@ -1,0 +1,105 @@
+@page  
+{ 
+    size: auto;   /* auto is the initial value */ 
+
+    /* this affects the margin in the printer settings */ 
+	/*top right buttom left*/
+    /*margin: 5mm 5mm 5mm 5mm;  */
+	margin:0px;
+} 
+
+body{
+	margin:30px;
+}
+.title_control{
+    position:absolute;top:45px;right:0px;
+}
+
+
+.comapre-main{
+    /*margin:20px;*/
+}
+
+#compare-slider{ 
+
+display:none;
+min-width:100%
+}
+
+#compare-slider ul{
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+    width:100%;
+}
+
+#compare-slider > li{
+    border-right:1px solid #a58b5d;
+    border-bottom:1px solid #a58b5d;
+}
+
+#compare-slider > li img{
+
+    height:180px;
+	width:150px;
+    /*width:80%;*/
+	margin:0 auto;
+    /*border-right:1px solid #a58b5d;*/
+    
+}
+
+.lightslider-main {
+	width: 100%;
+    border:1px solid #a58b5d;
+    padding:20px;
+}
+
+.lightslider-main li {
+    /*border-right:1px solid;*/
+}
+
+.lightslider-main .item{
+    margin-bottom: 10px;
+	width:100%;
+}
+
+.content-slider > .lightSlider > .lSSlide {
+	width:100%;
+}
+
+.lightslider-title{
+    color:white;
+    background-color:#a58b5d;
+    display:block;
+    margin:0 auto;
+    text-align:center;
+    vertical-align: middle;
+    line-height: 50px;
+    height:50px;
+}
+
+.lightslider-desc {
+	float:left;
+}
+
+.lightslider-desc li{
+    
+    
+    /*border-bottom:1px solid #a58b5d;*/
+}
+
+.content-slider li{
+    padding:10px 0px 10px 0px;
+    background-color: white;
+    text-align: left;
+    color: #a58b5d;
+	border-top:1px solid #a58b5d;
+}
+
+.content-slider li > span{
+	margin-left:5px;
+}
+.content-slider h3 {
+    margin: 0;
+    padding: 70px 0;
+}

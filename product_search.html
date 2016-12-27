@@ -1,0 +1,75 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Welcome to Starsanitaryware</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
+	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+
+</head>
+<body>
+<div id='view-navbar'></div>
+<!--navigator-->
+
+<div class='container'>
+	<div class='row'>
+				<div class='col-md-12'>
+					<ol class="breadcrumb">
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+					  <li class="active"><span id='search.title'></span></li>
+					</ol>
+				</div>
+			</div>
+	<h3><span id='search.title'></span></h3>
+<div class='row'>
+	<div class='col-md-12'>
+	<div class="input-group input-group-sm">
+		<span class="input-group-addon" id="sizing-addon3"><span id='search.find_title'></span></span>
+		<input id='txtfind' type="text" class="form-control" placeholder="" aria-describedby="sizing-addon3">
+		<span class="input-group-btn">
+			<button id='btnfind' class="btn btn-default" type="button"><span id='search.button'></span></button>
+		</span>
+	</div>
+	</div>
+</div>
+<div class='row'><!--list -->
+	<div class='col-md-12'>
+		<div class="table-responsive">
+			<table id='listview' class="table table-striped">
+			  <tr>
+					<th class='col-md-2'><span id='search.code'></span></th>
+					<th class='col-md-3'><span id='search.name'></span></th>
+					<th class='col-md-2'><span id='search.type'></span></th>
+					<th class='col-md-2'><span id='search.system'></span></th>
+					<th class='col-md-2'><span id='search.size'></span></th>
+				</tr>
+			</table>
+			<input type='hidden' id='fetch' value='0' />
+		</div>
+	</div>
+</div>
+</div> <!--end container fluid-->
+<div id='view-footer'></div>
+<!--nav footer-->
+<script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/holder.js' ></script>
+<script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='js/utility.js' ></script>
+<script src='js/search.js' ></script>
+<script>
+$(document).ready(function(){
+	utility.setpage('search');
+});
+
+$(window).scroll(function() {
+
+	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
+		find();
+		 console.log('fetch data.');
+	} 
+});
+</script>
+</body>

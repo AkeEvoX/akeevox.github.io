@@ -1,4 +1,4 @@
-.<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <title>Welcome to Starsanitaryware</title>
@@ -8,68 +8,30 @@
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
-
-
-	<link href="plugin/jquery/immersive-slider/immersive-slider.css" rel="stylesheet" type="text/css" />
-	<link href="plugin/jquery/immersive-slider/immersive-widescreen.css" rel="stylesheet" type="text/css" />
+  <link href="plugin/jquery/immersive-slider/immersive-slider.css" rel="stylesheet" type="text/css" />
+  <link href="plugin/jquery/immersive-slider/immersive-widescreen.css" rel="stylesheet" type="text/css" />
+  <link href="css/award.css" rel="stylesheet" type="text/css" />
 </head>
 <body>
-
-<nav class="navbar navbar-default navbar-fixed-top"  style="margin-bottom:0px;" >
-        <div class="container-fluid">
-			<div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
-              <span class="sr-only">Toggle navigation</span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </button>
-            <a class='navbar-band'><img src='images/logos/icon-fb-circle.png' class='iconbar' alt='facebook' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-tw-circle.png' class='iconbar' alt='twitter' /></a>
-            <a class='navbar-band'><img src='images/logos/icon-gp-circle.png' class='iconbar' alt='google+' /></a>
-			<a class='navbar-band' href="login.php" ><img src='images/logos/logo.png' class='logobar' ></a>
-          </div>
-          <div id="navbar" class="navbar-collapse collapse">
-			<ul id='menubar' class="nav navbar-nav"></ul>
-		    <form class="navbar-form navbar-right" id='searchbar' role="search">
-			<span class="glyphicon glyphicon-search" ></span>
-				<ul style='list-style:none;'>
-					<li>
-						<div class='input-group'>
-							<input id='find_text' type='text' class='form-control input-xs' area-label='lang'   />
-							<div class='input-group-btn '>
-								<button id='lang' type='button' class='btn btn-default btn-xs dropdown-toggle' data-toggle='dropdown' aria-haspopup='true' aria-expanded='false' ><span id='nav.lang'></span></button>
-								<ul  class='dropdown-menu dropdown-menu-right' >
-									<li ><a href='services/lang.php?lang=th&label=Thai'>Thai</a></li>
-									<li ><a href='services/lang.php?lang=en&label=English'>English</a></li>
-								</ul>
-							</div>
-						</div>
-					</li>
-					<li>
-						<button id='find_dealer' type='button' class='btn btn-default btn-xs' style='width:100%;'><span id='nav.contact'></span></button>
-					</li>
-				</ul>
-			</form>
-          </div><!--/.nav-collapse -->
-        </div><!--/.container -->
-      </nav>
+<div id='view-navbar'></div>
 <!-- body -->
 <div class='container'>
 	<div class='row'>
-		<div class='col-md-12'>
-			<ol class="breadcrumb">
-			  <li><a href="index.html"><span id='nav.home'></span></a></li>
-			  <li><a href="#"><span id='nav.company'></span></a></li>
-			  <li class="active"><span id='award.title'></span></li>
-			</ol>
-		</div>
+				<div class='col-md-12'>
+					<ol class="breadcrumb">
+					  <li><a href="index.html"><span id='nav.home'></span></a></li>
+						<li><a href="#"><span id='nav.company'></span></a></li>
+					  <li class="active"><span id='award.title'></span></li>
+					</ol>
+				</div>
+			</div>
+	<!--<div class='well well-sm' >
+		<h3 class='text-center'><span id='award.title'></span></h3>
+	</div>-->
+	<div class='header'>
+		<h3 class='text-center'><span id='award.title'></span></h3>
 	</div>
-		<div class='well well-sm' >
-		<h3 class='text-center'><span class='glyphicon glyphicon-stop'></span> <span id='award.title'>มาตรฐานและรางวัล</span></h3>
-	</div>
-	<!--new row-->
-	<div class='row'>
+  <div class='row'>
 		<div class='col-md-12'>
 			<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_award'></span></h3>
 			<div class="main">
@@ -80,7 +42,7 @@
 			</div>
 		</div>
 	</div><!--end row-->
-	<div class='row'>
+  <div class='row'>
 		<div class='col-md-12'>
 		<h3><span class='glyphicon glyphicon-stop'></span> <span id='award.label_standard'></span></h3>
 			<div class="main">
@@ -92,38 +54,9 @@
 		</div><!--end column-->
 	</div><!--end row-->
 </div> <!--end container fluid-->
-<div class='container-fluid' style='background-color:#c2c2a3;padding-top:50px;padding-bottom:50px;'>
-	<p>
-		<div class='container' >
-		 	<div class='col-md-4'>
-				<div id='menu.sitemap' class='rowspan' >
-					<label ></label>
-					<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.address' class='rowspan' >
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.email' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		 	<div class='col-md-4'>
-		 		<div id='menu.social' class='rowspan'>
-				<label ></label>
-		 		<hr style='margin:0;'/>
-				</div>
-				<div id='menu.phone' class='rowspan'>
-					<label ></label>
-			 		<hr style='margin:0;'/>
-				</div>
-		 	</div>
-		</div>
-	</p>
-</div>
+
+<div id='view-footer'></div><!--nav footer-->
+
 <!--show modal-->
 <!-- Modal -->
 <div class="modal fade" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
@@ -135,7 +68,7 @@
 			</div>
 			<div class="modal-body">
 				<div id="modalcontent">
-				.....
+					loadding...
 				</div>
 			</div><!--
 			<div class='modal-footer'>
@@ -146,15 +79,24 @@
 </div>
 	<!--show modal-->
 <script src='plugin/jquery/jquery.min.js' ></script>
-<script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/award.js' ></script>
+<script src='plugin/jquery/immersive-slider/jquery.immersive-slider.js' ></script>
 <script>
-utility.setpage('award');
-utility.loadmenu();
-utility.loadbuttommenu();
-loadList();
+$(document).ready(function(){
+	utility.setpage('award');
+	loadList();
+});
+
+$(window).on('resize',function(){
+	
+	var win = $(this); //this = window
+	   if (win.width() > 1200 ) { loadList(); }
+      else if (win.width() < 1000 ) { loadList(); }
+      else if (win.width() < 600 ) {  loadList(); }
+	  
+});
 </script>
 </body>

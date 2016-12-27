@@ -1,0 +1,24 @@
+.well { background-color: #fff2cc; color:#976935; }
+.well .glyphicon-stop { color:#976935; padding-right:5px; }
+
+.well-brown  {
+	background-color:#976935;
+	color:white;
+	padding-bottom:50px;
+}
+
+.well-brown-light {
+	color:white;
+	background-color:#ddc28b;
+}
+
+.well-brown-bold {
+	color:white;
+	background-color:#b0915a;
+}
+
+.well-white {
+	color:#000;
+	background-color:#FFF;
+	border-color:#c2c2a3;
+}

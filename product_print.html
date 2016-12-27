@@ -1,0 +1,122 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<head>
+<title>Starsanitaryware - Product Detail</title>
+	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
+	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/lightslider/css/lightslider.css" rel="stylesheet" type="text/css" />
+	<link href="plugin/jquery/lightslider/css/lightslider-content.css" rel="stylesheet" type="text/css" />
+	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />
+	<link rel='stylesheet' href='plugin/jquery/unitegallery/skins/alexis/alexis.css' type='text/css' /> 
+	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
+	<link href="css/product-print.css" rel="stylesheet" type="text/css" />
+	
+</head>
+<body>
+	  <div class='container-fluid'>
+		<div class='col-md-12' id='view-content' >
+			<h4><span class='glyphicon glyphicon-stop'></span><span id='productdetail.title'></span><span class='pull-right title_control' >
+				<img src='images/logos/btn_compare.png' data-id='' data-thumb='' id='btn_compare' style='cursor:pointer;' />
+				<img src='images/logos/btn_print.png' id='btn_pring' style='cursor:pointer;'  ></span>
+			</h4>
+			<hr/>
+			<!--<div class='container'>-->
+				<div class='row'><!--product gallery-->
+					<div class='col-md-12'>	
+						<div id="productgallery" style="display:none;"></div>
+					</div>
+				</div>
+				<h4><span class='glyphicon glyphicon-stop'></span><span id='nav.category'></span> : <span id='productname'></span><hr/></h4>
+				<div class='row well well-sm productdesc'>
+					<div class='col-xs-12 col-sm-12 col-md-12'>
+					<form id='listattribute' class="form-inline"></form>
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-12'>
+					<h4><span class='glyphicon glyphicon-stop'></span><span id='productdetail.plan'></span><hr/></h4>
+						<img id='plan' onerror="this.src='images/common/image-not-found.png'"  class='img-responsive' />
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-4'>
+						<h4><span id='productdetail.color'>SYMBOL</span></h4>
+						<img src='images/products/symbol_test.png' />
+					</div>
+					<div class='col-md-4'>
+						<h4><span id='productdetail.color'>COLOR</span></h4>
+						<div id='productcolor'>
+							<img src='images/products/color_test.png' />
+						</div>
+					</div>
+					<div class='col-md-4'>
+					
+					</div>
+				</div>
+				<div class='row'>
+					<div class='col-md-12' style='position: relative;float:right;'>
+							<ul class='sharezone'>
+							<li>
+								<ul class='downloadlist text-right'>
+									<li><a href='#'><img src='images/products/icon_dwg.png'></a></li>
+									<li><a id='doc_link' ><img src='images/products/icon_pdf.png'></a></li>
+								</ul>
+							</li>
+							<li>
+								<ul class='sociallist'  >
+									<li style='top:-20px;position:relative;'><a href='#'><img src='images/products/icon_share.png'></a></li>
+									<li ><img src='images/products/icon_google.png' id='google' style='cursor:pointer;'></li>
+									<li ><img src='images/products/icon_twitter.png' id='twitter' style='cursor:pointer;'></li>
+									<li ><img src='images/products/icon_line.png'></li>
+									<li ><img src='images/products/icon_facebook.png' id='facebook' style='cursor:pointer;'></li>
+								</ul>
+							</li>
+						</ul>
+					</div>
+				</div>
+			<!--</div>--> <!--end productdetail container-->
+		</div>
+	</div><!--end conatiner-->
+<script src='plugin/jquery/jquery.min.js' ></script>
+<script src='plugin/jquery/jquery-ui.min.js' ></script>
+<script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='plugin/jquery/holder.js' ></script>
+
+<script src='plugin/jquery/lightslider/lightslider.js' ></script>
+<script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>
+<script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
+<script src='js/utility.js' ></script>
+<script src='js/product.js' ></script>
+<script>
+
+$(document).ready(function(){
+
+	utility.setpage('productdetail');
+	//product.listmenu();
+	callproduct(utility.querystr('id'));
+	//setshare();
+	/*load current compare*/
+	//product.compare();
+		
+	
+	$('#btn_pring').on('click',function(){
+		window.print();
+	});
+
+});
+
+
+function callproduct(id)
+{
+	loadproduct(id);
+	loadattribute(id);
+	loadproductreleated(id);
+}
+
+</script>
+</body>

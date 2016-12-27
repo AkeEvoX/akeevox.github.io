@@ -1,0 +1,55 @@
+<div class='col-md-12' >
+	<h3>จัดการผังองค์กร</h3><hr/>
+	<form id='market_form' action='' method='post' enctype="multipart/form-data" >
+	<div class='row rowspan'>
+		<label class='col-md-4' >ภาพตัวอย่าง</label>
+		<div class='col-md-8'>
+			<img class='img-responsive' id='preview_th' name='preview_th' onerror=this.src='../../images/common/unavaliable.jpg' />
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-4' >ผังองค์กร</label>
+		<div class='col-md-8'>
+			<input type='file' class='form-control' id='chart_th' name='chart_th' />
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-4' >Preview</label>
+		<div class='col-md-8'>
+			<img class='img-responsive' id='preview_en' name='preview_en'  onerror=this.src='../../images/common/unavaliable.jpg' />
+		</div>
+	</div>
+	<div class='row rowspan'>
+		<label class='col-md-4' >Organization Chart</label>
+		<div class='col-md-8'>
+			<input type='file' class='form-control' id='chart_en' name='chart_en' />
+		</div>
+	</div>
+	<div class='row text-center'>
+		<button type='submit' class='btn btn-warning btn-sm' >บันทึก</button>&nbsp;<span class='btn btn-warning btn-sm' onclick='chart.reset();' >ล้างข้อมูล</span>
+	</div>
+	<input type='hidden' name='id' value='1' />
+	</form>
+	
+</div>
+<script src='js/market-manager.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+	
+	//market.load();
+	
+	$('#market_form').on('submit',function(e){
+		e.preventDefault();
+		
+		var args = new FormData(this);
+		args.append('type', 'edit_cover');
+		console.log(args);
+		chart.edit_cover(args);
+	});
+	
+	
+});
+
+</script>

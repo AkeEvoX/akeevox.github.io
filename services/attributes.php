@@ -1,29 +1,23 @@
 <?php
 Session_Start();
-date_default_timezone_set('America/Los_Angeles');
-include("../controller/AttributeManager.php");
-include("../controller/MenuManager.php");
-include("../controller/ContactManager.php");
+include("../lib/common.php");
 include("../lib/logger.php");
-header("Content-Type: application/json;  charset=UTF8");
+include("../controller/AttributeManager.php");
+include("../controller/ContactManager.php");
 
-
+/*
 if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
 	$lang = $_SESSION["lang"];
-}
-else {
-	$lang = "th";
-	$_SESSION["lang"] = $lang;
-}
+}*/
 
 $attrMgr = new AttributeManager();
 $result = null;
 $type=$_GET["type"];
-
+$opton = "";
+if(isset($_GET["option"])) $option=$_GET["option"];
 switch($type)
 {
 	case "menu":
-
 
 		$itemattr = $attrMgr->getmenu($lang);
 		/*load attribute*/
@@ -35,23 +29,30 @@ switch($type)
 												,"seq"=>$row->seq);
 			$result[$row->name] = $itemdata;
 		}
-
-		/*load menu*/
-
-		$menu = new MenuManager();
-		$menuresult = $menu->getmenu($lang);
-
-		while($row = $menuresult->fetch_object())
+		
+		/*
+		$itemattr = $attrMgr->getItems($lang,$type);
+		*/
+		//$itemattr = null;
+		$itemattr = $attrMgr->getattrs($lang,'sitemap');
+		
+		//$menu = new MenuManager();
+		//$menuresult = $menu->getparentmenu($lang);
+		$result["menu.sitemap"]["item"] = "";
+		while($row = $itemattr->fetch_object())
 		{
 			//menu.sitemap
-			$result["menu.sitemap"]["item"] .=  "<a href='".$row->link."'>".$row->name."</a><br/>";
+			$result["menu.sitemap"]["item"] .=  "<a href='".$row->options."'>".$row->title."</a><br/>";
 		}
-
+		
 		/*load contact*/
 
 		$contact = new ContactManager();
 		$contactresult = $contact->getContact($lang);
-
+		$result["menu.address"]["item"] = "";
+		$result["menu.email"]["item"] = "";
+		$result["menu.phone"]["item"] = "";
+		$result["menu.social"]["item"] = "";
 		while($row = $contactresult->fetch_object())
 		{
 			switch ($row->typename)
@@ -66,7 +67,7 @@ switch($type)
 					$result["menu.phone"]["item"] .= $row->title ."<br/>";
 				break;
 				case "social" :
-					$result["menu.social"]["item"] .= "<a href='".$row->link."'><img src='".$row->icon."' /></a>";
+					$result["menu.social"]["item"] .= "<a href='".$row->link."'><img src='".$row->icon."' style='padding-right:5px;'/></a>";
 				break;
 			}
 		}
@@ -78,7 +79,7 @@ switch($type)
 		/*load attribute*/
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 		break;
 	case "award" :
@@ -88,7 +89,7 @@ switch($type)
 			/*load attribute*/
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 
 			break;
@@ -96,42 +97,49 @@ switch($type)
 			$itemattr = $attrMgr->getItems($lang,'faq');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "inter" :
 			$itemattr = $attrMgr->getItems($lang,'inter');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "product" :
 			$itemattr = $attrMgr->getItems($lang,'product');
 			while($row = $itemattr->fetch_object())
 			{
-				$result[] = array("name"=>$row->name,"title"=>$row->title);
+				$result[] = array("name"=>$row->name,"value"=>$row->title);
 			}
 			break;
 	case "productdetail" :
 		$itemattr = $attrMgr->getItems($lang,'productdetail');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 	break;
 	case "series" :
 		$itemattr = $attrMgr->getItems($lang,'series');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
 		}
 	break;
 	case "showroom" :
 		$itemattr = $attrMgr->getItems($lang,'showroom');
 		while($row = $itemattr->fetch_object())
 		{
-			$result[] = array("name"=>$row->name,"title"=>$row->title);
+			$result[] = array("name"=>$row->name,"value"=>$row->title);
+		}
+	break;
+	case "other" :
+		$itemattr = $attrMgr->getattrs($lang,$option);
+		while($row = $itemattr->fetch_object())
+		{
+			$result[] = array("name"=>$row->name,"value"=>$row->title,"option"=>$row->options);
 		}
 	break;
 	default :
@@ -139,7 +147,7 @@ switch($type)
 	$itemattr = $attrMgr->getItems($lang,$type);
 	while($row = $itemattr->fetch_object())
 	{
-		$result[] = array("name"=>$row->name,"title"=>$row->title);
+		$result[] = array("name"=>$row->name,"value"=>$row->title);
 	}
 
 

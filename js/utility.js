@@ -1,32 +1,50 @@
 $(document).ready(function(){
+	
+	utility.initial();
 
- var url = 'services/lang.php';
- var args = {'_':new Date().getMilliseconds()};
- utility.service(url,'GET',args
- ,function(resp){
-	 //console.log(resp);
-	 $('span[id="nav.lang"]').text(resp.result.lang);
- }
- ,null)
+});
 
+function viewlang(resp)
+{
+		switch(resp.result.lang)
+		 {
+			 case 'th':
+			  $('#lang').html("Thai <span class='caret'></span>")
+			 break;
+			 case 'en':
+			 $('#lang').html("English <span class='caret'></span>")
+			 break;
+		 }
+}
+
+function setfinddealer(){
   $('#find_dealer').click(function(){
     var name = $('#find_text').val();
      window.location.href = "dealer.html?name="+name+"&_=" + new Date().getMilliseconds();
   });
+}
 
-});
-
-/*dropdown menu*/
-$('.tree-toggle').click(function () {
-	$(this).parent().children('ul.tree').toggle(200);
-});
-/*  force collopse
-$(function(){
-$('.tree-toggle').parent().children('ul.tree').toggle(200);
-})
-*/
 var utility = function(){};
 
+utility.initial = function(){
+	
+	
+	$('#view-navbar').load('navbar.html',{'_':new Date().getHours()},function(){
+
+		setfinddealer();
+		utility.loadmenu();
+		var url = 'services/lang.php';
+		var args = {'_':new Date().getMilliseconds()};
+		utility.service(url,'GET',args ,viewlang ,null);
+		
+	});
+
+	$('#view-footer').load('navfooter.html',{'_':new Date().getHours()},function(){
+		utility.loadbuttommenu();
+	});
+	
+}
+/*for view data only*/
 utility.service = function(url,method,args,success_callback,complete_callback){
 
 	$.ajax({
@@ -35,6 +53,8 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 		contentType: "application/x-www-form-urlencoded;charset=utf-8",
 		type:method,
 		dataType:'json',
+		cache:false,
+		//processData:false,
 		success:success_callback,
 		complete:complete_callback,
 		error:function(xhr,status,error){
@@ -43,14 +63,51 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 									,'args':args
 								 ,'msg':xhr.responseText};
 
-			//utility.log('error',args);
 			console.error(result);
-			//alert(args);
-      alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
-      //JSON.stringify(args)
+			alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
 		}
 	});
 
+}
+
+
+//for insert/update/delete data
+utility.data = function (endpoint,method,args,success_callback,complete_callback){
+		$.ajax({
+		url:endpoint,
+		type:'post',
+		// dataType:'json',
+		data:args,
+		contentType:false,
+		cache:false,
+		processData:false,
+		success:success_callback,
+		complete:complete_callback,
+		error:function(xhr,status,error){
+
+			var result = {'page':url
+									,'args':args
+								 ,'msg':xhr.responseText};
+
+			console.error(result);
+			alert("page="+result.page+"\nargs="+JSON.stringify(result.args)+"\nmsg="+result.msg);
+		}
+	});
+}
+
+utility.uploads = function(endpoint,files,success_callback){
+	
+	$.ajax({
+		url:endpoint,
+		type:'post',
+		data:files,
+		contentType:false,
+		cache:false,
+		processData:false,
+		success:success_callback
+	});
+	
+	/*https://www.formget.com/ajax-image-upload-php/*/
 }
 
 utility.log = function(type,message){
@@ -67,17 +124,10 @@ utility.loadmenu = function(){
 
 utility.loadbuttommenu = function(){
 
-
- console.log("load buttom menu");
  var endpoint = "services/attributes.php";
 	var args = {'_':new Date().getHours(),'type':'menu'};
   this.service(endpoint,'get',args ,genbutton ,null);
 }
-/*
-,function(response){ //success
-	genbutton(response);
-}
-*/
 
 utility.querystr = function(name,url){
 
@@ -90,10 +140,12 @@ utility.querystr = function(name,url){
     return decodeURIComponent(results[2].replace(/\+/g, " "));
 }
 
-utility.setpage = function(page){
+utility.setpage = function(page,callback){
+	
   var endpoint = "services/attributes.php";
   var args = {'_':new Date().getHours(),'type':page};
-  utility.service(endpoint,'GET',args, bindpage,null);
+  utility.service(endpoint,'GET',args, bindpage,callback);
+  
 }
 
 utility.modalpage = function(title,url,event){
@@ -112,77 +164,55 @@ utility.modalimage = function(title,url){
 	if(title!=null)
 		$('#modaltitle').html(title);
 
-	$('.modal').on('show.bs.modal', centerModal);
+	//$('.modal').on('show.bs.modal', centerModal);
 
-	$('#modalcontent').html("<img src='"+url+"' class='img-fluid' /> ");
+	$('#modalcontent').html("<img src='"+url+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-responsive' /> ");
+	//$('.modal').on('show.bs.modal', centerModal);
 	$('#modaldialog').modal('show');
 
-	$('.modal:visible').each(centerModal);
+	//$('.modal:visible').each(centerModal);
+	
+	
 
 }
 
-	function centerModal() {
-	    $(this).css('display', 'block');
-	    var $dialog = $(this).find(".modal-dialog");
+utility.convertToObject = function(arrlist){
 
-			var imgwidth = $(this).find('.modal-body img').width();
-			$dialog.css({width:imgwidth+35});
+	var result = {};
+	
+	$.each(arrlist,function(i,val){
+		result[val.name] = val.value;
+	});
 
-	    var offset = ($(window).height() - $dialog.height()) / 2;
-	    // Center modal vertically in window
-	    $dialog.css("margin-top", offset);
-	}
+	return result;
 
-/*
-$('.modal').on('show.bs.modal', centerModal);
+}
 
-$(window).on("resize", function () {
-    $('.modal:visible').each(centerModal);
-});
-*/
+function centerModal() {
+    $(this).css('display', 'block');
+    var $dialog = $(this).find(".modal-dialog");
+
+	//var imgwidth = $(this).find('.modal-body img').width();
+	//$dialog.css({width:imgwidth+35});
+
+    var offset = ($(window).height() - $dialog.height()) / 2;
+    // Center modal vertically in window
+    $dialog.css("margin-top", offset);
+}
+
 function bindpage(response)
 {
 	if(response!==undefined)
 	{
 		$.each(response.result,function(i,val){
 			//console.log(val);
-			$("span[id='"+val.name+"']").text(val.title);
+			$("span[id='"+val.name+"']").html(val.value);
 		});
 	}
 	else { console.warn('attribute not found.'); }
 }
 
-function getParameterByName(name, url) {
-
-    if (!url) url = window.location.href;
-    name = name.replace(/[\[\]]/g, "\\$&");
-    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
-        results = regex.exec(url);
-    if (!results) return null;
-    if (!results[2]) return '';
-    return decodeURIComponent(results[2].replace(/\+/g, " "));
-
-}
-
 //-----------------load globle menu-----------------
-
-function loadmenu(){
-
-	$.ajax({
-
-		url:'services/menu.php?_=' + new Date().getMilliseconds(),
-		type:'GET',
-		dataType:'json',
-		success:function(data){
-			getmenubar(data);
-		},
-		error:function(xhr,status,err){
-			alert("generate menu error :"+xhr.responseText);
-		}
-
-	});
-
-}
 
 function loadchildmenu(id){
 	var menu = $('#'+id);
@@ -210,21 +240,38 @@ function loadchildmenu(id){
 function getmenubar(data){
 		var menu = $('#menubar');
 		menu.html("");
-		$.each(data.result,function(id,val){
+
+    var parent = data.result.filter(function(item){return item.parent=="0"});
+    var child = data.result.filter(function(item){return item.parent!="0"});
+
+		$.each(parent,function(id,val){
 
 			var item = "";
-			if(val.child=="0")
-			{
-				item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
-			}
-			else
-			{
-				item += "<li id='"+val.id+"' class='dropdown' >";
-				item += "<a href='"+val.link+"' onclick=loadchildmenu("+val.id+") class='dropdown-toggle' data-toggle='dropdown' role='button' aria-haspopup='true' aria-expanded='false'>"+val.name+"<span class='caret'/></a>";
+      var sub = child.filter(function(item){return item.parent==val.id });
+
+      if(sub.length==0)
+      {
+        item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
+      }
+      else {
+        item = "<li id='"+val.id+"' class='dropdown' >"; //onclick=loadchildmenu("+val.id+")  data-toggle='dropdown' 
+				item += "<a href='javascript:void(0);' onclick='return false;' class='dropdown-toggle'  role='button' aria-haspopup='false' aria-expanded='false'>"+val.name+"</a>";
+
+          item += "<ul class='dropdown-menu'>";
+          $.each(sub,function(subid,subval){
+              item += "<li><a href='"+subval.link+"'>"+subval.name+"</a></li>";
+          });
+          item += "</ul>";
+
 				item +="</li> ";
-			}
+
+      }
+
+      //console.warn(item);
 			menu.append(item);
 		});
+
+    //var inter = data.result.filter(function(item){ return item.local=="0"; });
 
 }
 
@@ -241,26 +288,7 @@ function getchildmenu(id,data){
 	menu.append(item);
 }
 
-function loadbuttommenu(){
-	$.ajax({
-		url:"services/attributes.php",
-		data:{"type":"menu"} ,
-		dataType:'json',
-		type:'GET',
-		success:function(data){
-			genbutton(data);
-		},
-		error:function(xhr,status,err){
-			console.log(xhr.responseText);
-			alert("load button menu error : " + xhr.responseText);
-		}
-
-	});
-
-}
-
 function genbutton(data){
-  console.log(data);
 	$.each(data.result,function(idx,val){
 			$("div[id='"+val.name+ "'] label").text(val.title);
 			$("div[id='"+val.name+ "']").append(val.item);

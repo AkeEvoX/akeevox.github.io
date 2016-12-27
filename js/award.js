@@ -1,15 +1,23 @@
 function loadList()
 {
-	var service = 'services/award.php' ;
-	var data = {"_": new Date().getMilliseconds()}
-	CallService(service,data,setview);
+	var endpoint = 'services/award.php' ;
+	var method = "get";
+	var args = {"_": new Date().getMilliseconds()}
+	//CallService(service,data,setview);
+	
+	
+	utility.service(endpoint,method,args,setview,apply_slider);
+	
 }
 
 function LoadItem(id)
 {
-	var service = 'services/award.php' ;
-	var data = {"_": new Date().getMilliseconds(),"id":id}
-	CallService(service,data,setviewdetail);
+	var endpoint = 'services/award.php' ;
+	var method = 'get';
+	var args = {"_": new Date().getMilliseconds(),"id":id}
+	//CallService(service,data,setviewdetail);
+	
+	utility.service(endpoint,method,args,setviewdetail);
 }
 
 function CallService(service,param,callback)
@@ -33,6 +41,7 @@ function CallService(service,param,callback)
 
 function setview(data){
 	try{
+		
 	var award = data.result.filter(function(item) {return item.type == "0" ; });
 	var standard = data.result.filter(function(item) {return item.type == "1" ; });
 
@@ -50,21 +59,31 @@ function setview(data){
 function setaward(data){
 
 	var award = $('#immersive_slider');
+	award.html('');
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
+	
+	var w = window.innerWidth;
+	var item = 13;
+	var row = 4;
+	
+	if(w < 700) { item = 3;	row =1; }
+	else if(w < 900) { item = 6;	row =2; }
+	else if(w < 1000) { item = 8;	row =2; }
+	
 	$.each(data,function(idx,val){
 
 		 //item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
 
 		//row
-		 if(((idx +1) % 4) == 0)
+		 if(((idx +1) % row) == 0) //if(((idx +1) % 4) == 0)
 		 {
-			 itemview += "</div><div class='row' >";
+			 //itemview += "</div><div class='row' >";
 		 }
 
 		  //page slide
-		 if(((idx+1) % 13) == 0)
+		 if(((idx+1) % item) == 0) //if(((idx+1) % 13) == 0)
 		 {
 			 itemview += "</div></div><div class='slide' data-blurred='' ><div class='content' ><div class='row'> ";
 		 }
@@ -72,8 +91,10 @@ function setaward(data){
 	});
 
 	itemview += "</div>";//close tag contact
+	
+	
 
-	if(data.length<=12) //12 item :: page
+	if(data.length<=item) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}
@@ -82,7 +103,7 @@ function setaward(data){
 	award.append(itemview);
 	award.append("<a href='#'' class='is-prev'>&laquo;</a><a href='#'' class='is-next'>&raquo;</a>");
 
-
+/*
 	award.immersive_slider({
 		animation: "slide",
 		container: ".main",
@@ -90,28 +111,47 @@ function setaward(data){
 		cssBlur:false,
 		autoStart:0
 	});
+*/
+}
 
+function apply_slider(){
+	$('#immersive_slider').immersive_slider({
+		animation: "slide",
+		container: ".main",
+		loop:true,
+		cssBlur:false,
+		autoStart:0,
+		pagination :false
+	});
 }
 
 function setstandard(data) {
 
 	var standard = $('#standard_slide');
+	standard.html('');
 	//console.log(data.result);
+	var w = window.innerWidth;
+	var row = 4;
+	
+	if(w < 700) { item = 3;	row =1; }
+	else if(w < 900) { item = 6;	row =2; }
+	else if(w < 1000) { item = 8;	row =2; }
+	
 	var itemview = "";
 	itemview += "<div class='slide' data-blurred='' ><div class='content' ><div class='row' >";
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
 
 		//row
-		 if(((idx +1) % 4) === 0)
+		 if(((idx +1) % row) === 0)
 		 {
-			 itemview += "</div><div class='row' >";
+			 //itemview += "</div><div class='row' >";
 		 }
 
 		  //page slide
-		 if(((idx+1) % 13) === 0)
+		 if(((idx+1) % item) === 0)
 		 {
 			 itemview += "</div></div><div class='slide' data-blurred='' ><div class='content' ><div class='row'> ";
 		 }
@@ -120,7 +160,7 @@ function setstandard(data) {
 
 	itemview += "</div>";//close tag contact
 
-	if(data.length<=12) //12 item :: page
+	if(data.length<=item) //12 item :: page
 	{
 		itemview += "</div>";//close tag page slider
 	}
@@ -135,7 +175,8 @@ function setstandard(data) {
 		container: ".main",
 		loop:true,
 		cssBlur:false,
-		autoStart:0
+		autoStart:0,
+		pagination :false
 	    });
 
 }
@@ -157,8 +198,8 @@ function bindmodal(id){
 ,function(response){
 
 		$('#cover').attr('src',response.result[0].thumbnail);
-		$('#title').text(response.result[0].title);
-		$('#desc').text(response.result[0].detail);
+		$('#title').html(response.result[0].title);
+		$('#desc').html(response.result[0].detail);
 
 }
 ,null)

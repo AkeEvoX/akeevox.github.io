@@ -33,7 +33,7 @@ function setview(data)
 //console.log("child="+val.title);
 		itemview += "<div class='col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
-		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image
+		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image height:240px;
 		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
 		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
 		itemview += "</div>";
@@ -41,7 +41,7 @@ function setview(data)
 	});
 
 	row += itemview ;
-	row += "<a class='btn btn-warning pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
+	row += "</div><div class='row'><a class='btn btn-star pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
 
 	//console.log(row);
 	$('#list').append(row);
