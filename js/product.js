@@ -76,7 +76,7 @@ function setting_slider(data){
 	$('#control_compare').show();
 	/*adjust image slider*/
 	$("#compare-slider").lightSlider({
-				autoWidth: true
+				autoWidth: false
 				,adaptiveHeight:true
 				,loop:true
 				,keyPress:false

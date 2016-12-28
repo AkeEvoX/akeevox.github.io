@@ -77,7 +77,7 @@ class ProductManager{
 	function getProductTypeByID($id) {
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select id,parent,title_th,title_en,detail_th,detail_en,link,thumb,cover ";
+			$sql = " select id,parent,title_th,title_en,detail_th,detail_en,link,thumb, cover_".$lang." as cover ";
 			$sql .= " from product_type ";
 			$sql .= " where active=1 and id='".$id."' ;";
 			log_warning("getProductTypeByID > " . $sql);
@@ -93,7 +93,7 @@ class ProductManager{
 	function getProductType($lang,$id) {
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover ";
+			$sql = " select id,title_".$lang." as title ,detail_".$lang." as detail,thumb, cover_".$lang." as cover ";
 			$sql .= " from product_type ";
 			$sql .= " where active=1 and id='".$id."' ;";
 			$result = $this->mysql->execute($sql);
@@ -108,7 +108,7 @@ class ProductManager{
 	function getSeriesDefault($lang) {
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover ";
+			$sql = " select id,title_".$lang." as title ,detail_".$lang." as detail,thumb,cover_".$lang." as cover ";
 			$sql .= " from product_type ";
 			$sql .= " where active=1 order by id asc limit 1;";
 			$result = $this->mysql->execute($sql);

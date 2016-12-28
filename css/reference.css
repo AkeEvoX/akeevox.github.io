@@ -5,7 +5,10 @@
 
 #inter-slider .lightslider-desc{
 	width:250px;
-	height:70px;
+	height:100px;
+	text-align:left;
+	vertical-align:top;
+	color:#996b1d;
 }
 
 #local-slider img{
@@ -15,5 +18,8 @@
 
 #local-slider .lightslider-desc{
 	width:250px;
-	height:70px;
+	height:100px;
+	text-align:left;
+	vertical-align:top;
+	color:#996b1d;
 }

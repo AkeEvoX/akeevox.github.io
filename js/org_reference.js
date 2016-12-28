@@ -127,7 +127,7 @@ function displayinter(data){
 
 		item+= "<li ><a href='refer-info.html?id="+val.id+"&local=0'>";
 		item+= "<img src='"+val.thumbnail+"' onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
-		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
+		item+= "<div class='lightslider-desc'><label><span class='glyphicon glyphicon-stop' ></span>"+val.title+"</label></div>";
 		item+= "</a></li>";
 
 		project += "<tr>";
@@ -152,7 +152,7 @@ function displaylocal(data) {
 	$.each(data,function(idx,val){
 		item+= "<li><a href='refer-info.html?id="+val.id+"&local=1'>";
 		item+= "<img src='"+val.thumbnail+"'  onerror=this.src='images/common/unavaliable.jpg' class='img-fluid' />";
-		item+= "<div class='lightslider-desc'><span class='glyphicon glyphicon-stop' ></span>&nbsp;<label>"+val.title+"</label></div>";
+		item+= "<div class='lightslider-desc'><label><span class='glyphicon glyphicon-stop' ></span>"+val.title+"</label></div>";
 		item+= "</a></li>";
 
 		project += "<tr>";

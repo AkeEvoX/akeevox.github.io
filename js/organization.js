@@ -62,7 +62,7 @@ function profile_left(val,bg)
 		item += "<h4 class='media-heading orange'>Work Experience : </h4>"+val.work+"<br/>";
 		item += "</div>";
 		item += "<div class='media-right' >";
-		item += "<a href='#'><img src='"+val.image+"' class='media-object'></a>";
+		item += "<a href='#'><img src='"+val.image+"' class='media-object' ></a>";
 		item += "</div>";
 		item += "</div><div class='well well-sm "+bg+"'>"+val.name+"</div></div>";
 		view.append(item);

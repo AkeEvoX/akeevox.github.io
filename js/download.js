@@ -29,11 +29,11 @@ function setview(data)
 	row += "<div class='row' >";
 	var itemview = "";
 	$.each(data.item,function(i,val){
+	//visible-xs class show object on bootstrap
 
-//console.log("child="+val.title);
-		itemview += "<div class='col-md-4'>" ;
+		itemview += "<div class='col-xs-12 col-sm-6 col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
-		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'>"; //#image height:240px;
+		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'  onerror=this.src='images/common/unavaliable.jpg'  >"; //#image height:240px;
 		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
 		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
 		itemview += "</div>";
@@ -41,7 +41,7 @@ function setview(data)
 	});
 
 	row += itemview ;
-	row += "</div><div class='row'><a class='btn btn-star pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
+	row += "</div><div class='col-md-12'><a class='btn btn-star pull-right' href='download_list.html?id="+data.id+"'>More</a>" + "</div><hr />";
 
 	//console.log(row);
 	$('#list').append(row);

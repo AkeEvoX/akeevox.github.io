@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	utility.initial();
-
+	
 });
 
 function viewlang(resp)
@@ -35,13 +35,14 @@ utility.initial = function(){
 		utility.loadmenu();
 		var url = 'services/lang.php';
 		var args = {'_':new Date().getMilliseconds()};
-		utility.service(url,'GET',args ,viewlang ,null);
+		utility.service(url,'GET',args ,viewlang);
 		
 	});
 
 	$('#view-footer').load('navfooter.html',{'_':new Date().getHours()},function(){
 		utility.loadbuttommenu();
 	});
+	
 	
 }
 /*for view data only*/
@@ -237,6 +238,20 @@ function loadchildmenu(id){
 
 }
 
+function hidemenu(obj){
+	
+	 //e.stopPropagation();
+	 console.log($(obj).find(".dropdown-toggle").is(':visible'));
+	//$(obj).find(".dropdown-toggle").dropdown('toggle');
+	if($(obj).find(".dropdown-toggle").is(':visible')){
+		$(obj).find(".dropdown-toggle").hide();
+	 }else{
+		 $(obj).find(".dropdown-toggle").toggle();
+	 }
+	
+	
+}
+
 function getmenubar(data){
 		var menu = $('#menubar');
 		menu.html("");
@@ -253,11 +268,11 @@ function getmenubar(data){
       {
         item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
       }
-      else {
-        item = "<li id='"+val.id+"' class='dropdown' >"; //onclick=loadchildmenu("+val.id+")  data-toggle='dropdown' 
-				item += "<a href='javascript:void(0);' onclick='return false;' class='dropdown-toggle'  role='button' aria-haspopup='false' aria-expanded='false'>"+val.name+"</a>";
-
-          item += "<ul class='dropdown-menu'>";
+      else {//href='javascript:void(0);' onclick='hidemenu(this)' 
+        item = "<li id='"+val.id+"' class='dropdown' >"; //onclick=loadchildmenu("+val.id+")  data-toggle='dropdown'  aria-haspopup='true' aria-expanded='true'
+				item += "<a onclick=hidemenu(this) class='dropdown-toggle'  href='#' >"+val.name+"</a>";
+//dropdown-menu
+          item += "<ul class='dropdown-menu' >";
           $.each(sub,function(subid,subval){
               item += "<li><a href='"+subval.link+"'>"+subval.name+"</a></li>";
           });
