@@ -9,6 +9,8 @@
 	<link href="plugin/jquery/photogrid/photogrid.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/hover/css/style.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/hover/css/secondeffect.css" rel="stylesheet" type="text/css" />
+	<link rel='stylesheet' href='plugin/jquery/unitegallery/css/unite-gallery.css' type='text/css' />
+	<link rel='stylesheet' href='plugin/jquery/unitegallery/skins/alexis/alexis.css' type='text/css' /> 
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/gallery.css" rel="stylesheet" type="text/css" />
 </head>
@@ -33,9 +35,32 @@
 </div> <!--end container fluid-->
 <div id='view-footer'></div><!--nav footer-->
 	
+<!--show modal-->
+<!-- Modal -->
+<div class="modal fade bs-example-modal-lg" id="modaldialog" tabindex="-1" role="dialog" aria-labelledby="modaltitle">
+  <div class="modal-dialog modal-lg" role="document">
+    <div class="modal-content" >
+			<!--<div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="modaltitle"><span id='gallery.title'></span></h4>
+			</div>-->
+			<div class="modal-body">
+				<div id="modalcontent">
+				.....
+				</div>
+			</div>
+		<div class='modal-footer'>
+				<button type="button" data-dismiss="modal" class="btn">Close</button>
+		</div>
+    </div>
+  </div>
+</div>
+	<!--show modal-->
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
 <script src='plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='plugin/jquery/unitegallery/js/unitegallery.js' ></script>
+<script src='plugin/jquery/unitegallery/themes/grid/ug-theme-grid.js' ></script>
 <script src='js/utility.js' ></script>
 <script src='js/gallery.js' ></script>
 <script >

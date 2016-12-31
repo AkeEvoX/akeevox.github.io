@@ -42,6 +42,16 @@
 .navbar-default .navbar-nav > li > .dropdown-menu > li > .divider {
   background-color: #ffffff;
 }
+
+.navbar-default .navbar-nav .open .dropdown-menu > li > a {
+	color:#fff;
+}
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:hover,
+.navbar-default .navbar-nav .open .dropdown-menu > li > a:focus {
+	color: #fff;
+  background-color: #703316;
+}
+
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a,
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a:hover,
 .navbar-default .navbar-nav .open .dropdown-menu > .active > a:focus {
@@ -125,3 +135,19 @@
     left: -6px;
 }
 /**********auto slide bar*******/
+@media(max-width: 899px){
+	.dropdown-menu {
+		display: none !important;
+	}
+
+	.open .dropdown-menu {
+		display: block !important;
+	}
+	
+}
+@media(min-width: 900px)
+{
+	.open .dropdown-menu {
+		display: none !important;
+	}
+}

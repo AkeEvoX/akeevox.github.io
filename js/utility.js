@@ -1,7 +1,7 @@
 $(document).ready(function(){
 	
 	utility.initial();
-	
+	$(".dropdown-menu .sub-menu").hide();
 });
 
 function viewlang(resp)
@@ -149,6 +149,12 @@ utility.setpage = function(page,callback){
   
 }
 
+utility.showmodal = function(){
+	
+	$('#modaldialog').modal('show');
+	
+}
+
 utility.modalpage = function(title,url,event){
 
 	if(title!=null)
@@ -238,20 +244,6 @@ function loadchildmenu(id){
 
 }
 
-function hidemenu(obj){
-	
-	 //e.stopPropagation();
-	 console.log($(obj).find(".dropdown-toggle").is(':visible'));
-	//$(obj).find(".dropdown-toggle").dropdown('toggle');
-	if($(obj).find(".dropdown-toggle").is(':visible')){
-		$(obj).find(".dropdown-toggle").hide();
-	 }else{
-		 $(obj).find(".dropdown-toggle").toggle();
-	 }
-	
-	
-}
-
 function getmenubar(data){
 		var menu = $('#menubar');
 		menu.html("");
@@ -262,20 +254,20 @@ function getmenubar(data){
 		$.each(parent,function(id,val){
 
 			var item = "";
-      var sub = child.filter(function(item){return item.parent==val.id });
+		  var sub = child.filter(function(item){return item.parent==val.id });
 
-      if(sub.length==0)
-      {
-        item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
-      }
-      else {//href='javascript:void(0);' onclick='hidemenu(this)' 
-        item = "<li id='"+val.id+"' class='dropdown' >"; //onclick=loadchildmenu("+val.id+")  data-toggle='dropdown'  aria-haspopup='true' aria-expanded='true'
-				item += "<a onclick=hidemenu(this) class='dropdown-toggle'  href='#' >"+val.name+"</a>";
-//dropdown-menu
-          item += "<ul class='dropdown-menu' >";
-          $.each(sub,function(subid,subval){
-              item += "<li><a href='"+subval.link+"'>"+subval.name+"</a></li>";
-          });
+		  if(sub.length==0)
+		  {
+			item = "<li id='"+val.id+"' > <a href='"+val.link+"'>"+val.name+"</a></li>";
+		  }
+      else {
+			item = "<li id='"+val.id+"' class='dropdown' >"; 
+			item += "<a  class='dropdown-toggle' data-toggle='dropdown'  href='#'  aria-haspopup='false' >"+val.name+"</a>";
+			
+			  item += "<ul class='dropdown-menu' >";
+			  $.each(sub,function(subid,subval){
+				  item += "<li><a href='"+subval.link+"'>"+subval.name+"</a></li>";
+			  });
           item += "</ul>";
 
 				item +="</li> ";
