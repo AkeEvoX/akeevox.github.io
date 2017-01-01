@@ -70,6 +70,40 @@ class GalleryManager{
 		}
 	}
 	
+	function get_fetch_list($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from press a ";
+			$sql .= " order by id desc " ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("Press > get_fetch_list > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list press  : ".$e->getMessage();
+		}
+	}
+	
+	function get_fetch_list_album($start_fetch,$max_fetch){
+			try{
+
+			$sql = " select * ";
+			$sql .= " from gallery_album ";
+			$sql .= " order by id desc " ;
+			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			log_debug("Gallery > get_fetch_list_album > ".$sql);
+			$result = $this->mysql->execute($sql);
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  list gallery album  : ".$e->getMessage();
+		}
+	}
+	
+	//
+	
 }
 
 ?>

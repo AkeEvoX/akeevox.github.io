@@ -103,11 +103,18 @@ gallery.load = function(){
 	
 }
 
-gallery.list = function(){
+gallery.loadlist = function(){
 	var endpoint = "services/gallery.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'list'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list' ,'couter':$('#counter').val(),'fetch':'20'  };
 	utility.service(endpoint,method,args,set_view_list);
+}
+
+gallery.loadlistalbum = function(){
+	var endpoint = "services/gallery.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'list_album' ,'couter':$('#counter').val(),'fetch':'20'  };
+	utility.service(endpoint,method,args,set_view_list_album);
 }
 
 function set_view(data){
@@ -166,7 +173,7 @@ function set_view_list(data){
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
 		item+="<td>"+val.name_th+"</td>";
-		item+="<td>"+val.name_en+"</td>";
+		item+="<td>"+val.update_date+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
@@ -174,3 +181,31 @@ function set_view_list(data){
 	//console.debug(item);
 	view.append(item);
 }
+
+function set_view_list_album(data){
+	//console.debug(data);
+	var view = $('#data_list');
+	var item = "";
+	if(data.result==undefined || data.result=="") {
+		console.log("gallery-manager > list :: data not found.")
+		return;
+	}
+	
+	$.each(data.result,function(i,val){
+		var param = '?id='+val.id;
+		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
+		
+		item+="<tr id='row"+val.id+"'>";
+		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
+		item+="<td>"+val.id+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.create_date+"</td>";
+		item+="<td>"+ active +"</td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="</tr>";
+	});
+	//console.debug(item);
+	view.append(item);
+}
+
+

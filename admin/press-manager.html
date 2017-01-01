@@ -11,7 +11,6 @@
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
 				<th>รายการ</th>
-				<th>วันที่ Update</th>
 				<th>Status</th>
 				<th class='col-md-1'></th>
 			</tr>
@@ -28,15 +27,17 @@ $(document).ready(function(){
 	
 	$('#btn_del').unbind('click'); /*clear event handle*/
 	$('#btn_del').on('click',press.delete);
-	//press.loadlist();
+	
+	press.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //press.loadlist();
-	} 
+		  press.loadlist();
+	}
+	
 });
 
 

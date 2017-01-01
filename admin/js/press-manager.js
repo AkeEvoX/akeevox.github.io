@@ -103,10 +103,10 @@ press.load = function(){
 	
 }
 
-press.list = function(){
+press.loadlist = function(){
 	var endpoint = "services/press.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'list'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list','couter':$('#counter').val(),'fetch':'20' };
 	utility.service(endpoint,method,args,set_view_list);
 }
 
@@ -154,7 +154,7 @@ function set_view_list(data){
 	var view = $('#data_list');
 	var item = "";
 	if(data.result==undefined || data.result=="") {
-		console.log("press-manager > list :: data not found.")
+		console.log("press-manager > list :: data not found.");
 		return;
 	}
 	
@@ -165,10 +165,9 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.name_th+"</td>";
-		item+="<td>"+val.name_en+"</td>";
+		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('press-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 	});
 	//console.debug(item);
