@@ -5,6 +5,7 @@ include("../../lib/logger.php");
 //$source_globle = "../../";
 $base_dir = "../../";
 include("../../controller/ProductManager.php");
+include("../../controller/SeriesManager.php");
 
 
 $type="";
@@ -15,7 +16,6 @@ $type = GetParameter("type");
 
 $result = "";
 
-$product = new ProductManager();
 
 switch($type){
 	case "list":
@@ -65,8 +65,8 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));
 
 /************* function list **************/
 function get_list_fetch($lang,$start_fetch,$max_fetch){
-	$product = new ProductManager();
-	$data = $product->get_fetch_series($lang,$start_fetch,$max_fetch);
+	$series = new SeriesManager();
+	$data = $series->get_fetch_list($lang,$start_fetch,$max_fetch);
 	$result = "";
 	
 	if($data==null) return $result;
@@ -132,23 +132,23 @@ function getItems($items){
 
 function Insert($items){
 	
-	$product = new ProductManager();
-	$result = $product->insert_product_type($items);
+	$series = new SeriesManager();
+	$result = $series->insert_item($items);
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$product = new ProductManager();
-	$result = $product->update_product_type($items);
+	$series = new SeriesManager();
+	$result = $series->update_item($items);
 	return "UPDATE SUCCESS.";
 	
 }
 
 function Delete($items){
 	
-	$product = new ProductManager();
-	$product->delete_product_type($items["id"]);
+	$series = new SeriesManager();
+	$series->delete_item($items["id"]);
 	return "DELETE SUCCESS.";
 }
 

@@ -1,7 +1,7 @@
 <?php
 require_once($base_dir."/lib/database.php");
 
-class SeriesManager{
+class ShowRoomManager{
 	
 	protected $mysql;
 	function __construct(){
@@ -14,7 +14,7 @@ class SeriesManager{
 		}
 		catch(Exception $e)
 		{
-			die("initial about manager error : ". $e->getMessage());
+			die("initial show room manager error : ". $e->getMessage());
 		}
 	}
 
@@ -33,18 +33,17 @@ class SeriesManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get Product Item : ".$e->getMessage();
+			echo "Cannot Get ShowRoom Product Item : ".$e->getMessage();
 		}
 		
 	}
 	
 	function get_fetch_list($lang,$start_fetch,$max_fetch){
 		try{
-			//$max_fetch = 10;
 
 			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover_".$lang."  as cover,p.create_date  ";
 			$sql .= " from product_type p ";
-			$sql .= " where p.parent in ('2') ";
+			$sql .= " where p.parent in ('3') ";
 			$sql .= " order by p.id ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 
@@ -54,7 +53,7 @@ class SeriesManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get Fetch Series  : ".$e->getMessage();
+			echo "Cannot Get Fetch ShowRoom  : ".$e->getMessage();
 		}
 	}
 	
@@ -73,13 +72,11 @@ class SeriesManager{
 			$sql = "insert into product_type(parent,title_th,title_en,cover,active,link,create_by,create_date) ";
 			$sql .= "values($parent,'$title_th','$title_en','$cover',$active,'$link',$create_by,$create_date); ";
 			
-			//echo $sql."<br/>";
-			
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Insert Series Type: ".$e->getMessage();
+			echo "Cannot Insert ShowRoom : ".$e->getMessage();
 		}
 	}
 	
@@ -103,13 +100,13 @@ class SeriesManager{
 			$sql .= "where id=$id ;";
 			
 			//echo $sql."<br/>";
-			log_warning("update_series > " . $sql);
+			log_warning("update_ShowRoom > " . $sql);
 			
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update Series : ".$e->getMessage();
+			echo "Cannot Update ShowRoom : ".$e->getMessage();
 		}
 	}
 	
@@ -121,7 +118,7 @@ class SeriesManager{
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Series : ".$e->getMessage();
+			echo "Cannot Delete ShowRoom : ".$e->getMessage();
 		}
 	}
 }

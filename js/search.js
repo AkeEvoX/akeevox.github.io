@@ -10,13 +10,13 @@ $('#btnfind').click(function(){
 });
 
 $('#txtfind').keyup(function(e){
-		// if(e.keyCode == 13)
-		// {
-			//var name = $('#txtfind').val();
-			// $('#fetch').val(0);
-			// $('#listview').find("tr:gt(0)").remove();
-			 // find();
-		// }
+		
+	 var code = (e.keyCode || e.which);
+
+	// do nothing if it's an arrow key
+	if(code == 37 || code == 38 || code == 39 || code == 40) {
+		return;
+	}
 	$('#fetch').val(0);
 	$('#listview').find("tr:gt(0)").remove();
 	find();

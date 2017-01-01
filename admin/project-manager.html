@@ -10,8 +10,8 @@
 			<tr>
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
-				<th>TH</th>
-				<th>EN</th>
+				<th>รายการ</th>
+				<th>โครงการ</th>
 				<th>Status</th>
 				<th class='col-md-1'></th>
 			</tr>
@@ -26,15 +26,15 @@
 $(document).ready(function(){
 	$(window).unbind('scroll');	
 	$('#btn_del').unbind('click'); /*clear event handle*/
-	//$('#btn_del').on('click',project.delete);
-	//project.loadlist();
+	$('#btn_del').on('click',project.delete);
+	project.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //refer.loadlist();
+		  project.loadlist();
 	} 
 });
 

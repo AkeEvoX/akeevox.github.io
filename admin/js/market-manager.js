@@ -120,10 +120,10 @@ function set_view(data){
 	
 	market.data = data.result;
 	
-	$('#title_th').val(personal.data["org.title"].th);
-	$('#title_en').val(personal.data["org.title"].en);
-	$('#detail_th').summernote('code',personal.data["org.header"].th);
-	$('#detail_en').summernote('code',personal.data["org.header"].en);
+	$('#preview_th').attr('src',data.result.chart_th);
+	$('#preview_en').attr('src',data.result.chart_en);
+	//$('#detail_th').summernote('code',personal.data["org.header"].th);
+	//$('#detail_en').summernote('code',personal.data["org.header"].en);
 }
 
 function set_view_item(data){

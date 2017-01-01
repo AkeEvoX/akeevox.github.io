@@ -41,9 +41,11 @@ function CallService(service,param,callback)
 
 function setview(data){
 	try{
-		
+	
 	var award = data.result.filter(function(item) {return item.type == "0" ; });
 	var standard = data.result.filter(function(item) {return item.type == "1" ; });
+	
+	console.log(standard);
 
 	setaward(award);
 	setstandard(standard);
@@ -131,6 +133,7 @@ function setstandard(data) {
 	standard.html('');
 	//console.log(data.result);
 	var w = window.innerWidth;
+	var item = 13;
 	var row = 4;
 	
 	if(w < 700) { item = 3;	row =1; }

@@ -5,7 +5,7 @@ include("../../lib/logger.php");
 
 $base_dir = "../../";
 include("../../controller/ProductManager.php");
-
+include("../../controller/ShowRoomManager.php");
 
 $type="";
 $id="";
@@ -65,8 +65,8 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));
 
 /************* function list **************/
 function get_list_fetch($lang,$start_fetch,$max_fetch){
-	$product = new ProductManager();
-	$data = $product->get_fetch_showroom($lang,$start_fetch,$max_fetch);
+	$room = new ShowRoomManager();
+	$data = $room->get_fetch_list($lang,$start_fetch,$max_fetch);
 	$result = "";
 	
 	if($data==null) return $result;
@@ -108,8 +108,8 @@ function getOptions($lang){
 
 function getItems($items){
 	
-	$product = new ProductManager();
-	$data = $product->getProductTypeByID($items["id"]);
+	$room = new ShowRoomManager();
+	$data = $room->getProductTypeByID($items["id"]);
 	
 	if($data){
 		
@@ -132,23 +132,23 @@ function getItems($items){
 
 function Insert($items){
 	
-	$product = new ProductManager();
-	$result = $product->insert_product_type($items);
+	$room = new ShowRoomManager();
+	$result = $room->insert_item($items);
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$product = new ProductManager();
-	$result = $product->update_product_type($items);
+	$room = new ShowRoomManager();
+	$result = $room->update_item($items);
 	return "UPDATE SUCCESS.";
 	
 }
 
 function Delete($items){
 	
-	$product = new ProductManager();
-	$product->delete_product_type($items["id"]);
+	$room = new ShowRoomManager();
+	$room->delete_item($items["id"]);
 	return "DELETE SUCCESS.";
 }
 

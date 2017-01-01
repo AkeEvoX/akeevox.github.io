@@ -1,5 +1,5 @@
 <div class='col-md-12' >
-	<h3>จัดการผังองค์กร</h3><hr/>
+	<h3>จัดการ Around the world</h3><hr/>
 	<form id='market_form' action='' method='post' enctype="multipart/form-data" >
 	<div class='row rowspan'>
 		<label class='col-md-4' >ภาพตัวอย่าง</label>
@@ -8,7 +8,7 @@
 		</div>
 	</div>
 	<div class='row rowspan'>
-		<label class='col-md-4' >ผังองค์กร</label>
+		<label class='col-md-4' >ภาพตลาดต่างประเทศ</label>
 		<div class='col-md-8'>
 			<input type='file' class='form-control' id='chart_th' name='chart_th' />
 		</div>
@@ -20,7 +20,7 @@
 		</div>
 	</div>
 	<div class='row rowspan'>
-		<label class='col-md-4' >Organization Chart</label>
+		<label class='col-md-4' >Around The World Cover</label>
 		<div class='col-md-8'>
 			<input type='file' class='form-control' id='chart_en' name='chart_en' />
 		</div>
@@ -38,15 +38,15 @@
 
 $(document).ready(function(){
 	
-	//market.load();
+	market.load();
 	
 	$('#market_form').on('submit',function(e){
 		e.preventDefault();
 		
 		var args = new FormData(this);
-		args.append('type', 'edit_cover');
+		args.append('type', 'edit');
 		console.log(args);
-		chart.edit_cover(args);
+		market.edit_cover(args);
 	});
 	
 	

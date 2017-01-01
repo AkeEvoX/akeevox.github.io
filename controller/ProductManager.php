@@ -419,25 +419,6 @@ class ProductManager{
 		}
 	}
 	
-	function get_fetch_series($lang,$start_fetch,$max_fetch){
-		try{
-			//$max_fetch = 10;
-
-			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover,p.create_date  ";
-			$sql .= " from product_type p ";
-			$sql .= " where p.parent in ('2') ";
-			$sql .= " order by p.id ";
-			$sql .= " LIMIT $start_fetch,$max_fetch ;";
-
-			log_debug($sql);
-			
-			$result = $this->mysql->execute($sql);
-			return  $result;
-		}
-		catch(Exception $e){
-			echo "Cannot Get Fetch Series  : ".$e->getMessage();
-		}
-	}
 	
 	function get_fetch_showroom($lang,$start_fetch,$max_fetch){
 		try{
@@ -498,6 +479,7 @@ class ProductManager{
 			echo "Cannot Search  Product  : ".$e->getMessage();
 		}
 	}
+	
 }
 
 ?>
