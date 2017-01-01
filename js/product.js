@@ -426,6 +426,9 @@ function setviewitem(data)
 		$('#btn_compare').attr('data-id',data.id);//data-thumb
 		$('#btn_compare').attr('data-thumb',data.thumb);
 		
+		//add meta for share facebook
+		addmeta(data.title,data.thumb);
+		
 		var colors = $('#productcolor');
 		colors.html("");
 		if(data.colors!=null){
@@ -439,10 +442,32 @@ function setviewitem(data)
 		//view image list
 		if(data.image!=null){
 			$.each(data.image,function(i,val){
+				
+				
+				
 				var item = "";
 				item += "<img src='"+val.image+"' data-image='"+val.image+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
 				view.append(item);
 			});
 		}
+		
+		
+		
 	}
+}
+
+function addmeta(title,image){
+	
+	var meta = "";
+	var url = document.URL;
+	var thumb =  document.location.origin +"/"+image;
+
+	 product.info =  {
+		 
+		url:url,
+		image:thumb,
+		title:title,
+		description : "Product " + title + " of starsanitaryware "
+	 }
+	 
 }

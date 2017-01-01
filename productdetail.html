@@ -3,8 +3,15 @@
 <head>
 <title>Welcome to Starsanitaryware</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
-	<meta name='viewport' content='width=device-width, initial-scale=1'>
+	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
+	<meta name='viewport' content='width=device-width, initial-scale=1' />
+	<meta property="fb:app_id" content="1918930168326863"/>
+	<meta  property='og:url' content='http://www.baankunnan.com' />
+	 <meta property='og:type' content='url' />
+	 <meta property='og:title' content='thank for share' />
+	 <meta property='og:description' content='the grest product of sanitary with starsanitaryware' />
+	 <meta property='og:image' content='http://www.starsanitaryware.com/collection/fileuploadimage/collection_1.jpg' />
+	 
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.tree.layout.css" rel="stylesheet" type="text/css" />
@@ -151,12 +158,15 @@
 
 $(document).ready(function(){
 
+
+	
 	utility.setpage('productdetail');
 	product.compare();
 	product.listmenu();
 	callproduct(utility.querystr('id'));
 	setshare();
-
+		
+	
 });
 
 
@@ -180,8 +190,55 @@ function setshare(){
 	});
 	
 	$('#facebook').on('click',function(){
-		var data = document.URL;
-		window.open('https://www.facebook.com/sharer.php?u=' + encodeURIComponent(data) + '&t=' + encodeURIComponent('link popup'), 'sharer', 'toolbar=0, status=0, width=585, height=386');
+	
+		var url = document.URL;
+		
+		<!-- var share = "https://www.facebook.com/dialog/share?"; -->
+		<!-- share += "app_id=1918930168326863"; -->
+		<!-- share += "&display=popup"; -->
+		<!-- share += "&href=www.baankunnan.com"; -->
+		<!-- share += "&redirect_uri=" + encodeURIComponent(url); -->
+		//var link = 'https://www.facebook.com/sharer.php?u=' + encodeURIComponent(url) + '&t=' + encodeURIComponent('link popup');
+		//var test = "https://www.facebook.com/dialog/feed?app_id=1918930168326863&display=popup&amp;caption=12344&link=http://www.baankunnan.com/productdetail.html?id=21&redirect_uri=https://www.baankunnan.com";
+		
+		//"https://www.facebook.com/dialog/feed?app_id=145634995501895&display=popup&amp;caption=An%20example%20caption%20&link=https%3A%2F%2Fdevelopers.facebook.com%2Fdocs%2F&redirect_uri=https://developers.facebook.com/tools/explorer";
+		//window.open(test, 'sharer', 'toolbar=0, status=0, width=585, height=386');
+		
+		$.ajaxSetup({ cache: false });
+		$.getScript('//connect.facebook.net/en_US/sdk.js', function(){
+		
+			FB.XFBML.parse();
+		
+			
+			FB.init({
+				appId : '1918930168326863',
+				version : 'v2.8'
+			});
+	
+			FB.ui({
+				method: 'share_open_graph',
+				action_type: 'og.shares',
+				action_properties: JSON.stringify({
+					object : {
+					   'og:url': product.info.url , 
+					   'og:title': product.info.title ,
+					   'og:description': product.info.description ,
+					   'og:image': product.info.image
+					}
+				})
+				},
+				// callback
+				function(response) {
+				if (response && !response.error_message) {
+					// then get post content
+					console.log('successfully posted. Status id : '+response.post_id);
+				} else {
+					console.error('Something went error.');
+				}
+			});
+			
+		});
+		
 	});
 	
 	$('#line').on('click',function(){

@@ -10,13 +10,16 @@ $('#btnfind').click(function(){
 });
 
 $('#txtfind').keyup(function(e){
-		if(e.keyCode == 13)
-		{
+		// if(e.keyCode == 13)
+		// {
 			//var name = $('#txtfind').val();
-			$('#fetch').val(0);
-			$('#listview').find("tr:gt(0)").remove();
-			 find();
-		}
+			// $('#fetch').val(0);
+			// $('#listview').find("tr:gt(0)").remove();
+			 // find();
+		// }
+	$('#fetch').val(0);
+	$('#listview').find("tr:gt(0)").remove();
+	find();
 });
 
 });
