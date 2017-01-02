@@ -26,16 +26,15 @@ $(document).ready(function(){
 	$(window).unbind('scroll');	
 	
 	$('#btn_del').unbind('click'); /*clear event handle*/
-	//$('#btn_del').on('click',faq.delete);
-	
-	//faq.loadlist();
+	$('#btn_del').on('click',download.delete);
+	download.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //faq.loadlist();
+		  download.loadlist();
 	} 
 });
 

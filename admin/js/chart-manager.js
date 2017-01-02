@@ -34,16 +34,4 @@ function set_view(data){
 	$('#preview_th').attr('src',data.result.chart_th);
 	$('#preview_en').attr('src',data.result.chart_en);
 	
-	/*
-		
-	$('#about_id').val(data.result.id);
-	$('#title_th').val(data.result.title_th);
-	$('#title_en').val(data.result.title_en);
-	$('#link_th').val(data.result.link_th);
-	$('#link_en').val(data.result.link_en);
-	$('#detail_th').summernote('code',data.result.detail_th);
-	$('#detail_en').summernote('code',data.result.detail_en);*/
 }
-
-//update data and image
-/*http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax*/

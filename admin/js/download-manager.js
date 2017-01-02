@@ -102,12 +102,18 @@ download.load = function(){
 	utility.service(endpoint,method,args,set_view);
 	
 }
-
-download.list = function(){
+download.loadlist = function(){
 	var endpoint = "services/download.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'list'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list','couter':$('#counter').val(),'fetch':'20' };
 	utility.service(endpoint,method,args,set_view_list);
+	
+}
+download.loadlisttype = function(){
+	var endpoint = "services/download.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'listtype','couter':$('#counter').val(),'fetch':'20' };
+	utility.service(endpoint,method,args,set_view_list_type);
 }
 
 function set_view(data){
@@ -157,7 +163,7 @@ function set_view_list(data){
 		console.log("download-manager > list :: data not found.")
 		return;
 	}
-	
+	var max_item = $('#counter').val();
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
@@ -165,12 +171,45 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.name_th+"</td>";
-		item+="<td>"+val.name_en+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.create_date+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('download-type-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		max_item++;
 	});
-	//console.debug(item);
+	$('#counter').val(max_item);
 	view.append(item);
 }
+
+function set_view_list_type(data){
+	//console.debug(data);
+	var view = $('#data_list');
+	var item = "";
+	if(data.result==undefined || data.result=="") {
+		console.log("download-manager > list type : data not found.")
+		return;
+	}
+	
+	var max_item = $('#counter').val();
+	console.log(data);
+	$.each(data.result,function(i,val){
+		var param = '?id='+val.id;
+		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
+		
+		item+="<tr id='row"+val.id+"'>";
+		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
+		item+="<td>"+val.id+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.create_date+"</td>";
+		item+="<td>"+ active +"</td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('download-type-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="</tr>";
+		max_item++;
+	});
+	
+	$('#counter').val(max_item);
+	view.append(item);
+}
+
+

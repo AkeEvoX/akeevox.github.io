@@ -190,7 +190,7 @@ function set_view_list_album(data){
 		console.log("gallery-manager > list :: data not found.")
 		return;
 	}
-	
+	var max_item = $('#counter').val();
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
@@ -203,7 +203,9 @@ function set_view_list_album(data){
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		max_item++;
 	});
+	$('#counter').val(max_item);
 	//console.debug(item);
 	view.append(item);
 }

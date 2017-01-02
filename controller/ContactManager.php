@@ -55,10 +55,12 @@ class ContactManager{
 	
 	function get_list_contact_fetch($start_fetch,$max_fetch){
 			try{
-
-			$sql = " select * ";
-			$sql .= " from contacts  ";
-			$sql .= " order by id desc" ;
+			
+			$sql = " select c.*,t.`name` as typename ";
+			$sql .= " from contacts c ";
+			$sql .= " inner join contact_type t on c.type =t.id ";
+			$sql .= " where type not in ('5','6') " ;
+			$sql .= " order by c.id desc" ;
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			log_debug("ContactManager > get_list_contact_fetch > ".$sql);
 			$result = $this->mysql->execute($sql);
@@ -67,6 +69,21 @@ class ContactManager{
 		catch(Exception $e){
 			echo "Cannot Get  ContactManager list contact  : ".$e->getMessage();
 		}
+	}
+	
+	function get_list_option(){
+			
+			try{
+			
+			$sql = " select * ";
+			$sql .= " from contact_type where id not in ('5','6') ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  List Contact Option : ".$e->getMessage();
+		} 
 	}
 	
 	function get_contact_info($id){
@@ -83,15 +100,31 @@ class ContactManager{
 		}
 	}
 	
+	function get_map_info(){
+		
+		try{
+			$sql = "select * ";
+			$sql .= " from contacts where id=9 ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get ContactManager > Map info: ".$e->getMessage();
+		}
+		
+	}
+	
 	function insert_contact($items){
 		
 		try{
 			
 			$contact_type  =$items["contact_type"];
-			$th  =$items["title_th"];
-			$en  =$items["title_en"];
+			$title_th  =$items["title_th"];
+			$title_en  =$items["title_en"];
 			$icon= $items["icon"];
 			$link= $items["link"];
+			
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -99,7 +132,7 @@ class ContactManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into contacts (type,title_th  ,title_en ,icon ,link ,create_by  ,create_date  ,active ) ";
+			$sql = "insert into contacts (type,title_th ,title_en ,icon ,link ,create_by  ,create_date  ,active) ";
 			$sql .= "values($contact_type,'$title_th'  ,'$title_en'  ,'$icon'  ,'$link' ,$create_by  ,$create_date  ,$active); ";
 			$this->mysql->execute($sql);
 			//echo $sql;
@@ -141,7 +174,7 @@ class ContactManager{
 			$update_date='now()';
 		
 			$sql = "update contacts set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,type=$contact_type ";
 			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $icon $link ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
@@ -154,6 +187,35 @@ class ContactManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Update ContactManager Contact  : ".$e->getMessage();
+		}
+	}
+	
+	function update_map($items){
+		try{
+			
+			$map = "";
+			$id = $items["id"];
+			if($items["link"]){
+				$map=" ,link='".$items["link"]."' ";	
+			}
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update contacts set  ";
+			$sql .= "update_by=$update_by,update_date=$update_date " ;
+			$sql .= $map ;
+			$sql .= "where id=9; ";
+			$this->mysql->execute($sql);
+			
+			log_debug("Contact > update map > " .$sql);
+
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Contact Update  Map : ".$e->getMessage();
 		}
 	}
 	

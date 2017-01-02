@@ -1,5 +1,5 @@
 <div class='col-md-12' >
-	<h3>จัดการข้อมูล ติดต่อ / contact</h3><hr/>
+	<h3>จัดการข้อมูล รูปภาพแผนที่</h3><hr/>
 	<h4><span class='glyphicon glyphicon-stop'></span>เพิ่มข้อมูล Contact</h4>
 	<form id='map_form' method='post' encrypt='media' >
 		<div class='row'>
@@ -7,7 +7,7 @@
 				<div class="form-group">
 				<!--	<form id='uploadimage' action="" method="post" >-->
 				<label for="image_profile" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
-				<div class='col-md-5'>
+				<div class='col-md-9'>
 					<img class="img-responsive" id="image" onerror=this.src='../../images/common/unavaliable.jpg' name="image"  />
 				</div>
 			</div>
@@ -21,24 +21,24 @@
 		
 		</div>
 	<div class='row'>
-		<span class='btn btn-success btn-sm' onclick='cate.add();'  >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html')  >ยกเลิก</span>
+		<button type='submit' class='btn btn-success btn-sm' >บันทึก</button>&nbsp;<span class='btn btn-danger btn-sm' onclick='map.reset();' >ล้างข้อมูล</span>
 	</div>
 	</form>
 </div>
-<script src='js/category-manager.js'></script>
+<script src='js/map-manager.js'></script>
 <script>
 
  $(document).ready(function(){
-	//cate.loadoptions();
+	map.load();
  });
  
  $('#map_form').on('submit',function(e){
 		e.preventDefault();
 		
 		var args = new FormData(this);
-		args.append('type', 'add');
+		args.append('type', 'edit');
 		console.log(args);
-		//award.add(args);
+		map.edit(args);
 	});
 
 </script>

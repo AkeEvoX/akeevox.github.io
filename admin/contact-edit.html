@@ -24,9 +24,15 @@
 				</div>
 			</div>
 			<div class="form-group">
+				<label for="preview" class="col-sm-3 control-label"></label>
+				<div class="col-sm-7">
+				  <img class="img-responsive" id="preview" name='preview' onerror=this.src='../../images/common/unavaliable.jpg' style='display:none;'>
+				</div>
+			</div>
+			<div class="form-group">
 				<label for="file_upload" class="col-sm-3 control-label">ICON</label>
 				<div class="col-sm-7">
-				  <input type="file" class="form-control" id="file_upload" name='file_upload' disabled='disabled'>
+				  <input type="file" class="form-control" id="file_upload" name='file_upload' disabled='disabled' >
 				</div>
 			</div>
 			<div class="form-group">
@@ -47,19 +53,24 @@
 	<div class='row'>
 		<button type='submit' class='btn btn-success btn-sm' >บันทึก</button>&nbsp;<span class='btn btn-danger btn-sm' onclick='contact.reset();' >ล้างข้อมูล</span>
 	</div>
+	<input type='hidden' id='id' name='id' />
 	</form>
 </div>
 <script src='js/contact-manager.js'></script>
 <script>
 
  $(document).ready(function(){
+ 
 	contact.loadoptions();
+	
+	var id = utility.querystr("id",$('#parameter').val());
+	contact.loaditem(id);
 	
 	 $('#contact_form').on('submit',function(e){
 		e.preventDefault();
 		var args = new FormData(this);
-		args.append('type', 'add');
-		contact.add(args);
+		args.append('type', 'edit');
+		contact.edit(args);
 	});
 	
 	$('#contact_type').on('change',function(e){

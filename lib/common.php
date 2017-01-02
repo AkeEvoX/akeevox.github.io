@@ -93,6 +93,11 @@ function upload_image($source,$distination){
 	
 	if($source=="") return;
 	
+	if(file_exists($distination)){
+		log_debug('exists file upload > '.$distination);
+		return ;
+	}
+	
 	if(move_uploaded_file($source,$distination))
 	{
 		log_debug('upload image success. > '.$distination);

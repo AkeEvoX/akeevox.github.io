@@ -28,14 +28,14 @@ $(document).ready(function(){
 	
 	$('#btn_del').unbind('click'); /*clear event handle*/
 	$('#btn_del').on('click',faq.delete);
-	//faq.loadlist();
+	faq.loadlist();
 });
 
 
 $(window).scroll(function() {
 
 	if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-		  //faq.loadlist();
+		  faq.loadlist();
 	} 
 });
 

@@ -31,7 +31,6 @@ contact.edit = function(args){
 
 }
 
-
 contact.delete = function(){
 	
 	console.log('call delete');
@@ -53,7 +52,6 @@ contact.delete = function(){
 	 alert('delete success.');
 	 //personal.list();
 }
-
 
 contact.reset = function(){
 	$('#title_th').val('');
@@ -84,6 +82,16 @@ contact.edit_page = function(){
 	
 }
 
+contact.loadoptions = function(id){
+	
+	$('#id').val(id);
+	var endpoint = "services/contact.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'option'};
+	utility.service(endpoint,method,args,set_view_option);
+	
+}
+
 contact.loaditem = function(id){
 	
 	$('#id').val(id);
@@ -103,10 +111,10 @@ contact.load = function(){
 	
 }
 
-contact.list = function(){
+contact.loadlist = function(){
 	var endpoint = "services/contact.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'list'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list' ,'couter':$('#counter').val(),'fetch':'20' };
 	utility.service(endpoint,method,args,set_view_list);
 }
 
@@ -129,35 +137,39 @@ function set_view(data){
 function set_view_item(data){
 	
 	console.log(data);
-	//if(data.result==undefined) return;
 	
+	if(data.result==undefined) return;
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#contact_type').val(data.result.type);
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	$('#link').val(data.result.link);
+	if(data.result.icon != "" && data.result.icon != undefined)
+	{
+		$('#preview').attr('style','display:block;');
+		$('#preview').attr('src',"../"+data.result.icon);
+	}
+	if(data.result.type==4){
+		$('#file_upload').attr('disabled',false);
+		$('#link').attr('disabled',false);	
+	}
 	
-	$('#image').attr('src',data.result["image"]);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
 	
-	
 }
 
 function set_view_list(data){
-	//console.debug(data);
+	
+	
 	var view = $('#data_list');
 	var item = "";
 	if(data.result==undefined || data.result=="") {
-		console.log("contact-manager > list :: data not found.")
+		console.log("contact-manager > list :: data not found.");
 		return;
 	}
-	
+	var max_item = $('#counter').val();
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
@@ -165,12 +177,33 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.name_th+"</td>";
-		item+="<td>"+val.name_en+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.type+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('contact-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		max_item++;
 	});
-	//console.debug(item);
+	$('#counter').val(max_item);
 	view.append(item);
 }
+
+function set_view_option(data){
+	
+	console.log(data);
+	var view = $('#contact_type');
+	view.html('');
+	var item = "";
+	if(data.result==undefined || data.result=="") {
+		console.log("contact-manager > list option :: data not found.");
+		return;
+	}
+	
+	$.each(data.result,function(i,val){
+		item += "<option value='"+val.id+"'>"+val.name+"</option>";
+	});
+	
+	view.append(item);
+}
+
+//item = "<option value='"+parent[0].id+"'>"+parent[0].title+"</option>";

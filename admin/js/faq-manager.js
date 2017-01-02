@@ -103,10 +103,10 @@ faq.load = function(){
 	
 }
 
-faq.list = function(){
+faq.loadlist = function(){
 	var endpoint = "services/faq.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'list'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list' ,'couter':$('#counter').val(),'fetch':'20'  };
 	utility.service(endpoint,method,args,set_view_list);
 }
 
@@ -157,6 +157,7 @@ function set_view_list(data){
 		console.log("faq-manager > list :: data not found.")
 		return;
 	}
+	var max_item = $('#counter').val();
 	
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
@@ -165,12 +166,16 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.name_th+"</td>";
-		item+="<td>"+val.name_en+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.create_date+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('faq-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		
+		max_item++;
 	});
+	
+	$('#counter').val(max_item);
 	//console.debug(item);
 	view.append(item);
 }

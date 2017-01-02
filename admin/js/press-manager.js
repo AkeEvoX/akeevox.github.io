@@ -157,6 +157,7 @@ function set_view_list(data){
 		console.log("press-manager > list :: data not found.");
 		return;
 	}
+	var max_item = $('#counter').val();
 	
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
@@ -169,7 +170,8 @@ function set_view_list(data){
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('press-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		max_item++;
 	});
-	//console.debug(item);
+	$('#counter').val(max_item);
 	view.append(item);
 }
