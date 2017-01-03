@@ -42,6 +42,20 @@ class DownloadManager{
 		} 
 		
 	}
+	function getTypeOption(){
+	try{
+
+			$sql = " select * from download_type ";
+			$sql .= " order by id ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Option Type Download : ".$e->getMessage();
+		} 
+		
+	}
 
 	function getListItem($id,$lenght,$lang){
 			try{
@@ -135,13 +149,13 @@ class DownloadManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into download_type (title_th ,title_en ,active ,create_by ,create_date ) ";
+			$sql = "insert into download_type (th ,en ,active ,create_by ,create_date) ";
 			$sql .= "values('$title_th'  ,'$title_en' ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
-			//echo $sql;
+			
 			
 			log_debug("DownloadManager > insert_type_download  > " .$sql);
-			//get insert id
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
@@ -155,7 +169,7 @@ class DownloadManager{
 	function insert_download($items){
 		
 		try{
-			
+			$type  =$items["download_type"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
 			$thumbnail= $items["thumbnail"];
@@ -167,13 +181,12 @@ class DownloadManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into downloads (title_th  ,title_en ,thumbnail ,link ,create_by  ,create_date  ,active ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$thumbnail'   ,$create_by  ,$create_date  ,$active); ";
+			$sql = "insert into downloads (type,title_th  ,title_en ,thumbnail ,link ,create_by  ,create_date  ,active ) ";
+			$sql .= "values($type,'$title_th'  ,'$title_en'  ,'$thumbnail'  ,'$link' ,$create_by  ,$create_date  ,$active); ";
 			$this->mysql->execute($sql);
-			//echo $sql;
 			
 			log_debug("DownloadManager > insert_download > " .$sql);
-			//get insert id
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
@@ -187,6 +200,7 @@ class DownloadManager{
 	function update_download($items){
 		try{
 			$id = $items["id"];
+			$type  =$items["download_type"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
 			$thumbnail= "";
@@ -208,13 +222,13 @@ class DownloadManager{
 			$update_date='now()';
 		
 			$sql = "update downloads set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= "type=$type ,title_th='$title_th' ,title_en='$title_en' ";
 			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $thumbnail $link ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
 			log_debug("DownloadManager > update_download> " .$sql);
-			//get insert id
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
@@ -238,13 +252,13 @@ class DownloadManager{
 			$update_date='now()';
 			
 			$sql = "update download_type set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
+			$sql .= "th='$title_th' ,en='$title_en' ";
 			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
 			log_debug("DownloadManager > update_type_download > " .$sql);
-			//get insert id
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;

@@ -16,6 +16,21 @@ download.add = function(args){
 
 }
 
+download.add_type = function(args){
+	
+	var endpoint = "services/download.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		
+		
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('download-type-manager.html');
+	});
+
+}
+
 download.edit = function(args){
 	
 	var endpoint = "services/download.php";
@@ -31,6 +46,20 @@ download.edit = function(args){
 
 }
 
+download.edit_type = function(args){
+	
+	var endpoint = "services/download.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		
+		
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('download-type-manager.html');
+	});
+
+}
 
 download.delete = function(){
 	
@@ -50,10 +79,31 @@ download.delete = function(){
 		 console.log('delete id='+id);
 	 });
 	 
-	 alert('delete success.');
-	 //personal.list();
+	 alert('DELETE SUCCESS.');
+	 download.loadlist();
 }
 
+download.delete_type = function(){
+	
+	console.log('call delete');
+	var endpoint = "services/download.php";
+	var method = "POST";
+	var args = "";
+	 $('input[name="mark[]"]:checked').each(function(){
+		 
+		 var id = $(this).attr('data-id');
+		 
+		 args =  {'_':new Date().getMilliseconds(),'type':'del_type' , 'id':id};
+		 utility.service(endpoint,method,args,function(){
+			$('#row'+id).remove();	 
+		 });
+		 
+		 console.log('delete id='+id);
+	 });
+	 
+	 alert('DELETE SUCCESS.');
+	 download.loadlisttype();
+}
 
 download.reset = function(){
 	$('#title_th').val('');
@@ -94,6 +144,23 @@ download.loaditem = function(id){
 	
 }
 
+download.loadtypeitem = function(id){
+	
+	$('#id').val(id);
+	var endpoint = "services/download.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'item_type','id':id};
+	utility.service(endpoint,method,args,set_view_item_type);
+	
+}
+
+download.loadoptions = function(){
+	var endpoint = "services/download.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'options'};
+	utility.service(endpoint,method,args,set_view_options);
+}
+
 download.load = function(){
 	
 	var endpoint = "services/download.php";
@@ -102,6 +169,7 @@ download.load = function(){
 	utility.service(endpoint,method,args,set_view);
 	
 }
+
 download.loadlist = function(){
 	var endpoint = "services/download.php";
 	var method = "GET";
@@ -109,6 +177,7 @@ download.loadlist = function(){
 	utility.service(endpoint,method,args,set_view_list);
 	
 }
+
 download.loadlisttype = function(){
 	var endpoint = "services/download.php";
 	var method = "GET";
@@ -135,24 +204,51 @@ function set_view(data){
 function set_view_item(data){
 	
 	console.log(data);
-	//if(data.result==undefined) return;
 	
+	if(data.result==undefined) return;
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	$('#download_type').val(data.result.type);
 	
-	$('#image').attr('src',data.result["image"]);
+	$('#preview').attr('src',"../"+data.result.thumbnail);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
 	
 	
+}
+
+function set_view_item_type(data){
+	
+	console.log(data);
+	
+	if(data.result==undefined) return;
+	
+	$('#title_th').val(data.result.th);
+	$('#title_en').val(data.result.en);
+	
+	if(data.result["active"]=="1")
+		$('#active').prop('checked',true);
+	
+	
+}
+
+function set_view_options(data){
+	
+	var view = $('#download_type');
+	view.html('');
+	var item = "";
+	if(data.result==undefined || data.result=="") {
+		console.log("download-manager > list option :: data not found.");
+		return;
+	}
+	
+	$.each(data.result,function(i,val){
+
+		item += "<option value='"+val.id+"'>"+val.th+" / "+val.en+"</option>";
+	});
+	view.append(item);
 }
 
 function set_view_list(data){
@@ -174,7 +270,7 @@ function set_view_list(data){
 		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.create_date+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('download-type-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('download-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 		max_item++;
 	});

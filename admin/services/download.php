@@ -2,7 +2,7 @@
 session_start();
 include("../../lib/common.php");
 include("../../lib/logger.php");
-//$source_globle = "../../";
+
 $base_dir = "../../";
 include("../../controller/DownloadManager.php");
 
@@ -20,30 +20,43 @@ switch($type){
 		$max_fetch = $_GET["fetch"];
 		$result = get_list_fetch($counter,$max_fetch);
 	break;
+	case "add":
+		$result = Insert($_POST);
+		log_debug("download  > Insert " . print_r($result,true));
+	break;
+	case "edit":
+		$result = Update($_POST);
+		log_debug("download > Update " . print_r($result,true));
+	break;
+		case "del":
+		$result = Delete($id);
+	break;
 	case "listtype":
 		$counter = $_GET["couter"];// count last fetch data
 		$max_fetch = $_GET["fetch"];
 		$result = get_list_type_fetch($counter,$max_fetch);
 	break;
-	case "add":
-		$result = Insert($_POST);
-		log_debug("reference  > Insert " . print_r($result,true));
+	case "add_type":
+		$result = Insert_type($_POST);
+		log_debug("download  > Insert type " . print_r($result,true));
 	break;
-	case "edit":
-		$result = Update($_POST);
-		log_debug("reference > Update " . print_r($result,true));
+	case "edit_type":
+		$result = Update_type($_POST);
+		log_debug("download > Update type" . print_r($result,true));
 	break;
-	case "del":
-		//$items["id"] = $_POST["id"];
-		$result = Delete($id);
+	case "del_type":
+		$result = Delete_type($id);
 	break;
 	case "item":
-		//$items["id"] = $id;
 		$result = getItems($id);
 	break;
-	default:
-	
+	case "item_type":
+		$result = getItemtype($id);
 	break;
+	case "options":
+		$result = getOptions();
+	break;
+	
 }
 
 
@@ -74,6 +87,7 @@ function get_list_fetch($start_fetch,$max_fetch){
 	return $result;
 	
 }
+
 function get_list_type_fetch($start_fetch,$max_fetch){
 	
 	$download = new DownloadManager();
@@ -100,21 +114,15 @@ function get_list_type_fetch($start_fetch,$max_fetch){
 }
 
 
-function getOptions($lang){
+function getOptions(){
 	
-	$product = new ProductManager();
-	$data = $product->getMenu($lang);
+	$download = new DownloadManager();
+	$data = $download->getTypeOption();
 
 	if($data){
 
 		while($row = $data->fetch_object()){
-
-			$menu =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title"=>$row->title
-		  				,"link"=>$row->link);
-
-			$result[] = $menu;
+			$result[] = $row;
 		}
 
 	}
@@ -123,79 +131,105 @@ function getOptions($lang){
 
 function getItems($id){
 	
-	$org = new OrgManager();
-	$data = $org->get_refer_info($id);
+	$download = new DownloadManager();
+	$data = $download->get_download_info($id);
+	
+	if($data){
+			$result = $data->fetch_object();
+	}
+	return $result;
+}
+
+function getItemtype($id){
+	
+	$download = new DownloadManager();
+	$data = $download->get_download_type($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"contury_th"=>$row->contury_th
-						,"contury_en"=>$row->contury_en
-		  				,"thumbnail"=>"../".$row->thumbnail
-						,"image"=>"../".$row->image
-						,"islocal"=>$row->islocal
-						,"active"=>$row->active
-						);
+		$row = $data->fetch_object();
+		$result = $row;
 
-			$result = $item;
 		
 	}
 	return $result;
 }
 
+
+
 function Insert($items){
 	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/download/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["image"] = $filename;
+		$items["link"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
-
 	
-	$org = new OrgManager();
-	//1)insert data
-	$result = $org->insert_reference($items);
-	//2)upload image personal
-	upload_image($source,$distination);
+	$download = new DownloadManager();
+	$result = $download->insert_download($items);
+	
+	if($items["thumbnail"])
+		upload_image($source,$distination);
+	
+	return "INSERT SUCCESS.";
+}
+
+
+function Insert_type($items){
+	
+	$download = new DownloadManager();
+	$result = $download->insert_type_download($items);
 	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$items["image"] = "";
-	$items["thumbnail"] = "";
+	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/download/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];
-		$items["image"] = $filename;
+		$source = $_FILES['file_upload']['tmp_name'];  
+		$items["link"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 	
-	$org = new OrgManager();
-	//1)update data
-	$result = $org->update_reference($items);
+	$download = new DownloadManager();
+	$result = $download->update_download($items);
 	
-	//2)upload image
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "UPDATE SUCCESS.";
 	
 }
 
+function Update_type($items){
+	
+	
+	$download = new DownloadManager();
+	$result = $download->update_type_download($items);
+	
+	return "UPDATE SUCCESS.";
+	
+}
+
+
 function Delete($id){
 	
-	$org = new OrgManager();
-	$org->delete_reference($id);
+	$download = new DownloadManager();
+	$download->delete_download($id);
 	return "DELETE SUCCESS.";
 }
+
+function Delete_type($id){
+	
+	$download = new DownloadManager();
+	$download->delete_type_download($id);
+	return "DELETE SUCCESS.";
+}
+
 
 ?>

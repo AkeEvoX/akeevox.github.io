@@ -29,11 +29,9 @@ switch($type){
 		log_debug("reference > Update " . print_r($result,true));
 	break;
 	case "del":
-		//$items["id"] = $_POST["id"];
 		$result = Delete($id);
 	break;
 	case "item":
-		//$items["id"] = $id;
 		$result = getItems($id);
 	break;
 	default:
@@ -93,26 +91,12 @@ function getOptions($lang){
 
 function getItems($id){
 	
-	$org = new OrgManager();
-	$data = $org->get_refer_info($id);
+	$faq = new FaqManager();
+	$data = $faq->get_faq_info($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"contury_th"=>$row->contury_th
-						,"contury_en"=>$row->contury_en
-		  				,"thumbnail"=>"../".$row->thumbnail
-						,"image"=>"../".$row->image
-						,"islocal"=>$row->islocal
-						,"active"=>$row->active
-						);
-
-			$result = $item;
+			$result = $data->fetch_object();
 		
 	}
 	return $result;
@@ -121,41 +105,39 @@ function getItems($id){
 function Insert($items){
 	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/faq/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["image"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 
 	
-	$org = new OrgManager();
-	//1)insert data
-	$result = $org->insert_reference($items);
-	//2)upload image personal
-	upload_image($source,$distination);
+	$faq = new FaqManager();
+	$result = $faq->insert_item($items);
+	
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$items["image"] = "";
+	
 	$items["thumbnail"] = "";
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/faq/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];
-		$items["image"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 	
-	$org = new OrgManager();
-	//1)update data
-	$result = $org->update_reference($items);
+	$faq = new FaqManager();
 	
-	//2)upload image
-	upload_image($source,$distination);
+	$result = $faq->update_item($items);
+	
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "UPDATE SUCCESS.";
 	
@@ -163,8 +145,8 @@ function Update($items){
 
 function Delete($id){
 	
-	$org = new OrgManager();
-	$org->delete_reference($id);
+	$faq = new FaqManager();
+	$faq->delete_item($id);
 	return "DELETE SUCCESS.";
 }
 

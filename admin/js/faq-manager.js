@@ -50,8 +50,8 @@ faq.delete = function(){
 		 console.log('delete id='+id);
 	 });
 	 
-	 alert('delete success.');
-	 //personal.list();
+	 alert('DELETE SUCCESS.');
+	 personal.loadlist();
 }
 
 
@@ -66,8 +66,8 @@ faq.edit_page = function(){
 
 	faq.data["org.title"].th = $('#title_th').val();
 	faq.data["org.title"].en = $('#title_en').val();
-	faq.data["org.header"].th = $('#detail_th').summernote('code')
-	faq.data["org.header"].en = $('#detail_en').summernote('code')
+	faq.data["org.header"].th = $('#detail_th').summernote('code');
+	faq.data["org.header"].en = $('#detail_en').summernote('code');
 	console.log(faq.data);
 	
 	var endpoint = "services/faq.php";
@@ -129,19 +129,16 @@ function set_view(data){
 function set_view_item(data){
 	
 	console.log(data);
-	//if(data.result==undefined) return;
+	
+	if(data.result==undefined) return;
 	
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);	
+	 $('#detail_th').summernote('code',data.result.detail_th);
+	  $('#detail_en').summernote('code',data.result.detail_en);
 	
-	$('#image').attr('src',data.result["image"]);
+	$('#preview').attr('src',"../"+data.result.thumbnail);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);

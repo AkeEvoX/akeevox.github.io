@@ -37,6 +37,22 @@ class FaqManager{
 		}
 		
 	}
+	
+	function get_faq_info($id){
+		
+		try{
+
+			$sql = "select * ";
+			$sql .= "from faq where id='".$id."' order by create_date desc ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Faq Info : ".$e->getMessage();
+		}
+		
+	}
 
 	function getListItem($lang)
 	{
@@ -106,9 +122,13 @@ class FaqManager{
 			
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$thumbnail  = "";
+			
+			if($items["thumbnail"])
+				$thumbnail  = $items["thumbnail"];
+			
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -116,8 +136,8 @@ class FaqManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into press (title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$location_th' ,'$location_en' ,$islocal  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into faq (title_th ,title_en  ,detail_th ,detail_en  ,thumbnail ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en' ,'$thumbnail'  ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
 			//echo $sql;
 			
@@ -138,9 +158,12 @@ class FaqManager{
 			$id = $items["id"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$thumbnail  = "";
+			
+			if($items["thumbnail"])
+				$thumbnail  = ",thumbnail='".$items["thumbnail"]."' " ;
 		
 		
 			$active='0';
@@ -152,8 +175,9 @@ class FaqManager{
 			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
 			
 			$sql = "update faq set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,location_th='$location_th' ,location_en='$location_en' ";
-			$sql .= ",islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= " $thumbnail ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			

@@ -24,24 +24,26 @@
 		<div class='row text-center'>
 			<input type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
-
+		<input type='hidden' id='id' name='id' />
 	</form>
 
 
 </div>
 <script src='js/download-manager.js' ></script>
-
 <script>
 
 $(document).ready(function(){
+
+	var id = utility.querystr("id",$('#parameter').val());
+	download.loadtypeitem(id);
+	
 
 	$('#download_form').on('submit',function(e){
 		e.preventDefault();
 
 		var args = new FormData(this);
-		args.append('type', 'add_type');
-		console.log(args);
-		download.add_type(args);
+		args.append('type', 'edit_type');
+		download.edit_type(args);
 	});
 
 });

@@ -23,14 +23,18 @@
 				</div>
 			</div>
 		<div class="form-group">
-			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="image_profile" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
+			<div class='col-md-5'>
+				<img class="img-responsive" id="preview" onerror=this.src='../../images/common/unavaliable.jpg' name="preview"  />
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="file_upload" class='col-md-3'>รูปภาพ / Image</label>
 			<div class='col-md-7'>
 				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
 			</div>
 		</div>
 		<div class="form-group">
-			<!--	<form id='uploadimage' action="" method="post" >-->
 			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
 			<div class='col-md-5'>
 				<input type="checkbox" id="active" name="active"  />
@@ -39,7 +43,7 @@
 		<div class='row text-center'>
 			<input type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
-
+		<input type='hidden' id='id' name='id' />
 	</form>
 
 
@@ -49,15 +53,18 @@
 
 $(document).ready(function(){
 
+	
 	download.loadoptions();
+	
+	var id = utility.querystr("id",$('#parameter').val());
+	download.loaditem(id);
 
 	$('#download_form').on('submit',function(e){
 		e.preventDefault();
 
 		var args = new FormData(this);
-		args.append('type', 'add');
-		console.log(args);
-		download.add(args);
+		args.append('type', 'edit');
+		download.edit(args);
 	});
 
 });

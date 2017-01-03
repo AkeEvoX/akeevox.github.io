@@ -172,10 +172,10 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.name_th+"</td>";
+		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.update_date+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('gallery-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 	});
 	//console.debug(item);
