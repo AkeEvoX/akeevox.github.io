@@ -98,6 +98,19 @@ class PressManager{
 		}
 	}
 	
+	function get_press_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= " from press where id=$id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Press info: ".$e->getMessage();
+		}
+	}
 	
 	function insert_item($items){
 		
@@ -105,9 +118,12 @@ class PressManager{
 			
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$coverpage = $items["coverpage"];
+			$thumbnail = $items["thumbnail"];
+			
+
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -115,8 +131,8 @@ class PressManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into press (title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$location_th' ,'$location_en' ,$islocal  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into press (title_th ,title_en  ,detail_th ,detail_en  ,coverpage,thumbnail   ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en' ,'$coverpage' , '$thumbnail'  ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
 			//echo $sql;
 			
@@ -137,9 +153,18 @@ class PressManager{
 			$id = $items["id"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$coverpage = $items["coverpage"];
+			$thumbnail = $items["thumbnail"];
+			
+			if($items["coverpage"]){
+				$coverpage=",coverpage='".$items["coverpage"]."' ";	
+			}
+			
+			if($items["thumbnail"]){
+				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+			}
 		
 		
 			$active='0';
@@ -151,8 +176,9 @@ class PressManager{
 			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
 			
 			$sql = "update press set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,location_th='$location_th' ,location_en='$location_en' ";
-			$sql .= ",islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= $coverpage. " " . $thumbnail;
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			

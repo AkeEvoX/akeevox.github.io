@@ -77,7 +77,7 @@ class ProductManager{
 	function getProductTypeByID($id) {
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select id,parent,title_th,title_en,detail_th,detail_en,link,thumb, cover_".$lang." as cover ";
+			$sql = " select id,parent,title_th,title_en,detail_th,detail_en,link,thumb";
 			$sql .= " from product_type ";
 			$sql .= " where active=1 and id='".$id."' ;";
 			log_warning("getProductTypeByID > " . $sql);
@@ -324,7 +324,7 @@ class ProductManager{
 			$title_th = $items["title_th"];
 			$title_en = $items["title_en"];
 			//$link = $items["link"];
-			$cover = $items["cover"];
+			//$cover = $items["cover"];
 			//$active = "1";
 			$update_by = "0";
 			$update_date = "now()";
@@ -333,7 +333,8 @@ class ProductManager{
 			$sql .= "parent=$parent ";
 			$sql .= ",title_th='$title_th' ";
 			$sql .= ",title_en='$title_en' ";
-			$sql .= ",cover='$cover' ";
+			//$sql .= ",cover='$cover' ";
+			
 			//$sql .= ",link='$link' ";
 			//$sql .= ",active=$active ";
 			$sql .= ",update_by=$update_by";
@@ -380,15 +381,15 @@ class ProductManager{
 		}
 	}
 	
-	function get_fetch_category($lang,$start_fetch,$max_fetch){
+	function get_fetch_category(){//$start_fetch,$max_fetch
 		try{
 			//$max_fetch = 10;
 
-			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
-			$sql .= " from product_type a ";
+			$sql = " select * ";
+			$sql .= " from product_type ";
 			$sql .= " where active=1 ";
-			$sql .= " order by a.id ";
-			$sql .= " LIMIT $start_fetch,$max_fetch ;";
+			$sql .= " order by id ";
+			//$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			
 			$result = $this->mysql->execute($sql);
 			return  $result;
@@ -418,7 +419,6 @@ class ProductManager{
 			echo "Cannot Get Fetch Product : ".$e->getMessage();
 		}
 	}
-	
 	
 	function get_fetch_showroom($lang,$start_fetch,$max_fetch){
 		try{

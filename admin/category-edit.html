@@ -26,7 +26,7 @@
 		</div>
 	</div>
 	<div class='row'>
-		<span class='btn btn-success btn-sm' onclick='cate.edit();' >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html') >ยกเลิก</span>
+		<span class='btn btn-success btn-sm' id='save' onclick='cate.edit();' >บันทึกข้อมูล</span>&nbsp;<span class='btn btn-danger btn-sm' onclick=control.pagetab('category-manager.html') >ยกเลิก</span>
 	</div>
 	
 </div>
@@ -36,7 +36,33 @@
  
 	var id = utility.querystr("id",$('#parameter').val()); /*lookup in center.js */
 	cate.loaditem(id);
+	
+	$('#save').keypress(function(e){
+	
+		if(e.which ==13){
+			cate.edit();
+		}
+	
+	});
+	
+	$('#cate_th').keypress(function(e){
+	
+		if(e.which ==13){
+			cate.edit();
+		}
+	
+	});
+	
+	$('#cate_en').keypress(function(e){
+	
+		if(e.which ==13){
+			cate.edit();
+		}
+	
+	});
  });
+ 
+ 
  
   
 </script>

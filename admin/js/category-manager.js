@@ -73,8 +73,7 @@ cate.loadlist = function(){
 	console.log('call list category.');
 	var endpoint = "services/category.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'option'};
-	//var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'10'};
+	var args = {'_':new Date().getMilliseconds(),'type':'list'};
 	utility.service(endpoint,method,args,view_list_categories);
 	
 }
@@ -99,7 +98,7 @@ cate.loaditem = function(id){
 }
 
 function view_list_categories(data){
-	
+	console.log(data);
 	var view = $('#data_list');
 	var item = "";
 	
@@ -122,7 +121,7 @@ function view_list_categories(data){
 		item+="</tr>";
 		*/
 		var id = parent[0].id;
-		var title = parent[0].title;
+		var title = parent[0].title_en + " (" + parent[0].title_th + ")";
 		item += set_list_categories(id,title);
 		item += view_sub_categories(child,data,true,"");
 		//max_item++;
@@ -161,13 +160,14 @@ function view_sub_categories(child,data,directory,lastmenu){
 		var subchild = data.result.filter(function(item){ return item.parent==val.id; });
 		if(subchild.length!=0){
 			if(directory==true) lastmenu = lastmenu + "&emsp;";
-			item += set_list_categories(val.id, lastmenu+ val.title);
+			var title =  val.title_en + " (" +  val.title_th + ")";
+			item += set_list_categories(val.id, lastmenu+ title);
 			directory = true;
 			item += view_sub_categories(subchild,data,directory,lastmenu);
 			directory=false;
 		}
 		else{
-			var title = val.title;
+			var title = val.title_en + " (" +  val.title_th + ")";
 			
 			if(directory==true) {
 				title = lastmenu + "&emsp;"+title;	

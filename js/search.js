@@ -27,7 +27,7 @@ $('#txtfind').keyup(function(e){
 function find()
 {
 
-	var text = $('#txtfind').val();
+	var text = rewritetext($('#txtfind').val());
 	var fetch = $('#fetch').val();
 	var limit = 15;
 	var endpoint = "services/search_product.php";
@@ -40,6 +40,22 @@ function find()
 	utility.service(endpoint,'GET',args,setview,null);
 
 	//$('#listview').html();
+}
+
+function rewritetext(text){
+	var result = text;
+	
+	result = result.replace("'","\'");
+	result = result.replace("%","");
+	result = result.replace(",","");
+	result = result.replace("_","");
+	result = result.replace("(","");
+	result = result.replace(")","");
+	result = result.replace("[","");
+	result = result.replace("]","");
+	
+	return result;
+	
 }
 
 function setview(resp)

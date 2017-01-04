@@ -69,7 +69,7 @@ echo json_encode(array("result"=> $result ,"code"=>"0"));
 /************* function list **************/
 function get_list_fetch($lang,$start_fetch,$max_fetch){
 	$product = new ProductManager();
-	$data = $product->get_fetch_category($lang,$start_fetch,$max_fetch);
+	$data = $product->get_fetch_category();//$start_fetch,$max_fetch
 	$result = "";
 	
 	if($data==null) return $result;
@@ -77,12 +77,12 @@ function get_list_fetch($lang,$start_fetch,$max_fetch){
 	
 	while($row = $data->fetch_object()){
 
-			$menu =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title"=>$row->title
-		  				,"link"=>$row->link);
+			// $menu =  array("id"=>$row->id
+						// ,"parent"=>$row->parent
+						// ,"title"=>$row->title
+		  				// ,"link"=>$row->link);
 
-			$result[] = $menu;
+			$result[] = $row;
 	}
 	return $result;
 }
@@ -96,12 +96,12 @@ function getOptions($lang){
 
 		while($row = $data->fetch_object()){
 
-			$menu =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title"=>$row->title
-		  				,"link"=>$row->link);
+			// $menu =  array("id"=>$row->id
+						// ,"parent"=>$row->parent
+						// ,"title"=>$row->title
+		  				// ,"link"=>$row->link);
 
-			$result[] = $menu;
+			$result[] = $row;
 		}
 
 	}

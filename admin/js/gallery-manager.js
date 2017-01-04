@@ -16,6 +16,21 @@ gallery.add = function(args){
 
 }
 
+gallery.add_album = function(args){
+	
+	var endpoint = "services/gallery.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		
+		
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('gallery-album-manager.html');
+	});
+
+}
+
 gallery.edit = function(args){
 	
 	var endpoint = "services/gallery.php";
@@ -31,6 +46,20 @@ gallery.edit = function(args){
 
 }
 
+gallery.edit_album = function(args){
+	
+	var endpoint = "services/gallery.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		
+		
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('gallery-album-manager.html');
+	});
+
+}
 
 gallery.delete = function(){
 	
@@ -51,15 +80,35 @@ gallery.delete = function(){
 	 });
 	 
 	 alert('delete success.');
-	 //personal.list();
+	 gallery.loadlist();
 }
 
+gallery.delete_album = function(){
+	
+	console.log('call delete');
+	var endpoint = "services/gallery.php";
+	var method = "POST";
+	var args = "";
+	 $('input[name="mark[]"]:checked').each(function(){
+		 
+		 var id = $(this).attr('data-id');
+		 
+		 args =  {'_':new Date().getMilliseconds(),'type':'del_album' , 'id':id};
+		 utility.service(endpoint,method,args,function(){
+			$('#row'+id).remove();	 
+		 });
+		 
+		 console.log('delete id='+id);
+	 });
+	 
+	 alert('delete success.');
+	 gallery.loadlistalbum();
+}
 
 gallery.reset = function(){
+	
 	$('#title_th').val('');
 	$('#title_en').val('');
-	$('#detail_th').summernote('reset');
-	$('#detail_en').summernote('reset');
 }
 
 gallery.edit_page = function(){
@@ -115,6 +164,15 @@ gallery.loadlistalbum = function(){
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'list_album' ,'couter':$('#counter').val(),'fetch':'20'  };
 	utility.service(endpoint,method,args,set_view_list_album);
+}
+
+gallery.album_option = function(){
+	
+	var endpoint = "services/gallery.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'album_option' };
+	utility.service(endpoint,method,args,set_view_album_option);
+	
 }
 
 function set_view(data){
@@ -201,12 +259,28 @@ function set_view_list_album(data){
 		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.create_date+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('gallery-album-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 		max_item++;
 	});
 	$('#counter').val(max_item);
 	//console.debug(item);
+	view.append(item);
+}
+
+function set_view_album_option(data){
+	
+	var view = $('#option_list');
+	
+	if(data.result==undefined || data.result=="") {
+		console.log("gallery-manager > list :: data not found.")
+		return;
+	}
+	
+	$.each(data.result,function(i,val){
+		item+="<option value='"+val.id+"'>"+val.title_th+"</option>";
+	});
+	
 	view.append(item);
 }
 

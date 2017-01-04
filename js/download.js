@@ -31,9 +31,9 @@ function setview(data)
 	$.each(data.item,function(i,val){
 	//visible-xs class show object on bootstrap
 
-		itemview += "<div class='col-xs-12 col-sm-6 col-md-4'>" ;
+		itemview += "<div class='col-xs-6 col-sm-6 col-md-4'>" ;
 		itemview += "<div class='view second-effect'>";
-		itemview += "<img src='"+val.thumbnail+"' style='height:240px;'  onerror=this.src='images/common/unavaliable.jpg'  >"; //#image height:240px;
+		itemview += "<img src='"+val.thumbnail+"' onerror=this.src='images/common/unavaliable.jpg'  >"; //#image height:240px;
 		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
 		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
 		itemview += "</div>";

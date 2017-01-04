@@ -22,11 +22,11 @@ switch($type){
 	break;
 	case "add":
 		$result = Insert($_POST);
-		log_debug("reference  > Insert " . print_r($result,true));
+		log_debug("Press  > Insert " . print_r($result,true));
 	break;
 	case "edit":
 		$result = Update($_POST);
-		log_debug("reference > Update " . print_r($result,true));
+		log_debug("Press > Update " . print_r($result,true));
 	break;
 	case "del":
 		//$items["id"] = $_POST["id"];
@@ -92,27 +92,11 @@ function getOptions($lang){
 
 function getItems($id){
 	
-	$org = new OrgManager();
-	$data = $org->get_refer_info($id);
+	$press = new PressManager();
+	$data = $press->get_press_info($id);
 	
 	if($data){
-		
-			$row = $data->fetch_object();
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"contury_th"=>$row->contury_th
-						,"contury_en"=>$row->contury_en
-		  				,"thumbnail"=>"../".$row->thumbnail
-						,"image"=>"../".$row->image
-						,"islocal"=>$row->islocal
-						,"active"=>$row->active
-						);
-
-			$result = $item;
-		
+			$result = $data->fetch_object();
 	}
 	return $result;
 }
@@ -120,41 +104,43 @@ function getItems($id){
 function Insert($items){
 	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/press/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["image"] = $filename;
+		$items["coverpage"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 
 	
-	$org = new OrgManager();
+	$press = new PressManager();
 	//1)insert data
-	$result = $org->insert_reference($items);
+	$result = $press->insert_item($items);
 	//2)upload image personal
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$items["image"] = "";
+	$items["coverpage"] = "";
 	$items["thumbnail"] = "";
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/press/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];
-		$items["image"] = $filename;
+		$items["coverpage"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 	
-	$org = new OrgManager();
+	$press = new PressManager();
 	//1)update data
-	$result = $org->update_reference($items);
+	$result = $press->update_item($items);
 	
 	//2)upload image
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "UPDATE SUCCESS.";
 	
@@ -162,8 +148,9 @@ function Update($items){
 
 function Delete($id){
 	
-	$org = new OrgManager();
-	$org->delete_reference($id);
+	$press = new PressManager();
+	$press->delete_item($id);
+	
 	return "DELETE SUCCESS.";
 }
 

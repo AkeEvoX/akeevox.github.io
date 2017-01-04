@@ -1,14 +1,25 @@
 
+.view img { height:240px; }
 
-/*
+.view .mask, .view .content{
+	/*height:270px;*/
+	width:100%;
+}
+.second-effect:hover .mask {
+	border:135px solid rgba(0,0,0,0.7);
+}
+@media(min-width:601px) or (max-width:767px) {
+	
+	.col-xs-6 {
+		width:50%;
+	}
+	
+}
 @media(max-width:600px) {
 	
-	.view {
-		display:block;
-		margin:0 auto;
+	.col-xs-6 {
+		width:100%;
 	}
-	.view img { max-width:50px; border:1px solid; }
 	
 }
 
-*/

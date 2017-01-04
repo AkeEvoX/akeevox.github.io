@@ -41,8 +41,8 @@ function view_album(data){
 		var item = "";
 		$.each(data.result,function(i,val){
 			//gallery_album.html?id="+val.id+"&title="+val.title+"
-			item += "<div class='col-xs-12 col-sm-4 col-md-3 text-center' >";
-			item += "<a href='javascript:void(0);' onclick=showgallery('"+val.id+"') alt='"+val.title+"'><img src='"+val.cover+"' class='img-thumbnail' /><a/>";
+			item += "<div class='col-xs-12 col-sm-6 col-md-3 text-center' >";
+			item += "<a href='javascript:void(0);' onclick=showgallery('"+val.id+"') alt='"+val.title+"'><img src='"+val.cover+"' class='img-responsive' /><a/>";
 			item += "<span >"+val.title+"</span>";
 			item += "</div>";
 			

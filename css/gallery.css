@@ -18,3 +18,13 @@
 .gallery_album img {
 	min-height:200px;
 }
+
+@media(min-width:980px) and (max-width:1200px) {
+	
+	.gallery_album img {
+		min-width:250px;
+		margin:0px;
+		padding-right:15px;
+	}
+	
+}

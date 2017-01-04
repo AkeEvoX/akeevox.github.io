@@ -28,20 +28,30 @@ switch($type){
 	
 	case "add":
 		$result = Insert($_POST);
-		log_debug("reference  > Insert " . print_r($result,true));
+		log_debug("gallery  > Insert " . print_r($result,true));
+	break;
+	case "add_album":
+		$result = Insert_album($_POST);
+		log_debug("gallery album > Insert " . print_r($result,true));
 	break;
 	case "edit":
 		$result = Update($_POST);
-		log_debug("reference > Update " . print_r($result,true));
+		log_debug("gallery > Update " . print_r($result,true));
+	break;
+	case "edit_album":
+		$result = Update($_POST);
+		log_debug("gallery album > Update " . print_r($result,true));
 	break;
 	case "del":
-		//$items["id"] = $_POST["id"];
 		$result = Delete($id);
 	break;
 	case "item":
-		//$items["id"] = $id;
 		$result = getItems($id);
 	break;
+	case "album_option":
+		$result = getOptions();
+	break;
+	
 	default:
 	
 	break;
@@ -101,21 +111,15 @@ function get_list_album_fetch($start_fetch,$max_fetch){
 }
 
 
-function getOptions($lang){
+function getOptions(){
 	
-	$product = new ProductManager();
-	$data = $product->getMenu($lang);
+	$gallery = new GalleryManager();
+	$data = $gallery->get_option_album();
 
 	if($data){
 
 		while($row = $data->fetch_object()){
-
-			$menu =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title"=>$row->title
-		  				,"link"=>$row->link);
-
-			$result[] = $menu;
+			$result[] = $row;
 		}
 
 	}
@@ -124,26 +128,12 @@ function getOptions($lang){
 
 function getItems($id){
 	
-	$org = new OrgManager();
-	$data = $org->get_refer_info($id);
+	$gallery = new GalleryManager();
+	$data = $gallery->get_gallery_info($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"contury_th"=>$row->contury_th
-						,"contury_en"=>$row->contury_en
-		  				,"thumbnail"=>"../".$row->thumbnail
-						,"image"=>"../".$row->image
-						,"islocal"=>$row->islocal
-						,"active"=>$row->active
-						);
-
-			$result = $item;
+			$result = $data->fetch_object();
 		
 	}
 	return $result;
@@ -152,7 +142,7 @@ function getItems($id){
 function Insert($items){
 	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/gallery/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
 		$items["image"] = $filename;
@@ -160,11 +150,32 @@ function Insert($items){
 	}
 
 	
-	$org = new OrgManager();
+	$gallery = new GalleryManager();
 	//1)insert data
-	$result = $org->insert_reference($items);
+	$result = $gallery->insert_item($items);
 	//2)upload image personal
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
+	
+	return "INSERT SUCCESS.";
+}
+
+function Insert_album($items){
+	
+	if($_FILES['file_upload']['name']!=""){
+		$filename = "images/gallery/".$_FILES['file_upload']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload']['tmp_name'];  
+		$items["cover"] = $filename;
+	}
+
+	
+	$gallery = new GalleryManager();
+	//1)insert data
+	$result = $gallery->insert_album($items);
+	//2)upload image personal
+	if($items["cover"])
+		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
 }
@@ -174,19 +185,42 @@ function Update($items){
 	$items["image"] = "";
 	$items["thumbnail"] = "";
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/gallery/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];
 		$items["image"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 	
-	$org = new OrgManager();
+	$gallery = new GalleryManager();
 	//1)update data
-	$result = $org->update_reference($items);
+	$result = $gallery->update_item($items);
 	
 	//2)upload image
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
+	
+	return "UPDATE SUCCESS.";
+	
+}
+
+function Update_album($items){
+	
+	$items["cover"] = "";
+	if($_FILES['file_upload']['name']!=""){
+		$filename = "images/gallery/".$_FILES['file_upload']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload']['tmp_name'];
+		$items["cover"] = $filename;
+	}
+	
+	$org = new OrgManager();
+	//1)update data
+	$result = $org->update_album($items);
+	
+	//2)upload image
+	if($items["cover"])
+		upload_image($source,$distination);
 	
 	return "UPDATE SUCCESS.";
 	
@@ -194,8 +228,15 @@ function Update($items){
 
 function Delete($id){
 	
-	$org = new OrgManager();
-	$org->delete_reference($id);
+	$gallery = new GalleryManager();
+	$gallery->delete_item($id);
+	return "DELETE SUCCESS.";
+}
+
+function Delete_Album($id){
+	
+	$gallery = new GalleryManager();
+	$gallery->delete_album($id);
 	return "DELETE SUCCESS.";
 }
 
