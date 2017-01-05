@@ -87,17 +87,16 @@ class GalleryManager{
 	
 	function get_fetch_list($start_fetch,$max_fetch){
 			try{
-
-			$sql = " select * ";
-			$sql .= " from press a ";
-			$sql .= " order by id desc " ;
+			$sql = " select g.*,a.title_th as album_th ,a.title_en as album_en from gallery g  ";
+			$sql .= " inner join gallery_album a on g.album_id = a.id ";
+			$sql .= " order by g.id desc " ;
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
-			log_debug("Press > get_fetch_list > ".$sql);
+			log_debug("Gallery > get_fetch_list > ".$sql);
 			$result = $this->mysql->execute($sql);
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get  list press  : ".$e->getMessage();
+			echo "Cannot Get  list gallery  : ".$e->getMessage();
 		}
 	}
 	
@@ -161,13 +160,12 @@ class GalleryManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into gallery_album (album_id, title_th ,title_en ,image,thumbnail ,active ,create_by ,create_date ) ";
+			$sql = "insert into gallery (album_id, title_th ,title_en ,image,thumbnail ,active ,create_by ,create_date ) ";
 			$sql .= "values($album_type , '$title_th'  ,'$title_en','$image'  ,'$thumbnail' ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
-			//echo $sql;
 			
 			log_debug("Gallery > insert  > " .$sql);
-			//get insert id
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
@@ -220,11 +218,11 @@ class GalleryManager{
 			$thumbnail = "";
 			
 			if($items["image"]){
-				$image=",image='".$items["image"]."' ";	
+				$image=" ,image='".$items["image"]."' ";	
 			}
 			
 			if($items["thumbnail"]){
-				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+				$thumbnail=" ,thumbnail='".$items["thumbnail"]."' ";	
 			}
 		
 			$active='0';
@@ -258,7 +256,7 @@ class GalleryManager{
 			$id = $items["id"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$coverpage = "";
+			$cover = "";
 			
 			if($items["cover"]){
 				$cover=",cover='".$items["cover"]."' ";	
@@ -270,23 +268,22 @@ class GalleryManager{
 			
 			$update_by='0';
 			$update_date='now()';
-			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
-			
+
 			$sql = "update gallery_album set  ";
 			$sql .= "title_th='$title_th' ,title_en='$title_en' ";
 			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
-			$sql .= $coverpage ;
+			$sql .= $cover ;
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
-			log_debug("Gallery > update > " .$sql);
-			//get insert id
+			log_debug("Gallery album> update > " .$sql);
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update Gallery  : ".$e->getMessage();
+			echo "Cannot Update Gallery Album : ".$e->getMessage();
 		}
 	}
 	

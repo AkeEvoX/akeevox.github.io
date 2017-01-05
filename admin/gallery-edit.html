@@ -1,13 +1,21 @@
 <link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
 <div class='col-md-12' >
-	<h3>จัดการเพิ่ม Gallery Album</h3>
+	<h3>จัดการแก้ไข Gallery </h3>
 	<hr/>
 	<form id='gallery_form' action='' method='post' enctype="multipart/form-data">
 		<div class="form-group">
 			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="album_type" class='col-md-3'>หมวด / album</label>
+			<div class='col-md-7'>
+				<select class="form-control" id="album_type" name="album_type"  >
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
 			<label for="image_profile" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
-			<div class='col-md-5'>
-				<img class="img-responsive" id="image" onerror=this.src='../../images/common/unavaliable.jpg' name="image"  />
+			<div class='col-md-9'>
+				<img class="img-responsive" id="preview" onerror=this.src='../../images/common/unavaliable.jpg' name="preview"  />
 			</div>
 		</div>
 		<div class="form-group">
@@ -25,13 +33,13 @@
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="title_th" class='col-md-3'>ชื่ออัลบัม</label>
+			<label for="title_th" class='col-md-3'>ชื่อรูปภาพ</label>
 			<div class='col-md-9'>
 				<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่ออัลบัม" value='' />
 			</div>
 		</div>
 		<div class="form-group">
-			<label for="title_en" class='col-md-3'>Album Name</label>
+			<label for="title_en" class='col-md-3'>Picture Name</label>
 			<div class='col-md-9'>
 				<input type="text" class="form-control" id="title_en" name='title_en' placeholder="ชื่ออัลบัม" value='' />
 			</div>
@@ -39,7 +47,7 @@
 		<div class='row text-center'>
 			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
-		<input type='hidden' id='primary_id' />
+		<input type='hidden' id='id' name='id'/>
 
 	</form>
 
@@ -52,15 +60,17 @@
 
 
 $(document).ready(function(){
-
+	gallery.album_option();
+	
+	var id = utility.querystr("id",$('#parameter').val());
+	gallery.loaditem(id);
 
 	$('#gallery_form').on('submit',function(e){
 		e.preventDefault();
 
 		var args = new FormData(this);
-		args.append('type', 'add_album');
-		console.log(args);
-		gallery_form.add_album(args);
+		args.append('type', 'edit');
+		gallery.edit(args);
 	});
 
 });

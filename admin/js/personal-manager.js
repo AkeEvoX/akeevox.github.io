@@ -186,6 +186,3 @@ function set_view_list(data){
 	//console.debug(item);
 	view.append(item);
 }
-
-//update data and image
-/*http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax*/

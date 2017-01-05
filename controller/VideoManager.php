@@ -54,6 +54,20 @@ class VideoManager{
 	}
 	
 	
+	function get_video_info($id){
+		try{
+
+			$sql = "select * ";
+			$sql .= "from video where id='".$id."' ;";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Video Info : ".$e->getMessage();
+		}
+	}
+	
 	function get_fetch_list($start_fetch,$max_fetch){
 			try{
 
@@ -77,9 +91,8 @@ class VideoManager{
 			
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$thumbnail  =$items["thumbnail"];
+			$link  =$items["link"];
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -87,8 +100,8 @@ class VideoManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into video (title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$location_th' ,'$location_en' ,$islocal  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into video (title_th ,title_en  ,thumbnail ,link ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$thumbnail' ,'$link'  ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
 			//echo $sql;
 			
@@ -109,10 +122,11 @@ class VideoManager{
 			$id = $items["id"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
-		
+			$link =$items["link"];
+			$thumbnail =$items["thumbnail"];
+			
+			if($items["thumbnail"])
+				$thumbnail  = ",thumbnail='".$items["thumbnail"]."' ";
 		
 			$active='0';
 			
@@ -120,11 +134,11 @@ class VideoManager{
 			
 			$update_by='0';
 			$update_date='now()';
-			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
 			
 			$sql = "update video set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,location_th='$location_th' ,location_en='$location_en' ";
-			$sql .= ",islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,link='$link' ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= $thumbnail ;
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			

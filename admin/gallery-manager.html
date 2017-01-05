@@ -1,18 +1,22 @@
-
+<style>
+.table { overflow:scroll; white-space:nowrap; }
+.table > tr > th { display:inline-block; }
+</style>
 <div class='col-md-12'>
 	<h3>จัดการเนื้อหาหน้า Gallery </h3><hr/>
 	<div class='row'>
 		<span class='btn btn-warning btn-sm pagetab' onclick=control.pagetab('gallery-add.html') >เพิ่ม</span>
 		<span class='btn btn-warning btn-sm' id='btn_del' >ลบ</span>
 	</div>
-	<div class='row'>
-		<table class='table table-hover' id='data_list'>
+	<div class='row' >
+		<table class='table table-hover' id='data_list' >
 			<tr>
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>ID.</th>
-				<th>รายการ</th>
-				<th>วันที่ Update</th>
-				<th>Status</th>
+				<th class='col-md-3'>รายการ</th>
+				<th class='col-md-3'>album</th>
+				<th class='col-md-3'>วันที่ Update</th>
+				<th class='col-md-1'>Status</th>
 				<th class='col-md-1'></th>
 			</tr>
 		</table>

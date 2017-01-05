@@ -79,7 +79,7 @@ gallery.delete = function(){
 		 console.log('delete id='+id);
 	 });
 	 
-	 alert('delete success.');
+	 alert('DELETE SUCCESS.');
 	 gallery.loadlist();
 }
 
@@ -101,8 +101,8 @@ gallery.delete_album = function(){
 		 console.log('delete id='+id);
 	 });
 	 
-	 alert('delete success.');
-	 gallery.loadlistalbum();
+	 alert('DELETE SUCCESS.');
+	 //gallery.loadlistalbum();
 }
 
 gallery.reset = function(){
@@ -140,6 +140,16 @@ gallery.loaditem = function(id){
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,set_view_item);
+	
+}
+
+gallery.load_item_album = function(id){
+	
+	$('#id').val(id);
+	var endpoint = "services/gallery.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'item_album','id':id};
+	utility.service(endpoint,method,args,set_view_item_album);
 	
 }
 
@@ -193,20 +203,31 @@ function set_view(data){
 
 function set_view_item(data){
 	
-	console.log(data);
-	//if(data.result==undefined) return;
+	if(data.result==undefined) return;
 	
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	$('#album_type').val(data.result.album_id);
+	$('#preview').attr('src',"../"+data.result.thumbnail);
 	
-	$('#image').attr('src',data.result["image"]);
+	if(data.result["active"]=="1")
+		$('#active').prop('checked',true);
+	
+	
+	
+}
+
+
+function set_view_item_album(data){
+	
+	if(data.result==undefined) return;
+	
+	
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	
+	$('#preview').attr('src',"../"+data.result.cover);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
@@ -222,21 +243,24 @@ function set_view_list(data){
 		console.log("gallery-manager > list :: data not found.")
 		return;
 	}
-	
+	var max_item = $('#counter').val();
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
+		var date = val.update_date == null ? val.create_date : val.update_date;
 		
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td>"+val.title_th+"</td>";
-		item+="<td>"+val.update_date+"</td>";
+		item+="<td><img src='../"+val.thumbnail+"' class='img-responsive' /></td>";
+		item+="<td>"+val.album_th+"</td>";
+		item+="<td>"+date+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('gallery-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
+		max_item++;
 	});
-	//console.debug(item);
+	$('#counter').val(max_item);
 	view.append(item);
 }
 
@@ -264,21 +288,20 @@ function set_view_list_album(data){
 		max_item++;
 	});
 	$('#counter').val(max_item);
-	//console.debug(item);
 	view.append(item);
 }
 
 function set_view_album_option(data){
 	
-	var view = $('#option_list');
-	
+	var view = $('#album_type');
+	var item = "";
 	if(data.result==undefined || data.result=="") {
 		console.log("gallery-manager > list :: data not found.")
 		return;
 	}
 	
 	$.each(data.result,function(i,val){
-		item+="<option value='"+val.id+"'>"+val.title_th+"</option>";
+		item+="<option value='"+val.id+"'>"+val.title_th+" / "+val.title_en+"</option>";
 	});
 	
 	view.append(item);

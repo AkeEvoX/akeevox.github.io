@@ -22,19 +22,17 @@ switch($type){
 	break;
 	case "add":
 		$result = Insert($_POST);
-		log_debug("reference  > Insert " . print_r($result,true));
+		log_debug("video  > Insert " . print_r($result,true));
 	break;
 	case "edit":
 		$result = Update($_POST);
-		log_debug("reference > Update " . print_r($result,true));
+		log_debug("video > Update " . print_r($result,true));
 	break;
 	case "del":
-		//$items["id"] = $_POST["id"];
 		$result = Delete($id);
 	break;
 	case "item":
-		//$items["id"] = $id;
-		$result = getItems($id);
+		$result = get_Items($id);
 	break;
 	default:
 	
@@ -70,49 +68,15 @@ function get_list_fetch($start_fetch,$max_fetch){
 	
 }
 
-function getOptions($lang){
+
+function get_Items($id){
 	
-	$product = new ProductManager();
-	$data = $product->getMenu($lang);
-
-	if($data){
-
-		while($row = $data->fetch_object()){
-
-			$menu =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title"=>$row->title
-		  				,"link"=>$row->link);
-
-			$result[] = $menu;
-		}
-
-	}
-	return $result;
-}
-
-function getItems($id){
-	
-	$org = new OrgManager();
-	$data = $org->get_refer_info($id);
+	$video = new VideoManager();
+	$data = $video->get_video_info($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"contury_th"=>$row->contury_th
-						,"contury_en"=>$row->contury_en
-		  				,"thumbnail"=>"../".$row->thumbnail
-						,"image"=>"../".$row->image
-						,"islocal"=>$row->islocal
-						,"active"=>$row->active
-						);
-
-			$result = $item;
+			$result = $data->fetch_object();
 		
 	}
 	return $result;
@@ -121,19 +85,19 @@ function getItems($id){
 function Insert($items){
 	
 	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
+		$filename = "images/video/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["image"] = $filename;
 		$items["thumbnail"] = $filename;
 	}
 
 	
-	$org = new OrgManager();
+	$video = new VideoManager();
 	//1)insert data
-	$result = $org->insert_reference($items);
+	$result = $video->insert_item($items);
 	//2)upload image personal
-	upload_image($source,$distination);
+	if($items["thumbnail"])
+		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
 }
@@ -150,9 +114,9 @@ function Update($items){
 		$items["thumbnail"] = $filename;
 	}
 	
-	$org = new OrgManager();
+	$video = new VideoManager();
 	//1)update data
-	$result = $org->update_reference($items);
+	$result = $video->update_item($items);
 	
 	//2)upload image
 	upload_image($source,$distination);
@@ -163,8 +127,8 @@ function Update($items){
 
 function Delete($id){
 	
-	$org = new OrgManager();
-	$org->delete_reference($id);
+	$video = new VideoManager();
+	$video->delete_item($id);
 	return "DELETE SUCCESS.";
 }
 

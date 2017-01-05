@@ -1,17 +1,14 @@
-<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
+
 <div class='col-md-12' >
-	<h3>จัดการเพิ่ม VIDEO</h3>
+	<h3>จัดการแก้ไข VIDEO</h3>
 	<hr/>
 	<form id='video_form' action='' method='post' enctype="multipart/form-data">
-		<div class='row rowspan'>
-		<div class='col-md-offset-2 col-md-8'>
-			<h4 id='title' class='media-heading' style='color:orange'></h4>
-			<div id='mediacontent' class="embed-responsive embed-responsive-16by9" ><!--16by9 or 4by3 -->
-  				<iframe id='mediaplayer' frameborder="0" wmode="Opaque" allowfullscreen="true"
-  				src="" ></iframe>
+		<div class="form-group">
+			<label for="image_profile" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
+			<div class='col-md-5'>
+				<img class="img-responsive" id="preview" onerror=this.src='../../images/common/unavaliable.jpg' name="preview"  />
 			</div>
 		</div>
-	</div>
 		<div class="form-group">
 			<!--	<form id='uploadimage' action="" method="post" >-->
 			<label for="file_upload" class='col-md-3'>รูปภาพ / Image</label>
@@ -45,9 +42,9 @@
 			<div id='th' class="tab-pane fade in active">
 				<div class='col-md-12'>
 					<div class="form-group">
-						<label for="name_th" class='col-md-3'>ชื่อเรื่อง</label>
+						<label for="title_th" class='col-md-3'>ชื่อ</label>
 						<div class='col-md-9'>
-							<input type="text" class="form-control" id="name_th" name='name_th' placeholder="ชื่อ และ นามสกุล" value='' />
+							<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อ" value='' />
 						</div>
 					</div>
 				</div>
@@ -55,9 +52,9 @@
 			<div id='en' class="tab-pane fade">
 				<div class='col-md-12'>
 					<div class="form-group">
-						<label for="name_en" class='col-md-3'>Subject</label>
+						<label for="title_en" class='col-md-3'>Title</label>
 						<div class='col-md-9'>
-							<input type="text" class="form-control" id="name_en" name='name_en' placeholder="Subject" value='' />
+							<input type="text" class="form-control" id="title_en" name='title_en' placeholder="Title" value='' />
 						</div>
 					</div>
 				</div>
@@ -73,20 +70,20 @@
 
 </div>
 <script src='js/video-manager.js' ></script>
-<script src='js/underscore-min.js' ></script>
-<script src='../plugin/jquery/summernote/summernote.js' ></script>
 <script>
 
 
 $(document).ready(function(){
+
+	var id = utility.querystr("id",$('#parameter').val());
+	video.loaditem(id);
 
 	$('#video_form').on('submit',function(e){
 		e.preventDefault();
 
 		var args = new FormData(this);
 		args.append('type', 'edit');
-		console.log(args);
-		video_form.edit(args);
+		video.edit(args);
 	});
 
 });

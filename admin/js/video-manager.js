@@ -122,8 +122,7 @@ function set_view(data){
 	
 	$('#title_th').val(personal.data["org.title"].th);
 	$('#title_en').val(personal.data["org.title"].en);
-	$('#detail_th').summernote('code',personal.data["org.header"].th);
-	$('#detail_en').summernote('code',personal.data["org.header"].en);
+	
 }
 
 function set_view_item(data){
@@ -131,17 +130,11 @@ function set_view_item(data){
 	console.log(data);
 	//if(data.result==undefined) return;
 	
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	$('#link').val(data.result.link);
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
-	
-	$('#image').attr('src',data.result["image"]);
+	$('#preview').attr('src',"../"+data.result.thumbnail);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
@@ -163,14 +156,14 @@ function set_view_list(data){
 	$.each(data.result,function(i,val){
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
-		
+		var date = val.update_date == null ? val.create_date : val.update_date ; 
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
 		item+="<td>"+val.title_th+"</td>";
-		item+="<td>"+val.create_date+"</td>";
+		item+="<td>"+date+"</td>";
 		item+="<td>"+ active +"</td>";
-		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('personal-edit.html','"+param+"') >แก้ไข</span></td>";
+		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('video-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 		max_item++;
 	});

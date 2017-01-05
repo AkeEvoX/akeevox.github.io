@@ -39,14 +39,20 @@ switch($type){
 		log_debug("gallery > Update " . print_r($result,true));
 	break;
 	case "edit_album":
-		$result = Update($_POST);
+		$result = Update_album($_POST);
 		log_debug("gallery album > Update " . print_r($result,true));
 	break;
 	case "del":
 		$result = Delete($id);
 	break;
+	case "del_album":
+		$result = Delete_Album($id);
+	break;
 	case "item":
-		$result = getItems($id);
+		$result = get_Items($id);
+	break;
+	case "item_album":
+		$result = get_Item_album($id);
 	break;
 	case "album_option":
 		$result = getOptions();
@@ -72,14 +78,7 @@ function get_list_fetch($start_fetch,$max_fetch){
 	
 	while($row = $data->fetch_object()){
 
-			$item =  array("id"=>$row->id
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"update_date"=>$row->update_date
-						,"active"=>$row->active
-						);
-
-			$result[] = $item;
+			$result[] = $row;
 	}
 	return $result;
 	
@@ -106,6 +105,7 @@ function get_list_album_fetch($start_fetch,$max_fetch){
 
 			$result[] = $item;
 	}
+	
 	return $result;
 	
 }
@@ -126,10 +126,23 @@ function getOptions(){
 	return $result;
 }
 
-function getItems($id){
+function get_Items($id){
 	
 	$gallery = new GalleryManager();
 	$data = $gallery->get_gallery_info($id);
+	
+	if($data){
+		
+			$result = $data->fetch_object();
+		
+	}
+	return $result;
+}
+
+function get_Item_album($id){
+	
+	$gallery = new GalleryManager();
+	$data = $gallery->get_album_info($id);
 	
 	if($data){
 		
@@ -214,9 +227,9 @@ function Update_album($items){
 		$items["cover"] = $filename;
 	}
 	
-	$org = new OrgManager();
+	$gallery = new GalleryManager();
 	//1)update data
-	$result = $org->update_album($items);
+	$result = $gallery->update_album($items);
 	
 	//2)upload image
 	if($items["cover"])
