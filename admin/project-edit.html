@@ -1,13 +1,12 @@
-<link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
 <div class='col-md-12' >
-	<h3>จัดการเพิ่ม Project</h3>
+	<h3>จัดการแก้ไข Project</h3>
 	<hr/>
 	<form id='project_form' action='' method='post' enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="islocal" class='col-md-3'>ประเภท / Category</label>
 			<div class='col-md-7'>
-				<input type="radio" name="islocal" value='1'  checked/> ในประเทศ /  Domestic<br/>
-				<input type="radio" name="islocal" value='0'  /> นอกประเทศ / Abroad
+				<input type="radio" name="islocal" value='0'  checked/> ในประเทศ /  Domestic<br/>
+				<input type="radio" name="islocal" value='1'  /> นอกประเทศ / Abroad
 			</div>
 		</div>
 		<div class="form-group">
@@ -70,19 +69,19 @@
 
 </div>
 <script src='js/project-manager.js' ></script>
-<script src='js/underscore-min.js' ></script>
-<script src='../plugin/jquery/summernote/summernote.js' ></script>
 <script>
 
 
 $(document).ready(function(){
+
+	var id = utility.querystr("id",$('#parameter').val());
+	project.loaditem(id);
 
 	$('#project_form').on('submit',function(e){
 		e.preventDefault();
 
 		var args = new FormData(this);
 		args.append('type', 'edit');
-		console.log(args);
 		project.edit(args);
 	});
 

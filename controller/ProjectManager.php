@@ -90,7 +90,7 @@ class ProjectManager{
 			$this->mysql->execute($sql);
 			//echo $sql;
 			
-			log_debug("OrgManager > insert_project  > " .$sql);
+			log_debug("Project Manager > insert_project  > " .$sql);
 			//get insert id
 			$result = $this->mysql->newid();
 			
@@ -126,7 +126,7 @@ class ProjectManager{
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
-			log_debug("OrgManager > update_project> " .$sql);
+			log_debug("Project Manager > update_project> " .$sql);
 			//get insert id
 			$result = $this->mysql->newid();
 			

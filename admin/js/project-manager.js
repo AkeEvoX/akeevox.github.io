@@ -50,8 +50,7 @@ project.delete = function(){
 		 console.log('delete id='+id);
 	 });
 	 
-	 alert('delete success.');
-	 //personal.list();
+	 alert('DELETE SUCCESS.');
 }
 
 
@@ -129,19 +128,17 @@ function set_view(data){
 function set_view_item(data){
 	
 	console.log(data);
-	//if(data.result==undefined) return;
 	
+	if(data.result==undefined) return;
 	
-	$('#name_th').val(data.result["name_th"]);
-	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
-	$('#name_en').val(data.result["name_en"]);
-	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#title_th').val(data.result.title_th);
+	$('#title_en').val(data.result.title_en);
+	$('#location_th').val(data.result.location_th);
+	$('#location_en').val(data.result.location_en);
 	
-	$('#image').attr('src',data.result["image"]);
+	var $radio = $('input[name=islocal][value='+data.result.islocal+']').prop('checked',true);
+	//$radio.filter("[value='"+data.result.islocal+ "']").prop('checked',true);
+	
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
@@ -182,3 +179,4 @@ function set_view_list(data){
 	//console.debug(item);
 	view.append(item);
 }
+
