@@ -22,7 +22,6 @@ video.edit = function(args){
 	var method = "POST";
 	utility.data(endpoint,method,args,function(data){
 		
-		
 		var response = JSON.parse(data);
 		console.debug(response);
 		alert(response.result);

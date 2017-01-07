@@ -89,9 +89,36 @@ class AttributeManager {
 	function update_attribute($data){
 		
 		try{
+			
+			$update_by='0';
+			$update_date='now()';
+			
 			$sql = " update attribute_master set th='".$data["th"]."' , en='".$data["en"]."' , options='".$data["options"]."' ";
+			$sql .= ",update_by=$update_by,update_date=$update_date " ;
 			$sql .= " where id='".$data["id"]."' ";
 			log_warning($sql);
+			$result = $this->mysql->execute($sql);
+
+			return $result;
+		}
+		catch(Exception $e)
+		{
+			return "Cannot update attributes : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_attribute_admin($data){
+		
+		try{
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = " update attribute_master set th='".$data["th"]."' , en='".$data["en"]."' , options='".$data["options"]."' ";
+			$sql .= ",update_by=$update_by,update_date=$update_date " ;
+			$sql .= " where name='".$data["name"]."' ";
+			log_debug("update attribute admin > " .$sql);
 			$result = $this->mysql->execute($sql);
 
 			return $result;

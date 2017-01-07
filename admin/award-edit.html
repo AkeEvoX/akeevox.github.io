@@ -4,7 +4,12 @@
 	<hr/>
 	<form id='award_form' action='' method='post' enctype="multipart/form-data">
 		<div class="form-group">
-			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="islocal" class='col-md-3'>ภาพตัวอย่าง / Preview</label>
+			<div class='col-md-9'>
+				<img class="img-responsive" id="preview" name="preview" onerror=this.src='../../images/common/unavaliable.jpg' /> 
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="file_upload" class='col-md-3'>ภาพตัวอย่าง / thumbanil</label>
 			<div class='col-md-9'>
 				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
@@ -88,13 +93,16 @@ $(document).ready(function(){
 	$('#detail_th').summernote({ height: 200 });
 	$('#detail_en').summernote({ height: 200 });
 	
+	var id = utility.querystr("id",$('#parameter').val());
+	award.loaditem(id);
+	
 	$('#award_form').on('submit',function(e){
 		e.preventDefault();
 		
 		var args = new FormData(this);
-		args.append('type', 'add');
+		args.append('type', 'edit');
 		console.log(args);
-		award.add(args);
+		award.edit(args);
 	});
 	
 

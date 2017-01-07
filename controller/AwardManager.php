@@ -37,6 +37,22 @@ class AwardManager{
 		}
 		
 	}
+	
+	function get_award_info($id){
+		
+		try{
+
+			$sql = " select * ";
+			$sql .= "from award where id='".$id."' ";
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Award Info : ".$e->getMessage();
+		}
+		
+	}
 
 	function getListItem($lang)
 	{
@@ -77,9 +93,10 @@ class AwardManager{
 			
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$thumbnail  =$items["thumbnail"];
+			$category  =$items["category"];
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -87,13 +104,12 @@ class AwardManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into award (title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$location_th' ,'$location_en' ,$islocal  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into award (title_th ,title_en  ,detail_th ,detail_en ,thumbnail ,type ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en','$thumbnail' ,$category  ,$active ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
-			//echo $sql;
 			
-			log_debug("OrgManager > insert_project  > " .$sql);
-			//get insert id
+			log_debug("AwardManager > insert  > " .$sql);
+			
 			$result = $this->mysql->newid();
 			
 			return  $result;
@@ -109,10 +125,11 @@ class AwardManager{
 			$id = $items["id"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$location_th =$items["location_th"];
-			$location_en =$items["location_en"];
-			$islocal  =$items["islocal"];
-		
+			$detail_th =$items["detail_th"];
+			$detail_en =$items["detail_en"];
+			$category  =$items["category"];
+			
+			$thumbnail  = ($items["thumbnail"] !="" ? ",thumbnail='".$items["thumbnail"]. "' " :  "" );
 		
 			$active='0';
 			
@@ -122,19 +139,19 @@ class AwardManager{
 			$update_date='now()';
 			
 			$sql = "update award set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,location_th='$location_th' ,location_en='$location_en' ";
-			$sql .= ",islocal='$islocal' ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
+			$sql .=  $thumbnail ;
+			$sql .= ",type=$category ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
 			log_debug("Award > update > " .$sql);
-			//get insert id
 			$result = $this->mysql->newid();
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update Organization Project : ".$e->getMessage();
+			echo "Cannot Update Award Organization : ".$e->getMessage();
 		}
 	}
 	
@@ -147,7 +164,7 @@ class AwardManager{
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Organization Project : ".$e->getMessage();
+			echo "Cannot Delete Award Organization : ".$e->getMessage();
 		}
 	}
 	

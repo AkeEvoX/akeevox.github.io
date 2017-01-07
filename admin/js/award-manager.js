@@ -78,12 +78,10 @@ function view_item(data){
 	 $('#title_en').val(data.result.title_en);
 	 $('#detail_th').summernote('code',data.result.detail_th);
 	 $('#detail_en').summernote('code',data.result.detail_en);
-	 $('#contury_th').val(data.result.contury_th);
-	 $('#contury_en').val(data.result.contury_en);
 	
-	 $('#thumbnail').attr('src',data.result.thumbnail);
+	 $('#preview').attr('src',"../"+data.result.thumbnail);
 	
-	 $('input[name="islocal"][value="'+data.result.islocal+'"]').prop('checked',true);
+	 $('input[name="category"][value="'+data.result.type+'"]').prop('checked',true);
 	
 	 if(data.result.active=="1")
 		 $('#active').prop('checked',true);

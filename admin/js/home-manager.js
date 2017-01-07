@@ -11,31 +11,28 @@ home.reset = function(){
 	$('#detail_en').summernote('reset');
 }
 
-home.edit = function(){
-	
-	var id = $('#about_id').val(); 
-	var title_th = $('#title_th').val();
-	var title_en = $('#title_en').val();
-	var detail_th = $('#detail_th').summernote('code');
-	var detail_en = $('#detail_en').summernote('code');
-	var link_th = $('#link_th').val();
-	var link_en = $('#link_en').val();
-	
+home.edit_landing = function(args){
+
 	var endpoint = "services/home.php";
 	var method = "POST";
-	var args =  {'_':new Date().getMilliseconds()
-	,'type':'edit'
-	,'id':id
-	,'title_th':title_th
-	,'title_en':title_en
-	,'link_th':link_th
-	,'link_en':link_en
-	,'detail_th':detail_th
-	,'detail_en':detail_en};
+	utility.data(endpoint,method,args,function(data){
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		home.load_landing();
+	});
 	
-	utility.service(endpoint,method,args,function(data){
-		console.debug(data);
-		alert(data.result);
+}
+
+home.edit_banner = function(args){
+
+	var endpoint = "services/home.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		home.load_banner();
 	});
 	
 }
@@ -105,7 +102,9 @@ function view_banner(data){
 	
 	$.each(data.result,function(id,val){
 		console.debug('id='+val.id);
+		var enable = val.active =="1" ? true : false;
 		$('#image'+val.id).attr('src',val.cover);
+		$('#active'+val.id).prop('checked',enable);
 	});
 	
 	console.log("load view banner info complete.");

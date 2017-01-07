@@ -16,7 +16,7 @@
 		<div class='row rowspan'>
 			<label class='col-md-3' >เปิดใช้งาน / Enable</label>
 			<div class='col-md-9'>
-				<input type='checkbox' name='active' id='active'/>
+				<input type='checkbox' name='active' id='active' />
 			</div>
 		</div>
 		<div class='row text-center'>
@@ -34,9 +34,13 @@ $(document).ready(function(){
 	
 	home.load_landing();
 	
-	$('#intro_form').on('submit',function(){
-		alert('Update Complete.');
-		return false;
+	$('#intro_form').on('submit',function(e){
+		e.preventDefault();
+		var args = new FormData(this);
+		args.append('type', 'edit_landing');
+		console.log(args);
+		home.edit_landing(args);
+		
 	});
 });
 

@@ -26,8 +26,8 @@ class HomeManager{
 
 		try{
 
-			$sql = "select id,cover ";
-			$sql .= "from home where active=1 and align=0 order by create_date desc ";
+			$sql = "select * ";
+			$sql .= "from home where active=1 and align=0 order by id ";
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -88,18 +88,46 @@ class HomeManager{
 			$sql .= "where id=$id; ";
 			$this->mysql->execute($sql);
 			
-			log_debug("HomeManager > update_cover_intro > " .$sql);
+			log_debug("Homemanager > update cover intro > " .$sql);
 
 			$result = $this->mysql->newid();
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update HomeManager Cover Intro : ".$e->getMessage();
+			echo "Cannot homemanager update cover intro : ".$e->getMessage();
 		}
 	}
 	
-	
+	function update_banner($items){
+		try{
+			
+			$cover = "";
+			$id = $items["id"];
+			
+			if($items["cover"]){
+				$cover=" ,cover='".$items["cover"]."' ";	
+			}
+			
+			$update_by='0';
+			$update_date='now()';
+			
+			$sql = "update home set  ";
+			$sql .= "update_by=$update_by,update_date=$update_date " ;
+			$sql .= $cover ;
+			$sql .= "where id=$id; ";
+			$this->mysql->execute($sql);
+			
+			log_debug("Home manager > update cover intro > " .$sql);
+
+			$result = $this->mysql->newid();
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot homemanager update cover intro : ".$e->getMessage();
+		}
+	}
 	
 }
 

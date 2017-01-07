@@ -4,8 +4,8 @@
 <div class='row'>
 	<div class="form-horizontal">
 		<div class="form-group">
-			<label for="image1" class='col-md-4 control-label'>ภาพตัวอย่าง 1/ Preview 1</label>
-			<div class='col-md-5'>
+			<label for="image1" class='col-md-4 control-label'>ภาพตัวอย่าง 1 / Preview 1</label>
+			<div class='col-md-7'>
 				<img class="img-responsive" id="image1" onerror=this.src='../../images/common/unavaliable.jpg' />
 			</div>
 		</div>
@@ -14,14 +14,20 @@
 				<div class="col-sm-7">
 				  <input type="file" class="form-control" id="file_upload1" name='file_upload1' placeholder="Upload Banner">
 				</div>
+		</div>
+		<div class='row rowspan'>
+			<label class='col-md-4 control-label' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-7'>
+				<input type='checkbox' name='active1' id='active1' />
 			</div>
+		</div>
 	 </div>
 </div>
 <div class='row'>
 	<div class="form-horizontal">
 		<div class="form-group">
-			<label for="image2" class='col-md-4 control-label'>ภาพตัวอย่าง 2/ Preview 2</label>
-			<div class='col-md-5'>
+			<label for="image2" class='col-md-4 control-label'>ภาพตัวอย่าง 2 / Preview 2</label>
+			<div class='col-md-7'>
 				<img class="img-responsive" id="image2" onerror=this.src='../../images/common/unavaliable.jpg' />
 			</div>
 		</div>
@@ -31,13 +37,19 @@
 				  <input type="file" class="form-control" id="file_upload2"name='file_upload3' placeholder="Upload Banner">
 				</div>
 			</div>
+		<div class='row rowspan'>
+			<label class='col-md-4 control-label' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-7'>
+				<input type='checkbox' name='active2' id='active2' />
+			</div>
+		</div>
 	 </div>
 </div>
 <div class='row'>
 	<div class="form-horizontal">
 		<div class="form-group">
-			<label for="image3" class='col-md-4 control-label'>ภาพตัวอย่าง 3/ Preview 3</label>
-			<div class='col-md-5'>
+			<label for="image3" class='col-md-4 control-label'>ภาพตัวอย่าง 3 / Preview 3</label>
+			<div class='col-md-7'>
 				<img class="img-responsive" id="image3" onerror=this.src='../../images/common/unavaliable.jpg' />
 			</div>
 		</div>
@@ -47,13 +59,19 @@
 				  <input type="file" class="form-control" id="file_upload3" name='file_upload3' placeholder="Upload Banner">
 				</div>
 			</div>
+		<div class='row rowspan'>
+			<label class='col-md-4 control-label' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-7'>
+				<input type='checkbox' name='active3' id='active3' />
+			</div>
+		</div>
 	 </div>
 </div>
 <div class='row'>
 	<div class="form-horizontal">
 		<div class="form-group">
-			<label for="image4" class='col-md-4 control-label'>ภาพตัวอย่าง 4/ Preview 4</label>
-			<div class='col-md-5'>
+			<label for="image4" class='col-md-4 control-label'>ภาพตัวอย่าง 4 / Preview 4</label>
+			<div class='col-md-7'>
 				<img class="img-responsive" id="image4" onerror=this.src='../../images/common/unavaliable.jpg' />
 			</div>
 		</div>
@@ -63,6 +81,12 @@
 				  <input type="file" class="form-control" id="file_upload4" name='file_upload4' placeholder="Upload Banner">
 				</div>
 			</div>
+		<div class='row rowspan'>
+			<label class='col-md-4 control-label' >เปิดใช้งาน / Enable</label>
+			<div class='col-md-7'>
+				<input type='checkbox' name='active4' id='active4' />
+			</div>
+		</div>
 	 </div>
 </div>
 <div class='row'>
@@ -82,12 +106,8 @@ $(document).ready(function(){
 		e.preventDefault();
 		
 		var args = new FormData(this);
-		//args.append('type', 'edit_banner');
-		//console.log(args);
-		//home.edit_banner(args);
-		alert('upload complete.');
-		return false;
-	
+		args.append('type', 'edit_banner');
+		home.edit_banner(args);
 	});
 
 });

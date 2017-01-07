@@ -20,6 +20,14 @@ switch($type){
 		$result = Update($_POST);
 		log_debug("HomeManager  > Introl Update " . print_r($result,true));
 	break;
+	case "edit_landing":
+		$result = update_landing($_POST);
+		log_info("Home > Landing  > Update " . print_r($result,true));
+	break;
+	case "edit_banner":
+		$result = update_banner($_POST);
+		log_info("Home > Banner  > Update " . print_r($result,true));
+	break;
 	case "intro":
 		$result = get_page_intro($id);
 	break;
@@ -84,7 +92,9 @@ function get_banner_info(){
 			while($row = $data->fetch_object()){
 				
 				$item[] =  array("id"=>$row->id
-						,"cover"=>"../".$row->cover);
+						,"cover"=>"../".$row->cover
+						,"active"=>$row->active
+						);
 
 			}
 			$result= $item;
@@ -95,11 +105,67 @@ function get_banner_info(){
 
 function Update($items){
 	
-	$about = new AboutManager();
+	$home = new HomeManager();
 	$result = $about->update_about($items);
 	return "UPDATE SUCCESS.";
 	
 }
+
+function update_landing($items){
+	
+	$attr = new AttributeManager();
+	
+	$enable = $items["active"] != "" ? "1" : "0" ;
+	
+	$data = array("name"=>"intro.enable"
+	,"th"=>$enable
+	,"en"=>$enable
+	,"options"=>"");
+
+	//update enable landing
+	$result = $attr->update_attribute_admin($data);
+	
+	//update cover landing
+	if($_FILES['file_upload']['name']!=""){
+		$filename = "images/home/".$_FILES['file_upload']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload']['tmp_name'];  
+		$data = array("name"=>"intro.cover"
+		,"th"=>$filename
+		,"en"=>$filename
+		,"options"=>"");
+		
+		$result = $attr->update_attribute_admin($data);
+		
+		if($filename)
+			upload_image($source,$distination);
+	
+	}
+	
+	return "UPDATE SUCCESS.";
+}
+
+function update_banner($items){
+	
+	$home = new HomeManager();
+	
+	for($i==1;$i<5;$i++){		
+		$enable = $items["active".$i] != "" ? "1" : "0" ;
+		$data = array("id"=>$i ,"active"=>$enable);
+		$fileobj = "file_upload".$i;
+		if($_FILES[$fileobj]['name']!=""){		
+			$filename = "images/home/".$_FILES[$fileobj]['name'];
+			$distination =  "../../".$filename;
+			$source = $_FILES[$fileobj]['tmp_name'];  
+			$data["cover"] = $filename;
+			upload_image($source,$distination);
+		}		
+		$home->update_banner($data);
+	}
+	
+	return "UPDATE SUCCESS.";
+}
+
 
 
 ?>

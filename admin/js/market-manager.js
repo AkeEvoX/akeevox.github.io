@@ -1,20 +1,6 @@
 
 var market = {};
 
-market.add = function(args){
-	
-	var endpoint = "services/market.php";
-	var method = "POST";
-	utility.data(endpoint,method,args,function(data){
-		
-		
-		var response = JSON.parse(data);
-		console.debug(response);
-		alert(response.result);
-		control.pagetab('market-manager.html');
-	});
-
-}
 
 market.edit = function(args){
 	
@@ -32,34 +18,9 @@ market.edit = function(args){
 }
 
 
-market.delete = function(){
-	
-	console.log('call delete');
-	var endpoint = "services/market.php";
-	var method = "POST";
-	var args = "";
-	 $('input[name="mark[]"]:checked').each(function(){
-		 
-		 var id = $(this).attr('data-id');
-		 
-		 args =  {'_':new Date().getMilliseconds(),'type':'del' , 'id':id};
-		 utility.service(endpoint,method,args,function(){
-			$('#row'+id).remove();	 
-		 });
-		 
-		 console.log('delete id='+id);
-	 });
-	 
-	 alert('delete success.');
-	 //personal.list();
-}
-
-
 market.reset = function(){
-	$('#title_th').val('');
-	$('#title_en').val('');
-	$('#location_th').val('');
-	$('#location_en').val('');
+	$('#preview_th').attr('src',"");
+	$('#preview_en').attr('src',"");
 }
 
 market.edit_page = function(){
@@ -122,8 +83,7 @@ function set_view(data){
 	
 	$('#preview_th').attr('src',data.result.chart_th);
 	$('#preview_en').attr('src',data.result.chart_en);
-	//$('#detail_th').summernote('code',personal.data["org.header"].th);
-	//$('#detail_en').summernote('code',personal.data["org.header"].en);
+	
 }
 
 function set_view_item(data){
