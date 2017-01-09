@@ -216,8 +216,7 @@ class ProductManager{
 		}
 	}
 
-	function getMenu($lang)
-	{
+	function getMenu($lang)	{
 		try{
 
 			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
@@ -234,29 +233,93 @@ class ProductManager{
 		
 	}
 	
+	function insert_product($items){
+		try{
+			
+			/*
+			#insert sequence
+			1.#products
+			typeid
+			thumb
+			plan
+			title_th
+			title_en
+			dwg_file
+			pdf_file
+			create_by
+			create_date
+			active
+			
+			2.#product_attribute
+			attribute,th,en
+			prod.code
+			prod.name
+			prod.type
+			prod.size
+			prod.shape
+			prod.seat
+			prod.outlet
+			prod.rough
+			prod.systems
+			prod.comsumption
+			prod.faucet
+			prod.overflow
+			*/
+			
+			$typeid = $items["cate_id"];
+			$name_th = $items["name_th"];
+			$name_en = $items["name_en"];
+			$thumb = $items["thumb"];
+			$plan = $items["plan"];
+			$dwg_file = $items["dwg_file"];
+			$pdf_file = $items["pdf_file"];
+			$active = "0";
+			if(isset($items["active"])) $active='1';
+			$create_by = "0";
+			$create_date = "now()";
+			
+			$sql = "insert into products(typeid,name_th,name_en,thumb,plan,dwg_file,pdf_file,active,create_by,create_date) ";
+			$sql .= "values($typeid,'$name_th','$name_en','$thumb','$dwg_file','$pdf_file','$plan',$active,$create_by,$create_date); ";
+			
+			log_debug("product manager > inesrt product > ".$sql);
+			
+			$this->mysql->execute($sql);
+			$result = $this->mysql->newid();
+			
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product : ".$e->getMessage();
+		}
+	}
+	
 	function insert_product_type($items){
 		try{
 			$parent = $items["parent"];
 			$title_th = $items["title_th"];
 			$title_en = $items["title_en"];
 			$link = $items["link"];
-			$cover = $items["cover"];
+			$cover_th = $items["cover_th"];
+			$cover_en = $items["cover_en"];
 			$active = "1";
 			$create_by = "0";
 			$create_date = "now()";
 			
-			$sql = "insert into product_type(parent,title_th,title_en,cover,active,link,create_by,create_date) ";
-			$sql .= "values($parent,'$title_th','$title_en','$cover',$active,'$link',$create_by,$create_date); ";
+			$sql = "insert into product_type(parent,title_th,title_en,cover_th,cover_en,active,link,create_by,create_date) ";
+			$sql .= "values($parent,'$title_th','$title_en','$cover_th','$cover_en',$active,'$link',$create_by,$create_date); ";
 			
-			//echo $sql."<br/>";
+			log_debug("product manager > inesrt product type > ".$sql);
 			
-			$result = $this->mysql->execute($sql);
+			$this->mysql->execute($sql);
+			$result = $this->mysql->newid();
+			
 			return $result;
 		}
 		catch(Exception $e){
 			echo "Cannot Insert Product Type: ".$e->getMessage();
 		}
 	}
+	
 	function insert_color($items){
 		try{
 			$title_th = $items["title_th"];
@@ -401,9 +464,8 @@ class ProductManager{
 
 	function get_fetch_product($lang,$start_fetch,$max_fetch){
 		try{
-			//$max_fetch = 10;
-
-			$sql = " select p.id,p.title_".$lang." as title,t.title_".$lang." category,p.thumb,p.create_date ";
+		
+			$sql = " select p.id,p.title_".$lang." as title,t.title_".$lang." category,p.thumb,p.create_date,p.active ";
 			$sql .= " from products p ";
 			$sql .= " inner join product_type t on t.id = p.typeid ";
 			$sql .= " where t.parent not in ('2','3') ";
@@ -483,3 +545,4 @@ class ProductManager{
 }
 
 ?>
+

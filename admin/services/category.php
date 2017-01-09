@@ -116,7 +116,6 @@ function getItems($items){
 	if($data){
 		
 			$row = $data->fetch_object();
-//id,parent,title_th,title_en,detail_th,detail_en,thumb,cover
 			$item =  array("id"=>$row->id
 						,"parent"=>$row->parent
 						,"title_th"=>$row->title_th
@@ -135,7 +134,14 @@ function getItems($items){
 function Insert($items){
 	
 	$product = new ProductManager();
-	$result = $product->insert_product_type($items);
+	$newid = $product->insert_product_type($items);
+	
+	//create folder by id product type
+	$dir = "../../images/products/".$newid;
+	if (!file_exists($dir) && $newid!="0") {
+		mkdir($dir, 0777, true);
+	}
+	
 	return "INSERT SUCCESS.";
 }
 

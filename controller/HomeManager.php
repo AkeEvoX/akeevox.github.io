@@ -104,7 +104,7 @@ class HomeManager{
 			
 			$cover = "";
 			$id = $items["id"];
-			
+			$active = $items["active"];
 			if($items["cover"]){
 				$cover=" ,cover='".$items["cover"]."' ";	
 			}
@@ -113,7 +113,7 @@ class HomeManager{
 			$update_date='now()';
 			
 			$sql = "update home set  ";
-			$sql .= "update_by=$update_by,update_date=$update_date " ;
+			$sql .= " active=$active ,update_by=$update_by,update_date=$update_date " ;
 			$sql .= $cover ;
 			$sql .= "where id=$id; ";
 			$this->mysql->execute($sql);

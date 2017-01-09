@@ -2,7 +2,6 @@
 session_start();
 include("../../lib/common.php");
 include("../../lib/logger.php");
-//$source_globle = "../../";
 $base_dir = "../../";
 include("../../controller/ProductManager.php");
 
@@ -12,11 +11,6 @@ $id="";
 
 $id = GetParameter("id");
 $type = GetParameter("type");
-
-//if(isset($_GET["type"])) $type = $_GET["type"]; 
-//if(isset($_POST["type"])) $type = $_POST["type"]; 
-//if(isset($_GET["id"])) $id = $_GET["id"]; 
-//if(isset($_POST["id"])) $id = $_POST["id"]; 
 
 $result = "";
 
@@ -34,10 +28,10 @@ switch($type){
 		
 	break;
 	case "add":
-		$items["parent"] = $_POST["parent"];
-		$items["title_th"] = $_POST["th"];
-		$items["title_en"] = $_POST["en"];
-		$items["link"] = "category.html";
+		// $items["parent"] = $_POST["parent"];
+		// $items["title_th"] = $_POST["th"];
+		// $items["title_en"] = $_POST["en"];
+		// $items["link"] = "category.html";
 		//category.html
 		//$items["cover"] = $_POST["cover"];
 		$result = Insert($items);
@@ -82,7 +76,8 @@ function get_list_fetch($lang,$start_fetch,$max_fetch){
 			$item =  array("id"=>$row->id
 						,"category"=>$row->category
 						,"title"=>$row->title
-		  				,"thumb"=>$row->thumb);
+		  				,"thumb"=>$row->thumb
+						,"active"=>$row->active);
 
 			$result[] = $item;
 	}
@@ -137,7 +132,7 @@ function getItems($items){
 function Insert($items){
 	
 	$product = new ProductManager();
-	$result = $product->insert_product_type($items);
+	$result = $product->insert_product($items);
 	return "INSERT SUCCESS.";
 }
 

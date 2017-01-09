@@ -37,11 +37,26 @@ home.edit_banner = function(args){
 	
 }
 
+home.edit_content = function(args){
+
+	var endpoint = "services/home.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		home.load();
+	});
+	
+}
+
 home.load = function(){
+	
 	var endpoint = "services/home.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'intro'};
 	utility.service(endpoint,method,args,view_info);
+	
 }
 
 home.load_landing = function(){
@@ -98,8 +113,6 @@ function view_banner(data){
 	console.log(data);
 	if(data.result==undefined) return;
 	
-	//home.data = data.result;
-	
 	$.each(data.result,function(id,val){
 		console.debug('id='+val.id);
 		var enable = val.active =="1" ? true : false;
@@ -109,6 +122,3 @@ function view_banner(data){
 	
 	console.log("load view banner info complete.");
 }
-
-//update data and image
-// /*http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax*/

@@ -28,6 +28,11 @@ switch($type){
 		$result = update_banner($_POST);
 		log_info("Home > Banner  > Update " . print_r($result,true));
 	break;
+	case "edit_content":
+		$result = update_content($_POST);
+		log_info("Home > content  > Update " . print_r($result,true));
+	break;
+	
 	case "intro":
 		$result = get_page_intro($id);
 	break;
@@ -149,22 +154,49 @@ function update_banner($items){
 	
 	$home = new HomeManager();
 	
-	for($i==1;$i<5;$i++){		
+	for($i=1;$i<5;$i++){		
+	
 		$enable = $items["active".$i] != "" ? "1" : "0" ;
 		$data = array("id"=>$i ,"active"=>$enable);
 		$fileobj = "file_upload".$i;
-		if($_FILES[$fileobj]['name']!=""){		
+		
+		if($_FILES[$fileobj]['name']!=""){
 			$filename = "images/home/".$_FILES[$fileobj]['name'];
 			$distination =  "../../".$filename;
 			$source = $_FILES[$fileobj]['tmp_name'];  
 			$data["cover"] = $filename;
 			upload_image($source,$distination);
-		}		
+		}	
 		$home->update_banner($data);
+		
 	}
 	
 	return "UPDATE SUCCESS.";
 }
+
+function update_content($items){
+	
+	$attr = new AttributeManager();
+	
+	$list_data[] = array(
+		"name"=>"index.top_detail"
+		,"th"=>$items["intro_th"]
+		,"en"=>$items["intro_en"]
+	);
+	$list_data[] = array(
+		"name"=>"index.series.detail"
+		,"th"=>$items["series_th"]
+		,"en"=>$items["series_en"]
+	);
+	
+	foreach($list_data as $data){
+		$result = $attr->update_attribute_admin($data);
+	}
+	
+	return "UPDATE SUCCESS.";
+}
+
+
 
 
 

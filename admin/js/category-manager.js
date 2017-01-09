@@ -243,6 +243,3 @@ function viewchildmenu(child,data,directory,lastmenu,select_id){
 	
 	return item;
 }
-
-//update data and image
-/*http://stackoverflow.com/questions/10899384/uploading-both-data-and-files-in-one-form-using-ajax*/

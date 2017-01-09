@@ -50,7 +50,6 @@
 			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
 		<input type='hidden' id='id' name='id'  />
-
 	</form>
 
 
@@ -70,15 +69,13 @@ $(document).ready(function(){
 	home.load();
 	
 	$('#home_form').on('submit',function(e){
-		e.preventDefault();
-		
-		//var args = JSON.stringify($('#personal_form').serializeArray());
+	
+		e.preventDefault();	
 		var args = new FormData(this);
 		args.append('type', 'edit_content');
 		console.log(args);
-		//home.edit_content(args);
-		alert('update complete.');
-		return false;
+		home.edit_content(args);
+		
 	});
 
 });

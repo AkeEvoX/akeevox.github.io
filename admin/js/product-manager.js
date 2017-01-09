@@ -1,23 +1,23 @@
 
 var product = {};
 
-product.add = function(){
+product.add = function(args){
 	
-	var cate_th = $('#cate_th').val();
-	var cate_en = $('#cate_en').val();
-	var parent = $('#cate_id option:selected');
+	// var cate_th = $('#cate_th').val();
+	// var cate_en = $('#cate_en').val();
+	// var parent = $('#cate_id option:selected');
 	//alert('hello - ' + cate_th);
 	//console.debug("cate add :: "+cate_th+";"+cate_en+";"+parent.val());
 	
-	var endpoint = "services/category.php";
+	var endpoint = "services/product.php";
 	var method = "POST";
-	var args =  {'_':new Date().getMilliseconds()
-	,'type':'add'
-	,'parent':parent.val()
-	,'th':cate_th
-	,'en':cate_en};
+	// var args =  {'_':new Date().getMilliseconds()
+	// ,'type':'add'
+	// ,'parent':parent.val()
+	// ,'th':cate_th
+	// ,'en':cate_en};
 	
-	utility.service(endpoint,method,args,function(data){
+	utility.data(endpoint,method,args,function(data){
 		console.debug(data);
 		alert(data.result);
 		control.pagetab('category-manager.html');
@@ -111,12 +111,15 @@ function view_list_product(data){
 	
 	$.each(data.result,function(i,val){
 		
+		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
+		
 		var param = '?id='+val.id;
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
 		item+="<td>"+val.category+"</td>";
 		item+="<td>"+val.title+"</td>";
+		item+="<td>"+active+"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('product-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 
@@ -169,4 +172,46 @@ function viewmenulist(data,select_id){
 	item += viewchildmenu(child,data,true,"",select_id);
 	
 	catelist.append(item);	
+}
+
+
+function viewchildmenu(child,data,directory,lastmenu,select_id){
+	var item = "";
+	$.each(child,function(i,val){
+		
+		var subchild = data.result.filter(function(item){ return item.parent==val.id; });
+		var link = val.link+val.id;
+		
+		if(subchild.length!=0){
+	
+			if(directory==true) lastmenu = lastmenu + "&emsp;";
+			
+			item += "<option value='"+val.id+"' ";
+			if(val.id==select_id) item += "selected";
+			item += ">"+lastmenu+val.title+"</option>";
+			
+			
+			directory = true;
+			item += viewchildmenu(subchild,data,directory,lastmenu,select_id);
+			directory=false;
+		}else{
+			
+			var title = val.title;
+			
+			if(directory==true) {
+				title = lastmenu + "&emsp;"+title;	
+			}
+			else {
+				title = lastmenu + title;	
+			}
+			
+			item += "<option value='"+val.id+"' ";
+			if(val.id==select_id) item += "selected";
+			item += ">"+title+"</option>";
+			
+		}
+		
+	});
+	
+	return item;
 }

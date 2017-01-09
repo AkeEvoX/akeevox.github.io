@@ -2,7 +2,6 @@
 session_start();
 include("../../lib/common.php");
 include("../../lib/logger.php");
-//$source_globle = "../../";
 $base_dir = "../../";
 include("../../controller/VideoManager.php");
 
