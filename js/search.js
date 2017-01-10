@@ -53,7 +53,6 @@ function rewritetext(text){
 	result = result.replace(")","");
 	result = result.replace("[","");
 	result = result.replace("]","");
-	
 	return result;
 	
 }
@@ -73,7 +72,7 @@ function setview(resp)
 					result += "<td class='col-md-2' >"+val.code+"</td>";
 					result += "<td class='col-md-3'>"+val.name+"</td>";
 					result += "<td class='col-md-2'>"+val.type+"</td>";
-					result += "<td class='col-md-2'>"+val.systems+"</td>";
+					result += "<td class='col-md-2'>"+val.category+"</td>";
 					result += "<td class='col-md-2'>"+val.size+"</td>";
 					result += "</tr>";
 					max_item++;

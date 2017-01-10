@@ -2,58 +2,36 @@
 var product = {};
 
 product.add = function(args){
-	
-	// var cate_th = $('#cate_th').val();
-	// var cate_en = $('#cate_en').val();
-	// var parent = $('#cate_id option:selected');
-	//alert('hello - ' + cate_th);
-	//console.debug("cate add :: "+cate_th+";"+cate_en+";"+parent.val());
-	
 	var endpoint = "services/product.php";
 	var method = "POST";
-	// var args =  {'_':new Date().getMilliseconds()
-	// ,'type':'add'
-	// ,'parent':parent.val()
-	// ,'th':cate_th
-	// ,'en':cate_en};
-	
+
 	utility.data(endpoint,method,args,function(data){
-		console.debug(data);
-		alert(data.result);
-		control.pagetab('category-manager.html');
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('product-manager.html');
 	});
 	
 }
 
-product.edit = function(){
+product.edit = function(args){
 	
-	var id = utility.querystr("id",$('#parameter').val()); 
-	var cate_th = $('#cate_th').val();
-	var cate_en = $('#cate_en').val();
-	var parent = $('#cate_id option:selected');
-	//alert('hello - ' + cate_th);
-	//console.debug("cate add :: "+cate_th+";"+cate_en+";"+parent.val());
-	
-	var endpoint = "services/category.php";
+	var endpoint = "services/product.php";
 	var method = "POST";
-	var args =  {'_':new Date().getMilliseconds()
-	,'type':'edit'
-	,'id':id
-	,'parent':parent.val()
-	,'th':cate_th
-	,'en':cate_en};
 	
-	utility.service(endpoint,method,args,function(data){
-		console.debug(data);
-		alert(data.result);
-		control.pagetab('category-manager.html');
+	
+	utility.data(endpoint,method,args,function(data){
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('product-manager.html');
 	});
 	
 }
 
 product.delete = function(){
 	console.log('call delete');
-	var endpoint = "services/category.php";
+	var endpoint = "services/product.php";
 	var method = "POST";
 	var args = "";
 	 $('input[name="mark[]"]:checked').each(function(){
@@ -61,11 +39,11 @@ product.delete = function(){
 		 var id = $(this).attr('data-id');
 		 args =  {'_':new Date().getMilliseconds(),'type':'del' , 'id':id};
 		 utility.service(endpoint,method,args);
-		 //$('#row'+id).remove();
-		 console.log('id='+id);
+		 $('#row'+id).remove();
+		 console.log('delete id='+id);
 	 });
 	 alert('delete success.');
-	 cate.loadlist();
+	 //product.loadlist();
 }
 
 product.loadlist = function(){
@@ -92,7 +70,8 @@ product.loadoptions= function(select_id){
 }
 
 product.loaditem = function(id){
-	var endpoint = "services/category.php";
+	$('#id').val(id);
+	var endpoint = "services/product.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,set_item);
@@ -132,10 +111,49 @@ function view_list_product(data){
 
 function set_item(data){
 	console.log(data);
-	$('#cate_th').val(data.result.title_th);
-	$('#cate_en').val(data.result.title_en);
-	var parentid = data.result.parent;
-	cate.loadoptions(parentid);
+	
+	if(data.result==undefined || data.result=="") {
+		console.log("product-manager > product :: data not found.")
+		return;
+	}
+	
+	product.loadoptions(data.result.typeid);
+	
+	$('#preview_thumb').attr('src',"../"+data.result.thumb);	
+	$('#preview_symbol').attr('src',"../"+data.result.symbol_file);
+	$('#preview_plan').attr('src',"../"+data.result.plan);
+	$('#link_dwg').attr('href',"../"+data.result.dwg_file);
+	$('#link_pdf').attr('href',"../"+data.result.pdf_file);
+	
+	if(data.result.active=="1")
+		$('#active').prop('checked',true);
+	
+	$('#code_th').val(data.result["prod.code"].th);
+	$('#name_th').val(data.result["prod.name"].th);
+	$('#type_th').val(data.result["prod.type"].th);
+	$('#size_th').val(data.result["prod.size"].th);
+	$('#shape_th').val(data.result["prod.shape"].th);
+	$('#seat_th').val(data.result["prod.seat"].th);
+	$('#outlet_th').val(data.result["prod.outlet"].th);
+	$('#rough_th').val(data.result["prod.rough"].th);
+	$('#systems_th').val(data.result["prod.systems"].th);
+	$('#comsumption_th').val(data.result["prod.comsumption"].th);
+	$('#faucet_th').val(data.result["prod.faucet"].th);
+	$('#overflow_th').val(data.result["prod.overflow"].th);
+
+	$('#code_en').val(data.result["prod.code"].en);
+	$('#name_en').val(data.result["prod.name"].en);
+	$('#type_en').val(data.result["prod.type"].en);
+	$('#size_en').val(data.result["prod.size"].en);
+	$('#shape_en').val(data.result["prod.shape"].en);
+	$('#seat_en').val(data.result["prod.seat"].en);
+	$('#outlet_en').val(data.result["prod.outlet"].en);
+	$('#rough_en').val(data.result["prod.rough"].en);
+	$('#systems_en').val(data.result["prod.systems"].en);
+	$('#comsumption_en').val(data.result["prod.comsumption"].en);
+	$('#faucet_en').val(data.result["prod.faucet"].en);
+	$('#overflow_en').val(data.result["prod.overflow"].en);
+	
 }
 //remove
 function set_list_product(id,title,category,thumb){

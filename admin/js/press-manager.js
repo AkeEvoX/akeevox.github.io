@@ -26,7 +26,7 @@ press.edit = function(args){
 		var response = JSON.parse(data);
 		console.debug(response);
 		alert(response.result);
-		control.pagetab('press-manager.html');
+		control.pagetab('product-manager.html');
 	});
 
 }

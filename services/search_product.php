@@ -55,6 +55,7 @@ function SearchProductList($lang,$search_text,$search_fillter,$start_fetch,$max_
 					,"faucet"=>$row->faucet
 					,"type"=>$row->type
 					,"outlet"=>$row->outlet
+					,"category"=>$row->category
 					);
 			}
 		}

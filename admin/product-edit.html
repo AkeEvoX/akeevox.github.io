@@ -11,9 +11,21 @@
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="preview_thumb" class='col-md-3'>&nbsp;</label>
+					<div class='col-md-5'>
+						<img class="img-responsive" id="preview_thumb" onerror=this.src='../../images/common/unavaliable.jpg' />
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="file_thumbnail" class='col-md-3'>ภาพตัวอย่าง / thumbnail</label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_thumbnail" name="file_thumbnail"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="preview_symbol" class='col-md-3'>&nbsp;</label>
+					<div class='col-md-5'>
+						<img class="img-responsive" id="preview_symbol" onerror=this.src='../../images/common/unavaliable.jpg' />
 					</div>
 				</div>
 				<div class="form-group">
@@ -23,15 +35,33 @@
 					</div>
 				</div> 
 				<div class="form-group">
+					<label for="preview_plan" class='col-md-3'>&nbsp;</label>
+					<div class='col-md-5'>
+						<img class="img-responsive" id="preview_plan" onerror=this.src='../../images/common/unavaliable.jpg' />
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="file_plan" class='col-md-3'>รูปแปลน / plan</label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_plan" name="file_plan"  />
 					</div>
 				</div>
 				<div class="form-group">
+					<label for="preview_dwg" class='col-md-3'>DWG</label>
+					<div class='col-md-5'>
+						<a id="link_dwg" target="_blank"  href='' class='btn btn-warning' >CLICK VIEW DWG</a>
+					</div>
+				</div>
+				<div class="form-group">
 					<label for="file_dwg" class='col-md-3'>DWG file</label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_dwg" name="file_dwg"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="preview_dwg" class='col-md-3'>PDF</label>
+					<div class='col-md-5'>
+						<a id="link_pdf" target="_blank" href='' class='btn btn-warning' >CLICK VIEW PDF</a>
 					</div>
 				</div>
 				<div class="form-group">
@@ -212,6 +242,7 @@
 			<div class='row text-center'>
 				<input type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-danger'  onclick=control.pagetab('product-manager.html')  >ยกเลิก</span>
 			</div>
+			<input type='hidden' id='id' name='id' />
 	</form>
 </div>
 <script src='js/product-manager.js' />
@@ -219,13 +250,15 @@
 
 $(document).ready(function(){
 
-product.loadoptions();
+var id = utility.querystr("id",$('#parameter').val());
+product.loaditem(id);
+
 
 $('#product_form').on('submit',function(e){
 		e.preventDefault();
 		var args = new FormData(this);
-		args.append('type', 'add');
-		product.add(args);
+		args.append('type', 'edit');
+		product.edit(args);
 	});
 	
 });

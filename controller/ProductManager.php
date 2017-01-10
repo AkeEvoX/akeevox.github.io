@@ -26,7 +26,7 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ,t.title_".$lang." as catename";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " inner join product_type t on p.typeid=t.id ";
 			$sql .= " where p.id='".$id."' ;";
@@ -42,6 +42,26 @@ class ProductManager{
 
 	}
 
+	function get_product_info($id){
+		
+		try{
+
+			$sql = "select * ";
+			$sql .= " from products  ";
+			$sql .= " where id='".$id."' ;";
+			
+			log_warning("product info > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Info Item : ".$e->getMessage();
+		}
+
+		
+	}
+	
 	function getImages($id) {
 		try{
 
@@ -60,11 +80,11 @@ class ProductManager{
 	function getProductList($lang,$cate) {
 		try{
 
-			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.doc_link ";
+			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " where p.typeid='".$cate."' ";
 			$sql .= " order by p.create_date desc ";
-			//log_warning("product list > " . $sql);
+			log_debug("product list > " . $sql);
 			$result = $this->mysql->execute($sql);
 
 			return  $result;
@@ -171,7 +191,7 @@ class ProductManager{
 			echo "Cannot Get Product List : ".$e->getMessage();
 		}
 	}
-
+	
 	function getAttributes($lang,$id) {
 		try{
 
@@ -185,6 +205,25 @@ class ProductManager{
 		catch(Exception $e){
 			echo "Cannot Get Product Attribute : ". $e->getMessage();
 		}
+	}
+	
+	function get_attribute_by_product($proid){
+		
+		try{
+
+			$sql = "select * ";
+			$sql .= " from product_attribute  ";
+			$sql .= " where proid='".$proid."' ;";
+			
+			log_debug("product attribute info > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product attribute info : ".$e->getMessage();
+		}
+
 	}
 	
 	function getColor($id){
@@ -236,41 +275,12 @@ class ProductManager{
 	function insert_product($items){
 		try{
 			
-			/*
-			#insert sequence
-			1.#products
-			typeid
-			thumb
-			plan
-			title_th
-			title_en
-			dwg_file
-			pdf_file
-			create_by
-			create_date
-			active
-			
-			2.#product_attribute
-			attribute,th,en
-			prod.code
-			prod.name
-			prod.type
-			prod.size
-			prod.shape
-			prod.seat
-			prod.outlet
-			prod.rough
-			prod.systems
-			prod.comsumption
-			prod.faucet
-			prod.overflow
-			*/
-			
 			$typeid = $items["cate_id"];
-			$name_th = $items["name_th"];
-			$name_en = $items["name_en"];
-			$thumb = $items["thumb"];
+			$title_th = $items["name_th"];
+			$title_en = $items["name_en"];
+			$thumb =  $items["thumb"];
 			$plan = $items["plan"];
+			$symbol_file =  $items["symbol_file"];
 			$dwg_file = $items["dwg_file"];
 			$pdf_file = $items["pdf_file"];
 			$active = "0";
@@ -278,19 +288,140 @@ class ProductManager{
 			$create_by = "0";
 			$create_date = "now()";
 			
-			$sql = "insert into products(typeid,name_th,name_en,thumb,plan,dwg_file,pdf_file,active,create_by,create_date) ";
-			$sql .= "values($typeid,'$name_th','$name_en','$thumb','$dwg_file','$pdf_file','$plan',$active,$create_by,$create_date); ";
+			$sql = "insert into products(typeid,title_th,title_en,thumb,plan,dwg_file,pdf_file,symbol_file,active,create_by,create_date) ";
+			$sql .= "values($typeid,'$title_th','$title_en','$thumb','$plan','$dwg_file','$pdf_file','$symbol_file',$active,$create_by,$create_date); ";
 			
 			log_debug("product manager > inesrt product > ".$sql);
 			
 			$this->mysql->execute($sql);
-			$result = $this->mysql->newid();
 			
+			
+			$proid = $this->mysql->newid();
+			
+			$attributes[] = array("name"=>"prod.code","th"=>$items["code_th"],"en"=>$items["code_en"]);
+			$attributes[] = array("name"=>"prod.name","th"=>$items["name_th"],"en"=>$items["name_en"]);
+			$attributes[] = array("name"=>"prod.type","th"=>$items["type_th"],"en"=>$items["type_en"]);
+			$attributes[] = array("name"=>"prod.size","th"=>$items["size_th"],"en"=>$items["size_en"]);
+			$attributes[] = array("name"=>"prod.shape","th"=>$items["shape_th"],"en"=>$items["shape_en"]);
+			$attributes[] = array("name"=>"prod.seat","th"=>$items["seat_th"],"en"=>$items["seat_en"]);
+			$attributes[] = array("name"=>"prod.outlet","th"=>$items["outlet_th"],"en"=>$items["outlet_en"]);
+			$attributes[] = array("name"=>"prod.rough","th"=>$items["rough_th"],"en"=>$items["rough_en"]);
+			$attributes[] = array("name"=>"prod.systems","th"=>$items["systems_th"],"en"=>$items["systems_en"]);
+			$attributes[] = array("name"=>"prod.comsumption","th"=>$items["comsumption_th"],"en"=>$items["comsumption_en"]);
+			$attributes[] = array("name"=>"prod.faucet","th"=>$items["faucet_th"],"en"=>$items["faucet_en"]);
+			$attributes[] = array("name"=>"prod.overflow","th"=>$items["overflow_th"],"en"=>$items["overflow_en"]);
+			
+			$this->insert_product_attribute($proid,$attributes);
+		
 			return $result;
 		}
 		catch(Exception $e){
 			echo "Cannot Insert Product : ".$e->getMessage();
 		}
+	}
+	
+	function update_product($items){
+		try{
+			$proid = $items["id"];
+			$typeid = $items["cate_id"];
+			$title_th = $items["name_th"];
+			$title_en = $items["name_en"];
+			$thumb =  $items["thumb"]=="" ? "" : ",thumb='".$items["thumb"]. "' ";
+			$plan = $items["plan"] == "" ? "" : ",plan='".$items["plan"]. "' ";
+			$symbol_file =  $items["symbol_file"] == "" ? "" : ",symbol_file='".$items["symbol_file"]. "' ";
+			$dwg_file = $items["dwg_file"] == "" ? "" : ",dwg_file='".$items["dwg_file"]. "' ";
+			$pdf_file = $items["pdf_file"] == "" ? "" : ",pdf_file='".$items["pdf_file"]. "' ";
+			$active = "0";
+			if(isset($items["active"])) $active='1';
+			$update_by = "0";
+			$update_date = "now()";
+			
+			$sql = "update products set ";
+			$sql .= " typeid=$typeid , title_th='$title_th' ,title_en='$title_en' ,active=$active ,update_by=$update_by , update_date='$update_date' ";
+			$sql .= $thumb . " ".  $plan  . " ".  $symbol_file  . " ".  $dwg_file  . " ".  $pdf_file ;
+			$sql .= " where id=$proid " ; 
+			
+			log_debug("product manager > update product > ".$sql);
+			
+			$this->mysql->execute($sql);
+			
+			$attributes[] = array("name"=>"prod.code","th"=>$items["code_th"],"en"=>$items["code_en"]);
+			$attributes[] = array("name"=>"prod.name","th"=>$items["name_th"],"en"=>$items["name_en"]);
+			$attributes[] = array("name"=>"prod.type","th"=>$items["type_th"],"en"=>$items["type_en"]);
+			$attributes[] = array("name"=>"prod.size","th"=>$items["size_th"],"en"=>$items["size_en"]);
+			$attributes[] = array("name"=>"prod.shape","th"=>$items["shape_th"],"en"=>$items["shape_en"]);
+			$attributes[] = array("name"=>"prod.seat","th"=>$items["seat_th"],"en"=>$items["seat_en"]);
+			$attributes[] = array("name"=>"prod.outlet","th"=>$items["outlet_th"],"en"=>$items["outlet_en"]);
+			$attributes[] = array("name"=>"prod.rough","th"=>$items["rough_th"],"en"=>$items["rough_en"]);
+			$attributes[] = array("name"=>"prod.systems","th"=>$items["systems_th"],"en"=>$items["systems_en"]);
+			$attributes[] = array("name"=>"prod.comsumption","th"=>$items["comsumption_th"],"en"=>$items["comsumption_en"]);
+			$attributes[] = array("name"=>"prod.faucet","th"=>$items["faucet_th"],"en"=>$items["faucet_en"]);
+			$attributes[] = array("name"=>"prod.overflow","th"=>$items["overflow_th"],"en"=>$items["overflow_en"]);
+			
+			$this->update_product_attribute($proid,$attributes);
+		
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Product : ".$e->getMessage();
+		}
+	}
+	
+	function insert_product_attribute($proid,$attrs){
+		
+			
+		try{
+			
+			foreach($attrs as $item){
+				
+				$attribute = $item["name"];
+				$th = $item["th"];
+				$en = $item["en"];
+				$sql = "insert into product_attribute(proid,attribute,th,en) ";
+				$sql .= "values($proid,'$attribute','$th','$en'); ";
+				
+				log_debug("product manager > inesrt product attribute > ".$sql);
+				$this->mysql->execute($sql);
+			}
+			
+			log_info("product manager > inesrt product attribute [".$proid."] > success ");
+			$result = "Insert Attribute Success.";
+			
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product Attribute : ".$e->getMessage();
+		}
+		
+	}
+	
+	function update_product_attribute($proid,$attrs){
+		
+			
+		try{
+			
+			foreach($attrs as $item){
+				
+				$attribute = $item["name"];
+				$th = $item["th"];
+				$en = $item["en"];
+				$sql = "update product_attribute set  ";
+				$sql .= " th='$th',en='$en' ";
+				$sql .= "where proid=$proid and attribute='$attribute'  ";
+				
+				log_debug("product manager > update product attribute > ".$sql);
+				$this->mysql->execute($sql);
+			}
+			
+			log_info("product manager > update product attribute [".$proid."] > success ");
+			$result = "Insert Attribute Success.";
+			
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Update Product Attribute : ".$e->getMessage();
+		}
+		
 	}
 	
 	function insert_product_type($items){
@@ -428,11 +559,33 @@ class ProductManager{
 		}
 	}
 	
+	
+	function delete_product($id){
+		try{
+
+			$sql = "delete from products where id=$id ;";
+			$this->mysql->execute($sql);
+			
+			$sql = "delete from product_attribute where proid=$id ;";
+			$this->mysql->execute($sql);
+			
+			$sql = "delete from product_images where proid=$id ;";
+			$this->mysql->execute($sql);
+			
+			$sql = "delete from product_color where proid=$id ;";
+			$this->mysql->execute($sql);
+			
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Product : ".$e->getMessage();
+		}
+	}
+	
+	
 	function delete_product_type($id){
 		try{
-			/*flag delete 
-			** can delete manual with your self. prevent data is lost
-			*/
+		
 			//$sql = "delete from product_type where id=$id ;";
 			$sql = "update product_type set active='0' where id=$id ;";
 			
@@ -523,15 +676,18 @@ class ProductManager{
 		try{
 			//$max_fetch = 10;
 
-			$sql = " select proid,code,name,rough,systems,seat,comsumption,overflow,size,shape,faucet,type,outlet ";
-			$sql .= " from search_product_".$lang."  ";
+			$sql = " select s.proid,s.code,s.name,s.rough,s.systems,s.seat,s.comsumption,s.overflow,s.size,s.shape,s.faucet,s.type,s.outlet,t.title_".$lang." as category ";
+			$sql .= " from search_product_".$lang." s  ";
+			$sql .= " inner join products p on s.proid = p.id  ";
+			$sql .= " inner join product_type t on p.typeid = t.id ";
 			$sql .= " where 1=1 ";
-			$sql .= " and name like '%".$search_text."%' ";
-			$sql .= " or code like '%".$search_text."%' ";
-			$sql .= " or type like '%".$search_text."%' ";
-			$sql .= " or systems like '%".$search_text."%' ";
-			$sql .= " or size like '%".$search_text."%' ";
-			$sql .= " order by name ";
+			$sql .= " and s.name like '%".$search_text."%' ";
+			$sql .= " or s.code like '%".$search_text."%' ";
+			$sql .= " or s.type like '%".$search_text."%' ";
+			$sql .= " or s.systems like '%".$search_text."%' ";
+			$sql .= " or s.size like '%".$search_text."%' ";
+			$sql .= " or t.title_".$lang." like '%".$search_text."%' ";
+			$sql .= " order by s.name ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			
 			$result = $this->mysql->execute($sql);
@@ -545,4 +701,5 @@ class ProductManager{
 }
 
 ?>
+
 

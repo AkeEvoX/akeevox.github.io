@@ -233,7 +233,6 @@ function loadproductreleated(id) {
 		complete : function(data){
 
 			//initial slider
-
 			$("#product-slider").lightSlider({
 				autoWidth: true
 				,item:4
@@ -318,7 +317,8 @@ function setviewlist(data)
 			var item = "";
 			var name = val.name;
 			
-			if(name.length > 10)
+			
+			if(name != null && name.length > 10)
 				name = name.slice(0,10)+"..";
 			
 			item += "<li class='col-md-3 col-sm-6 col-xs-12' >";
@@ -418,11 +418,14 @@ function setviewitem(data)
 	var view = $('#productgallery');
 	//view info
 	if(data!==undefined){
-
+	
+		console.log(data);
 		$('span[id="productname"]').text(data.title);
 
 		$('#plan').attr('src',data.plan);
-		$('#doc_link').attr('href',data.doc);
+		$('#symbol_view').attr('src',data.symbol_file);
+		$('#pdf_view').attr('href',data.pdf_file);
+		$('#dwg_view').attr('href',data.dwg_file);
 		$('#btn_compare').attr('data-id',data.id);//data-thumb
 		$('#btn_compare').attr('data-thumb',data.thumb);
 		
@@ -442,9 +445,7 @@ function setviewitem(data)
 		//view image list
 		if(data.image!=null){
 			$.each(data.image,function(i,val){
-				
-				
-				
+			
 				var item = "";
 				item += "<img src='"+val.image+"' data-image='"+val.image+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
 				view.append(item);

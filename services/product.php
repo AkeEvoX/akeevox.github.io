@@ -259,7 +259,9 @@ function setProduct($lang,$id) {
 			,"plan"=>$row->plan
 			,"code"=>$row->code
 			,"name"=>$row->name
-			,"doc"=>$row->doc_link
+			,"pdf_file"=>$row->pdf_file
+			,"dwg_file"=>$row->dwg_file
+			,"symbol_file"=>$row->symbol_file
 			,"colors"=>setColor($id)
 			);
 	}

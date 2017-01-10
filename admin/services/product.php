@@ -11,10 +11,7 @@ $id="";
 
 $id = GetParameter("id");
 $type = GetParameter("type");
-
 $result = "";
-
-$product = new ProductManager();
 
 switch($type){
 	case "list":
@@ -28,31 +25,18 @@ switch($type){
 		
 	break;
 	case "add":
-		// $items["parent"] = $_POST["parent"];
-		// $items["title_th"] = $_POST["th"];
-		// $items["title_en"] = $_POST["en"];
-		// $items["link"] = "category.html";
-		//category.html
-		//$items["cover"] = $_POST["cover"];
-		$result = Insert($items);
+		$result = Insert($_POST);
 		log_debug("Admin Category  > Insert " . print_r($result,true));
 	break;
 	case "edit":
-		$items["id"] = $_POST["id"];
-		$items["parent"] = $_POST["parent"];
-		$items["title_th"] = $_POST["th"];
-		$items["title_en"] = $_POST["en"];
-		//$items["cover"] = $_POST["cover"];
-		$result = Update($items);
+		$result = Update($_POST);
 		log_debug("Admin Category  > Update " . print_r($result,true));
 	break;
 	case "del":
-		$items["id"] = $_POST["id"];
-		$result = Delete($items);
+		$result = Delete($id);
 	break;
 	case "item":
-		$items["id"] = $id;
-		$result = getItems($items);
+		$result = get_Items($id);
 	break;
 	default:
 	
@@ -105,49 +89,139 @@ function getOptions($lang){
 	return $result;
 }
 
-function getItems($items){
+function get_Items($id){
 	
 	$product = new ProductManager();
-	$data = $product->getProductTypeByID($items["id"]);
+	$data = $product->get_product_info($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-//id,parent,title_th,title_en,detail_th,detail_en,thumb,cover
-			$item =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"thumb"=>$row->thumb
-		  				,"cover"=>$row->cover);
-
-			$result = $item;
-		
+			$item = $data->fetch_array();
+			$data_attribute = $product->get_attribute_by_product($id);
+			
+			while($row = $data_attribute->fetch_object()){
+				$attr_name = $row->attribute;
+				$item[$attr_name] = array("th"=>$row->th,"en"=>$row->en);
+			}
+			
 	}
+	
+	$result = $item;
 	return $result;
 }
 
 function Insert($items){
 	
+	//upload content
+	if($_FILES["file_thumbnail"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/thumb_". date('Ymd_His') ."_".$_FILES['file_thumbnail']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_thumbnail']['tmp_name'];
+		$items["thumb"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_symbol"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/symbol_". date('Ymd_His') ."_".$_FILES['file_symbol']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_symbol']['tmp_name'];
+		$items["symbol_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_plan"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/plan_". date('Ymd_His') ."_".$_FILES['file_plan']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_plan']['tmp_name'];
+		$items["plan"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_dwg"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/dwf_". date('Ymd_His') ."_".$_FILES['file_dwg']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_dwg']['tmp_name'];
+		$items["dwg_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_pdf"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/pdf_". date('Ymd_His') ."_".$_FILES['file_pdf']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_pdf']['tmp_name'];
+		$items["pdf_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	
 	$product = new ProductManager();
 	$result = $product->insert_product($items);
+	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
+	
+	$items["thumb"] = "";
+	$items["symbol_file"]="";
+	$items["plan"] = "";
+	$items["dwg_file"]="";
+	$items["pdf_file"]="";
+	
+	if($_FILES["file_thumbnail"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/thumb_". date('Ymd_His') ."_".$_FILES['file_thumbnail']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_thumbnail']['tmp_name'];
+		$items["thumb"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_symbol"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/symbol_". date('Ymd_His') ."_".$_FILES['file_symbol']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_symbol']['tmp_name'];
+		$items["symbol_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_plan"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/plan_". date('Ymd_His') ."_".$_FILES['file_plan']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_plan']['tmp_name'];
+		$items["plan"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_dwg"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/dwf_". date('Ymd_His') ."_".$_FILES['file_dwg']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_dwg']['tmp_name'];
+		$items["dwg_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_pdf"]["name"]!="")
+	{
+		$filename = "images/products/".$items["cate_id"]."/pdf_". date('Ymd_His') ."_".$_FILES['file_pdf']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_pdf']['tmp_name'];
+		$items["pdf_file"] = $filename;
+		upload_image($source,$distination);
+	}
+	
+	
 	$product = new ProductManager();
-	$result = $product->update_product_type($items);
+	$result = $product->update_product($items);
+	
 	return "UPDATE SUCCESS.";
 	
 }
 
-function Delete($items){
+function Delete($id){
 	
 	$product = new ProductManager();
-	$product->delete_product_type($items["id"]);
+	$product->delete_product($id);
 	return "DELETE SUCCESS.";
 }
 

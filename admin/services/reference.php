@@ -149,14 +149,15 @@ function Update($items){
 		$source = $_FILES['file_upload']['tmp_name'];
 		$items["image"] = $filename;
 		$items["thumbnail"] = $filename;
+		
+		upload_image($source,$distination);
 	}
 	
 	$org = new OrgManager();
 	//1)update data
 	$result = $org->update_reference($items);
 	
-	//2)upload image
-	upload_image($source,$distination);
+
 	
 	return "UPDATE SUCCESS.";
 	
