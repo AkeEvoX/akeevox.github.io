@@ -58,14 +58,25 @@ product.loadlist = function(){
 }
 
 product.loadoptions= function(select_id){
+	
 	console.log('call option='+select_id);
 	var endpoint = "services/category.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'option'};
 	
 	utility.service(endpoint,method,args,function (data){
-		viewmenulist(data,select_id);
+		opt_viewmenulist(data,select_id);
 	});
+	
+}
+
+product.option = function(cate_id){
+	
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'list_products','id':cate_id};
+	
+	utility.service(endpoint,method,args,view_product_option);
 	
 }
 
@@ -74,7 +85,7 @@ product.loaditem = function(id){
 	var endpoint = "services/product.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
-	utility.service(endpoint,method,args,set_item);
+	utility.service(endpoint,method,args,set_item_product);
 }
 
 function view_list_product(data){
@@ -109,7 +120,26 @@ function view_list_product(data){
 	view.append(item);
 }
 
-function set_item(data){
+function view_product_option(data){
+	
+	var view = $('#pro_id');
+	view.html('');
+	var item = "";
+	if(data.result==undefined) {
+		console.log("category-manager > list menu  :: data not found.");
+		return;
+	}
+	
+	$.each(data.result,function(i,val){
+		
+		item += "<option value='"+val.id+"'>"+val.title_en+"</option>";
+		
+	});
+	view.append(item);
+	
+}
+
+function set_item_product(data){
 	console.log(data);
 	
 	if(data.result==undefined || data.result=="") {
@@ -155,24 +185,8 @@ function set_item(data){
 	$('#overflow_en').val(data.result["prod.overflow"].en);
 	
 }
-//remove
-function set_list_product(id,title,category,thumb){
-	
-	var result = "";
-	var param = '?id='+id;
-	result+="<tr id='row"+id+"'>";
-	result+="<td><input type='checkbox' name='mark[]' data-id='"+id+"' /></td>";
-	result+="<td>"+id+"</td>";
-	result+="<td>"+category+"</td>";
-	result+="<td>"+title+"</td>";
-	result+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('product-edit.html','"+param+"') >แก้ไข</span></td>";
-	result+="</tr>";
-	
-	return result;
-}
 
-
-function viewmenulist(data,select_id){
+function opt_viewmenulist(data,select_id){
 	
 	var catelist = $('#cate_id');
 	catelist.html('');
@@ -187,13 +201,12 @@ function viewmenulist(data,select_id){
 	
 	var child = data.result.filter(function(item){ return item.parent==1; });
 	item = "<option value='"+parent[0].id+"'>"+parent[0].title+"</option>";
-	item += viewchildmenu(child,data,true,"",select_id);
+	item += opt_viewchildmenu(child,data,true,"",select_id);
 	
 	catelist.append(item);	
 }
 
-
-function viewchildmenu(child,data,directory,lastmenu,select_id){
+function opt_viewchildmenu(child,data,directory,lastmenu,select_id){
 	var item = "";
 	$.each(child,function(i,val){
 		

@@ -137,8 +137,6 @@ function set_view_item(data){
 	$('#location_en').val(data.result.location_en);
 	
 	var $radio = $('input[name=islocal][value='+data.result.islocal+']').prop('checked',true);
-	//$radio.filter("[value='"+data.result.islocal+ "']").prop('checked',true);
-	
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);

@@ -31,8 +31,6 @@ cate.edit = function(){
 	var cate_th = $('#cate_th').val();
 	var cate_en = $('#cate_en').val();
 	var parent = $('#cate_id option:selected');
-	//alert('hello - ' + cate_th);
-	//console.debug("cate add :: "+cate_th+";"+cate_en+";"+parent.val());
 	
 	var endpoint = "services/category.php";
 	var method = "POST";

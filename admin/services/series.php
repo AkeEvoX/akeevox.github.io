@@ -23,40 +23,26 @@ switch($type){
 		$max_fetch = $_GET["fetch"];
 		$result = get_list_fetch($lang,$counter,$max_fetch);
 	break;
-	case "option":
-		$CATEGORIES = 1;
-		$result = getOptions($lang);
-		
+	case "list_product":
+		 $result = get_list_product($id);
 	break;
 	case "add":
-		$items["parent"] = $_POST["parent"];
-		$items["title_th"] = $_POST["th"];
-		$items["title_en"] = $_POST["en"];
-		$items["link"] = "category.html";
-		//category.html
-		//$items["cover"] = $_POST["cover"];
-		$result = Insert($items);
-		log_debug("Admin Category  > Insert " . print_r($result,true));
+		$result = Insert($_POST);
+	break;
+	case "add_product":
+		$result = Insert_product($_POST);
 	break;
 	case "edit":
-		$items["id"] = $_POST["id"];
-		$items["parent"] = $_POST["parent"];
-		$items["title_th"] = $_POST["th"];
-		$items["title_en"] = $_POST["en"];
-		//$items["cover"] = $_POST["cover"];
-		$result = Update($items);
-		log_debug("Admin Category  > Update " . print_r($result,true));
+		$result = Update($_POST);
 	break;
 	case "del":
-		$items["id"] = $_POST["id"];
-		$result = Delete($items);
+		$result = Delete($id);
+	break;
+	case "del_pro":
+		$result = Delete_Product($id);
 	break;
 	case "item":
-		$items["id"] = $id;
-		$result = getItems($items);
-	break;
-	default:
-	
+		$result = get_item($id);
 	break;
 }
 
@@ -78,9 +64,25 @@ function get_list_fetch($lang,$start_fetch,$max_fetch){
 						,"title_th"=>$row->title_th
 						,"title_en"=>$row->title_en
 		  				,"thumb"=>$row->thumb
-						,"cover"=>$row->cover);
+						,"cover"=>$row->cover
+						,"active"=>$row->active
+						);
 
 			$result[] = $item;
+	}
+	return $result;
+}
+
+function get_list_product($series_id){
+	$series = new SeriesManager();
+	$data = $series->get_list_product($series_id);
+	$result = "";
+	
+	if($data==null) return $result;
+	
+	while($row = $data->fetch_object()){
+
+			$result[] = $row;
 	}
 	return $result;
 }
@@ -106,38 +108,73 @@ function getOptions($lang){
 	return $result;
 }
 
-function getItems($items){
+function get_item($id){
 	
-	$product = new ProductManager();
-	$data = $product->getProductTypeByID($items["id"]);
+	$series = new SeriesManager();
+	$data = $series->get_series_info($id);
 	
 	if($data){
 		
-			$row = $data->fetch_object();
-//id,parent,title_th,title_en,detail_th,detail_en,thumb,cover
-			$item =  array("id"=>$row->id
-						,"parent"=>$row->parent
-						,"title_th"=>$row->title_th
-						,"title_en"=>$row->title_en
-						,"detail_th"=>$row->detail_th
-						,"detail_en"=>$row->detail_en
-						,"thumb"=>$row->thumb
-		  				,"cover"=>$row->cover);
-
-			$result = $item;
-		
+			$result = $data->fetch_object();
 	}
 	return $result;
 }
 
 function Insert($items){
 	
+	if($_FILES["file_upload_th"]["name"]!="")
+	{
+		$filename = "images/series/th/". date('Ymd_His') ."_".$_FILES['file_upload_th']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];
+		$items["cover_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_upload_en"]["name"]!="")
+	{
+		$filename = "images/series/en/". date('Ymd_His') ."_".$_FILES['file_upload_en']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_en']['tmp_name'];
+		$items["cover_en"] = $filename;
+		upload_image($source,$distination);
+	}
+	
 	$series = new SeriesManager();
 	$result = $series->insert_item($items);
+	
+	
+	return "INSERT SUCCESS.";
+}
+
+function Insert_product($items){
+		
+	$series = new SeriesManager();
+	$result = $series->insert_product($items);
+	
+	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
+	
+	$items["cover_th"] = "";
+	$items["cover_en"] = "";
+	if($_FILES["file_upload_th"]["name"]!="")
+	{
+		$filename = "images/series/th/". date('Ymd_His') ."_".$_FILES['file_upload_th']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];
+		$items["cover_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES["file_upload_en"]["name"]!="")
+	{
+		$filename = "images/series/en/". date('Ymd_His') ."_".$_FILES['file_upload_en']['name'];//20010310224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_en']['tmp_name'];
+		$items["cover_en"] = $filename;
+		upload_image($source,$distination);
+	}
 	
 	$series = new SeriesManager();
 	$result = $series->update_item($items);
@@ -145,10 +182,17 @@ function Update($items){
 	
 }
 
-function Delete($items){
+function Delete($id){
 	
 	$series = new SeriesManager();
-	$series->delete_item($items["id"]);
+	$series->delete_item($id);
+	return "DELETE SUCCESS.";
+}
+
+function Delete_Product($id){
+	
+	$series = new SeriesManager();
+	$series->delete_product($id);
 	return "DELETE SUCCESS.";
 }
 

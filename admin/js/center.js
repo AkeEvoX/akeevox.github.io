@@ -24,7 +24,6 @@ control.menutab = function(page){
 }
 
 control.pagetab = function(page,object){
-	
 	//$('#viewpage').unbind('load');
 	$('#parameter').val(object);
 	$('#viewpage').html('');

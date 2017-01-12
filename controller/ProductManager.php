@@ -109,6 +109,24 @@ class ProductManager{
 			echo "Cannot Get ProductType By ID : ".$e->getMessage();
 		}
 	}
+	
+	function get_product_category($cateid){
+		
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select * ";
+			$sql .= " from products ";
+			$sql .= " where typeid=".$cateid." ;";
+			log_debug("get_product_category > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product of Type : ".$e->getMessage();
+		}
+		
+	}
 
 	function getProductType($lang,$id) {
 		try{
@@ -432,7 +450,8 @@ class ProductManager{
 			$link = $items["link"];
 			$cover_th = $items["cover_th"];
 			$cover_en = $items["cover_en"];
-			$active = "1";
+			$active='0';
+			if(isset($items["active"]))	$active='1';
 			$create_by = "0";
 			$create_date = "now()";
 			
@@ -456,7 +475,10 @@ class ProductManager{
 			$title_th = $items["title_th"];
 			$title_en = $items["title_en"];
 			$thumb = $items["thumb"];
-			$active = "1";
+			
+			$active='0';
+			if(isset($items["active"]))	$active='1';
+			
 			$create_by = "0";
 			$create_date = "now()";
 			

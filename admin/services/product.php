@@ -24,6 +24,10 @@ switch($type){
 		$result = getOptions($lang);
 		
 	break;
+	case "list_products":
+		$result = get_list_product($id);
+		
+	break;
 	case "add":
 		$result = Insert($_POST);
 		log_debug("Admin Category  > Insert " . print_r($result,true));
@@ -83,6 +87,29 @@ function getOptions($lang){
 		  				,"link"=>$row->link);
 
 			$result[] = $menu;
+		}
+
+	}
+	return $result;
+}
+
+
+
+function get_list_product($cate_id){
+	
+	$product = new ProductManager();
+	$data = $product->get_product_category($cate_id);
+
+	if($data){
+
+		while($row = $data->fetch_object()){
+
+			// $menu =  array("id"=>$row->id
+						// ,"parent"=>$row->parent
+						// ,"title"=>$row->title
+		  				// ,"link"=>$row->link);
+
+			$result[] = $row;
 		}
 
 	}
