@@ -104,11 +104,6 @@ function get_list_product($cate_id){
 
 		while($row = $data->fetch_object()){
 
-			// $menu =  array("id"=>$row->id
-						// ,"parent"=>$row->parent
-						// ,"title"=>$row->title
-		  				// ,"link"=>$row->link);
-
 			$result[] = $row;
 		}
 
