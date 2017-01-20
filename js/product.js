@@ -386,7 +386,6 @@ function setViewCompare(data){
 			//item += "<li>&nbsp;</li>";
 			//item += "</ul>";
 			item += "</a></li>";
-
 			view.append(item);
 
 		});
@@ -402,8 +401,9 @@ function setViewAttribute(data)
 			var item = "";
 			var title = val.title == "" ? "&nbsp;" : val.title ; 
 			item += "<div class='col-xs-6 col-sm-6' >"
-			item += "<label class='col-xs-6 control-label' >"+val.label+"</label>";
-			item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+title+"</p></div>";
+			item += "<label class='col-xs-6 control-label' > "+val.label+"</label>";
+			item += "<p>&nbsp;"+title+"</p>";
+			//item += "<div class='col-xs-6 col-sm-6'><p lass='form-control'>"+title+"</p></div>";
 			item += "</div>"
 			//console.warn(item);
 			view.append(item);

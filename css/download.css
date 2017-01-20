@@ -18,7 +18,15 @@
 @media(max-width:600px) {
 	
 	.col-xs-6 {
-		width:100%;
+		width:100%; 
+		
+	}
+	
+	.view img{
+		min-width:50%;
+		display:block;
+		margin:0 auto;
+		
 	}
 	
 }

@@ -74,6 +74,7 @@ function setview(resp)
 					result += "<td class='col-md-2'>"+val.type+"</td>";
 					result += "<td class='col-md-2'>"+val.category+"</td>";
 					result += "<td class='col-md-2'>"+val.size+"</td>";
+					result += "<td class='col-md-2'><a href='productdetail.html?id="+val.proid+"' class='btn btn-default'>click</a></td>";
 					result += "</tr>";
 					max_item++;
 			});

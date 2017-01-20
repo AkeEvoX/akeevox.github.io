@@ -57,7 +57,7 @@ series.delete = function(){
 		 $('#row'+id).remove();
 		 console.log('id='+id);
 	 });
-	 alert('delete success.');
+	 alert('DELETE SUCCESS.');
 	 //cate.loadlist();
 }
 
@@ -74,7 +74,7 @@ series.delete_product = function(){
 		 $('#row'+id).remove();
 		 console.log('id='+id);
 	 });
-	 alert('delete success.');
+	 alert('DELETE SUCCESS.');
 }
 
 series.loadlist = function(){
@@ -157,7 +157,7 @@ function set_item_series(data){
 		$('#active').prop('checked',true);
 	
 }
-//remove
+
 function view_series_product(data){
 	
 	var view = $('#data_list');

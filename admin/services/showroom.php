@@ -21,13 +21,16 @@ switch($type){
 	case "list":
 		$counter = $_GET["couter"];// count last fetch data
 		$max_fetch = $_GET["fetch"];
-		$result = get_list_fetch($lang,$counter,$max_fetch);
+		$result = get_list_fetch($counter,$max_fetch);
 	break;
 	case "list_product":
 		 $result = get_list_product($id);
 	break;
 	case "add":
 		$result = Insert($_POST);
+	break;
+	case "add_product":
+		$result = Insert_product($_POST);
 	break;
 	case "edit":
 		$result = Update($_POST);
@@ -49,9 +52,9 @@ switch($type){
 echo json_encode(array("result"=> $result ,"code"=>"0"));
 
 /************* function list **************/
-function get_list_fetch($lang,$start_fetch,$max_fetch){
+function get_list_fetch($start_fetch,$max_fetch){
 	$room = new ShowRoomManager();
-	$data = $room->get_fetch_list($lang,$start_fetch,$max_fetch);
+	$data = $room->get_fetch_list($start_fetch,$max_fetch);
 	$result = "";
 	
 	if($data==null) return $result;
@@ -59,13 +62,29 @@ function get_list_fetch($lang,$start_fetch,$max_fetch){
 	
 	while($row = $data->fetch_object()){
 
-			$item =  array("id"=>$row->id
+			$result[] =  array("id"=>$row->id
 						,"title_th"=>$row->title_th
 						,"title_en"=>$row->title_en
 		  				,"thumb"=>$row->thumb
-						,"cover"=>$row->cover);
+						,"cover"=>$row->cover
+						,"active"=>$row->active
+			);
 
-			$result[] = $item;
+			// $result[] = $item;
+	}
+	return $result;
+}
+
+function get_list_product($room_id){
+	$room = new ShowRoomManager();
+	$data = $room->get_list_product($room_id);
+	$result = "";
+	
+	if($data==null) return $result;
+	
+	while($row = $data->fetch_object()){
+
+			$result[] = $row;
 	}
 	return $result;
 }
@@ -91,24 +110,10 @@ function getOptions($lang){
 	return $result;
 }
 
-function get_list_product($room_id){
-	$room = new ShowRoomManager();
-	$data = $room->get_list_product($room_id);
-	$result = "";
-	
-	if($data==null) return $result;
-	
-	while($row = $data->fetch_object()){
-
-			$result[] = $row;
-	}
-	return $result;
-}
-
 function get_item($id){
 	
 	$room = new ShowRoomManager();
-	$data = $room->getProductTypeByID($id);
+	$data = $room->get_showroom_info($id);
 	
 	if($data){
 		
@@ -158,7 +163,7 @@ function Update($items){
 	$items["cover_en"] = "";
 	if($_FILES["file_upload_th"]["name"]!="")
 	{
-		$filename = "images/series/th/". date('Ymd_His') ."_".$_FILES['file_upload_th']['name'];//20010310224010
+		$filename = "images/showroom/th/". date('Ymd_His') ."_".$_FILES['file_upload_th']['name'];//20010310224010
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload_th']['tmp_name'];
 		$items["cover_th"] = $filename;
@@ -166,7 +171,7 @@ function Update($items){
 	}
 	if($_FILES["file_upload_en"]["name"]!="")
 	{
-		$filename = "images/series/en/". date('Ymd_His') ."_".$_FILES['file_upload_en']['name'];//20010310224010
+		$filename = "images/showroom/en/". date('Ymd_His') ."_".$_FILES['file_upload_en']['name'];//20010310224010
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload_en']['tmp_name'];
 		$items["cover_en"] = $filename;

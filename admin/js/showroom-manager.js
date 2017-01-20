@@ -15,7 +15,7 @@ showroom.add = function(args){
 	
 }
 
-series.add_product = function(args){
+showroom.add_product = function(args){
 	
 	var endpoint = "services/showroom.php";
 	var method = "POST";
@@ -57,11 +57,10 @@ showroom.delete = function(){
 		 $('#row'+id).remove();
 		 console.log('id='+id);
 	 });
-	 alert('delete success.');
-	 //cate.loadlist();
+	 alert('DELETE SUCCESS.');
 }
 
-series.delete_product = function(){
+showroom.delete_product = function(){
 	console.log('delete product showroom');
 	var endpoint = "services/showroom.php";
 	var method = "POST";
@@ -74,17 +73,26 @@ series.delete_product = function(){
 		 $('#row'+id).remove();
 		 console.log('id='+id);
 	 });
-	 alert('delete success.');
+	 alert('DELETE SUCCESS.');
 }
 
 showroom.loadlist = function(){
-	//$('#data_list').html('');
 	console.log('call list showroom.');
 	var endpoint = "services/showroom.php";
 	var method = "GET";
 	var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'20'};
 	utility.service(endpoint,method,args,view_list_showroom);
 	
+}
+
+showroom.productlist = function(id){
+	$('#id').val(id);
+	console.log('call list showroom.');
+	var endpoint = "services/showroom.php";
+	var method = "GET";
+
+	var args = {'_':new Date().getMinutes(),'type':'list_product' ,'id':id};
+	utility.service(endpoint,method,args,view_showroom_product);
 }
 
 showroom.loaditem = function(id){
@@ -94,6 +102,7 @@ showroom.loaditem = function(id){
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,set_item_showroom);
 }
+
 
 function view_list_showroom(data){
 	
@@ -107,13 +116,16 @@ function view_list_showroom(data){
 	var max_item = $('#counter').val();
 	
 	$.each(data.result,function(i,val){
-		
+		console.log("ID "+val.id+" is "+val.active);
+		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
 		var param = '?id='+val.id;
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
 		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.title_en+"</td>";
+		item+="<td>"+active+"</td>";
+		item+="<td><span class='btn btn-primary btn-sm' onclick=control.pagetab('showroom-products.html','"+param+"') >สินค้า</span></td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('showroom-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
 

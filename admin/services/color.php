@@ -24,8 +24,7 @@ switch($type){
 		$result = get_list_fetch($lang,$counter,$max_fetch);
 	break;
 	case "option":
-		$CATEGORIES = 1;
-		$result = getOptions($lang);
+		$result = getOptions();
 		
 	break;
 	case "add":
@@ -93,6 +92,23 @@ function getItems($items){
 
 			$result = $item;
 		
+	}
+	return $result;
+}
+
+function getOptions(){
+	
+	$product = new ProductManager();
+	$data = $product->get_fetch_color("",0,20);
+	
+	if($data){
+		while($row = $data->fetch_object()){
+			$result[] =  array("id"=>$row->id
+						,"title_th"=>$row->title_th
+						,"title_en"=>$row->title_en
+						,"thumb"=>"../".$row->thumb
+		  				,"active"=>$row->active);
+		}
 	}
 	return $result;
 }

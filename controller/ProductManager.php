@@ -683,7 +683,7 @@ class ProductManager{
 			$sql .= " order by id ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 
-			log_debug($sql);
+			log_debug("get fetch color > " + $sql);
 			
 			$result = $this->mysql->execute($sql);
 			return  $result;

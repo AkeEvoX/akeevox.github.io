@@ -1,3 +1,4 @@
+<link rel="stylesheet" href="../plugin/bootstraps/css/bootstrap-select.css">
 <div class='col-md-12'>
 	<h3>จัดการสินค้า</h3>
 	<hr/>
@@ -82,6 +83,9 @@
 					</li>
 					<li role="presentation">
 						<a class='menutab' href="#en" data-toggle="tab">EN</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#color" data-toggle="tab">Color</a>
 					</li>
 				</ul>
 				<div class='tab-content' style='margin-top:10px;'>
@@ -237,6 +241,29 @@
 							</div>
 						</div>
 					</div>
+					<div id='color' class="tab-pane fade in active">
+						<div class='col-md-12'>
+							<div class="form-group">
+								<div class="input-group col-md-6">
+									<select class="selectpicker" id='color_list'>
+										<option value='white'>white</option>
+										<option value='black'>black</option>
+									</select>
+								  <span class="input-group-btn">
+									<button class="btn btn-default" type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+								  </span>
+								</div><!-- /input-group -->
+							</div><!-- /form-group -->
+							<div class="form-group">
+								<ul class="list-group">
+								  <li class="list-group-item">
+									<span class="badge"><span class="glyphicon glyphicon-remove"></span></span>
+									Cras justo odio
+								  </li>
+								</ul>
+							</div><!-- /form-group -->
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class='row text-center'>
@@ -246,12 +273,20 @@
 	</form>
 </div>
 <script src='js/product-manager.js' />
+<script src='js/color-manager.js' />
+<script src='../plugin/bootstraps/js/bootstrap-select.js' />
 <script>
 
 $(document).ready(function(){
 
+$('select.selectpicker').selectpicker({
+    caretIcon: 'glyphicon glyphicon-menu-down'
+  });
+
 var id = utility.querystr("id",$('#parameter').val());
 product.loaditem(id);
+
+color.loadoptions();
 
 
 $('#product_form').on('submit',function(e){

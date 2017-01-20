@@ -76,7 +76,7 @@ function setaward(data){
 	$.each(data,function(idx,val){
 
 		 //item
-		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"' class='img-fluid' /></a></div>";
 
 		//row
 		 if(((idx +1) % row) == 0) //if(((idx +1) % 4) == 0)
@@ -145,7 +145,7 @@ function setstandard(data) {
 	$.each(data,function(idx,val){
 
 		//item
-		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-responsive' /></a></div>";
+		 itemview += "<div class='col-xs-12 col-sm-6 col-md-3' style='position:relative;float:left;' ><a href='javascript:void(0);' onclick=popup("+val.id+"); ><img src='"+val.thumbnail+"'   class='img-fluid' /></a></div>";
 
 		//row
 		 if(((idx +1) % row) === 0)

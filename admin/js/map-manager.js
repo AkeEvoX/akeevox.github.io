@@ -32,6 +32,7 @@ function set_view(data){
 	
 	if(data.result==undefined) return;
 	
-	$('#image').attr('src',data.result.link);
+	$('#image_th').attr('src',data.result.title_th);
+	$('#image_en').attr('src',data.result.title_en);
 	
 }

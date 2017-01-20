@@ -1,7 +1,7 @@
 <div class='col-md-12' >
 	<h3>จัดการเพิ่มสินค้า</h3><hr/>
 	<h4><span class='glyphicon glyphicon-stop'></span>เพิ่มสินค้า</h4>
-	<form id='series_form' action='' method='post' enctype="multipart/form-data">
+	<form id='room_form' action='' method='post' enctype="multipart/form-data">
 		<div class='row'>
 			<div class="form-horizontal">
 				<div class="form-group">
@@ -41,26 +41,26 @@
 </div>
 <script src='js/category-manager.js'></script>
 <script src='js/product-manager.js'></script>
-<script src='js/series-manager.js'></script>
+<script src='js/showroom-manager.js'></script>
 <script>
 
  $(document).ready(function(){
  
 	var id = utility.querystr("id",$('#parameter').val());
-	console.log("series id = "+id);
+	console.log("showroom id = "+id);
 	$('#id').val(id);
 	cate.loadoptions();
 	
-	$('#series_form').on('submit',function(e){
+	$('#room_form').on('submit',function(e){
 		e.preventDefault();
 		var args = new FormData(this);
 		args.append('type', 'add_product');
-		series.add_product(args);
+		showroom.add_product(args);
 	});
 	
 	$('back').on('click',function(e){
 		var param ='?id='+$('#id').val();
-		control.pagetab('series-products.html','?id='+param);
+		control.pagetab('showroom-products.html','?id='+param);
 	});
  });
  

@@ -48,7 +48,7 @@ class SeriesManager{
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get Product Item : ".$e->getMessage();
+			echo "Cannot Get Series Product Item : ".$e->getMessage();
 		}
 		
 	}
@@ -202,12 +202,12 @@ class SeriesManager{
 	function delete_product($id){
 		try{
 			$sql = "delete from series where id=$id ;";
-			log_debug("delete series > " . $sql);
+			log_debug("delete product series > " . $sql);
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Series : ".$e->getMessage();
+			echo "Cannot Delete Product Series : ".$e->getMessage();
 		}
 	}
 	

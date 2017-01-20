@@ -1,8 +1,8 @@
 <link href="../plugin/jquery/summernote/summernote.css" rel="stylesheet">
 <div class='col-md-12' >
-	<h3>จัดการเพิ่มข้อมูล Series</h3>
+	<h3>จัดการเพิ่มข้อมูล Show Room</h3>
 	<hr/>
-	<form id='series_form' action='' method='post' enctype="multipart/form-data">
+	<form id='room_form' action='' method='post' enctype="multipart/form-data">
 		<div class="form-group">
 			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
 			<div class='col-md-5'>
@@ -20,16 +20,22 @@
 		<div class='tab-content' style='margin-top:10px;'>
 			<div id='th' class="tab-pane fade in active">
 				<div class='col-md-12'>
-					<div class="form-group">
-					<label for="file_upload" class='col-md-3'>ภาพแบนเนอร์ Series <br/>(ขนาด ...x...Pixels) </label>
+				<div class="form-group">
+						<label for="preview_th" class='col-md-3'>ภาพตัวอย่าง</label>
+						<div class='col-md-9'>
+							<img class="img-responsive" id="preview_th" onerror=this.src='../../images/common/unavaliable.jpg' name="preview_th"  />
+						</div>
+					</div>
+				<div class="form-group">
+					<label for="file_upload" class='col-md-3'>ภาพแบนเนอร์ Showroom <br/>(ขนาด ...x...Pixels) </label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_upload_th" name="file_upload_th"  />
 					</div>
 				</div>
 					<div class="form-group">
-						<label for="title_th" class='col-md-3'>ชื่อ Series</label>
+						<label for="title_th" class='col-md-3'>ชื่อ ShowRoom</label>
 						<div class='col-md-9'>
-							<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อ Series" value='' />
+							<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อ ShowRoom" value='' />
 						</div>
 					</div>
 					<div class="form-group">
@@ -42,16 +48,22 @@
 			</div>
 			<div id='en' class="tab-pane fade">
 				<div class='col-md-12'>
-				<div class="form-group">
-					<label for="file_upload" class='col-md-3'>Banner Series <br/>(Size ...x...Pixels) </label>
+					<div class="form-group">
+						<label for="preview_en" class='col-md-3'>Preview</label>
+						<div class='col-md-9'>
+							<img class="img-responsive" id="preview_en" onerror=this.src='../../images/common/unavaliable.jpg' name="preview_en"  />
+						</div>
+					</div>
+					<div class="form-group">
+					<label for="file_upload" class='col-md-3'>Banner ShowRoom <br/>(Size ...x...Pixels) </label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_upload_en" name="file_upload_en"  />
 					</div>
 				</div>
 					<div class="form-group">
-						<label for="title_en" class='col-md-3'>Series Name</label>
+						<label for="title_en" class='col-md-3'>ShowRoom Name</label>
 						<div class='col-md-9'>
-							<input type="text" class="form-control" id="title_en" name='title_en' placeholder="Series Name" value='' />
+							<input type="text" class="form-control" id="title_en" name='title_en' placeholder="ShowRoom Name" value='' />
 						</div>
 					</div>
 					<div class="form-group">
@@ -66,27 +78,29 @@
 		<div class='row text-center'>
 			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
-
+	<input type='hidden' id='id' name='id' />
 	</form>
 
 
 </div>
-<script src='js/series-manager.js' ></script>
+<script src='js/showroom-manager.js' ></script>
 <script src='js/underscore-min.js' ></script>
 <script src='../plugin/jquery/summernote/summernote.js' ></script>
 <script>
 
 $(document).ready(function(){
 
+	var id = utility.querystr("id",$('#parameter').val());
+	showroom.loaditem(id);
+
 	$('#detail_th').summernote({ height: 200 });
 	$('#detail_en').summernote({ height: 200 });
 
-	$('#series_form').on('submit',function(e){
+	$('#room_form').on('submit',function(e){
 		e.preventDefault();
-
 		var args = new FormData(this);
-		args.append('type', 'add');
-		series.add(args);
+		args.append('type', 'edit');
+		showroom.edit(args);
 	});
 
 });

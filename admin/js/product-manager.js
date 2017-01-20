@@ -223,7 +223,7 @@ function opt_viewchildmenu(child,data,directory,lastmenu,select_id){
 			
 			
 			directory = true;
-			item += viewchildmenu(subchild,data,directory,lastmenu,select_id);
+			item += opt_viewchildmenu(subchild,data,directory,lastmenu,select_id);
 			directory=false;
 		}else{
 			

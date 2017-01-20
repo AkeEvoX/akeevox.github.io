@@ -39,8 +39,10 @@ function getinfo($id){
 		
 			$row = $data->fetch_object();
 			$item =  array("id"=>$row->id
-						,"link"=>"../".$row->link
-						,"active"=>$row->active
+				,"title_th"=>"../".$row->title_th
+				,"title_en"=>"../".$row->title_en
+				,"link"=>"../".$row->link
+				,"active"=>$row->active
 				);
 
 			$result = $item;
@@ -51,23 +53,25 @@ function getinfo($id){
 
 function Update($items){
 	
-	$items["link"] = "";
-
-	if($_FILES['file_upload']['name']!=""){
-		
-		$filename = "images/contact/".$_FILES['file_upload']['name'];
+	$items["title_th"] = "";
+	$items["title_en"] = "";
+	if($_FILES['file_upload_th']['name']!=""){
+		$filename = "images/contact/th_".$_FILES['file_upload_th']['name'];
 		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];
-		$items["link"] = $filename;
-		
+		$source = $_FILES['file_upload_th']['tmp_name'];
+		$items["title_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	if($_FILES['file_upload_en']['name']!=""){
+		$filename = "images/contact/en_".$_FILES['file_upload_en']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_en']['tmp_name'];
+		$items["title_en"] = $filename;
+		upload_image($source,$distination);
 	}
 	
 	$contact = new ContactManager();
 	$result = $contact->update_map($items);
-	
-	if($items["link"] && !file_exists($distination)){
-		upload_image($source,$distination);
-	}
 	
 	return "UPDATE SUCCESS.";
 	

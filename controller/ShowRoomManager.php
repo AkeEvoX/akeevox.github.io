@@ -53,16 +53,16 @@ class ShowRoomManager{
 		
 	}
 	
-	function get_fetch_list($lang,$start_fetch,$max_fetch){
+	function get_fetch_list($start_fetch,$max_fetch){
 		try{
 
-			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover_".$lang."  as cover,p.create_date  ";
+			$sql = " select p.id ,p.title_th ,p.title_en ,p.thumb ,p.cover_th,p.cover_en,p.create_date,p.active  ";
 			$sql .= " from product_type p ";
 			$sql .= " where p.parent in ('3') ";
 			$sql .= " order by p.id ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 
-			log_debug($sql);
+			log_debug("list showroom > " . $sql);
 			
 			$result = $this->mysql->execute($sql);
 			return  $result;
@@ -98,7 +98,7 @@ class ShowRoomManager{
 			$title_en = $items["title_en"];
 			$detail_th = $items["detail_th"];
 			$detail_en = $items["detail_en"];
-			$link = "series.html?id=";
+			$link = "showroom.html?id=";
 			$cover_th = $items["cover_th"];
 			$cover_en = $items["cover_en"];
 			
@@ -110,11 +110,13 @@ class ShowRoomManager{
 			$sql = "insert into product_type(parent,title_th,title_en,detail_th,detail_en,cover_th,cover_en,active,link,create_by,create_date) ";
 			$sql .= "values($parent,'$title_th','$title_en','$detail_th','$detail_en','$cover_th','$cover_en',$active,'$link',$create_by,$create_date); ";
 			
+			log_debug("insert showroom > " .$sql);
+			
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Insert ShowRoom : ".$e->getMessage();
+			echo "Cannot Insert ShowRoom Type : ".$e->getMessage();
 		}
 	}
 	
@@ -145,14 +147,7 @@ class ShowRoomManager{
 	
 	function update_item($items){
 		try{
-			$id = $items["id"];
-			$parent = $items["parent"];
-			$title_th = $items["title_th"];
-			$title_en = $items["title_en"];
-			$cover = $items["cover"];
-			$update_by = "0";
-			$update_date = "now()";
-			
+		
 			$id = $items["id"];
 			$title_th = $items["title_th"];
 			$title_en = $items["title_en"];
@@ -179,7 +174,7 @@ class ShowRoomManager{
 			$sql .= "where id=$id ;";
 			
 			//echo $sql."<br/>";
-			log_warning("update_ShowRoom > " . $sql);
+			log_warning("update ShowRoom > " . $sql);
 			
 			$result = $this->mysql->execute($sql);
 			return $result;
@@ -191,8 +186,8 @@ class ShowRoomManager{
 	
 	function delete_item($id){
 		try{
-			$sql = "delete product_type where id=$id ;";
-			
+			$sql = "delete from product_type where id=$id ;";
+			log_debug("delete showroom > " . $sql);
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
@@ -205,12 +200,12 @@ class ShowRoomManager{
 	function delete_product($id){
 		try{
 			$sql = "delete from showroom where id=$id ;";
-			log_debug("delete series > " . $sql);
+			log_debug("delete product showroom > " . $sql);
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Showroom : ".$e->getMessage();
+			echo "Cannot Delete Product Showroom : ".$e->getMessage();
 		}
 	}
 }

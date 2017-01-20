@@ -193,10 +193,14 @@ class ContactManager{
 	function update_map($items){
 		try{
 			
-			$map = "";
+			$map_th = "";
+			$map_en = "";
 			$id = $items["id"];
-			if($items["link"]){
-				$map=" ,link='".$items["link"]."' ";	
+			if($items["title_th"]){
+				$map_th=" ,title_th='".$items["title_th"]."' ";	
+			}
+			if($items["title_en"]){
+				$map_en=" ,title_en='".$items["title_en"]."' ";	
 			}
 			
 			$update_by='0';
@@ -204,7 +208,8 @@ class ContactManager{
 			
 			$sql = "update contacts set  ";
 			$sql .= "update_by=$update_by,update_date=$update_date " ;
-			$sql .= $map ;
+			$sql .= $map_th ;
+			$sql .= $map_en ;
 			$sql .= "where id=9; ";
 			$this->mysql->execute($sql);
 			

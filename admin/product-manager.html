@@ -12,7 +12,7 @@
 				<th class='col-md-1'>No.</th>
 				<th>category</th>
 				<th>รายการ</th>
-				<th>สถานะ</th>
+				<th class='col-md-1'>สถานะ</th>
 				<th class='col-md-1'></th>
 			</tr>
 		</table>
@@ -30,13 +30,10 @@ $(document).ready(function(){
 	$('#btn_del').on('click',product.delete);
 	product.loadlist();
 
-
 	$(window).scroll(function() {
 		
 		if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-
 			product.loadlist();	
-
 		}
 	});
 });

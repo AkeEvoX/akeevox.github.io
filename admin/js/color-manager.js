@@ -34,21 +34,8 @@ color.add = function(args){
 
 color.edit = function(args){
 	
-	// var id = utility.querystr("id",$('#parameter').val()); 
-	// var cate_th = $('#cate_th').val();
-	// var cate_en = $('#cate_en').val();
-	// var parent = $('#cate_id option:selected');
-	//alert('hello - ' + cate_th);
-	//console.debug("cate add :: "+cate_th+";"+cate_en+";"+parent.val());
-	
 	var endpoint = "services/color.php";
 	var method = "POST";
-	// var args =  {'_':new Date().getMilliseconds()
-	// ,'type':'edit'
-	// ,'id':id
-	// ,'parent':parent.val()
-	// ,'th':cate_th
-	// ,'en':cate_en};
 	
 	utility.data(endpoint,method,args,function(data){
 		console.debug(data);
@@ -85,14 +72,14 @@ color.loadlist = function(){
 	
 }
 
-color.loadoptions= function(select_id){
-	console.log('call option='+select_id);
-	var endpoint = "services/category.php";
+color.loadoptions= function(){
+	//console.log('call option='+select_id);
+	var endpoint = "services/color.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'option'};
 	
 	utility.service(endpoint,method,args,function (data){
-		viewmenulist(data,select_id);
+		viewmenulist(data);
 	});
 	
 }
@@ -161,23 +148,24 @@ function set_list_product(id,title,category,thumb){
 	return result;
 }
 
-
-function viewmenulist(data,select_id){
+function viewmenulist(data){
 	
-	var catelist = $('#cate_id');
-	catelist.html('');
+	var list = $('#color_list');
+	var item = "";
+	list.html('');
 	
 	if(data.result==undefined) {
-		console.log("category-manager > list menu  :: data not found.")
+		console.log("color-manager > list menu  :: data not found.")
 		return;
 	}
+	//https://thdoan.github.io/bootstrap-select/examples.html
 	
-	var parent = data.result.filter(function(item){ return item.parent=="0" && item.id=="1";  });/*categories*/
-	var item = "";
+	$.each(data.result,function(i,val){
+		console.log(val.thumb);
+		item += "<option data-thumbnail='"+val.thumb+"' value='"+val.id+"'>"+val.title_en+" | "+val.title_th+"</option>";
+	});
 	
-	var child = data.result.filter(function(item){ return item.parent==1; });
-	item = "<option value='"+parent[0].id+"'>"+parent[0].title+"</option>";
-	item += viewchildmenu(child,data,true,"",select_id);
 	
-	catelist.append(item);	
+	
+	list.append(item);	
 }

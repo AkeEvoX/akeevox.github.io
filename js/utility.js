@@ -195,6 +195,14 @@ utility.convertToObject = function(arrlist){
 
 }
 
+utility.replace = function(str,find,replace){
+	return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
+}
+/*function find string for replace*/
+function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
 function centerModal() {
     $(this).css('display', 'block');
     var $dialog = $(this).find(".modal-dialog");
