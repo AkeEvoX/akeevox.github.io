@@ -30,14 +30,25 @@ switch($type){
 	break;
 	case "add":
 		$result = Insert($_POST);
-		log_debug("Admin Category  > Insert " . print_r($result,true));
+		log_debug("Product  > Insert " . print_r($result,true));
+	break;
+	case "add_color":
+		$color_id = GetParameter("color_id");
+		$result = Insert_color($id,$color_id);
+		log_debug("Product Color  > Insert " . print_r($result,true));
 	break;
 	case "edit":
 		$result = Update($_POST);
-		log_debug("Admin Category  > Update " . print_r($result,true));
+		log_debug("Product  > Update " . print_r($result,true));
 	break;
 	case "del":
 		$result = Delete($id);
+	break;
+	case "del_color":
+		$result = Delete_color($id);
+	break;
+	case "product_colors":
+		$result = get_product_color($id);//pending code get product color;
 	break;
 	case "item":
 		$result = get_Items($id);
@@ -130,6 +141,12 @@ function get_Items($id){
 	
 	$result = $item;
 	return $result;
+}
+
+function Insert_color($id,$color_id){
+	$product = new ProductManager();
+	$product->insert_product_color($id,$color_id);
+	return "INSERT SUCCESS.";
 }
 
 function Insert($items){
@@ -238,6 +255,12 @@ function Update($items){
 	
 	return "UPDATE SUCCESS.";
 	
+}
+
+function Delete_color($id){
+	$product = new ProductManager();
+	$product->delete_product_color($id);
+	return "DELETE SUCCESS.";
 }
 
 function Delete($id){

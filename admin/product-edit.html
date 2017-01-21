@@ -245,20 +245,19 @@
 						<div class='col-md-12'>
 							<div class="form-group">
 								<div class="input-group col-md-6">
-									<select class="selectpicker" id='color_list'>
+									<select class="form-control" id='color_list'>
 										<option value='white'>white</option>
 										<option value='black'>black</option>
 									</select>
 								  <span class="input-group-btn">
-									<button class="btn btn-default" type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+									<button class="btn btn-default" id='btn_add_color' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 								  </span>
 								</div><!-- /input-group -->
 							</div><!-- /form-group -->
 							<div class="form-group">
-								<ul class="list-group">
+								<ul class="list-group" id='product_color' >
 								  <li class="list-group-item">
-									<span class="badge"><span class="glyphicon glyphicon-remove"></span></span>
-									Cras justo odio
+									<span class="glyphicon glyphicon-remove"></span> White
 								  </li>
 								</ul>
 							</div><!-- /form-group -->
@@ -279,9 +278,9 @@
 
 $(document).ready(function(){
 
-$('select.selectpicker').selectpicker({
-    caretIcon: 'glyphicon glyphicon-menu-down'
-  });
+// $('select.selectpicker').selectpicker({
+//     caretIcon: 'glyphicon glyphicon-menu-down'
+// });
 
 var id = utility.querystr("id",$('#parameter').val());
 product.loaditem(id);
@@ -290,11 +289,17 @@ color.loadoptions();
 
 
 $('#product_form').on('submit',function(e){
-		e.preventDefault();
-		var args = new FormData(this);
-		args.append('type', 'edit');
-		product.edit(args);
-	});
+	e.preventDefault();
+	var args = new FormData(this);
+	args.append('type', 'edit');
+	product.edit(args);
+});
+
+$('#btn_add_color').on('click',function(e){
+	var color_id = $('#color_list').val();
+	var id = $('#id').val();
+	product.add_color(id,color_id);
+});
 	
 });
 

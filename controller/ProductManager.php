@@ -469,6 +469,27 @@ class ProductManager{
 			echo "Cannot Insert Product Type: ".$e->getMessage();
 		}
 	}
+
+	function insert_product_color($id,$color_id){
+		try{
+			$active = "1";
+			$create_by = "0";
+			$create_date = "now()";
+			
+			$sql = "insert into product_color(proid,colorid,active,create_by,create_date) ";
+			$sql .= "values($id,$color_id,$active,$create_by,$create_date); ";
+			
+			log_debug("insert product color : " .$sql); 
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product Color : ".$e->getMessage();
+		}
+
+	}
+
 	
 	function insert_color($items){
 		try{
@@ -578,6 +599,21 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Delete Color Master : ".$e->getMessage();
+		}
+	}
+
+	function delete_product_color($id){
+		try{
+
+			$sql = "delete from product_color where id=$id ;";
+
+			log_debug("delete product color : " . $sql);
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Product Color : ".$e->getMessage();
 		}
 	}
 	

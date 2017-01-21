@@ -14,6 +14,16 @@ product.add = function(args){
 	
 }
 
+product.add_color =  function(id,color_id){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {"_":new Date().getMilliseconds(),"type":"add_color" , "id":id,"color_id":color_id};
+	utility.service(endpoint,method,args,function(data){
+		alert(data.result);
+		//reload product color;
+	});
+}
+
 product.edit = function(args){
 	
 	var endpoint = "services/product.php";
@@ -44,6 +54,16 @@ product.delete = function(){
 	 });
 	 alert('delete success.');
 	 //product.loadlist();
+}
+
+product.del_color =  function(id,color_id){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":id,"color_id":color_id};
+	utility.service(endpoint,method,args,function(data){
+		alert(data.result);
+		//reload product color;
+	});
 }
 
 product.loadlist = function(){
@@ -86,6 +106,17 @@ product.loaditem = function(id){
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,set_item_product);
+	//load product color list;
+	//this.load_product_color(id);
+	//load product gallery;
+
+}
+
+product.load_product_color = function(id){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'product_colors','id':id};
+	utility.service(endpoint,method,args,view_list_color);
 }
 
 function view_list_product(data){
@@ -118,6 +149,28 @@ function view_list_product(data){
 	
 	$('#counter').val(max_item);
 	view.append(item);
+}
+
+function view_list_color(data){
+	var list = $('#product_color');
+	list.html('');
+
+	if(data.result==undefined || data.result=="") {
+		console.log("product-manager > list product :: data not found.")
+		return;
+	}
+
+	$.each(data.result,function(i,val){
+
+		item += "<li class='list-group-item' ><span id='"+val.id+"' onclick=product.del_color("+val.id+"); class='glyphicon glyphicon-remove' ></span></li> ";
+		item += "<img src='"+val.image+"' > ";
+		item += val.title_en;
+		item += "</li> ";
+
+	}
+
+	list.append(item);
+
 }
 
 function view_product_option(data){
@@ -183,6 +236,10 @@ function set_item_product(data){
 	$('#comsumption_en').val(data.result["prod.comsumption"].en);
 	$('#faucet_en').val(data.result["prod.faucet"].en);
 	$('#overflow_en').val(data.result["prod.overflow"].en);
+
+	/*load color list */
+	this.load_product_color(data.result.id);
+	/*load product list */
 	
 }
 
