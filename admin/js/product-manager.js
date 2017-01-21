@@ -17,11 +17,13 @@ product.add = function(args){
 product.add_color =  function(id,color_id){
 	var endpoint = "services/product.php";
 	var method = "GET";
-	var args = {"_":new Date().getMilliseconds(),"type":"add_color" , "id":id,"color_id":color_id};
+	var args = {"_":new Date().getMilliseconds(),"type":"add_color" , "id":id ,"color_id":color_id };
 	utility.service(endpoint,method,args,function(data){
-		alert(data.result);
-		//reload product color;
+		//alert(data.result);
+		// #reload product color;
+		product.load_product_color(id);
 	});
+	
 }
 
 product.edit = function(args){
@@ -61,17 +63,16 @@ product.del_color =  function(id,color_id){
 	var method = "GET";
 	var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":id,"color_id":color_id};
 	utility.service(endpoint,method,args,function(data){
-		alert(data.result);
-		//reload product color;
+		//#reload product color;
+		product.load_product_color(id);
 	});
+	
 }
 
 product.loadlist = function(){
-	//$('#data_list').html('');
 	console.log('call list product.');
 	var endpoint = "services/product.php";
 	var method = "GET";
-	//var args = {'_':new Date().getMilliseconds(),'type':'list'};
 	var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'20'};
 	utility.service(endpoint,method,args,view_list_product);
 	
@@ -101,21 +102,23 @@ product.option = function(cate_id){
 }
 
 product.loaditem = function(id){
+	
 	$('#id').val(id);
 	var endpoint = "services/product.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
 	utility.service(endpoint,method,args,set_item_product);
-	//load product color list;
-	//this.load_product_color(id);
-	//load product gallery;
+	
+	//#load product color list;
+	this.load_product_color(id);
+	//#load product gallery;
 
 }
 
 product.load_product_color = function(id){
 	var endpoint = "services/product.php";
 	var method = "GET";
-	var args = {'_':new Date().getMilliseconds(),'type':'product_colors','id':id};
+	var args = {'_':new Date().getMilliseconds(),'type':'product_color' ,'id':id };
 	utility.service(endpoint,method,args,view_list_color);
 }
 
@@ -152,22 +155,25 @@ function view_list_product(data){
 }
 
 function view_list_color(data){
+	
 	var list = $('#product_color');
+	var item = "";
 	list.html('');
-
+	console.log("view_list_color");
+	console.log(data);
 	if(data.result==undefined || data.result=="") {
-		console.log("product-manager > list product :: data not found.")
+		console.log("product-manager > list product :: data not found.");
 		return;
 	}
 
 	$.each(data.result,function(i,val){
 
-		item += "<li class='list-group-item' ><span id='"+val.id+"' onclick=product.del_color("+val.id+"); class='glyphicon glyphicon-remove' ></span></li> ";
-		item += "<img src='"+val.image+"' > ";
+		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:poiter;' onclick=product.del_color("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
+		item += "<img src='../"+val.thumb+"' > ";
 		item += val.title_en;
 		item += "</li> ";
 
-	}
+	});
 
 	list.append(item);
 
@@ -237,10 +243,6 @@ function set_item_product(data){
 	$('#faucet_en').val(data.result["prod.faucet"].en);
 	$('#overflow_en').val(data.result["prod.overflow"].en);
 
-	/*load color list */
-	this.load_product_color(data.result.id);
-	/*load product list */
-	
 }
 
 function opt_viewmenulist(data,select_id){

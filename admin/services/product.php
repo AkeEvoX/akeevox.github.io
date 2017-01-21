@@ -45,13 +45,14 @@ switch($type){
 		$result = Delete($id);
 	break;
 	case "del_color":
-		$result = Delete_color($id);
+		$color_id = GetParameter("color_id");
+		$result = Delete_color($color_id);
 	break;
-	case "product_colors":
-		$result = get_product_color($id);//pending code get product color;
+	case "product_color":
+		$result = call_product_color($id);//pending code get product color;
 	break;
 	case "item":
-		$result = get_Items($id);
+		$result = call_product($id);
 	break;
 	default:
 	
@@ -122,7 +123,7 @@ function get_list_product($cate_id){
 	return $result;
 }
 
-function get_Items($id){
+function call_product($id){
 	
 	$product = new ProductManager();
 	$data = $product->get_product_info($id);
@@ -140,6 +141,28 @@ function get_Items($id){
 	}
 	
 	$result = $item;
+	return $result;
+}
+
+function call_product_color($proid){
+	
+	$product = new ProductManager();
+	$data = $product->get_product_color($proid);
+	if($data){
+		
+			//$item = $data->fetch_array();
+			//$data_attribute = $product->get_attribute_by_product($id);
+			
+			while($row = $data->fetch_object()){
+				
+				$result[] = $row;
+				//$attr_name = $row->attribute;
+				//$item[$attr_name] = array("th"=>$row->th,"en"=>$row->en);
+			}
+			
+	}
+	
+	//$result = $item;
 	return $result;
 }
 

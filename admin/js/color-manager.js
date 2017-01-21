@@ -79,7 +79,7 @@ color.loadoptions= function(){
 	var args = {'_':new Date().getMilliseconds(),'type':'option'};
 	
 	utility.service(endpoint,method,args,function (data){
-		viewmenulist(data);
+		view_option_list(data);
 	});
 	
 }
@@ -148,24 +148,22 @@ function set_list_product(id,title,category,thumb){
 	return result;
 }
 
-function viewmenulist(data){
+function view_option_list(data){
 	
 	var list = $('#color_list');
 	var item = "";
 	list.html('');
 	
 	if(data.result==undefined) {
-		console.log("color-manager > list menu  :: data not found.")
+		console.log("color-manager > list color  :: data not found.")
 		return;
 	}
 	//https://thdoan.github.io/bootstrap-select/examples.html
 	
 	$.each(data.result,function(i,val){
-		console.log(val.thumb);
+		//console.log(val.thumb);
 		item += "<option data-thumbnail='"+val.thumb+"' value='"+val.id+"'>"+val.title_en+" | "+val.title_th+"</option>";
 	});
-	
-	
 	
 	list.append(item);	
 }

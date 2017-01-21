@@ -127,6 +127,23 @@ class ProductManager{
 		}
 		
 	}
+	
+	function get_product_color($proid){
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select p.*,c.title_th,c.title_en,c.thumb ";
+			$sql .= " from product_color p";
+			$sql .= " inner join color_master c on p.colorid = c.id";
+			$sql .= " where p.proid=".$proid." ;";
+			log_debug("get_product_color > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Color : ".$e->getMessage();
+		}
+	}
 
 	function getProductType($lang,$id) {
 		try{
