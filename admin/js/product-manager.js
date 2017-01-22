@@ -19,9 +19,21 @@ product.add_color =  function(id,color_id){
 	var method = "GET";
 	var args = {"_":new Date().getMilliseconds(),"type":"add_color" , "id":id ,"color_id":color_id };
 	utility.service(endpoint,method,args,function(data){
-		//alert(data.result);
 		// #reload product color;
 		product.load_product_color(id);
+	});
+	
+}
+
+product.add_photo =  function(args){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var proid = args.get('proid');
+	console.log('object photo of pro id =' + proid);
+	
+	utility.data(endpoint,method,args,function(data){
+		//#reload product color;
+		product.load_product_photo(proid);
 	});
 	
 }
@@ -59,13 +71,30 @@ product.delete = function(){
 }
 
 product.del_color =  function(id,color_id){
-	var endpoint = "services/product.php";
-	var method = "GET";
-	var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":id,"color_id":color_id};
-	utility.service(endpoint,method,args,function(data){
-		//#reload product color;
-		product.load_product_color(id);
-	});
+	
+	if(confirm('Confirm Delete ?')){		
+		var endpoint = "services/product.php";
+		var method = "GET";
+		var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":id,"color_id":color_id};
+		utility.service(endpoint,method,args,function(data){
+			//#reload product color;
+			product.load_product_color(id);
+		});
+	}
+	
+}
+
+product.del_photo =  function(id,photo_id){
+	
+	if(confirm('Confirm Delete ?')){
+		var endpoint = "services/product.php";
+		var method = "GET";
+		var args = {"_":new Date().getMilliseconds() ,"type":"del_photo", "id":id,"photo_id":photo_id};
+		utility.service(endpoint,method,args,function(data){
+			//#reload product color;
+			product.load_product_photo(id);
+		});
+	}
 	
 }
 
@@ -104,6 +133,7 @@ product.option = function(cate_id){
 product.loaditem = function(id){
 	
 	$('#id').val(id);
+	$('#proid').val(id);
 	var endpoint = "services/product.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
@@ -112,7 +142,7 @@ product.loaditem = function(id){
 	//#load product color list;
 	this.load_product_color(id);
 	//#load product gallery;
-
+	this.load_product_photo(id);
 }
 
 product.load_product_color = function(id){
@@ -120,6 +150,13 @@ product.load_product_color = function(id){
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'product_color' ,'id':id };
 	utility.service(endpoint,method,args,view_list_color);
+}
+
+product.load_product_photo = function(id){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'product_photo' ,'id':id };
+	utility.service(endpoint,method,args,view_list_photo);
 }
 
 function view_list_product(data){
@@ -168,7 +205,7 @@ function view_list_color(data){
 
 	$.each(data.result,function(i,val){
 
-		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:poiter;' onclick=product.del_color("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
+		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:pointer;' onclick=product.del_color("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
 		item += "<img src='../"+val.thumb+"' > ";
 		item += val.title_en;
 		item += "</li> ";
@@ -178,6 +215,31 @@ function view_list_color(data){
 	list.append(item);
 
 }
+
+function view_list_photo(data){
+	
+	var list = $('#product_photo');
+	var item = "";
+	list.html('');
+	console.log("view_list_photo");
+	console.log(data);
+	if(data.result==undefined || data.result=="") {
+		console.log("product-manager > list product photo :: data not found.");
+		return;
+	}
+
+	$.each(data.result,function(i,val){
+		item += "<div class='col-xs-6 col-md-4' style='width:30%;height:250px;'>";
+		item += "<div class='border-circle remove-item' onclick=product.del_photo("+val.proid+","+val.id+"); ><span class='glyphicon glyphicon-remove' ></span></div>";// rowspan pull-right
+		item += "<img src='../"+val.thumb+"' style='max-width:200px;' class='img-thumbnail' >";
+		item += "</div>";
+	});
+
+	list.append(item);
+
+}
+
+
 
 function view_product_option(data){
 	

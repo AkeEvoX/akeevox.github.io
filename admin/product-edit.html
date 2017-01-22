@@ -1,4 +1,4 @@
-<link rel="stylesheet" href="../plugin/bootstraps/css/bootstrap-select.css">
+<link rel="stylesheet" href="css/global.css">
 <div class='col-md-12'>
 	<h3>จัดการสินค้า</h3>
 	<hr/>
@@ -86,6 +86,9 @@
 					</li>
 					<li role="presentation">
 						<a class='menutab' href="#color" data-toggle="tab">Color</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#photo" data-toggle="tab">Photo</a>
 					</li>
 				</ul>
 				<div class='tab-content' style='margin-top:10px;'>
@@ -241,7 +244,7 @@
 							</div>
 						</div>
 					</div>
-					<div id='color' class="tab-pane fade in active">
+					<div id='color' class="tab-pane fade">
 						<div class='col-md-12'>
 							<div class="form-group">
 								<div class="input-group col-md-6">
@@ -259,43 +262,96 @@
 							</div><!-- /form-group -->
 						</div>
 					</div>
+					<div id='photo' class="tab-pane fade">
+						<div class='col-md-12'>
+								<div class="form-group">
+									<div class="input-group col-md-8">
+									<input type='text' id='temp_photo' class='form-control' placeholder='click upload file' readonly />
+									  <span class="input-group-btn">
+										<button class="btn btn-default" id='btn_add_photo' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+										<button id='btn_upload' class='btn btn-success'>upload</button>
+									  </span>
+									</div><!-- /input-group -->
+								</div>
+								<!-- /form-group -->
+							<div class="form-group">
+								<!-- <ul class="list-group col-md-6" id='product_photo' ></ul> -->
+									<div id='product_photo' ></div>
+								</div><!-- /form-group -->
+						</div>
+					</div>
 				</div>
 			</div>
 			<div class='row text-center'>
-				<input type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-danger'  onclick=control.pagetab('product-manager.html')  >ยกเลิก</span>
+				<input  id='btn_save' type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-danger'  onclick=control.pagetab('product-manager.html')  >ยกเลิก</span>
 			</div>
 			<input type='hidden' id='id' name='id' />
+	</form>
+	
+	<form id='photo_form' name='photo_form' method='post' enctype="multipart/form-data" >
+		<div  style='display:none;' >
+		<input type='file' id='file_photo' name='file_photo' class='form-control' />
+		<input type='hidden' id='proid' name='proid' />
+		<input type='submit' id='photo_submit' />
+		</div>
 	</form>
 </div>
 <script src='js/product-manager.js' />
 <script src='js/color-manager.js' />
-<script src='../plugin/bootstraps/js/bootstrap-select.js' />
+<script src='../plugin/jquery/jquery.form.js' />
 <script>
 
 $(document).ready(function(){
 
-// $('select.selectpicker').selectpicker({
-//     caretIcon: 'glyphicon glyphicon-menu-down'
-// });
+	var id = utility.querystr("id",$('#parameter').val());
+	product.loaditem(id);
+	color.loadoptions();
+	
+	$('#btn_save').click(function(e){
+		
+		$('#product_form').submit(function(e){
+			e.preventDefault();
+			args.append('type', 'edit');
+			product.edit(args);
+		});
+		
+	});
 
-var id = utility.querystr("id",$('#parameter').val());
-product.loaditem(id);
+	$('#btn_add_photo').click(function(e){
+		$('#file_photo').trigger('click');
+	});
+	
+	$('#file_photo').change(function(e){
+		var filename = $(this).val().split('\\').pop();
+		$('#temp_photo').val(filename);
+	});
+	
+	$('#btn_upload').click(function(){
+		$('#photo_submit').trigger('click');
+	});
+	
+	$("#photo_form").submit(function(evt){
+			var args = new FormData(this);
+			args.append('type', 'add_photo');
+			product.add_photo(args); 
+			$('#file_photo').val('');
+	});
+	
+	
+	$("#photo_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
+	
+	$("#product_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
 
-color.loadoptions();
-
-
-$('#product_form').on('submit',function(e){
-	e.preventDefault();
-	var args = new FormData(this);
-	args.append('type', 'edit');
-	product.edit(args);
-});
-
-$('#btn_add_color').on('click',function(e){
-	var color_id = $('#color_list').val();
-	var id = $('#id').val();
-	product.add_color(id,color_id);
-});
+	
+	$('#btn_add_color').on('click',function(e){
+		var color_id = $('#color_list').val();
+		var id = $('#id').val();
+		product.add_color(id,color_id);
+	});
 	
 });
 

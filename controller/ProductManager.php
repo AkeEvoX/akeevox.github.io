@@ -144,6 +144,22 @@ class ProductManager{
 			echo "Cannot Get Product Color : ".$e->getMessage();
 		}
 	}
+	
+	function get_product_photo($proid){
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select * ";
+			$sql .= " from product_images";
+			$sql .= " where proid=".$proid." ;";
+			log_debug("get_product_photo > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Photos : ".$e->getMessage();
+		}
+	}
 
 	function getProductType($lang,$id) {
 		try{
@@ -506,6 +522,31 @@ class ProductManager{
 		}
 
 	}
+	
+	function insert_product_photo($items){
+		try{
+			$proid = $items["proid"];
+			$thumb = $items["thumb"];
+			$image = $items["image"];
+			$active = "1";
+			$update_by = "0";
+			$update_date = "now()";
+			
+			$sql = "insert into product_images(proid,thumb,image,active,update_by,update_date) ";
+			$sql .= " values($proid,'$thumb','$image',$active,$update_by,$update_date); ";
+			
+			log_debug("product manager > inesrt product photo > ".$sql);
+			
+			$this->mysql->execute($sql);
+			$result = $this->mysql->newid();
+			
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product Photo: ".$e->getMessage();
+		}
+		
+	}
 
 	
 	function insert_color($items){
@@ -631,6 +672,21 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Delete Product Color : ".$e->getMessage();
+		}
+	}
+	
+	function delete_product_photo($id){
+		try{
+
+			$sql = "delete from product_images where id=$id ;";
+
+			log_debug("delete product images : " . $sql);
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Product Images : ".$e->getMessage();
 		}
 	}
 	

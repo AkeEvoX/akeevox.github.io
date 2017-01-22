@@ -37,6 +37,11 @@ switch($type){
 		$result = Insert_color($id,$color_id);
 		log_debug("Product Color  > Insert " . print_r($result,true));
 	break;
+	case "add_photo":
+		//$photo_id = GetParameter("photo_id");
+		$result = Insert_photo($_POST);
+		log_debug("Product Photo  > Insert " . print_r($result,true));
+	break;
 	case "edit":
 		$result = Update($_POST);
 		log_debug("Product  > Update " . print_r($result,true));
@@ -48,8 +53,15 @@ switch($type){
 		$color_id = GetParameter("color_id");
 		$result = Delete_color($color_id);
 	break;
+	case "del_photo":
+		$photo_id = GetParameter("photo_id");
+		$result = Delete_photo($photo_id);
+	break;
 	case "product_color":
 		$result = call_product_color($id);//pending code get product color;
+	break;
+	case "product_photo":
+		$result = call_product_photo($id);//pending code get product color;
 	break;
 	case "item":
 		$result = call_product($id);
@@ -150,25 +162,50 @@ function call_product_color($proid){
 	$data = $product->get_product_color($proid);
 	if($data){
 		
-			//$item = $data->fetch_array();
-			//$data_attribute = $product->get_attribute_by_product($id);
-			
 			while($row = $data->fetch_object()){
-				
 				$result[] = $row;
-				//$attr_name = $row->attribute;
-				//$item[$attr_name] = array("th"=>$row->th,"en"=>$row->en);
 			}
-			
 	}
 	
-	//$result = $item;
+	return $result;
+}
+
+function call_product_photo($proid){
+	$product = new ProductManager();
+	$data = $product->get_product_photo($proid);
+	if($data){
+			while($row = $data->fetch_object()){
+				$result[] = $row;
+			}
+	}
+	
 	return $result;
 }
 
 function Insert_color($id,$color_id){
 	$product = new ProductManager();
 	$product->insert_product_color($id,$color_id);
+	return "INSERT SUCCESS.";
+}
+
+function Insert_photo($items){
+	
+	if($_FILES["file_photo"]["name"]!="")
+	{
+		
+		$filename = "images/products/".$items["proid"]."/thumb_". date('Ymd_His') ."_".$_FILES['file_photo']['name'];//20010310_224010
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_photo']['tmp_name'];
+		$items["thumb"] = $filename;
+		$items["image"] = $filename;
+		upload_image($source,$distination);
+		
+	}
+	$items["active"] = "1";
+	
+	$product = new ProductManager();
+	$product->insert_product_photo($items);
+	
 	return "INSERT SUCCESS.";
 }
 
@@ -217,7 +254,13 @@ function Insert($items){
 	}
 	
 	$product = new ProductManager();
-	$result = $product->insert_product($items);
+	$proid = $product->insert_product($items);
+	
+	//#create folder by id 
+	$dir = "../../images/products/".$proid;
+	if (!file_exists($dir) && $newid!="0") {
+		mkdir($dir, 0777, true);
+	}
 	
 	return "INSERT SUCCESS.";
 }
@@ -283,6 +326,12 @@ function Update($items){
 function Delete_color($id){
 	$product = new ProductManager();
 	$product->delete_product_color($id);
+	return "DELETE SUCCESS.";
+}
+
+function Delete_photo($id){
+	$product = new ProductManager();
+	$product->delete_product_photo($id);
 	return "DELETE SUCCESS.";
 }
 
