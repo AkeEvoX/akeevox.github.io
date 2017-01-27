@@ -311,6 +311,7 @@ $(document).ready(function(){
 		
 		$('#product_form').submit(function(e){
 			e.preventDefault();
+			var args = new FormData(this);
 			args.append('type', 'edit');
 			product.edit(args);
 		});
