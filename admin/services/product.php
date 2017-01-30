@@ -15,9 +15,10 @@ $result = "";
 
 switch($type){
 	case "list":
-		$counter = $_GET["couter"];// count last fetch data
-		$max_fetch = $_GET["fetch"];
-		$result = get_list_fetch($lang,$counter,$max_fetch);
+		$counter = GetParameter("couter");// count last fetch data
+		$max_fetch = GetParameter("fetch");
+		$search_text = GetParameter("search_text");
+		$result = get_list_fetch($lang,$search_text,$counter,$max_fetch);
 	break;
 	case "option":
 		$CATEGORIES = 1;
@@ -75,9 +76,9 @@ switch($type){
 echo json_encode(array("result"=> $result ,"code"=>"0"));
 
 /************* function list **************/
-function get_list_fetch($lang,$start_fetch,$max_fetch){
+function get_list_fetch($lang,$search_text,$start_fetch,$max_fetch){
 	$product = new ProductManager();
-	$data = $product->get_fetch_product($lang,$start_fetch,$max_fetch);
+	$data = $product->get_fetch_product($lang,$search_text,$start_fetch,$max_fetch);
 	$result = "";
 	
 	if($data==null) return $result;
@@ -85,13 +86,13 @@ function get_list_fetch($lang,$start_fetch,$max_fetch){
 	
 	while($row = $data->fetch_object()){
 
-			$item =  array("id"=>$row->id
-						,"category"=>$row->category
-						,"title"=>$row->title
-		  				,"thumb"=>$row->thumb
-						,"active"=>$row->active);
+			// $item =  array("id"=>$row->id
+			// ,"category"=>$row->category
+			// ,"title"=>$row->title
+			// ,"thumb"=>$row->thumb
+			// ,"active"=>$row->active);
 
-			$result[] = $item;
+			$result[] = $row;
 	}
 	return $result;
 }
