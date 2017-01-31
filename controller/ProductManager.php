@@ -746,17 +746,24 @@ class ProductManager{
 		}
 	}
 
-	function get_fetch_product($lang,$start_fetch,$max_fetch){
+	function get_fetch_product($lang,$search_text,$start_fetch,$max_fetch){
 		try{
-		
-			$sql = " select p.id,p.title_".$lang." as title,t.title_".$lang." category,p.thumb,p.create_date,p.active ";
+			
+			$sql = " select p.id,p.title_en as title,t.title_en category,p.thumb,p.create_date,p.active ,a.en as code ";
 			$sql .= " from products p ";
 			$sql .= " inner join product_type t on t.id = p.typeid ";
+			$sql .= " inner join product_attribute a on a.proid = p.id ";
 			$sql .= " where t.parent not in ('2','3') ";
+			$sql .= " and a.attribute='prod.code' ";
+			
+			$sql .= " and (p.title_en like '%".$search_text."%' "; //product name
+			$sql .= " or t.title_en like '%".$search_text."%' "; //category name
+			$sql .= " or a.en like '%".$search_text."%' ) "; // product code
+			
 			$sql .= " order by p.id ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
-
-			log_debug($sql);
+			
+			log_debug("get_fetch_product > ".$sql);
 			
 			$result = $this->mysql->execute($sql);
 			return  $result;

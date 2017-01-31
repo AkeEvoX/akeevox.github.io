@@ -4,13 +4,23 @@
 	<div class='row'>
 		<span class='btn btn-warning btn-sm pagetab' onclick=control.pagetab('product-add.html') >เพิ่มสินค้า</span>
 		<span class='btn btn-warning btn-sm' id='btn_del' >ลบ</span>
+			<div class='col-md-6 pull-right'>
+				<div class="input-group input-group-sm">
+					<span class="input-group-addon" id="sizing-addon3">ข้อมูลสินค้า</span>
+					<input id='txtfind' type="text" class="form-control" placeholder="" aria-describedby="sizing-addon3">
+					<span class="input-group-btn">
+						<button id='btnfind' class="btn btn-default" type="button">ค้นหา</button>
+					</span>
+				</div>
+			</div>
 	</div>
 	<div class='row'>
 		<table class='table table-hover table-responsive' id='data_list'>
 			<tr>
 				<th class='col-md-1'>เลือก</th>
 				<th class='col-md-1'>No.</th>
-				<th>category</th>
+				<th>Code</th>
+				<th>Category</th>
 				<th>รายการ</th>
 				<th class='col-md-1'>สถานะ</th>
 				<th class='col-md-1'></th>
@@ -23,8 +33,9 @@
 <script src='js/product-manager.js' ></script>
 <script>
 var loading = 0;
-
+var search = "";
 $(document).ready(function(){	
+	
 	$(window).unbind('scroll');	
 	$('#btn_del').unbind('click'); /*clear event handle*/
 	$('#btn_del').on('click',product.delete);
@@ -33,10 +44,39 @@ $(document).ready(function(){
 	$(window).scroll(function() {
 		
 		if($(window).scrollTop() + $(window).height() >= $(document).height()) {
-			product.loadlist();	
+			search = rewritetext($('#txtfind').val());
+			product.loadlist(search);	
 		}
 	});
+	
+	$('#btnfind').click(function(){
+		find_product();
+	});
+	
+	$('#txtfind').keyup(function(e){
+		//e.preventDefault();
+		var code = (e.keyCode || e.which);
+		// do nothing if it's an arrow key
+		if(code == 37 || code == 38 || code == 39 || code == 40 ) {
+			return false;
+		}
+		
+		if(code==13)
+			find_product();
+	});
+	
+	$(window).on('submit',function(e){
+		e.preventDefault();
+	});
+	
 });
+
+function find_product(){
+	$('#counter').val(0);
+	$('#data_list').find("tr:gt(0)").remove();
+	search = rewritetext($('#txtfind').val());
+	product.loadlist(search);	
+}
 
 
 

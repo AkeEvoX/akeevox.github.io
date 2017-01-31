@@ -208,12 +208,16 @@ h2 div :after {
 	#viewmiddle img {
 		width:300px;
 		display:inline-block;
-		height:130px;
 	}
 }
 
 /*tablet*/
-@media(min-width:900px) and (max-width:1000px) {
+@media(min-width:900px) and (max-width:1200px) {
+	
+	#viewmiddle img {
+		width:230px;
+		display:inline-block;
+	}
 	
 	#viewseries img{
 		height:300px;
@@ -247,7 +251,7 @@ h2 div :after {
 	#viewmiddle img {
 		width:180px;
 		display:inline-block;
-		height:100px;
+		/* height:100px; */
 	}
 	
 }

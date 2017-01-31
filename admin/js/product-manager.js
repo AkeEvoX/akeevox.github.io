@@ -98,11 +98,11 @@ product.del_photo =  function(id,photo_id){
 	
 }
 
-product.loadlist = function(){
+product.loadlist = function(search){
 	console.log('call list product.');
 	var endpoint = "services/product.php";
 	var method = "GET";
-	var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'20'};
+	var args = {'_':new Date().getMinutes(),'type':'list','couter':$('#counter').val(),'fetch':'20','search_text':search};
 	utility.service(endpoint,method,args,view_list_product);
 	
 }
@@ -178,6 +178,7 @@ function view_list_product(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
+		item+="<td>"+val.code+"</td>";
 		item+="<td>"+val.category+"</td>";
 		item+="<td>"+val.title+"</td>";
 		item+="<td>"+active+"</td>";
@@ -366,4 +367,20 @@ function opt_viewchildmenu(child,data,directory,lastmenu,select_id){
 	});
 	
 	return item;
+}
+
+
+function rewritetext(text){
+	var result = text;
+	
+	result = result.replace("'","\'");
+	result = result.replace("%","");
+	result = result.replace(",","");
+	result = result.replace("_","");
+	result = result.replace("(","");
+	result = result.replace(")","");
+	result = result.replace("[","");
+	result = result.replace("]","");
+	return result;
+	
 }
