@@ -24,7 +24,7 @@
 	<div class='row'>
 		<div class='col-md-12'>
 			<div class='container'>
-				<form class="form-horizontal" action='center.html' method='post'>
+				<form id='login_form' class="form-horizontal" action='center.html' method='post'>
 				<div class='row'>
 					<div class='col-md-offset-3 col-md-6'>
 						<div class='well well-sm well-brown' >
@@ -34,13 +34,13 @@
 								  <div class="form-group">
 									<label for="inputUser" class="col-sm-2 control-label">Username</label>
 									<div class="col-sm-8">
-									  <input type="text" class="form-control" id="inputUser" placeholder="Username">
+									  <input type="text" class="form-control" id="inputUser" name='username' placeholder="Username">
 									</div>
 								  </div>
 								  <div class="form-group">
-									<label for="inputPassword3" class="col-sm-2 control-label">Password</label>
+									<label for="inputPassword" class="col-sm-2 control-label">Password</label>
 									<div class="col-sm-8">
-									  <input type="password" class="form-control" id="inputPassword3" placeholder="Password">
+									  <input type="password" class="form-control" id="inputPassword" name='password' placeholder="Password">
 									</div>
 								  </div>
 						</div>
@@ -61,10 +61,19 @@
 <script src='../plugin/jquery/jquery-ui.min.js' ></script>
 <script src='../plugin/jquery/holder.js' ></script>
 <script src='../plugin/bootstraps/js/bootstrap.js' ></script>
+<script src='../js/utility.js' ></script>
+<script src='js/authen.js' ></script>
 <script>
 $(document).ready(function(){
 
 	$('#viewnavbar').load('navbar.html');
+
+	$('#login_form').on('submit',function(e){
+		e.preventDefault();
+		var args = new FormData(this);
+		authentication(args);
+	});
+
 	
 });
 </script>
