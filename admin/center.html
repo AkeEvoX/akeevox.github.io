@@ -1,7 +1,7 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
-<title>Welcome to Starsanitaryware</title>
+<title>Welcome to Starsanitaryware Administrator</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
@@ -11,12 +11,13 @@
 </head>
 <body>
 <div id='viewnavbar'></div>
-<div class='container-fluid'>
+<div id='page_center' class='container-fluid' style='display:none;'>
 	<div class='row'>
 		<div class='col-md-12 well well-sm'>
 			<div class='container'>
 				<div class='row'>
-					<h3 class='text-left'><span class='glyphicon glyphicon-stop'></span><span id='login.title'>ระบบจัดการเนื้อหา</span></h3>
+					<h3 class='text-left'><span class='glyphicon glyphicon-stop'></span><span id='login.title'>ระบบจัดการเนื้อหา</span><div class='pull-right'><a href="login.html" class='btn btn-warning'>Log out</a></div></h3>
+					
 				</div>
 			</div >
 		</div>
@@ -34,10 +35,11 @@
 						  <li role="presentation"><a class='menutab' data-page='media-tab.html'    href="#media" data-toggle="tab">Media</a></li>
 						  <li role="presentation"><a class='menutab' data-page='download-tab.html'   href="#download" data-toggle="tab">Services & Download</a></li>
 						  <li role="presentation"><a class='menutab'  data-page='contact-tab.html'   href="#contact" data-toggle="tab">Contact</a></li>
+						  <li id='privilage' role='presentation'><a class='menutab'  data-page='admin-tab.html'   href='#admin' data-toggle='tab'>Admin</a></li>
 						</ul>
 					</div>
 				</div>
-				<div class='row' style='padding-bottom:20px;'>
+				<div class='row' style='padding-bottom:20px;' >
 					<div id='viewcontent'></div>
 				</div>
 				<!--<div class='row'>
@@ -93,12 +95,13 @@
 <script src='../plugin/bootstraps/js/bootstrap.js' ></script>
 <script src='../js/utility.js' ></script>
 <script src='js/center.js' ></script>
+<script src='js/authen.js' ></script>
 <script>
 var global = {};
+
 $(document).ready(function(){
-
+	authen.access_verify();
 	control.init();
-
 	$('#viewnavbar').load('navbar.html');
 	control.menutab('home-tab.html');
 });
