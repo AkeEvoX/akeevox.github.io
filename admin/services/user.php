@@ -21,18 +21,16 @@ switch($type){
 	break;
 	case "add":
 		$result = Insert($_POST);
-		log_debug("award  > Insert " . print_r($result,true));
+		log_debug("user  > Insert " . print_r($result,true));
 	break;
 	case "edit":
 		$result = Update($_POST);
-		log_debug("award > Update " . print_r($result,true));
+		log_debug("user > Update " . print_r($result,true));
 	break;
 	case "del":
-		//$items["id"] = $_POST["id"];
 		$result = Delete($id);
 	break;
 	case "item":
-		//$items["id"] = $id;
 		$result = get_Items($id);
 	break;
 	default:
@@ -55,13 +53,6 @@ function get_list_fetch($start_fetch,$max_fetch){
 	
 	while($row = $data->fetch_object()){
 
-			// $item =  array("id"=>$row->id
-						// ,"title_th"=>$row->title_th
-						// ,"title_en"=>$row->title_en
-						// ,"type"=>$row->type
-						// ,"active"=>$row->active
-						// );
-
 			$result[] = $row;
 	}
 	return $result;
@@ -70,11 +61,10 @@ function get_list_fetch($start_fetch,$max_fetch){
 
 function get_Items($id){
 	
-	$org = new AwardManager();
-	$data = $org->get_award_info($id);
+	$user = new UserManager();
+	$data = $user->get_user_info($id);
 	
 	if($data){
-		
 			$result = $data->fetch_object();
 	}
 	return $result;
@@ -82,53 +72,26 @@ function get_Items($id){
 
 function Insert($items){
 	
-	
-	if($_FILES['file_upload']['name']!=""){
-		$category = ($items["category"]=="0" ?  "award"  :  "standard"  );
-		$filename = "images/organization/".$category."/".$_FILES['file_upload']['name'];
-		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["thumbnail"] = $filename;
-	}
-
-	$award = new AwardManager();
+	$user = new UserManager();
 	//1)insert data
-	$result = $award->insert_item($items);
-	//2)upload image personal
-	if($items["thumbnail"])
-		upload_image($source,$distination);
+	$result = $user->insert_item($items);
 	
 	return "INSERT SUCCESS.";
 }
 
 function Update($items){
 	
-	$items["thumbnail"] = "";
-	if($_FILES['file_upload']['name']!=""){
-		$category = ($items["category"]=="0" ?  "award"  :  "standard"  );
-		//$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
-		$filename = "images/organization/".$category."/".$_FILES['file_upload']['name'];
-		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];
-		$items["thumbnail"] = $filename;
-	}
-	
-	$award = new AwardManager();
+	$user = new UserManager();
 	//1)update data
-	$result = $award->update_item($items);
-	
-	//2)upload image
-	if($items["thumbnail"])
-		upload_image($source,$distination);
+	$result = $user->update_item($items);
 	
 	return "UPDATE SUCCESS.";
 	
 }
 
 function Delete($id){
-	
-	$award = new AwardManager();
-	$award->delete_item($id);
+	$user = new UserManager();
+	$user->delete_item($id);
 	return "DELETE SUCCESS.";
 }
 

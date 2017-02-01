@@ -1,0 +1,81 @@
+<div class='col-md-12' >
+	<h3>จัดการเพิ่ม User</h3>
+	<hr/>
+	<form id='user_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<label for="role_type" class='col-md-3'>Role</label>
+			<div class='col-md-7'>
+				<input type="radio" name="role_type" value='1'  checked/> Admin<br/>
+				<input type="radio" name="role_type" value='2'  />User
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
+			<div class='col-md-5'>
+				<input type="checkbox" id="active" name="active"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<div class='col-md-12'>
+					<div class="form-group">
+						<label for="firstname" class='col-md-3'>ชื่อ</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="firstname" name='firstname' placeholder="ชื่อผู้ใช้งาน" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="lastname" class='col-md-3'>นามสกุล </label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="lastname" name='lastname' placeholder="นามสกุลผู้ใช้งาน" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="user_name" class='col-md-3'>Username</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="user_name" name='user_name' placeholder="" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="pass_word" class='col-md-3'>Password</label>
+						<div class='col-md-9'>
+							<input type="password" class="form-control" id="pass_word" name='pass_word' placeholder="" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="conf_pass_word" class='col-md-3'>Confirm Password</label>
+						<div class='col-md-9'>
+							<input type="password" class="form-control" id="conf_pass_word" name='conf_pass_word' placeholder="" value='' />
+						</div>
+					</div>
+				</div>
+		</div>
+
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='id' name='id' />
+	</form>
+
+
+</div>
+<script src='js/user-manager.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+
+	var id = utility.querystr("id",$('#parameter').val());
+	user.loaditem(id);
+
+	$('#user_form').on('submit',function(e){
+		e.preventDefault();
+
+		var args = new FormData(this);
+		args.append('type', 'edit');
+		user.edit(args);
+	});
+
+});
+
+</script>

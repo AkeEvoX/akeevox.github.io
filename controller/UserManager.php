@@ -38,18 +38,19 @@ class UserManager{
 		
 	}
 	
-	function get_award_info($id){
+	function get_user_info($id){
 		
 		try{
 
 			$sql = " select * ";
-			$sql .= "from award where id='".$id."' ";
+			$sql .= " from users   ";
+			$sql .= " where id='".$id."' ";
 			$result = $this->mysql->execute($sql);
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get  Award Info : ".$e->getMessage();
+			echo "Cannot Get  User Info : ".$e->getMessage();
 		}
 		
 	}
@@ -91,12 +92,12 @@ class UserManager{
 		
 		try{
 			
-			$title_th  =$items["title_th"];
-			$title_en  =$items["title_en"];
-			$detail_th =$items["detail_th"];
-			$detail_en =$items["detail_en"];
-			$thumbnail  =$items["thumbnail"];
-			$category  =$items["category"];
+			$firstname  =$items["firstname"];
+			$lastname  =$items["lastname"];
+			$role_id = $items["role_type"];
+			$user_name =$items["user_name"];
+			$pass_word =md5($items["pass_word"]);
+			
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -104,18 +105,18 @@ class UserManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into award (title_th ,title_en  ,detail_th ,detail_en ,thumbnail ,type ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en','$thumbnail' ,$category  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into users (firstname ,lastname  ,role_id ,user_name ,pass_word ,active ,create_by ,create_date ) ";
+			$sql .= "values('$firstname'  ,'$lastname'  ,$role_id ,'$user_name','$pass_word' ,$active ,$create_by ,$create_date ); ";
 			$this->mysql->execute($sql);
 			
-			log_debug("AwardManager > insert  > " .$sql);
+			log_debug("UserManager > insert  > " .$sql);
 			
 			$result = $this->mysql->newid();
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Insert Award Project : ".$e->getMessage();
+			echo "Cannot Insert User : ".$e->getMessage();
 		}
 		
 	}
@@ -123,14 +124,14 @@ class UserManager{
 	function update_item($items){
 		try{
 			$id = $items["id"];
-			$title_th  =$items["title_th"];
-			$title_en  =$items["title_en"];
-			$detail_th =$items["detail_th"];
-			$detail_en =$items["detail_en"];
-			$category  =$items["category"];
+			$firstname  =$items["firstname"];
+			$lastname  =$items["lastname"];
+			$role_id = $items["role_type"];
+			$user_name =$items["user_name"];
+			$pass_word ="";
+			if($items["pass_word"] != "")
+				$pass_word =",pass_word='".md5($items["pass_word"])."' " ;
 			
-			$thumbnail  = ($items["thumbnail"] !="" ? ",thumbnail='".$items["thumbnail"]. "' " :  "" );
-		
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -138,33 +139,33 @@ class UserManager{
 			$update_by='0';
 			$update_date='now()';
 			
-			$sql = "update award set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
-			$sql .=  $thumbnail ;
-			$sql .= ",type=$category ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql = "update users set  ";
+			$sql .= "firstname='$firstname' ,lastname='$lastname' ,role_id=$role_id ,user_name='$user_name' ";
+			$sql .= $pass_word ;
+			$sql .= " ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
-			log_debug("Award > update > " .$sql);
+			log_debug("User > update > " .$sql);
 			$result = $this->mysql->newid();
 			
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Update Award Organization : ".$e->getMessage();
+			echo "Cannot Update User : ".$e->getMessage();
 		}
 	}
 	
 	function delete_item($id){
 		
 		try{
-			$sql = "delete from award where id=$id ; ";
-			log_debug("Award > delete_project > " .$sql);
+			$sql = "delete from users where id=$id ; ";
+			log_debug("User > delete > " .$sql);
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Delete Award Organization : ".$e->getMessage();
+			echo "Cannot Delete User : ".$e->getMessage();
 		}
 	}
 	

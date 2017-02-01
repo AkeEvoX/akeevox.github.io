@@ -5,7 +5,12 @@ user.add = function(args){
 	
 	var endpoint = "services/user.php";
 	var method = "POST";
-
+	
+	//validate information
+	if(validate(args) != true){
+		return false;
+	}
+	
 	utility.data(endpoint,method,args,function(data){
 		
 		var response = JSON.parse(data);
@@ -20,6 +25,13 @@ user.edit = function(args){
 	
 	var endpoint = "services/user.php";
 	var method = "POST";
+	
+	
+	//validate information
+	if(validate(args) != true){
+		return false;
+	}
+	
 	
 	utility.data(endpoint,method,args,function(data){
 		var response = JSON.parse(data);
@@ -65,6 +77,60 @@ user.loaditem = function(id){
 	utility.service(endpoint,method,args,view_item);
 }
 
+function validate(args){
+	if(args.get("firstname")=="")
+	{
+		alert("please enter firstname !!");
+		return false;
+	}
+	if(args.get("lastname")=="")
+	{
+		alert("please enter lastname !!");
+		return false;
+	}
+	if(args.get("user_name")=="")
+	{
+		alert("please enter username !!");
+		return false;
+	}
+	switch(args.get("type")){
+		case "add":
+			if(args.get("pass_word")=="")
+			{
+				alert("please enter password !!");
+				return false;
+			}
+	
+			if(args.get("conf_pass_word")=="")
+			{
+				alert("please enter confirm password !!");
+				return false;
+			}
+			
+			if(args.get("pass_word") != args.get("conf_pass_word")){
+				alert("password is not match !!!");
+				return false;
+			}
+			
+		break;
+		case "edit":
+		
+			if(args.get("pass_word") !="" &&  args.get("conf_pass_word") !=""){
+		
+				if(args.get("pass_word") != args.get("conf_pass_word")){
+					alert("password is not match !!!");
+					return false;
+				}
+		
+			}
+		
+		break;
+	}
+
+	return true;
+	
+}
+
 function view_item(data){
 	
 	if(data.result==undefined || data.result=="") {
@@ -72,14 +138,11 @@ function view_item(data){
 		return;
 	}
 	
-	 $('#title_th').val(data.result.title_th);
-	 $('#title_en').val(data.result.title_en);
-	 $('#detail_th').summernote('code',data.result.detail_th);
-	 $('#detail_en').summernote('code',data.result.detail_en);
+	 $('#firstname').val(data.result.firstname);
+	 $('#lastname').val(data.result.lastname);
+	 $('#user_name').val(data.result.user_name);
 	
-	 $('#preview').attr('src',"../"+data.result.thumbnail);
-	
-	 $('input[name="category"][value="'+data.result.type+'"]').prop('checked',true);
+	 $('input[name="role_type"][value="'+data.result.role_id+'"]').prop('checked',true);
 	
 	 if(data.result.active=="1")
 		 $('#active').prop('checked',true);
