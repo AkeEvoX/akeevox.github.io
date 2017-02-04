@@ -14,7 +14,8 @@
 				<div class="form-group">
 					<label for="preview_thumb" class='col-md-3'>&nbsp;</label>
 					<div class='col-md-5'>
-						<img class="img-responsive" id="preview_thumb" onerror=this.src='../../images/common/unavaliable.jpg' />
+						<img class="img-responsive" id="preview_thumb"  />
+						<!-- onerror=this.src='../../images/common/unavaliable.jpg'  -->
 					</div>
 				</div>
 				<div class="form-group">
@@ -24,21 +25,10 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="preview_symbol" class='col-md-3'>&nbsp;</label>
-					<div class='col-md-5'>
-						<img class="img-responsive" id="preview_symbol" onerror=this.src='../../images/common/unavaliable.jpg' />
-					</div>
-				</div>
-				<div class="form-group">
-					<label for="file_symbol" class='col-md-3'>สัญลักษณ์ / symbol</label>
-					<div class='col-md-7'>
-						<input type="file" class="form-control" id="file_symbol" name="file_symbol"  />
-					</div>
-				</div> 
-				<div class="form-group">
 					<label for="preview_plan" class='col-md-3'>&nbsp;</label>
 					<div class='col-md-5'>
-						<img class="img-responsive" id="preview_plan" onerror=this.src='../../images/common/unavaliable.jpg' />
+						<img class="img-responsive" id="preview_plan" />
+						<!-- onerror=this.src='../../images/common/unavaliable.jpg'  -->
 					</div>
 				</div>
 				<div class="form-group">
@@ -60,15 +50,27 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="preview_dwg" class='col-md-3'>PDF</label>
+					<label for="preview_dwg" class='col-md-3'>View PDF (TH)</label>
 					<div class='col-md-5'>
-						<a id="link_pdf" target="_blank" href='' class='btn btn-warning' >CLICK VIEW PDF</a>
+						<a id="link_pdf_th" target="_blank" href='' class='btn btn-warning' >CLICK VIEW PDF (TH)</a>
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="file_pdf" class='col-md-3'>Specification Sheet (PDF file)</label>
+					<label for="pdf_file_th" class='col-md-3'>PDF file (TH)</label>
 					<div class='col-md-7'>
-						<input type="file" class="form-control" id="file_pdf" name="file_pdf"  />
+						<input type="file" class="form-control" id="pdf_file_th" name="pdf_file_th"  />
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="preview_dwg" class='col-md-3'>View PDF (EN)</label>
+					<div class='col-md-5'>
+						<a id="link_pdf_en" target="_blank" href='' class='btn btn-warning' >CLICK VIEW PDF (EN)</a>
+					</div>
+				</div>
+				<div class="form-group">
+					<label for="pdf_file_en" class='col-md-3'>PDF file (EN)</label>
+					<div class='col-md-7'>
+						<input type="file" class="form-control" id="pdf_file_en" name="pdf_file_en"  />
 					</div>
 				</div>
 				<div class="form-group">
@@ -83,6 +85,9 @@
 					</li>
 					<li role="presentation">
 						<a class='menutab' href="#en" data-toggle="tab">EN</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#symbol" data-toggle="tab">Symbol</a>
 					</li>
 					<li role="presentation">
 						<a class='menutab' href="#color" data-toggle="tab">Color</a>
@@ -244,6 +249,22 @@
 							</div>
 						</div>
 					</div>
+					<div id='symbol' class="tab-pane fade">
+						<div class='col-md-12'>
+							<div class="form-group">
+									<div class="input-group col-md-8">
+									<input type='text' id='temp_symbol' class='form-control' placeholder='click upload file' readonly />
+									  <span class="input-group-btn">
+										<button class="btn btn-default" id='btn_add_symbol' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+										<button id='btn_upload_symbol' class='btn btn-success'>upload</button>
+									  </span>
+									</div><!-- /input-group -->
+								</div><!-- /form-group -->
+							<div class="form-group">
+								<ul class="list-group col-md-6" id='product_symbol' ></ul>
+							</div><!-- /form-group -->
+						</div>
+					</div>
 					<div id='color' class="tab-pane fade">
 						<div class='col-md-12'>
 							<div class="form-group">
@@ -295,6 +316,14 @@
 		<input type='submit' id='photo_submit' />
 		</div>
 	</form>
+	<form id='symbol_form' name='symbol_form' method='post' enctype="multipart/form-data" >
+		<div  style='display:none;' >
+		<input type='file' id='file_symbol' name='file_symbol' class='form-control' />
+		<input type='hidden' id='proid_symbol' name='proid_symbol' />
+		<input type='submit' id='symbol_submit' />
+		</div>
+	</form>
+	
 </div>
 <script src='js/product-manager.js' />
 <script src='js/color-manager.js' />
@@ -318,31 +347,61 @@ $(document).ready(function(){
 		
 	});
 
+	/****product symbol******/
+	//show file name
+	$('#btn_add_symbol').click(function(e){
+		$('#file_symbol').trigger('click');
+	});
+	$('#file_symbol').change(function(e){
+		var filename = $(this).val().split('\\').pop();
+		$('#temp_symbol').val(filename);
+	});
+	//button trigger submit upload 
+	$('#btn_upload_symbol').click(function(){
+		$('#symbol_submit').trigger('click');
+	});
+	
+	$("#symbol_form").submit(function(evt){
+			console.log('symbol form sumbit');
+			var args = new FormData(this);
+			args.append('type', 'add_symbol');
+			product.add_symbol(args); 
+			$('#file_symbol').val('');//clear file symbol upload
+	});
+	
+	//cancel sumbit 
+	$("#symbol_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
+	/****product symbol******/
+	/****product photo******/
+	
 	$('#btn_add_photo').click(function(e){
 		$('#file_photo').trigger('click');
 	});
-	
+	//show file name
 	$('#file_photo').change(function(e){
 		var filename = $(this).val().split('\\').pop();
 		$('#temp_photo').val(filename);
 	});
+	
 	
 	$('#btn_upload').click(function(){
 		$('#photo_submit').trigger('click');
 	});
 	
 	$("#photo_form").submit(function(evt){
-			var args = new FormData(this);
-			args.append('type', 'add_photo');
-			product.add_photo(args); 
-			$('#file_photo').val('');
+		console.log('photo form sumbit');
+		var args = new FormData(this);
+		args.append('type', 'add_photo');
+		product.add_photo(args); 
+		$('#file_photo').val('');//clear file photo upload
 	});
-	
 	
 	$("#photo_form").on('submit',function(e){
 		e.preventDefault(); 
 	});
-	
+	/****product photo******/
 	$("#product_form").on('submit',function(e){
 		e.preventDefault(); 
 	});

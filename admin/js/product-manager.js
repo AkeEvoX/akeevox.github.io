@@ -29,13 +29,26 @@ product.add_photo =  function(args){
 	var endpoint = "services/product.php";
 	var method = "GET";
 	var proid = args.get('proid');
-	console.log('object photo of pro id =' + proid);
+	console.log('insert photo of pro id =' + proid);
 	
 	utility.data(endpoint,method,args,function(data){
 		//#reload product color;
 		product.load_product_photo(proid);
 	});
 	
+}
+
+product.add_symbol = function(args){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var proid = args.get('proid_symbol');
+	console.log('insert symbol of pro id =' + proid);
+	utility.data(endpoint,method,args,function(data){
+		//#reload product symbol;
+		console.log(data);
+		product.load_product_symbol(proid);
+	});
+	//console.log('object symbol of pro id =' + proid);
 }
 
 product.edit = function(args){
@@ -70,12 +83,12 @@ product.delete = function(){
 	 //product.loadlist();
 }
 
-product.del_color =  function(id,color_id){
+product.del_color =  function(proid,color_id){
 	
 	if(confirm('Confirm Delete ?')){		
 		var endpoint = "services/product.php";
 		var method = "GET";
-		var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":id,"color_id":color_id};
+		var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":proid,"color_id":color_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
 			product.load_product_color(id);
@@ -84,15 +97,29 @@ product.del_color =  function(id,color_id){
 	
 }
 
-product.del_photo =  function(id,photo_id){
+product.del_photo =  function(proid,photo_id){
 	
 	if(confirm('Confirm Delete ?')){
 		var endpoint = "services/product.php";
 		var method = "GET";
-		var args = {"_":new Date().getMilliseconds() ,"type":"del_photo", "id":id,"photo_id":photo_id};
+		var args = {"_":new Date().getMilliseconds() ,"type":"del_photo", "id":proid,"photo_id":photo_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
 			product.load_product_photo(id);
+		});
+	}
+	
+}
+
+product.del_symbol =  function(proid,symbol_id){
+	
+	if(confirm('Confirm Delete ?')){		
+		var endpoint = "services/product.php";
+		var method = "GET";
+		var args = {"_":new Date().getMilliseconds() ,"type":"del_symbol", "id":proid,"symbol_id":symbol_id};
+		utility.service(endpoint,method,args,function(data){
+			//#reload product color;
+			product.load_product_symbol(proid);
 		});
 	}
 	
@@ -134,6 +161,7 @@ product.loaditem = function(id){
 	
 	$('#id').val(id);
 	$('#proid').val(id);
+	$('#proid_symbol').val(id);
 	var endpoint = "services/product.php";
 	var method = "GET";
 	var args = {'_':new Date().getMilliseconds(),'type':'item','id':id};
@@ -143,6 +171,8 @@ product.loaditem = function(id){
 	this.load_product_color(id);
 	//#load product gallery;
 	this.load_product_photo(id);
+	//#load product symbol;
+	this.load_product_symbol(id);
 }
 
 product.load_product_color = function(id){
@@ -158,6 +188,14 @@ product.load_product_photo = function(id){
 	var args = {'_':new Date().getMilliseconds(),'type':'product_photo' ,'id':id };
 	utility.service(endpoint,method,args,view_list_photo);
 }
+
+product.load_product_symbol = function(id){
+	var endpoint = "services/product.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'product_symbol' ,'id':id };
+	utility.service(endpoint,method,args,view_list_symbol);
+}
+
 
 function view_list_product(data){
 	
@@ -216,6 +254,30 @@ function view_list_color(data){
 	list.append(item);
 
 }
+function view_list_symbol(data){
+	
+	var list = $('#product_symbol');
+	var item = "";
+	list.html('');
+	console.log("view_list_symbol");
+	console.log(data);
+	if(data.result==undefined || data.result=="") {
+		console.log("product-manager > list symbol product  :: data not found.");
+		return;
+	}
+
+	$.each(data.result,function(i,val){
+
+		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:pointer;' onclick=product.del_symbol("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
+		item += "<img src='../"+val.path+"' > ";
+		item += "</li> ";
+
+	});
+
+	list.append(item);
+
+}
+//
 
 function view_list_photo(data){
 	
@@ -265,7 +327,7 @@ function set_item_product(data){
 	console.log(data);
 	
 	if(data.result==undefined || data.result=="") {
-		console.log("product-manager > product :: data not found.")
+		console.log("product-manager > product :: data not found.");
 		return;
 	}
 	
@@ -275,7 +337,8 @@ function set_item_product(data){
 	$('#preview_symbol').attr('src',"../"+data.result.symbol_file);
 	$('#preview_plan').attr('src',"../"+data.result.plan);
 	$('#link_dwg').attr('href',"../"+data.result.dwg_file);
-	$('#link_pdf').attr('href',"../"+data.result.pdf_file);
+	$('#link_pdf_th').attr('href',"../"+data.result.pdf_file_th);
+	$('#link_pdf_en').attr('href',"../"+data.result.pdf_file_en);
 	
 	if(data.result.active=="1")
 		$('#active').prop('checked',true);

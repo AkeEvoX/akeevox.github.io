@@ -415,7 +415,7 @@ function setViewAttribute(data)
 function setviewitem(data)
 {
 
-	var view = $('#productgallery');
+	
 	//view info
 	if(data!==undefined){
 	
@@ -425,6 +425,7 @@ function setviewitem(data)
 		$('#plan').attr('src',data.plan);
 		$('#symbol_view').attr('src',data.symbol_file);
 		$('#pdf_view').attr('href',data.pdf_file);
+		
 		$('#dwg_view').attr('href',data.dwg_file);
 		$('#btn_compare').attr('data-id',data.id);//data-thumb
 		$('#btn_compare').attr('data-thumb',data.thumb);
@@ -434,7 +435,7 @@ function setviewitem(data)
 		
 		var colors = $('#productcolor');
 		colors.html("");
-		if(data.colors!=null){
+		if(data.colors!=null && data.image !=""){
 			$.each(data.colors,function(i,val){
 				var item = "";
 				item = "<img src='"+val.color+"'  onerror=this.src='images/common/unavaliable.jpg' /> ";
@@ -443,7 +444,8 @@ function setviewitem(data)
 		}
 		
 		//view image list
-		if(data.image!=null){
+		var view = $('#productgallery');
+		if(data.image!=null && data.image !="" ){
 			$.each(data.image,function(i,val){
 			
 				var item = "";
@@ -452,7 +454,17 @@ function setviewitem(data)
 			});
 		}
 		
-		
+		var symbol = $('#product_symbol');
+		if(data.symbols!=null && data.image !=""){
+			symbol.html('');
+			$.each(data.symbols,function(i,val){
+			
+				var item = "";
+				item += "<img src='"+val.path+"' data-image='"+val.path+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
+				if( ((i+1) % 5) ==0) item+= "<br/>";
+				symbol.append(item);
+			});
+		}
 		
 	}
 }

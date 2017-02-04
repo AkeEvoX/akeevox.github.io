@@ -255,14 +255,15 @@ function setProduct($lang,$id) {
 			,"title"=>$row->title
 			,"detail"=>$row->detail
 			,"thumb"=>$row->thumb
-			,"image"=>setImages($id)
+			,"images"=>setImages($id)
 			,"plan"=>$row->plan
 			,"code"=>$row->code
 			,"name"=>$row->name
 			,"pdf_file"=>$row->pdf_file
 			,"dwg_file"=>$row->dwg_file
-			,"symbol_file"=>$row->symbol_file
+			,"symbols"=>set_product_symbol($id)
 			,"colors"=>setColor($id)
+			//load symbol
 			);
 	}
 	return $items;
@@ -302,6 +303,22 @@ function setColor($id){
 	}
 	return $item;
 }
+
+function set_product_symbol($id){
+	$product = new ProductManager();
+	$data = $product->get_product_symbol($id);
+	$item = "";
+	if($data){
+		while($row= $data->fetch_object())
+		{
+			$item[] = array(
+				"path"=>$row->path
+				);
+		}
+	}
+	return $item;
+}
+
 
 function setImages($id) {
 	

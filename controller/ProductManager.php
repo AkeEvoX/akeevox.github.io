@@ -26,7 +26,7 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.pdf_file_".$lang." as pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " inner join product_type t on p.typeid=t.id ";
 			$sql .= " where p.id='".$id."' ;";
@@ -76,7 +76,7 @@ class ProductManager{
 			echo "Cannot Get Product Images : ".$e->getMessage();
 		}
 	}
-
+	
 	function getProductList($lang,$cate) {
 		try{
 
@@ -158,6 +158,22 @@ class ProductManager{
 		}
 		catch(Exception $e){
 			echo "Cannot Get Product Photos : ".$e->getMessage();
+		}
+	}
+	
+	function get_product_symbol($proid){
+		try{
+			//get type serial condition top 1 asc
+			$sql = " select * ";
+			$sql .= " from product_symbol ";
+			$sql .= " where proid=".$proid." ;";
+			log_debug("get_product_symbol > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product Symbol : ".$e->getMessage();
 		}
 	}
 
@@ -333,14 +349,15 @@ class ProductManager{
 			$plan = $items["plan"];
 			$symbol_file =  $items["symbol_file"];
 			$dwg_file = $items["dwg_file"];
-			$pdf_file = $items["pdf_file"];
+			$pdf_file_th = $items["pdf_file_th"];
+			$pdf_file_en = $items["pdf_file_en"];
 			$active = "0";
 			if(isset($items["active"])) $active='1';
 			$create_by = "0";
 			$create_date = "now()";
 			
-			$sql = "insert into products(typeid,title_th,title_en,thumb,plan,dwg_file,pdf_file,symbol_file,active,create_by,create_date) ";
-			$sql .= "values($typeid,'$title_th','$title_en','$thumb','$plan','$dwg_file','$pdf_file','$symbol_file',$active,$create_by,$create_date); ";
+			$sql = "insert into products(typeid,title_th,title_en,thumb,plan,dwg_file,pdf_file_th,pdf_file_en,symbol_file,active,create_by,create_date) ";
+			$sql .= "values($typeid,'$title_th','$title_en','$thumb','$plan','$dwg_file','$pdf_file_th','$pdf_file_en','$symbol_file',$active,$create_by,$create_date); ";
 			
 			log_debug("product manager > inesrt product > ".$sql);
 			
@@ -364,7 +381,7 @@ class ProductManager{
 			
 			$this->insert_product_attribute($proid,$attributes);
 		
-			return $result;
+			return $proid;
 		}
 		catch(Exception $e){
 			echo "Cannot Insert Product : ".$e->getMessage();
@@ -381,7 +398,9 @@ class ProductManager{
 			$plan = $items["plan"] == "" ? "" : ",plan='".$items["plan"]. "' ";
 			$symbol_file =  $items["symbol_file"] == "" ? "" : ",symbol_file='".$items["symbol_file"]. "' ";
 			$dwg_file = $items["dwg_file"] == "" ? "" : ",dwg_file='".$items["dwg_file"]. "' ";
-			$pdf_file = $items["pdf_file"] == "" ? "" : ",pdf_file='".$items["pdf_file"]. "' ";
+			$pdf_file_th = $items["pdf_file_th"] == "" ? "" : ",pdf_file_th='".$items["pdf_file_th"]. "' ";
+			$pdf_file_en = $items["pdf_file_en"] == "" ? "" : ",pdf_file_en='".$items["pdf_file_en"]. "' ";
+			
 			$active = "0";
 			if(isset($items["active"])) $active='1';
 			$update_by = "0";
@@ -389,7 +408,7 @@ class ProductManager{
 			
 			$sql = "update products set ";
 			$sql .= " typeid=$typeid , title_th='$title_th' ,title_en='$title_en' ,active=$active ,update_by=$update_by , update_date='$update_date' ";
-			$sql .= $thumb . " ".  $plan  . " ".  $symbol_file  . " ".  $dwg_file  . " ".  $pdf_file ;
+			$sql .= $thumb . " ".  $plan  . " ".  $symbol_file  . " ".  $dwg_file  . " ".  $pdf_file_th . " ".$pdf_file_en ;
 			$sql .= " where id=$proid " ; 
 			
 			log_debug("product manager > update product > ".$sql);
@@ -547,8 +566,29 @@ class ProductManager{
 		}
 		
 	}
-
 	
+	function insert_product_symbol($items){
+		try{
+			$proid = $items["proid"];
+			$path = $items["path"];
+			
+			$create_by = $_SESSION["profile"]->id;
+			$create_date = "now()";
+			
+			$sql = "insert into product_symbol(proid,path,create_by,create_date) ";
+			$sql .= "values($proid,'$path',$create_by,$create_date); ";
+			
+			log_debug("insert_product_symbol > " .$sql); 
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Insert Product Symbol  : ".$e->getMessage();
+		}
+	}
+	
+
 	function insert_color($items){
 		try{
 			$title_th = $items["title_th"];
@@ -564,13 +604,13 @@ class ProductManager{
 			$sql = "insert into color_master(title_th,title_en,thumb,active,create_by,create_date) ";
 			$sql .= "values('$title_th','$title_en','$thumb',$active,$create_by,$create_date); ";
 			
-			log_debug($sql); 
+			log_debug("insert_color > ".$sql); 
 			
 			$result = $this->mysql->execute($sql);
 			return $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Insert Color Master : ".$e->getMessage();
+			echo "Cannot Insert Product Color : ".$e->getMessage();
 		}
 	}
 	
@@ -690,6 +730,20 @@ class ProductManager{
 		}
 	}
 	
+	function delete_product_symbol($id){
+		try{
+
+			$sql = "delete from product_symbol where id=$id ;";
+
+			log_debug("delete product symbol : " . $sql);
+			
+			$result = $this->mysql->execute($sql);
+			return $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Delete Product Symbol : ".$e->getMessage();
+		}
+	}
 	
 	function delete_product($id){
 		try{
@@ -712,7 +766,6 @@ class ProductManager{
 			echo "Cannot Delete Product : ".$e->getMessage();
 		}
 	}
-	
 	
 	function delete_product_type($id){
 		try{
