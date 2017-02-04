@@ -64,7 +64,7 @@ class AboutManager{
 			$detail_en = $items["detail_en"];
 			$link_th = $items["link_th"];
 			$link_en = $items["link_en"];
-			$update_by = "0";
+			$update_by = $_SESSION["profile"]->id;
 			$update_date = "current_timestamp";
 			
 			$sql = "update about set  ";

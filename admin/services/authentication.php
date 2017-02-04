@@ -18,7 +18,8 @@ switch($type){
 		}
 		//var_dump($_SESSION["profile"]);
 		$role = $_SESSION["profile"]->role_name;
-		$result = array("message"=>$message,"role"=>$role);
+		$login_name = $_SESSION["profile"]->firstname ." ". $_SESSION["profile"]->lastname;
+		$result = array("message"=>$message,"role"=>$role,"login_name"=>$login_name);
 	break;	
 	case "logout":
 		unset($_SESSION["profile"]);
@@ -50,7 +51,7 @@ function login($user,$pass){
 
 		$profile = $data->fetch_object();
 		if($profile != null){
-			$_SESSION["profile"] = $profile;
+			$_SESSION["profile"] = $profile;			
 			$redirect = "center.html";
 			$message = "success";
 		}

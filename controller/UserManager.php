@@ -24,17 +24,17 @@ class UserManager{
 
 	function getItem($id,$lang){
 		
-		try{
+		// try{
 
-			$sql = " select id,title_".$lang." as title,detail_".$lang." as detail ,thumbnail ,update_date ";
-			$sql .= "from award where active=1 and id='".$id."' order by update_date desc ";
-			$result = $this->mysql->execute($sql);
+			// $sql = " select id,title_".$lang." as title,detail_".$lang." as detail ,thumbnail ,update_date ";
+			// $sql .= "from award where active=1 and id='".$id."' order by update_date desc ";
+			// $result = $this->mysql->execute($sql);
 			
-			return  $result;
-		}
-		catch(Exception $e){
-			echo "Cannot Get  Award : ".$e->getMessage();
-		}
+			// return  $result;
+		// }
+		// catch(Exception $e){
+			// echo "Cannot Get  Award : ".$e->getMessage();
+		// }
 		
 	}
 	
@@ -77,7 +77,7 @@ class UserManager{
 			$sql .= " ,u.update_by,update_date,u.active ";
 			$sql .= " ,r.title as role_name from users u " ;
 			$sql .= " inner join user_roles r on u.role_id=r.id " ;
-			
+			$sql .= " where u.id !=0  " ;
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			log_debug("User > get_fetch_list > ".$sql);
 			$result = $this->mysql->execute($sql);
@@ -136,7 +136,7 @@ class UserManager{
 			
 			if(isset($items["active"]))	$active='1';
 			
-			$update_by='0';
+			$update_by=$_SESSION["profile"]->id;
 			$update_date='now()';
 			
 			$sql = "update users set  ";
