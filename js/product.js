@@ -460,8 +460,8 @@ function setviewitem(data)
 			$.each(data.symbols,function(i,val){
 			
 				var item = "";
-				item += "<img src='"+val.path+"' data-image='"+val.path+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
-				if( ((i+1) % 5) ==0) item+= "<br/>";
+				item += "<img src='"+val.path+"' data-image='"+val.path+"' style='height:40px;width:40px' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
+				if( ((i+1) % 6) ==0) item+= "<br/>";
 				symbol.append(item);
 			});
 		}

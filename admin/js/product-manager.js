@@ -91,10 +91,11 @@ product.del_color =  function(proid,color_id){
 		var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":proid,"color_id":color_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
-			product.load_product_color(id);
+			//product.load_product_color(id);
+			$('#'+color_id).remove();
 		});
 	}
-	
+	//setTimeout(product.del_color(proid,color_id), 4000);
 }
 
 product.del_photo =  function(proid,photo_id){
@@ -244,7 +245,7 @@ function view_list_color(data){
 
 	$.each(data.result,function(i,val){
 
-		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:pointer;' onclick=product.del_color("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
+		item += "<li  id='"+val.id+"'  class='list-group-item' ><span style='cursor:pointer;' onclick=product.del_color("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
 		item += "<img src='../"+val.thumb+"' > ";
 		item += val.title_en;
 		item += "</li> ";

@@ -103,8 +103,8 @@ function get_list_fetch($lang,$search_text,$start_fetch,$max_fetch){
 			// ,"title"=>$row->title
 			// ,"thumb"=>$row->thumb
 			// ,"active"=>$row->active);
-
-			$result[] = $row;
+			
+		$result[] = $row;
 	}
 	return $result;
 }
@@ -237,6 +237,13 @@ function Insert_photo($items){
 function Insert_symbol($items){
 	$items["proid"] = $items["proid_symbol"];
 	
+	$dir = "../../images/products/".$items["proid"];
+	if (!file_exists($dir) && $newid!="0"){
+		$oldmask = umask(0); //# set your umask temporarily to zero so it has no effect. 
+		mkdir($dir, 0777); //0777,true
+		umask($oldmask);
+	}
+	
 	if($_FILES["file_symbol"]["name"]!="")
 	{
 		$ext = ".". pathinfo($_FILES['file_symbol']['name'], PATHINFO_EXTENSION);
@@ -344,6 +351,13 @@ function Update($items){
 	$items["plan"] = "";
 	$items["dwg_file"]="";
 	//$items["pdf_file"]="";
+	
+	$dir = "../../images/products/".$proid;
+	if (!file_exists($dir) && $newid!="0"){
+		$oldmask = umask(0); //# set your umask temporarily to zero so it has no effect. 
+		mkdir($dir, 0777); //0777,true
+		umask($oldmask);
+	}
 	
 	if($_FILES["file_thumbnail"]["name"]!="")
 	{

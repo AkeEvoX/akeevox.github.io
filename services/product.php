@@ -5,11 +5,11 @@ include("../lib/logger.php");
 //$base_dir = "../../";
 include("../controller/ProductManager.php");
 
-if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
-	$lang = $_SESSION["lang"];
-}else {
-	$_SESSION["lang"] = $lang;
-}
+// if(isset($_SESSION["lang"]) && !empty($_SESSION["lang"])) {
+	// $lang = $_SESSION["lang"];
+// }else {
+	// $_SESSION["lang"] = $lang;
+// }
 
 if(isset($_GET["type"])) $type = $_GET["type"]; else $type="";
 if(isset($_GET["cate"])) $cate = $_GET["cate"]; else $cate="";
@@ -150,8 +150,8 @@ function setListSeries($lang,$id){
 					,"typeid"=>$row->typeid
 					,"thumb"=>$row->thumb
 					,"plan"=>$row->plan
-					,"code"=>$row->code
-					,"name"=>$row->name
+					//,"code"=>$row->code
+					//,"name"=>$row->name
 					);
 			}
 		}

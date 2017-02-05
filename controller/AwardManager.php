@@ -54,21 +54,21 @@ class AwardManager{
 		
 	}
 
-	function getListItem($lang)
-	{
+	function getListItem($lang,$type_reward){
 			try{
 			
-			$sql = "select id,thumbnail,update_date,type ";
-			$sql .= "from award where active=1 order by update_date desc ";
-
+			$sql = "select id,thumbnail,update_date,type,seq ";
+			$sql .= "from award where active=1 and type=".$type_reward." order by seq ";
+			
+			log_warning("AwardManager > getListItem  > " .$sql);
+			
 			$result = $this->mysql->execute($sql);
 			return  $result;
 		}
 		catch(Exception $e){
-			echo "Cannot Get List Award : ".$e->getMessage();
+			echo "Cannot Get List Award & Standard : ".$e->getMessage();
 		}
 	}
-	
 	
 	function get_fetch_list($start_fetch,$max_fetch){
 			try{
@@ -85,7 +85,6 @@ class AwardManager{
 			echo "Cannot Get  List Award  : ".$e->getMessage();
 		}
 	}
-	
 	
 	function insert_item($items){
 		

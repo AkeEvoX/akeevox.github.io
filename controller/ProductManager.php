@@ -26,7 +26,7 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name,p.pdf_file_".$lang." as pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name d.name_".$lang." as name,p.pdf_file_".$lang." as pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " inner join product_type t on p.typeid=t.id ";
 			$sql .= " where p.id='".$id."' ;";
@@ -80,7 +80,7 @@ class ProductManager{
 	function getProductList($lang,$cate) {
 		try{
 
-			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " where p.typeid='".$cate."' ";
 			$sql .= " order by p.create_date desc ";
@@ -209,7 +209,7 @@ class ProductManager{
 	function getSeriestList($lang,$id){
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name ";
+			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name ";
 			$sql .= " from series s ";
 			$sql .= " inner join products p on s.pro_id=p.id ";
 			$sql .= " inner join product_detail pd on p.id = pd.proid ";
@@ -228,7 +228,7 @@ class ProductManager{
 	function getShowRoomList($lang,$id){
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name ";
+			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name";
 			$sql .= " from showroom s ";
 			$sql .= " inner join products p on s.pro_id=p.id ";
 			$sql .= " inner join product_detail pd on p.id = pd.proid ";
@@ -247,7 +247,7 @@ class ProductManager{
 	function getProductReleated($lang,$cate) {
 		try{
 
-			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name ";
+			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid='".$cate."' ";
 			$sql .= " order by  p.create_date desc limit 6 ";
 			$result = $this->mysql->execute($sql);

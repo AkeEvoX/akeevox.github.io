@@ -69,16 +69,13 @@ function showgallery(id){
 				item += "<img src='"+val.image+"' data-image='"+val.image+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
 				view.append(item);
 			});
-		}
-		
-	},function(){ //on load complete
 			
 			view.unitegallery({
 				
 				theme_panel_position: "bottom"
 				,gallery_theme: "grid"
 				,slider_scale_mode: "fit"
-				,thumb_fixed_size:false
+				,thumb_fixed_size:true
 				,thumb_width:100
 				,thumb_height:100
 				,thumb_loader_type:"light"
@@ -87,8 +84,12 @@ function showgallery(id){
 				,gridpanel_grid_align: "top"
 				,theme_hide_panel_under_width: 800
 			});
-			//'height:500px;width:800px;left:60;'
+		}
+		
+	},function(){ //on load complete
 			
+			//'height:500px;width:800px;left:60;'
+			//,thumb_fixed_size:false
 			
 			utility.showmodal();
 		

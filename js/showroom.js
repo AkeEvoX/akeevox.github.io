@@ -1,6 +1,5 @@
 
-function loadshowroominfo(id)
-{
+function loadshowroominfo(id){
 	var endpoint = "services/product.php";
 	var method='get';
 	var args = {"_": new Date().getMilliseconds() ,"type":"showroom","id":id};
@@ -8,33 +7,9 @@ function loadshowroominfo(id)
 	utility.service(endpoint,method,args,setviewinfo,function(){
 		load_showroom_list(id);
 	});
-
-	/*
-	$.ajax({
-		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"type":"showroom","id":id},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
-
-			console.log(data.result);
-			setviewinfo(data.result);
-			//console.warn()
-		},
-		complete:function(obj){
-			var data = obj.responseJSON.result;
-			loadshowroomlist(data.id);
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load series list error : "+ xhr.responseText);
-		}
-	});*/
 }
 
-function load_showroom_list(id)
-{
+function load_showroom_list(id) {
 	
 	console.log('cate='+id);
 	
@@ -44,26 +19,7 @@ function load_showroom_list(id)
 	utility.service(endpoint,method,args,setviewlist,function(){
 		explain_mobile();
 	});
-	
-	/*
-	$.ajax({
-		url:"services/product.php",
-		data:{"_": new Date().getHours() ,"type":"list","cate":id},
-		dataType:'json',
-		type:"GET",
-		success: function(data){
 
-			console.log(data.result);
-			setviewlist(data.result);
-			//console.warn()
-		},
-		error : function (xhr,status,err)
-		{
-			console.error(xhr.responseText);
-			alert("load series list error : "+ xhr.responseText);
-		}
-	});
-	*/
 }
 
 function setviewinfo(data){
@@ -88,15 +44,15 @@ function setviewlist(data)
 	console.debug(data);
 	
 	var view = $('#viewproduct');
-	$.each(data,function(i,val){
+	$.each(data.result,function(i,val){
 		var item = "";
 
 		item += "<div class='row'>";
 		item += "<label for='code' class='col-md-4 control-label'>"+val.title+" " +val.code+"</label>";
-		item += "<div class='col-md-8'><span>"+val.detail+"</span></div>";
+		item += "<div class='col-md-8'><span>"+val.title+"</span></div>";
 		item += "</div><hr/><div class='row'>";
-		item += "<div class='col-md-3 thumb' ><img src='"+val.thumb+"' title='"+val.typeid+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-responsive' /></div>";
-		item += "<div class='col-md-9 plan' ><img src='"+val.plan+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-fluid' /></div>";
+		item += "<div class='col-sm-3 col-md-3 thumb' ><img src='"+val.thumb+"' title='"+val.typeid+"' class='img-responsive' onerror=this.src='images/common/unavaliable.jpg'  /></div>";
+		item += "<div class='col-xs-12 col-sm-9 col-md-9 plan' ><img src='"+val.plan+"' onerror=this.src='images/common/unavaliable.jpg'  class='img-responsive' /></div>";
 		item += "</div>";
 		
 
