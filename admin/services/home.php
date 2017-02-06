@@ -180,13 +180,13 @@ function update_content($items){
 	
 	$list_data[] = array(
 		"name"=>"index.top_detail"
-		,"th"=>$items["intro_th"]
-		,"en"=>$items["intro_en"]
+		,"th"=>replace_specialtext($items["intro_th"])
+		,"en"=>replace_specialtext($items["intro_en"])
 	);
 	$list_data[] = array(
 		"name"=>"index.series.detail"
-		,"th"=>$items["series_th"]
-		,"en"=>$items["series_en"]
+		,"th"=>replace_specialtext($items["series_th"])
+		,"en"=>replace_specialtext($items["series_en"])
 	);
 	
 	foreach($list_data as $data){

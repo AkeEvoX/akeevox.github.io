@@ -91,11 +91,9 @@ product.del_color =  function(proid,color_id){
 		var args = {"_":new Date().getMilliseconds() ,"type":"del_color", "id":proid,"color_id":color_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
-			//product.load_product_color(id);
 			$('#'+color_id).remove();
 		});
 	}
-	//setTimeout(product.del_color(proid,color_id), 4000);
 }
 
 product.del_photo =  function(proid,photo_id){
@@ -106,7 +104,8 @@ product.del_photo =  function(proid,photo_id){
 		var args = {"_":new Date().getMilliseconds() ,"type":"del_photo", "id":proid,"photo_id":photo_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
-			product.load_product_photo(id);
+			//product.load_product_photo(id);
+			$('#'+photo_id).remove();
 		});
 	}
 	
@@ -120,7 +119,7 @@ product.del_symbol =  function(proid,symbol_id){
 		var args = {"_":new Date().getMilliseconds() ,"type":"del_symbol", "id":proid,"symbol_id":symbol_id};
 		utility.service(endpoint,method,args,function(data){
 			//#reload product color;
-			product.load_product_symbol(proid);
+			$('#'+symbol_id).remove();
 		});
 	}
 	
@@ -269,7 +268,7 @@ function view_list_symbol(data){
 
 	$.each(data.result,function(i,val){
 
-		item += "<li class='list-group-item' ><span id='"+val.id+"' style='cursor:pointer;' onclick=product.del_symbol("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
+		item += "<li class='list-group-item' id='"+val.id+"' ><span style='cursor:pointer;' onclick=product.del_symbol("+val.proid+","+val.id+"); class='glyphicon glyphicon-remove' ></span> ";
 		item += "<img src='../"+val.path+"' > ";
 		item += "</li> ";
 
@@ -293,7 +292,7 @@ function view_list_photo(data){
 	}
 
 	$.each(data.result,function(i,val){
-		item += "<div class='col-xs-6 col-md-4' style='width:30%;height:250px;'>";
+		item += "<div id='"+val.id+"' class='col-xs-6 col-md-4' style='width:30%;height:250px;'>";
 		item += "<div class='border-circle remove-item' onclick=product.del_photo("+val.proid+","+val.id+"); ><span class='glyphicon glyphicon-remove' ></span></div>";// rowspan pull-right
 		item += "<img src='../"+val.thumb+"' style='max-width:200px;' class='img-thumbnail' >";
 		item += "</div>";

@@ -54,9 +54,7 @@ function view_album(data){
 
 function showgallery(id){
 	
-	var view = $('#modalcontent');
-	view.attr('style','height:450px;width:800px;left:60;');
-	view.html('');
+
 	var service = 'services/gallery.php' ;
 	var args = {"_": new Date().getHours(),"type":"list","id":id};
 	utility.service(service,'GET',args,function(data){
@@ -64,34 +62,36 @@ function showgallery(id){
 		console.log(data)
 		if(data.result!=null){
 			console.log('load image');
+				var view = $('#modalcontent');
+				view.hide();
+				view.html('');
 			$.each(data.result,function(i,val){
 				var item = "";
 				item += "<img src='"+val.image+"' data-image='"+val.image+"' onerror=this.src='images/common/unavaliable.jpg' data-description=''  />";
 				view.append(item);
 			});
 			
-			view.unitegallery({
-				
-				theme_panel_position: "bottom"
-				,gallery_theme: "grid"
-				,slider_scale_mode: "fit"
-				,thumb_fixed_size:true
-				,thumb_width:100
-				,thumb_height:100
-				,thumb_loader_type:"light"
-				,grid_num_cols:1
-				,grid_num_rows:1
-				,gridpanel_grid_align: "top"
-				,theme_hide_panel_under_width: 800
-			});
 		}
 		
 	},function(){ //on load complete
 			
-			//'height:500px;width:800px;left:60;'
-			//,thumb_fixed_size:false
-			
-			utility.showmodal();
+			$('#modaldialog').modal('show').on('shown.bs.modal',function(){
+				
+				$('#modalcontent').unitegallery({
+					theme_panel_position: "bottom"
+					,gallery_theme: "grid"
+					,slider_scale_mode: "fit"
+					,thumb_fixed_size:true
+					,thumb_width:135
+					,thumb_height:100
+					,thumb_loader_type:"light"
+					,grid_num_cols:1
+					,grid_num_rows:1
+					,gridpanel_grid_align: "top"
+					,theme_hide_panel_under_width: 800
+				});
+				$('#modalcontent').show();
+			});
 		
 	});
 
