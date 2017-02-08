@@ -26,7 +26,7 @@ class PressManager{
 		
 		try{
 
-			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail,thumbnail,coverpage,update_date ";
+			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail,thumbnail,coverpage,create_date,update_date ";
 			$sql .= "from press where active=1 and id='".$id."' order by create_date desc ";
 			$result = $this->mysql->execute($sql);
 			
@@ -42,7 +42,7 @@ class PressManager{
 	{
 		try{
 			
-			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail,coverpage,update_date ";
+			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail,coverpage,create_date,update_date ";
 			$sql .= "from press where active=1 order by create_date desc ";
 
 			$result = $this->mysql->execute($sql);
@@ -56,7 +56,7 @@ class PressManager{
 	function getSlideItem($lang){
 		try{
 			
-			$sql = "select id,title_".$lang." as title,thumbnail,update_date ";
+			$sql = "select id,title_".$lang." as title,thumbnail,create_date,update_date ";
 			$sql .= "from press where active=1 order by create_date desc limit 5 ";
 
 			$result = $this->mysql->execute($sql);
@@ -70,7 +70,7 @@ class PressManager{
 	function getHomeItem($lang){
 		try{
 			
-			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumbnail,coverpage,update_date ";
+			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumbnail,coverpage,create_date,update_date ";
 			$sql .= "from press where active=1 order by update_date desc limit 4 ";
 
 			$result = $this->mysql->execute($sql);
@@ -128,7 +128,7 @@ class PressManager{
 			
 			if(isset($items["active"]))	$active='1';
 			
-			$create_by='0';
+			$create_by=$_SESSION["profile"]->id;
 			$create_date='now()';
 			
 			$sql = "insert into press (title_th ,title_en  ,detail_th ,detail_en  ,coverpage,thumbnail   ,active ,create_by ,create_date ) ";
@@ -171,7 +171,7 @@ class PressManager{
 			
 			if(isset($items["active"]))	$active='1';
 			
-			$update_by='0';
+			$update_by=$_SESSION["profile"]->id;
 			$update_date='now()';
 			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
 			

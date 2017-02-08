@@ -35,8 +35,10 @@ else //if(!isset($req_id) && empty($req_id))  //no request id
 $result = null;
 
 while($row = $item->fetch_object()){
-
-	$data = array("id"=>$row->id,"title"=>$row->title,"detail"=>$row->detail,"thumbnail"=>$row->thumbnail,"coverpage"=>$row->coverpage,"date"=>$row->update_date);
+	
+	$datetime = $row->update_date == null ? $row->create_date : $row->update_date;
+	
+	$data = array("id"=>$row->id,"title"=>$row->title,"detail"=>$row->detail,"thumbnail"=>$row->thumbnail,"coverpage"=>$row->coverpage,"date"=>$datetime);
 	$result[] = $data;
 }
 

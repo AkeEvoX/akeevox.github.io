@@ -30,8 +30,8 @@
 
 }
 /*tablet*/
-@media(min-width:900px) and (max-width:1000px) {
-	#view-content {width:70%;}
+@media(min-width:900px) and (max-width:1200px) {
+	#view-content {width:75%;}
 }
 
 /* laptop */

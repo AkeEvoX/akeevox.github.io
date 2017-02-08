@@ -96,6 +96,8 @@ function setview(data)
 		
 		if(val.detail !=undefined)
 			detail = val.detail.slice(0,200)+"....";
+		else
+			detail = val.detail;
 		
 		itemview += "<div class='col-md-6'>" ;
 		itemview += "<div class='media'>";
@@ -106,12 +108,11 @@ function setview(data)
 		itemview += "</div>";//media-left
 		itemview += "<div class='media-body'><a href='press_detail.html?id="+val.id+"' style='text-decoration: none;'  >";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
-			itemview += "<div class='media-detail'>"+detail+"</div>";//#detail
+			itemview += "<div class='media-body'>"+detail+"</div>";//#detail
 			itemview += "<span class='badge'><span id='press.read' style='color:white;'></span></span>";//#read more.
 		itemview += "</a></div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column
-
 		console.log(itemview);
 		$('#list').append(itemview);
 	});

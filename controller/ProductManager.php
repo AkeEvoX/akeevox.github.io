@@ -868,7 +868,10 @@ class ProductManager{
 			//$max_fetch = 10;
 
 			$sql = " select s.proid,s.code,s.name,s.rough,s.systems,s.seat,s.comsumption,s.overflow,s.size,s.shape,s.faucet,s.type,s.outlet,t.title_".$lang." as category ";
-			$sql .= " from search_product_".$lang." s  ";
+			//$sql .= " from search_product_".$lang." s  ";
+			$sql .= "from ( select a.* from search_product_th a ";
+			$sql .= " union ALL";
+			$sql .= " select b.* from search_product_en b ) s";
 			$sql .= " inner join products p on s.proid = p.id  ";
 			$sql .= " inner join product_type t on p.typeid = t.id ";
 			$sql .= " where 1=1 ";
@@ -877,7 +880,8 @@ class ProductManager{
 			$sql .= " or s.type like '%".$search_text."%' ";
 			$sql .= " or s.systems like '%".$search_text."%' ";
 			$sql .= " or s.size like '%".$search_text."%' ";
-			$sql .= " or t.title_".$lang." like '%".$search_text."%' ";
+			//$sql .= " or t.title_".$lang." like '%".$search_text."%' ";
+			//$sql .= " or t.title_".$lang." like '%".$search_text."%' ";
 			$sql .= " order by s.name ";
 			$sql .= " LIMIT $start_fetch,$max_fetch ;";
 			
