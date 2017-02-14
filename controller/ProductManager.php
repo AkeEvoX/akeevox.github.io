@@ -26,7 +26,7 @@ class ProductManager{
 
 		try{
 
-			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name d.name_".$lang." as name,p.pdf_file_".$lang." as pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
+			$sql = "select p.id ,p.typeid ,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name,p.pdf_file_".$lang." as pdf_file,p.dwg_file,p.symbol_file ,t.title_".$lang." as catename";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " inner join product_type t on p.typeid=t.id ";
 			$sql .= " where p.id='".$id."' ;";
