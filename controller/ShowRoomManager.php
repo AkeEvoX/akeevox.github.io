@@ -75,9 +75,11 @@ class ShowRoomManager{
 	function get_list_product($room_id){
 		try{
 		
-			$sql = " select s.*,p.title_en as product_th,p.title_th as product_en,p.thumb ";
+			$sql = " select s.*,p.title_en as product_th,p.title_th as product_en,p.thumb,pd.code ";
 			$sql .= " from showroom s inner join products p ";
 			$sql .= " on s.pro_id = p.id ";
+			$sql .= " inner join product_detail pd ";
+			$sql .= " on s.pro_id = pd.proid ";
 			$sql .= " where room_id=$room_id ";
 			$sql .= " order by product_th ";
 

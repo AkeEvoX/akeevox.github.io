@@ -99,7 +99,7 @@ function setview(data)
 		else
 			detail = val.detail;
 		
-		itemview += "<div class='col-md-6'>" ;
+		itemview += "<div class='col-xs-12 col-sm-12 col-md-6 rowspan'>" ;
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
 		itemview += "<div class='view second-effect'><img src='"+val.coverpage+"' class='media-object' width='200' height='200' />";
@@ -133,7 +133,7 @@ function setviewhome(resp){
 		 
 		view = "<div class='col-xs-12 col-sm-6 col-md-3' >";
 		view += "<a href='press_detail.html?id="+val.id+"' >";
-		view += "<img src='"+val.coverpage+"' />";
+		view += "<img src='"+val.coverpage+"' class='img-responsive' />";
 		//view += "<div class='lightslider-desc' >";
 		view += "<span class='press-date'>"+val.date+"</span>"
 		view += "<div class='press-title'>"+val.title+"</div>";

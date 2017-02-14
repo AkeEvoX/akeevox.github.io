@@ -22,7 +22,7 @@ function setview(data)
 			itemview += "<div class='view second-effect'>";
 			itemview += "<img src='"+childval.thumbnail+"' style='height:240px;'>"; //#image
 			itemview += "<div class='thumbnail-desc' style='min-height:50px;'><label>"+childval.title+"</label></div>";
-			itemview += "<div class='mask'><a href='"+childval.link+"' class='info' title='click download'></a></div>";//#hover effect
+			itemview += "<div class='mask'><a href='"+childval.link+"' target='_blank' class='info' title='click download'></a></div>";//#hover effect
 			itemview += "</div>";
 			itemview += "</div>" ;
 		});

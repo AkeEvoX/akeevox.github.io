@@ -35,7 +35,7 @@ function setview(data)
 		itemview += "<div class='view second-effect'>";
 		itemview += "<img src='"+val.thumbnail+"' onerror=this.src='images/common/unavaliable.jpg'  >"; //#image height:240px;
 		itemview += "<div class='thumbnail-desc'><label>"+val.title+"</label></div>";
-		itemview += "<div class='mask'><a href='"+val.link+"' class='info' title='click download'></a></div>";//#hover effect
+		itemview += "<div class='mask'><a href='"+val.link+"' target='_blank'  class='info' title='click download'></a></div>";//#hover effect
 		itemview += "</div>";
 		itemview += "</div>" ;
 	});

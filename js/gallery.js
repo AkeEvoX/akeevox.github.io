@@ -88,7 +88,8 @@ function showgallery(id){
 					,grid_num_cols:1
 					,grid_num_rows:1
 					,gridpanel_grid_align: "top"
-					,theme_hide_panel_under_width: 800
+					// ,theme_hide_panel_under_width: 800
+					// 800
 				});
 				$('#modalcontent').show();
 			});

@@ -11,7 +11,8 @@
 .modal-dialog{
 	display: table;
     width: auto;
-    min-width: 250px;   
+    min-width: 65%;   
+	/* 250px */
 	max-width:98%;
 }
 
@@ -22,9 +23,19 @@
 @media(min-width:980px) and (max-width:1200px) {
 	
 	.gallery_album img {
-		min-width:250px;
+		min-width:250px; 
 		margin:0px;
 		padding-right:15px;
 	}
 	
+}
+@media(max-width:600px)  {
+	.modal-dialog{
+		
+	display: table;
+    width: auto;
+    min-width: 95%;   
+	/* 250px */
+	max-width:98%;
+}
 }

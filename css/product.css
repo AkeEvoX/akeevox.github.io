@@ -176,6 +176,7 @@
 }
 
 /*tablet*/
+
 @media(min-width:900px) and (max-width:1200px) {
 	#view-content {width:75%;} /*75*/
 	.sociallist .icon { width:40px; }

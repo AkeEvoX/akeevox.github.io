@@ -13,6 +13,10 @@
 		display:block;
 		margin:0 auto;
 	}
+		#series_cover {
+		height:450px;
+		width:100%;
+	}
 /*desktop*/
 @media(min-width:1200px) {
 
@@ -37,6 +41,11 @@
 
 /*mobile*/
 @media(max-width:600px) {
+	
+	#series_cover {
+		height:200px;
+		width:100%;
+	}
 
 	/*#navtree { display:block; } */
 	#viewproduct .thumb img {

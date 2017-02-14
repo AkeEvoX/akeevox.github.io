@@ -13,9 +13,13 @@
 		display:block;
 		margin:0 auto;
 	}
+		#showroom_cover {
+		height:450px;
+		width:100%;
+	}
 /*desktop*/
 @media(min-width:1200px) {
-
+/* data-src='holder.js/1260x450' */
 
 }
 
@@ -33,10 +37,17 @@
 		/*max-height:250px;*/
 	}
 	
+	
 }
 
 /*mobile*/
 @media(max-width:600px) {
+	
+		
+	#showroom_cover {
+		height:200px;
+		width:100%;
+	}
 
 	/*#navtree { display:block; } */
 	#viewproduct .thumb img {

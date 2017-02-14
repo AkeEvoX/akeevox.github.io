@@ -76,9 +76,11 @@ class SeriesManager{
 	function get_list_product($series_id){
 		try{
 		
-			$sql = " select s.*,p.title_en as product_th,p.title_th as product_en,p.thumb ";
+			$sql = " select s.*,p.title_en as product_th,p.title_th as product_en,p.thumb ,pd.code";
 			$sql .= " from series s inner join products p ";
 			$sql .= " on s.pro_id = p.id ";
+			$sql .= " inner join product_detail pd ";
+			$sql .= " on s.pro_id = pd.proid ";
 			$sql .= " where series_id=$series_id ";
 			$sql .= " order by product_th ";
 

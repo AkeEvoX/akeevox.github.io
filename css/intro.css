@@ -5,5 +5,10 @@ a {
 
 #view_intro {
 	display:block;
-	margin:0 auto;
+	margin:auto;
+	width:100%;
+}
+
+#view_intro img {
+	min-width:100%;
 }

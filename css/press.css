@@ -23,3 +23,12 @@
 }
 
 .media-detail { height:auto;}
+
+@media(max-width:600px)  {
+	
+	.media-object { height:300px;}
+	.media-left , .media-right{ display:block;}
+	
+	/* .media-body */
+	
+}

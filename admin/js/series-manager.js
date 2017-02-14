@@ -174,9 +174,11 @@ function view_series_product(data){
 		var param = '?id='+val.id;
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
-		item+="<td>"+val.pro_id+"</td>";
+		item+="<td>"+val.code+"</td>";
 		item+="<td>"+val.product_en+"</td>";
-		item+="<td ><img src='../"+val.thumb+"' class='img-responsive' onerror=this.src='../../images/common/unavaliable.jpg'  ></td>";
+		item+="<td>"+val.title_en+"</td>";//show desc
+		item+="<td ><img src='../"+val.thumb+"' class='img-responsive'  ></td>";
+		// onerror=this.src='../../images/common/unavaliable.jpg' 
 		item+="</tr>";
 	
 	});
