@@ -209,7 +209,7 @@ class ProductManager{
 	function getSeriestList($lang,$id){
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name ";
+			$sql = " select s.id ,s.pro_id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name ";
 			$sql .= " from series s ";
 			$sql .= " inner join products p on s.pro_id=p.id ";
 			$sql .= " inner join product_detail pd on p.id = pd.proid ";
@@ -228,7 +228,7 @@ class ProductManager{
 	function getShowRoomList($lang,$id){
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select s.id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name";
+			$sql = " select s.id ,s.pro_id ,s.title_".$lang." as title ,p.typeid ,p.thumb ,p.plan ,pd.code ,pd.name_".$lang." as name";
 			$sql .= " from showroom s ";
 			$sql .= " inner join products p on s.pro_id=p.id ";
 			$sql .= " inner join product_detail pd on p.id = pd.proid ";

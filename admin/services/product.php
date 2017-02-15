@@ -215,10 +215,17 @@ function Insert_color($id,$color_id){
 
 function Insert_photo($items){
 	
+	$dir = "../../images/products/".$items["proid"];
+	if (!file_exists($dir)){
+		$oldmask = umask(0); //# set your umask temporarily to zero so it has no effect. 
+		mkdir($dir, 0777); //0777,true
+		umask($oldmask);
+	}
+	
 	if($_FILES["file_photo"]["name"]!="")
 	{
-		
-		$filename = "images/products/".$items["proid"]."/thumb_". date('Ymd_His') ."_".$_FILES['file_photo']['name'];//20010310_224010
+		$ext = ".". pathinfo($_FILES['file_photo']['name'], PATHINFO_EXTENSION);
+		$filename = "images/products/".$items["proid"]."/thumb_". date('Ymd_His').$ext;//20010310_224010
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_photo']['tmp_name'];
 		$items["thumb"] = $filename;
@@ -238,7 +245,7 @@ function Insert_symbol($items){
 	$items["proid"] = $items["proid_symbol"];
 	
 	$dir = "../../images/products/".$items["proid"];
-	if (!file_exists($dir) && $newid!="0"){
+	if (!file_exists($dir)){
 		$oldmask = umask(0); //# set your umask temporarily to zero so it has no effect. 
 		mkdir($dir, 0777); //0777,true
 		umask($oldmask);
@@ -247,7 +254,7 @@ function Insert_symbol($items){
 	if($_FILES["file_symbol"]["name"]!="")
 	{
 		$ext = ".". pathinfo($_FILES['file_symbol']['name'], PATHINFO_EXTENSION);
-		$filename = "images/products/".$items["proid"]."/symbol_". date('Ymd_His') .$ext ;
+		$filename = "images/products/".$items["proid"]."/symbol_". date('Ymd_His').$ext ;
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_symbol']['tmp_name'];
 		$items["path"] = $filename;
@@ -353,7 +360,7 @@ function Update($items){
 	//$items["pdf_file"]="";
 	
 	$dir = "../../images/products/".$proid;
-	if (!file_exists($dir) && $newid!="0"){
+	if (!file_exists($dir)){
 		$oldmask = umask(0); //# set your umask temporarily to zero so it has no effect. 
 		mkdir($dir, 0777); //0777,true
 		umask($oldmask);

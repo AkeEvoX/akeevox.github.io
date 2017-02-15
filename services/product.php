@@ -150,8 +150,9 @@ function setListSeries($lang,$id){
 					,"typeid"=>$row->typeid
 					,"thumb"=>$row->thumb
 					,"plan"=>$row->plan
-					//,"code"=>$row->code
-					//,"name"=>$row->name
+					,"pro_id"=>$row->pro_id
+					,"code"=>$row->code
+					,"name"=>$row->name
 					);
 			}
 		}
