@@ -103,7 +103,7 @@ function view_list_award(data){
 		
 		var param = '?id='+val.id;
 		var active = val.active == "1" ? "<span class='btn btn-success btn-sm'>Enable</span> ": "<span class='btn btn-danger btn-sm'>Disable</span>";
-		var type = val.type =="0" ? "Award" : "Standard";
+		var type = val.type =="1" ? "Award" : "Standard";
 		
 		item+="<tr id='row"+val.id+"' >";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";

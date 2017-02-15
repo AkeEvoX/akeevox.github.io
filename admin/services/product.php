@@ -140,6 +140,7 @@ function get_list_product($cate_id){
 		while($row = $data->fetch_object()){
 
 			$result[] = $row;
+			
 		}
 
 	}

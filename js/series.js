@@ -33,6 +33,8 @@ function setviewinfo(data){
 	
 	var item = data.result;
 	
+	console.log(item);
+	
 	$('span[id="productname"]').text(item.title);
 	$('#series_title').text(item.title);
 	$('#series_detail').text(item.detail);

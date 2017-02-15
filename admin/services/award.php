@@ -84,7 +84,7 @@ function Insert($items){
 	
 	
 	if($_FILES['file_upload']['name']!=""){
-		$category = ($items["category"]=="0" ?  "award"  :  "standard"  );
+		$category = ($items["category"]=="1" ?  "award"  :  "standard"  );
 		$filename = "images/organization/".$category."/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload']['tmp_name'];  
@@ -105,7 +105,7 @@ function Update($items){
 	
 	$items["thumbnail"] = "";
 	if($_FILES['file_upload']['name']!=""){
-		$category = ($items["category"]=="0" ?  "award"  :  "standard"  );
+		$category = ($items["category"]=="1" ?  "award"  :  "standard"  );
 		//$filename = "images/organization/reference/".$_FILES['file_upload']['name'];
 		$filename = "images/organization/".$category."/".$_FILES['file_upload']['name'];
 		$distination =  "../../".$filename;

@@ -316,7 +316,7 @@ function view_product_option(data){
 	
 	$.each(data.result,function(i,val){
 		
-		item += "<option value='"+val.id+"'>"+val.title_en+"</option>";
+		item += "<option value='"+val.id+"'>"+val.code+" )"+val.title_en+"</option>";
 		
 	});
 	view.append(item);

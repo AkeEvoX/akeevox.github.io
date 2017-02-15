@@ -114,9 +114,10 @@ class ProductManager{
 		
 		try{
 			//get type serial condition top 1 asc
-			$sql = " select * ";
-			$sql .= " from products ";
-			$sql .= " where typeid=".$cateid." ;";
+			$sql = " select p.*,pd.code,pd.name_th,pd.name_en ";
+			$sql .= " from products p ";
+			$sql .= " inner join product_detail pd on p.id = pd.proid ";
+			$sql .= " where p.typeid=".$cateid." ;";
 			log_debug("get_product_category > " . $sql);
 			$result = $this->mysql->execute($sql);
 
