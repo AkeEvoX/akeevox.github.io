@@ -20,7 +20,7 @@ award.edit = function(args){
 	
 	var endpoint = "services/award.php";
 	var method = "POST";
-	
+	//args.append("item_seq", $('#seq option:selected').val());
 	utility.data(endpoint,method,args,function(data){
 		var response = JSON.parse(data);
 		console.debug(response);
@@ -67,6 +67,43 @@ award.loaditem = function(id){
 	utility.service(endpoint,method,args,view_item);
 }
 
+award.loadsequence = function(typeid,item_seq){
+	
+	
+	var endpoint = "services/award.php";
+	var method = "GET";
+	var args = {'_':new Date().getMilliseconds(),'type':'seq','id':typeid};
+	
+	utility.service(endpoint,method,args,function(data){
+		view_sequence(data,item_seq);
+	});
+	
+}
+
+function view_sequence(data,item_seq){
+	console.log(data);
+	if(data.result != undefined || data.result != "") {
+		
+		var obj = $('#seq');
+		obj.html('');
+		
+		var max = data.result.max_seq;
+		
+		if(item_seq==undefined) max++;
+			
+		console.warn("max seq ="+max);
+		for(var i = 1 ;i <= max ; i++){
+			
+			if(item_seq==i)
+				obj.append("<option value='"+i+"' selected>"+i+"</option>");
+			else 
+				obj.append("<option value='"+i+"' >"+i+"</option>");
+			
+			
+		}
+	}
+}
+
 function view_item(data){
 	
 	if(data.result==undefined || data.result=="") {
@@ -82,6 +119,9 @@ function view_item(data){
 	 $('#preview').attr('src',"../"+data.result.thumbnail);
 	
 	 $('input[name="category"][value="'+data.result.type+'"]').prop('checked',true);
+	 
+	 //load current sequence
+	 award.loadsequence(data.result.type,data.result.seq);
 	
 	 if(data.result.active=="1")
 		 $('#active').prop('checked',true);

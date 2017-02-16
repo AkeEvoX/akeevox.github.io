@@ -19,6 +19,10 @@ switch($type){
 		$max_fetch = $_GET["fetch"];
 		$result = get_list_fetch($counter,$max_fetch);
 	break;
+	case "seq":
+		$result = get_seq($id);
+		log_debug("award  > get sequence " . print_r($result,true));
+	break;
 	case "add":
 		$result = Insert($_POST);
 		log_debug("award  > Insert " . print_r($result,true));
@@ -68,10 +72,22 @@ function get_list_fetch($start_fetch,$max_fetch){
 	
 }
 
+function get_seq($typeid){
+	
+	$award = new AwardManager();
+	$data = $award->get_sequence($typeid);
+	
+	if($data){
+			$result = $data->fetch_object();
+	}
+	
+	return $result;
+}
+
 function get_Items($id){
 	
-	$org = new AwardManager();
-	$data = $org->get_award_info($id);
+	$award = new AwardManager();
+	$data = $award->get_award_info($id);
 	
 	if($data){
 		

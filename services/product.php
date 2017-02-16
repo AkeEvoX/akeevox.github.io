@@ -204,6 +204,7 @@ function setListShowRoom($lang,$id){
 					,"typeid"=>$row->typeid
 					,"thumb"=>$row->thumb
 					,"plan"=>$row->plan
+					,"pro_id"=>$row->pro_id
 					,"code"=>$row->code
 					,"name"=>$row->name
 					);

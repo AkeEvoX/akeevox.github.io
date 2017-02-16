@@ -83,7 +83,7 @@ class ProductManager{
 			$sql = " select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid ";
 			$sql .= " where p.typeid='".$cate."' ";
-			$sql .= " order by p.create_date desc ";
+			$sql .= " order by d.code  ";
 			log_debug("product list > " . $sql);
 			$result = $this->mysql->execute($sql);
 
@@ -117,7 +117,7 @@ class ProductManager{
 			$sql = " select p.*,pd.code,pd.name_th,pd.name_en ";
 			$sql .= " from products p ";
 			$sql .= " inner join product_detail pd on p.id = pd.proid ";
-			$sql .= " where p.typeid=".$cateid." ;";
+			$sql .= " where p.typeid=".$cateid." order by pd.code ;";
 			log_debug("get_product_category > " . $sql);
 			$result = $this->mysql->execute($sql);
 
@@ -589,7 +589,6 @@ class ProductManager{
 		}
 	}
 	
-
 	function insert_color($items){
 		try{
 			$title_th = $items["title_th"];

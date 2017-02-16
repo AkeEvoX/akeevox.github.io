@@ -270,8 +270,8 @@ function loadproduct(id) {
 
 
 			$("#productgallery").unitegallery({
-				
 				theme_panel_position: "left"
+				,textpanel_enable_bg:false
 				,slider_scale_mode: "fit"
 				,thumb_fixed_size:false
 				,thumb_width:100

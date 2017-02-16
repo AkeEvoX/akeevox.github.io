@@ -23,6 +23,13 @@
 			</div>
 		</div>
 		<div class="form-group">
+			<label for="islocal" class='col-md-3'>ลำดับ / Sequence</label>
+			<div class='col-md-3'>
+				<select id='seq' name='seq' class='form-control' >
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
 			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
 			<div class='col-md-5'>
 				<input type="checkbox" id="active" name="active"  />
@@ -105,7 +112,15 @@ $(document).ready(function(){
 		award.edit(args);
 	});
 	
-
+	$('input[type=radio][name=category]').on('change',function(e){
+		try{
+			console.log('category =' + this.value);
+			award.loadsequence(this.value);
+		}
+		catch(e){
+			console.error("load seq error : " + e.description);
+		}
+	});
 	
 
 });

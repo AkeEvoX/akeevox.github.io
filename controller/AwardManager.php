@@ -53,6 +53,23 @@ class AwardManager{
 		}
 		
 	}
+	
+	function get_sequence($typeid){
+		
+		try{
+
+			$sql = " select count(0) max_seq ";
+			$sql .= "from award where type='".$typeid."' ";
+			log_warning("AwardManager > get sequence  > " .$sql);
+			$result = $this->mysql->execute($sql);
+			
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Sequence Award & Standard : ".$e->getMessage();
+		}
+		
+	}
 
 	function getListItem($lang,$type_reward){
 			try{
@@ -96,15 +113,16 @@ class AwardManager{
 			$detail_en =$items["detail_en"];
 			$thumbnail  =$items["thumbnail"];
 			$category  =$items["category"];
+			$seq = $items["seq"];
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
 			
-			$create_by='0';
+			$create_by=$_SESSION["profile"]->id;
 			$create_date='now()';
 			
-			$sql = "insert into award (title_th ,title_en  ,detail_th ,detail_en ,thumbnail ,type ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en','$thumbnail' ,$category  ,$active ,$create_by  ,$create_date ); ";
+			$sql = "insert into award (title_th ,title_en  ,detail_th ,detail_en ,thumbnail ,type ,active ,seq,create_by ,create_date ) ";
+			$sql .= "values('$title_th'  ,'$title_en'  ,'$detail_th' ,'$detail_en','$thumbnail' ,$category  ,$active,$seq ,$create_by  ,$create_date ); ";
 			$this->mysql->execute($sql);
 			
 			log_debug("AwardManager > insert  > " .$sql);
@@ -127,20 +145,20 @@ class AwardManager{
 			$detail_th =$items["detail_th"];
 			$detail_en =$items["detail_en"];
 			$category  =$items["category"];
-			
+			$seq = $items["seq"];
 			$thumbnail  = ($items["thumbnail"] !="" ? ",thumbnail='".$items["thumbnail"]. "' " :  "" );
 		
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
 			
-			$update_by='0';
+			$update_by=$_SESSION["profile"]->id;
 			$update_date='now()';
 			
 			$sql = "update award set  ";
 			$sql .= "title_th='$title_th' ,title_en='$title_en' ,detail_th='$detail_th' ,detail_en='$detail_en' ";
 			$sql .=  $thumbnail ;
-			$sql .= ",type=$category ,active=$active ,update_by=$update_by ,update_date=$update_date  ";
+			$sql .= ",type=$category ,active=$active , seq=$seq ,update_by=$update_by ,update_date=$update_date  ";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			

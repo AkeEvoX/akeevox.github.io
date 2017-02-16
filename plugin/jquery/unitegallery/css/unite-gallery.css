@@ -482,7 +482,7 @@ img.ug-sepia-effect{
 
 .ug-gallery-wrapper .ug-textpanel-bg{
 	background-color:#000000;
-	opacity:0.4;
+	opacity:0.4; /*default 0.4*/
 	filter: alpha(opacity = 40);
 	z-index:1;
 }
