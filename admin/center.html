@@ -6,8 +6,9 @@
 	<meta http-equiv='X-UA-Compatible' content='IE=edge'>
 	<meta name='viewport' content='width=device-width, initial-scale=1'>
 	<link href="../plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
-	<link href="../css/theme.default.css" rel="stylesheet" type="text/css" />
+	<link href="css/theme.admin.css" rel="stylesheet" type="text/css" />
 	<link href="../css/icon.css" rel="stylesheet" type="text/css" />
+	<link href="js/summernote/summernote.css" rel="stylesheet">
 </head>
 <body>
 <div id='viewnavbar'></div>
@@ -51,6 +52,7 @@
 <script src='../plugin/jquery/jquery-ui.min.js' ></script>
 <script src='../plugin/jquery/holder.js' ></script>
 <script src='../plugin/bootstraps/js/bootstrap.js' ></script>
+<script src="js/summernote/summernote.js"></script>
 <script src='../js/utility.js' ></script>
 <script src='js/center.js' ></script>
 <script src='js/authen.js' ></script>
@@ -58,6 +60,7 @@
 var global = {};
 
 $(document).ready(function(){
+
 	authen.access_verify();
 	control.init();
 	$('#viewnavbar').load('navbar.html');

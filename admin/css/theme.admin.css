@@ -1,0 +1,24 @@
+@import url("navbar.css");
+@import url("breadcrumb.css");
+@import url("well.css");
+@import url("icon.css");
+
+body
+{
+	margin-top:80px;
+}
+
+
+.logobar {
+	
+	position:relative;
+	top:0px;
+	margin-top:10px;
+	width:120px;/*70px-*/
+	/*box-shadow:4px 4px 4px #ccc;*/
+}
+
+.header {
+	color:#976934; 
+	padding-bottom:20px;
+}

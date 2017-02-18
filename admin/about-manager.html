@@ -36,13 +36,16 @@
 	</div>
 	<input type='hidden' id='about_id' />
 </div>
+
 <script src='js/about-manager.js' ></script>
 <script src='../plugin/jquery/summernote/summernote.js' ></script>
+
 <script>
 
 
 $(document).ready(function(){
 	about.load();
+	
 	$('#detail_th').summernote({ height: 200 });
 	$('#detail_en').summernote({ height: 200 });
 });
