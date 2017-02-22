@@ -43,7 +43,7 @@
 						<img id='plan' onerror="this.src='images/common/image-not-found.png'"  class='img-responsive' />
 					</div>
 				</div>
-				<div class='row rowspan'>
+				<div class='row'>
 					<div class='col-md-4'>
 						<h4><span id='productdetail.color'>SYMBOL</span></h4>
 						<img src='images/products/symbol_test.png' />
@@ -58,7 +58,7 @@
 					
 					</div>
 				</div>
-				<!--<div class='row'>
+				<div class='row'>
 					<div class='col-md-12' style='position: relative;float:right;'>
 							<ul class='sharezone'>
 							<li>
@@ -78,7 +78,7 @@
 							</li>
 						</ul>
 					</div>
-				</div>-->
+				</div>
 			<!--</div>--> <!--end productdetail container-->
 		</div>
 	</div><!--end conatiner-->
@@ -97,7 +97,12 @@
 $(document).ready(function(){
 
 	utility.setpage('productdetail');
+	//product.listmenu();
 	callproduct(utility.querystr('id'));
+	//setshare();
+	/*load current compare*/
+	//product.compare();
+		
 	
 	$('#btn_pring').on('click',function(){
 		window.print();

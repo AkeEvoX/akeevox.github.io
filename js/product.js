@@ -4,8 +4,11 @@ $(document).ready(function(){
 		product.compare();
 	});
 	
-	$('#btn_pring').on('click',function(){
+	$('#btn_print').on('click',function(){
 		//window.print();
+		window.open('product_print.html?id='+utility.querystr('id'), 'sharer', 'toolbar=0, status=0, width=576, height=798');
+	});
+	$('#jpg_view').on('click',function(){
 		window.open('product_print.html?id='+utility.querystr('id'), 'sharer', 'toolbar=0, status=0, width=576, height=798');
 	});
 
