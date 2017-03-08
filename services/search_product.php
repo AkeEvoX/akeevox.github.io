@@ -32,8 +32,6 @@ function SearchProductList($lang,$search_text,$search_fillter,$start_fetch,$max_
 	try
 	{
 		
-		
-//proid,code,name,rough,systems,seat,comsumption,overflow,size,shape,faucet,type,outlet
 		$product = new ProductManager();
 		$data = $product->search_fetch_product($lang,$search_text,$search_fillter,$start_fetch,$max_fetch);
 

@@ -54,7 +54,7 @@ $(document).ready(function(){
 	gallery.album_option();
 	$('#gallery_form').on('submit',function(e){
 		e.preventDefault();
-
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'add');
 		gallery.add(args);

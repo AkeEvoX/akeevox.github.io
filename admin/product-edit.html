@@ -339,6 +339,7 @@ $(document).ready(function(){
 	$('#btn_save').click(function(e){
 		
 		$('#product_form').submit(function(e){
+			alert("Save Complete.");
 			e.preventDefault();
 			var args = new FormData(this);
 			args.append('type', 'edit');
@@ -392,6 +393,7 @@ $(document).ready(function(){
 	
 	$("#photo_form").submit(function(evt){
 		console.log('photo form sumbit');
+		
 		var args = new FormData(this);
 		args.append('type', 'add_photo');
 		product.add_photo(args); 

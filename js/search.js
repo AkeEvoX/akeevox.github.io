@@ -44,17 +44,27 @@ function find()
 
 function rewritetext(text){
 	var result = text;
-	
-	result = result.replace("'","\'");
-	result = result.replace("%","");
-	result = result.replace(",","");
-	result = result.replace("_","");
-	result = result.replace("(","");
-	result = result.replace(")","");
-	result = result.replace("[","");
-	result = result.replace("]","");
+	result = result.replace(/'/g,"");
+	/*	
+	result = result.replace(/%/g,"");
+	result = result.replace(/,/g,"");
+	result = result.replace(/_/g,"");
+	result = result.replace(/(/g,"");
+	result = result.replace(/)/g,"");
+	*/
+	//result = result.replace(/[/g,"");
+	//result = result.replace(/]/g,"");
+	//result  = replaceAll(text,)
 	return result;
 	
+}
+
+function escapeRegExp(str) {
+    return str.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, "\\$1");
+}
+
+function replaceAll(str, find, replace) {
+  return str.replace(new RegExp(escapeRegExp(find), 'g'), replace);
 }
 
 function setview(resp)

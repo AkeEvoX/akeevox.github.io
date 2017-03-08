@@ -53,6 +53,7 @@
 	
 	$('#room_form').on('submit',function(e){
 		e.preventDefault();
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'add_product');
 		showroom.add_product(args);

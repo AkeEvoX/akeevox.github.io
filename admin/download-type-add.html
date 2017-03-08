@@ -39,6 +39,7 @@ $(document).ready(function(){
 		e.preventDefault();
 
 		var args = new FormData(this);
+		alert("Save Complete.");
 		args.append('type', 'add_type');
 		console.log(args);
 		download.add_type(args);

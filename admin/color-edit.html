@@ -52,7 +52,7 @@ $(document).ready(function(){
 
 	$('#color_form').on('submit',function(e){
 		e.preventDefault();
-
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'edit');
 		color.edit(args);

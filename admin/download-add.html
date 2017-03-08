@@ -53,7 +53,7 @@ $(document).ready(function(){
 
 	$('#download_form').on('submit',function(e){
 		e.preventDefault();
-
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'add');
 		console.log(args);

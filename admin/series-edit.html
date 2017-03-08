@@ -100,7 +100,7 @@ $(document).ready(function(){
 
 	$('#series_form').on('submit',function(e){
 		e.preventDefault();
-
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'edit');
 		series.edit(args);

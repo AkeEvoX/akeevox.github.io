@@ -67,7 +67,7 @@ $(document).ready(function(){
 
 	$('#gallery_form').on('submit',function(e){
 		e.preventDefault();
-
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'edit');
 		gallery.edit(args);

@@ -113,7 +113,7 @@ $(document).ready(function(){
 	
 	$('#reference_form').on('submit',function(e){
 		e.preventDefault();
-		
+		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'edit');
 		refer.edit(args);

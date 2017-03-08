@@ -104,7 +104,7 @@ $(document).ready(function(){
 
 	$('#personal_form').on('submit',function(e){
 		e.preventDefault();
-		
+		alert("Save Complete.");
 		//var args = JSON.stringify($('#personal_form').serializeArray());
 		var args = new FormData(this);
 		args.append('type', 'add');
