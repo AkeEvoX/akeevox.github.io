@@ -85,9 +85,11 @@ function setting_slider(data){
 	$("#compare-slider").lightSlider({
 				autoWidth: false
 				,adaptiveHeight:true
-				,loop:true
+				,loop:false
+				,item:4
 				,keyPress:false
 				,pager:false
+				//,enableTouch:false
 				,slideMargin:5
 	});
 	/*setting remove compare*/
@@ -97,13 +99,6 @@ function setting_slider(data){
 			product.compare_remove(id);
 	});
 
-}
-
-function remove_compare(id){
-	var endpoint = 'services/compare.php';
-	var method = 'get';
-	var args = {'_':new Date().getMilliseconds(),'type':'remove','id':id};
-	
 }
 
 function viewmenu(data){
@@ -381,7 +376,7 @@ function setViewCompare(data){
 		$.each(data.result,function(i,val){
 
 			var item = "";
-			item += "<li  ><div class='icon_close' data-id='"+val.id+"' ><img style='width:24px;height:24px;' src='images/common/close.png' /></div>";
+			item += "<li  ><div class='icon_close' style='cursor:no-drop;' data-id='"+val.id+"' ><img style='width:24px;height:24px;' src='images/common/close.png' /></div>";
 			item += "<a href='javascript:void(0);' >";
 			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-responsive' >";
 			//item += "<div class='lightslider-title'><label>&nbsp;</label></div>";
