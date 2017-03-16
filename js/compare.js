@@ -52,13 +52,26 @@ function loadproduct(){
 	
 		$('#compare-slider').show();
 		
+		//check view mobile or desktop
+		
+		var maxitem = 4;
+		
+		//checking view mobile
+		if (/Mobi/.test(navigator.userAgent)) { 
+			maxitem=2;
+		}
+		
 		$("#compare-slider").lightSlider({
-			autoWidth: true
+			autoWidth: false
+			,item:maxitem
 			,adaptiveHeight:false
-			,loop:true
+			,loop:false
 			,keyPress:false
 			,pager:false
-			,slideMargin:0
+			,slideMargin:5
+			,enableTouch:true
+			,enableDrag:true
+			
 		});
 		
 		
@@ -80,6 +93,7 @@ function remove_compare(id){
 	
 	utility.service(endpoint,method,args,function(){
 		loadviewcompare();
+		//loadproduct();
 	});
 }
 
@@ -89,12 +103,10 @@ function setviewitems(data){
 	if(data.result==null) return;
 
 	var compare = $('#compare-slider');
-
+	//compare.html("");
 	var item = "";
 	//for(var i =0 ; i < 5;i++){
 	$.each(data.result,function(id,val){
-
-
 
 		item += "<li ><div class='icon_close' data-id='"+val.info.id+"' ><img style='width:24px;height:24px;' src='images/common/close.png' /></div>";
 		item += "<a href='#' onclick=redirect('"+val.info.id+"')>";

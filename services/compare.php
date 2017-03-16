@@ -53,10 +53,10 @@ switch($type){
 		if(isset($id) && !empty($id)){
 
 
-			if(!validate_duplicate($id)) 
+			if(!validate_compair($id)) 
 			{
 				$_SESSION['compare'][] = array('id'=>$id,'thumb'=>$_GET['thumb']);	
-				$result = $_SESSION['compare'];
+				//$result = $_SESSION['compare'];
 			}
 		}	
 
@@ -69,15 +69,19 @@ switch($type){
 }
 
 
-echo json_encode(array("result"=> $result ,"code"=>0,"duplicate"=>validate_duplicate($id)));
+echo json_encode(array("result"=> $result ,"code"=>0,"validate"=>validate_compair($id)));//validate_compair($id)
 
 
 /**********function list************/
 
-function validate_duplicate($id){
+function validate_compair($id){
 	
 
 	if(!isset($_SESSION['compare']) || $_SESSION["compare"]==null)
+		return false;
+	
+	//limit item compair
+	if(count((array)$_SESSION['compare']) > 4)
 		return false;
 
 	$result = false;

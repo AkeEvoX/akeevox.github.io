@@ -81,12 +81,20 @@ function setting_slider(data){
 	}
 		
 	$('#control_compare').show();
+	
+	var maxitem = 4;
+		
+	//checking view mobile
+	if (/Mobi/.test(navigator.userAgent)) { 
+		maxitem=2;
+	}
+		
 	/*adjust image slider*/
 	$("#compare-slider").lightSlider({
 				autoWidth: false
-				,adaptiveHeight:true
+				,adaptiveHeight:false
 				,loop:false
-				,item:4
+				,item:maxitem
 				,keyPress:false
 				,pager:false
 				//,enableTouch:false
@@ -441,7 +449,7 @@ function setviewitem(data)
 			try{
 				$.each(data.colors,function(i,val){
 					var item = "";
-					item = "<img src='"+val.color+"'  style='border:1px solid;' onerror=this.src='images/common/unavaliable.jpg' /> ";
+					item = "<img src='"+val.color+"' onerror=this.src='images/common/unavaliable.jpg' /> ";
 					colors.append(item);
 				});
 			}
@@ -462,7 +470,7 @@ function setviewitem(data)
 				});
 			}
 			catch(e){
-				console.error("view color error : " + e.description());
+				console.error("view image error : " + e.description());
 			}
 		}
 		
@@ -479,7 +487,7 @@ function setviewitem(data)
 				});
 			}
 			catch(e){
-				console.error("view color error : " + e.description());
+				console.error("view symbol error : " + e.description());
 			}
 		}
 		
