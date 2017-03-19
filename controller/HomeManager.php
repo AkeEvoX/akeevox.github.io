@@ -70,6 +70,22 @@ class HomeManager{
 		
 	}
 	
+	function get_banner_list(){
+
+		try{
+
+			$sql = "select * ";
+			$sql .= "from home where align=0 order by id ";
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get  Top Home : ".$e->getMessage();
+		}
+
+	}
+	
 	function update_cover_intro($items){
 		try{
 			

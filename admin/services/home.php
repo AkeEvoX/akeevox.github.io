@@ -90,7 +90,7 @@ function get_landing_info(){
 function get_banner_info(){
 	
 	$home = new HomeManager();
-	$data = $home->getCoverTop();
+	$data = $home->get_banner_list();
 	
 	if($data){
 		

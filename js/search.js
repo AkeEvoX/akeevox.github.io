@@ -17,9 +17,13 @@ $('#txtfind').keyup(function(e){
 	if(code == 37 || code == 38 || code == 39 || code == 40) {
 		return;
 	}
-	$('#fetch').val(0);
-	$('#listview').find("tr:gt(0)").remove();
-	find();
+	if(code==13){
+		$('#fetch').val(0);
+		$('#listview').find("tr:gt(0)").remove();
+		find();
+	}
+	
+	
 });
 
 });

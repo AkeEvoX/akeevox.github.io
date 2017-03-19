@@ -42,7 +42,7 @@ class PressManager{
 	{
 		try{
 			
-			$sql = "select id,title_".$lang." as title ,detail_".$lang." as detail ,thumbnail,coverpage,create_date,update_date ";
+			$sql = "select id,title_".$lang." as title , LEFT(detail_".$lang.", 100) as detail  ,thumbnail,coverpage,create_date,update_date ";
 			$sql .= "from press where active=1 order by create_date desc ";
 
 			$result = $this->mysql->execute($sql);
@@ -70,7 +70,7 @@ class PressManager{
 	function getHomeItem($lang){
 		try{
 			
-			$sql = "select id,title_".$lang." as title,detail_".$lang." as detail,thumbnail,coverpage,create_date,update_date ";
+			$sql = "select id,title_".$lang." as title,LEFT(detail_".$lang.", 100) as detail,thumbnail,coverpage,create_date,update_date ";
 			$sql .= "from press where active=1 order by update_date desc limit 4 ";
 
 			$result = $this->mysql->execute($sql);
