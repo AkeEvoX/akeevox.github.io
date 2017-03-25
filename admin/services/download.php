@@ -159,20 +159,30 @@ function getItemtype($id){
 
 function Insert($items){
 	
-	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/download/".$_FILES['file_upload']['name'];
+	if($_FILES['file_upload_th']['name']!=""){
+		$filename = "images/download/th_".$_FILES['file_upload_th']['name'];
 		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["link"] = $filename;
-		$items["thumbnail"] = $filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];  
+		$items["link_th"] = $filename;
+		$items["thumbnail_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	
+	if($_FILES['file_upload_en']['name']!=""){
+		$filename = "images/download/en_".$_FILES['file_upload_en']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_en']['tmp_name'];  
+		$items["link_en"] = $filename;
+		$items["thumbnail_en"] = $filename;
+		upload_image($source,$distination);
 	}
 	
 	$download = new DownloadManager();
 	$result = $download->insert_download($items);
-	
-	if($items["thumbnail"])
+	/*
+	if($items["thumbnail_th"])
 		upload_image($source,$distination);
-	
+	*/
 	return "INSERT SUCCESS.";
 }
 

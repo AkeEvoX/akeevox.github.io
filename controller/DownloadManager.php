@@ -60,7 +60,7 @@ class DownloadManager{
 	function getListItem($id,$lenght,$lang){
 			try{
 			
-			$sql = " select id,title_".$lang." as title,thumbnail,link from downloads where active=1  and type = ".$id . " order by create_date";
+			$sql = " select id,title_".$lang." as title,thumbnail_".$lang." as thumbnail,link_".$lang." as link from downloads where active=1  and type = ".$id . " order by create_date";
 
 			if(isset($lenght) && !empty($lenght)){
 				$sql .= " limit ". $lenght;
@@ -172,8 +172,10 @@ class DownloadManager{
 			$type  =$items["download_type"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$thumbnail= $items["thumbnail"];
-			$link= $items["link"];
+			$thumbnail_th= $items["thumbnail_th"];
+			$link_th= $items["link_th"];
+			$thumbnail_en= $items["thumbnail_en"];
+			$link_en= $items["link_en"];
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -181,8 +183,8 @@ class DownloadManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into downloads (type,title_th  ,title_en ,thumbnail ,link ,create_by  ,create_date  ,active ) ";
-			$sql .= "values($type,'$title_th'  ,'$title_en'  ,'$thumbnail'  ,'$link' ,$create_by  ,$create_date  ,$active); ";
+			$sql = "insert into downloads (type,title_th  ,title_en ,thumbnail_th ,link_th ,thumbnail_en ,link_en ,create_by  ,create_date  ,active ) ";
+			$sql .= "values($type,'$title_th'  ,'$title_en'  ,'$thumbnail_th'  ,'$link_th' ,'$thumbnail_en'  ,'$link_en' ,$create_by  ,$create_date  ,$active); ";
 			$this->mysql->execute($sql);
 			
 			log_debug("DownloadManager > insert_download > " .$sql);
@@ -203,16 +205,22 @@ class DownloadManager{
 			$type  =$items["download_type"];
 			$title_th  =$items["title_th"];
 			$title_en  =$items["title_en"];
-			$thumbnail= "";
-			$link= "";
+			$thumbnail_th= "";
+			$link_th= "";
+			
+			$thumbnail_en= "";
+			$link_en= "";
 
-			if($items["thumbnail"]){
-				$thumbnail=",thumbnail='".$items["thumbnail"]."' ";	
+			if($items["thumbnail_th"]){
+				$thumbnail_th=",thumbnail_th='".$items["thumbnail_th"]."' ";	
+				$link_th=",link_th='".$items["link_th"]."' ";	
 			}
 			
-			if($items["link"]){
-				$link=",link='".$items["link"]."' ";	
+			if($items["thumbnail_en"]){
+				$thumbnail_en=",thumbnail_en='".$items["thumbnail_en"]."' ";	
+				$link_en=",link_en='".$items["link_en"]."' ";	
 			}
+			
 		
 			$active='0';
 			
@@ -223,7 +231,7 @@ class DownloadManager{
 		
 			$sql = "update downloads set  ";
 			$sql .= "type=$type ,title_th='$title_th' ,title_en='$title_en' ";
-			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $thumbnail $link ";
+			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date $thumbnail_th $link_th $thumbnail_en $link_en";
 			$sql .= "where id=$id ;";
 			$this->mysql->execute($sql);
 			
