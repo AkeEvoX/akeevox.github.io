@@ -16,6 +16,21 @@ gallery.add = function(args){
 
 }
 
+/* gallery.add_multiple = function(args){
+	
+	var endpoint = "services/gallery.php";
+	var method = "POST";
+	utility.data(endpoint,method,args,function(data){
+		
+		
+		var response = JSON.parse(data);
+		console.debug(response);
+		alert(response.result);
+		control.pagetab('gallery-manager.html');
+	});
+
+} */
+
 gallery.add_album = function(args){
 	
 	var endpoint = "services/gallery.php";

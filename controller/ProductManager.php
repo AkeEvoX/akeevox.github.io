@@ -245,14 +245,15 @@ class ProductManager{
 		}
 	}
 	
-	function getProductReleated($lang,$cate) {
+	function getProductReleated($lang,$cate,$proid) {
 		try{
 
 			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid='".$cate."' ";
-			$sql .= " order by  p.create_date desc limit 6 ";
+			$sql .= " or p.id in (select ss.pro_id from series ss where ss.series_id = (select s.series_id from series s where s.pro_id=$proid limit 1)) ";
+			$sql .= " order by  p.create_date desc limit 15 ";
 			$result = $this->mysql->execute($sql);
-
+//
 			return  $result;
 		}
 		catch(Exception $e){

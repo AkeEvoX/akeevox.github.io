@@ -211,7 +211,8 @@ function set_view_item(data){
 	$('#title_en').val(data.result.title_en);
 	$('#download_type').val(data.result.type);
 	
-	$('#preview').attr('src',"../"+data.result.thumbnail);
+	$('#preview_th').attr('src',"../"+data.result.thumbnail_th);
+	$('#preview_en').attr('src',"../"+data.result.thumbnail_en);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);

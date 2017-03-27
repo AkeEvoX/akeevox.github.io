@@ -27,7 +27,7 @@ switch($type)
 		//echo "pro = ".$id;
 		$prod = setProduct($lang,$id);
 		$cate = $prod["type"];
-		$result = setProductRelated($lang,$cate);
+		$result = setProductRelated($lang,$cate,$id);
 
 
 	break;
@@ -218,10 +218,10 @@ function setListShowRoom($lang,$id){
 	}
 }
 
-function setProductRelated($lang,$cate) {
+function setProductRelated($lang,$cate,$id) {
 	//echo "cate = ".$cate;
 	$product = new ProductManager();
-	$data = $product->getProductReleated($lang,$cate);
+	$data = $product->getProductReleated($lang,$cate,$id);
 
 	$items = null;
 	if($data){

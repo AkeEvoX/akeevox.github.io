@@ -198,19 +198,29 @@ function Insert_type($items){
 function Update($items){
 	
 	
-	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/download/".$_FILES['file_upload']['name'];
+	if($_FILES['file_upload_th']['name']!=""){
+		$filename = "images/download/".$_FILES['file_upload_th']['name'];
 		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["link"] = $filename;
-		$items["thumbnail"] = $filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];  
+		$items["link_th"] = $filename;
+		$items["thumbnail_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	
+	if($_FILES['file_upload_th']['name']!=""){
+		$filename = "images/download/".$_FILES['file_upload_th']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];  
+		$items["link_en"] = $filename;
+		$items["thumbnail_en"] = $filename;
+		upload_image($source,$distination);
 	}
 	
 	$download = new DownloadManager();
 	$result = $download->update_download($items);
 	
-	if($items["thumbnail"])
-		upload_image($source,$distination);
+	//if($items["thumbnail"])
+		//upload_image($source,$distination);
 	
 	return "UPDATE SUCCESS.";
 	

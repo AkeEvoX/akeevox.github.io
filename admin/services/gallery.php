@@ -30,6 +30,10 @@ switch($type){
 		$result = Insert($_POST);
 		log_debug("gallery  > Insert " . print_r($result,true));
 	break;
+	case "add_multiple":
+		$result = Insert_multiple($_POST);
+		log_debug("gallery  > Insert multi file" . print_r($result,true));
+	break;
 	case "add_album":
 		$result = Insert_album($_POST);
 		log_debug("gallery album > Insert " . print_r($result,true));
@@ -171,6 +175,38 @@ function Insert($items){
 		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
+}
+
+function Insert_multiple($items){
+	
+	$gallery = new GalleryManager();
+	
+	
+	$total = count($_FILES['file_upload']['name']);
+	
+	for($i=0;$i<$total;$i++){
+		
+		$source  = $_FILES['file_upload']['tmp_name'][$i];
+		if($source!=""){
+			$name = $_FILES['file_upload']['name'][$i];
+			$filename = "images/gallery/".$name;
+			$distination =  "../../".$filename;
+			//$source = $_FILES['file_upload']['tmp_name'];  
+			upload_image($source,$distination);
+			
+			$items["title_th"]=$name;
+			$items["title_en"]=$name;
+			$items["image"] = $filename;
+			$items["thumbnail"] = $filename;
+			
+			$result = $gallery->insert_item($items);		
+		}
+	}
+	
+	//1)insert data
+	return "INSERT SUCCESS.";
+	
+	//http://stackoverflow.com/questions/2704314/multiple-file-upload-in-php
 }
 
 function Insert_album($items){
