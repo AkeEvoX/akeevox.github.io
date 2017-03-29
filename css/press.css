@@ -1,7 +1,8 @@
 .view {
 	margin:0px;
 	border:0px solid;
-	box-shadow:0px 0px 0px;
+	/* box-shadow:0px 0px 0px; */
+	box-shadow:-5px -5px 5px grey;
 }
 .view .mask, .view .content{
 	height:200px;
@@ -11,10 +12,21 @@
 	
 	/* 125px */
 }
+
+.badge{
+	background-color:#982;
+}
+
+.media {
+	
+	border:0px solid;
+	/* box-shadow:0px 0px 0px; */
+	box-shadow:0px 0px 5px 0px grey;
+}
 .media-left { padding:0px;}
 .media-body
 {
-	background:#ffdd99;
+	/* background:#ffdd99; */
 	padding:10px;
 }
 

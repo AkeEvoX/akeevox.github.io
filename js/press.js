@@ -102,14 +102,16 @@ function setview(data)
 		itemview += "<div class='col-xs-12 col-sm-12 col-md-6 rowspan'>" ;
 		itemview += "<div class='media'>";
 		itemview += "<div class='media-left'>";
-		itemview += "<div class='view second-effect'><img src='"+val.coverpage+"' class='media-object' width='200' height='200' />";
-		itemview += "<div class='mask'><a href='press_detail.html?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect
-		itemview += "</div>";//view
+		itemview += "<a href='press_detail.html?id="+val.id+"' title='view detail'><img src='"+val.coverpage+"' class='media-object' width='200' height='200' />";
+		itemview += "</a>";//#hover effect
+		/* itemview += "<div class='view second-effect'><img src='"+val.coverpage+"' class='media-object' width='200' height='200' />";
+		itemview += "<div class='mask'><a href='press_detail.html?id="+val.id+"' class='info' title='view detail'></a></div>";//#hover effect */
+		//itemview += "</div>";//view
 		itemview += "</div>";//media-left
 		itemview += "<div class='media-body'><a href='press_detail.html?id="+val.id+"' style='text-decoration: none;'  >";//
 			itemview += "<h4 class='media-heading'>"+val.title+"</br><small>Date :"+val.date+"</small></h4>"; //#title
 			itemview += "<div class='media-body'>"+detail+"</div>";//#detail
-			itemview += "<span class='badge'><span id='press.read' style='color:white;'></span></span>";//#read more.
+			itemview += "<span class='badge pull-right'><span id='press.read' style='color:white;'></span></span>";//#read more.
 		itemview += "</a></div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column

@@ -25,14 +25,15 @@
 			</div>
 		</div>
 		<div class='row text-center'>
-			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+			<input type='submit' class='btn btn-warning btn-sm' id='btn_save' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
 		</div>
 		<input type='hidden' id='primary_id' />
-
+		<div id='result' style='display:none;'><img src='../images/common/jq-lightbox-ico-loading.gif' />Loading</div>
 	</form>
 
 
 </div>
+
 <script src='js/gallery-manager.js' ></script>
 <script>
 
@@ -40,12 +41,14 @@
 $(document).ready(function(){
 
 	gallery.album_option();
+	
 	$('#gallery_form').on('submit',function(e){
+		
 		e.preventDefault();
-		alert("Please wait.");
+		$('#result').css('display','block');
 		var args = new FormData(this);
 		args.append('type', 'add_multiple');
-		gallery.add(args);
+		gallery.add_multiple(args);
 	});
 
 });

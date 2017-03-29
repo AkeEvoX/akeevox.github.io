@@ -16,7 +16,7 @@ gallery.add = function(args){
 
 }
 
-/* gallery.add_multiple = function(args){
+gallery.add_multiple = function(args){
 	
 	var endpoint = "services/gallery.php";
 	var method = "POST";
@@ -25,11 +25,12 @@ gallery.add = function(args){
 		
 		var response = JSON.parse(data);
 		console.debug(response);
+		$('#result').css('display','none');
 		alert(response.result);
 		control.pagetab('gallery-manager.html');
 	});
 
-} */
+} 
 
 gallery.add_album = function(args){
 	
