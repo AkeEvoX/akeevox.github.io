@@ -44,18 +44,34 @@
 	"buffers":
 	[
 		{
-			"file": "admin/login.html",
+			"file": "compares.html",
 			"settings":
 			{
-				"buffer_size": 2978,
+				"buffer_size": 3306,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "admin/js/authen.js",
+			"file": "controller/ProductManager.php",
 			"settings":
 			{
-				"buffer_size": 359,
+				"buffer_size": 26438,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "services/product.php",
+			"settings":
+			{
+				"buffer_size": 7447,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "js/product.js",
+			"settings":
+			{
+				"buffer_size": 12459,
 				"line_ending": "Unix"
 			}
 		}
@@ -92,6 +108,14 @@
 	},
 	"file_history":
 	[
+		"/Users/iake.air/Sites/starsanitaryware/js/utility.js",
+		"/Users/iake.air/Sites/starsanitaryware/lib/database.php",
+		"/Users/iake.air/Sites/starsanitaryware/lib/datasource.ini",
+		"/Users/iake.air/Sites/starsanitaryware/lib/connecter.php",
+		"/Users/iake.air/Sites/starsanitaryware/admin/login.html",
+		"/Users/iake.air/Sites/starsanitaryware/admin/js/authen.js",
+		"/Users/iake.air/Sites/starsanitaryware/services/category.php",
+		"/Users/iake.air/Sites/starsanitaryware/js/product.js",
 		"/Users/iake.air/Sites/starsanitaryware/admin/services/authentication.php",
 		"/Users/iake.air/Sites/starsanitaryware/admin/js/product-manager.js",
 		"/Users/iake.air/Sites/starsanitaryware/controller/SecurityManager.php",
@@ -115,7 +139,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/lib/logger.php",
 		"/Users/iake.air/Sites/starsanitaryware/award.html",
 		"/Users/iake.air/Sites/starsanitaryware/compares.html",
-		"/Users/iake.air/Sites/starsanitaryware/js/product.js",
 		"/Users/iake.air/Sites/starsanitaryware/css/compare.css",
 		"/Users/iake.air/Sites/starsanitaryware/services/product.php",
 		"/Users/iake.air/Sites/starsanitaryware/css/product.css",
@@ -131,7 +154,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/services/press.php",
 		"/Users/iake.air/Sites/starsanitaryware/services/dealer.php",
 		"/Users/iake.air/Sites/starsanitaryware/category.html",
-		"/Users/iake.air/Sites/starsanitaryware/lib/connecter.php",
 		"/Users/iake.air/Sites/starsanitaryware/index.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/theme.default.css",
 		"/Users/iake.air/Sites/starsanitaryware/config/datasource.ini",
@@ -154,7 +176,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/js/press.js",
 		"/Users/iake.air/Sites/starsanitaryware/dealer.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/intro.css",
-		"/Users/iake.air/Sites/starsanitaryware/js/utility.js",
 		"/Users/iake.air/Sites/starsanitaryware/navbar.html",
 		"/Users/iake.air/Sites/starsanitaryware/js/intro.js",
 		"/Users/iake.air/Sites/starsanitaryware/intro.html",
@@ -165,7 +186,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/showroom.html",
 		"/Users/iake.air/Sites/starsanitaryware/catalog.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/icon.css",
-		"/Users/iake.air/Sites/starsanitaryware/admin/login.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/navbar.css",
 		"/Users/iake.air/OneDrive/SourceCode/php/starsanitaryware/backup db/stardb_20161028.sql",
 		"/Users/iake.air/Sites/starsanitaryware/logs/warning_2016-10-30.log",
@@ -176,7 +196,6 @@
 		"/Users/iake.air/Sites/controlcenter/index.html",
 		"/Users/iake.air/Sites/starsanitaryware/js/productdetail.js",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/css/hover-effects.css",
-		"/Users/iake.air/Sites/starsanitaryware/lib/database.php",
 		"/Users/iake.air/Sites/starsanitaryware/temp_backup/menu_hightnachy.php",
 		"/Users/iake.air/Sites/starsanitaryware/services/contact.php",
 		"/Users/iake.air/Sites/starsanitaryware/js/award.js",
@@ -216,10 +235,7 @@
 		"/Users/iake.air/Sites/starsanitaryware/profile.html",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/immersive-slider.css",
 		"/Users/iake.air/Sites/starsanitaryware/plugin/jquery/immersive-slider/jquery.immersive-slider.js",
-		"/Users/iake.air/Sites/register/js/validator.js",
-		"/Users/iake.air/Sites/register/index.html",
-		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/visitor.php",
-		"/Users/iake.air/Sites/backup/starsanitaryware_20160724/reference.php"
+		"/Users/iake.air/Sites/register/js/validator.js"
 	],
 	"find":
 	{
@@ -239,6 +255,24 @@
 		"case_sensitive": false,
 		"find_history":
 		[
+			"setViewReleated",
+			"getProductReleated",
+			"rel",
+			"relate",
+			"viewmenu",
+			"getMenu",
+			"viewmenu",
+			"\nviewmenu(",
+			"\nviewmenu",
+			"setMenu",
+			"listmenu",
+			"getProductType",
+			"getSeriestList",
+			"setListSeries",
+			"list_series",
+			"setMenu",
+			"getMenu",
+			"setProductRelated",
 			"viewmenulist",
 			"set_item_product",
 			"get_fetch_product",
@@ -363,23 +397,23 @@
 	"groups":
 	[
 		{
-			"selected": 1,
+			"selected": 3,
 			"sheets":
 			[
 				{
 					"buffer": 0,
-					"file": "admin/login.html",
+					"file": "compares.html",
 					"settings":
 					{
-						"buffer_size": 2978,
+						"buffer_size": 3306,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								2923,
-								2923
+								2314,
+								2314
 							]
 						],
 						"settings":
@@ -389,25 +423,81 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 450.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 1,
-					"file": "admin/js/authen.js",
+					"file": "controller/ProductManager.php",
 					"settings":
 					{
-						"buffer_size": 359,
+						"buffer_size": 26438,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								229,
-								229
+								6791,
+								6795
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 37.0,
+						"translation.y": 3447.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 2,
+					"file": "services/product.php",
+					"settings":
+					{
+						"buffer_size": 7447,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								4719,
+								4729
+							]
+						],
+						"settings":
+						{
+							"auto_complete": false,
+							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 3046.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 3,
+					"file": "js/product.js",
+					"settings":
+					{
+						"buffer_size": 12459,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								8329,
+								8329
 							]
 						],
 						"settings":
@@ -417,7 +507,7 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 0.0,
+						"translation.y": 3078.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"

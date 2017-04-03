@@ -109,6 +109,10 @@ function setting_slider(data){
 
 }
 
+function sortseq(	){
+
+}
+
 function viewmenu(data){
 
 	var list = $('#productlist');
@@ -120,13 +124,20 @@ function viewmenu(data){
 	$.each(parent,function(i,val){
 
 		var child = data.result.filter(function(item){ return item.parent==val.id; });
+		
+
 		if(child.length==0){//not found child
 			menu += "<li><label class='tree-toggle nav-header mainmenu'><a href='"+val.link+"'>"+val.title+"</a></label></li>";
 		}
 		else{
+
+			var child_sort = child.sort(function(a,b){ return a.seq-b.seq });
+			//console.log(child_sort);
+
 			menu += "<li><label class='tree-toggle nav-header mainmenu'>"+val.title+"</label>";
 			menu += "<ul class='nav nav-list tree'>";
-			menu += viewchildmenu(child,data,"");
+			menu += viewchildmenu(child_sort,data,"");
+			//menu += viewchildmenu(child,data,"");  #backup
 			menu += "</ul></li>";
 		}
 
@@ -359,7 +370,7 @@ function setViewReleated(data){
 			var item = "";
 			item += "<li  ><a href='productdetail.html?id="+val.id+"' >";
 			item += "<img src='"+val.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='img-responsive' >";
-			item += "<div class='lightslider-title'><label>"+val.name+"</label></div>";
+			item += "<div class='lightslider-title'><label>"+val.name+"<br/>"+val.code+"</label></div>";
 			item += "<ul class='lightslider-desc'>";
 			//item += "<li>&nbsp;</li>";
 			//item += "<li>&nbsp;</li>";

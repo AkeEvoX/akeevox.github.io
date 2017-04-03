@@ -244,14 +244,25 @@ class ProductManager{
 			echo "Cannot Get ShowRoome List : ".$e->getMessage();
 		}
 	}
-	
+	//limit product view to 15 pieces
 	function getProductReleated($lang,$cate,$proid) {
 		try{
 
+
+			$sql = "(select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name ";
+			$sql .= "from products p inner join product_detail d on p.id=d.proid ";
+			$sql .= "where  p.id in (select ss.pro_id from series ss where ss.series_id = (select s.series_id from series s where s.pro_id=$proid limit 1)) ) ";
+			$sql .= "union ";
+			$sql .= "(select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name ";
+			$sql .= "from products p inner join product_detail d on p.id=d.proid ";
+			$sql .= "where p.typeid='".$cate."' ";
+			$sql .= "order by p.create_date desc limit 5); ";
+
+/* backup
 			$sql = "select p.id,p.title_".$lang." as title ,p.detail_".$lang." as detail,p.thumb,p.image,p.plan,d.code,d.name_".$lang." as name ";
 			$sql .= " from products p inner join product_detail d on p.id=d.proid where p.typeid='".$cate."' ";
 			$sql .= " or p.id in (select ss.pro_id from series ss where ss.series_id = (select s.series_id from series s where s.pro_id=$proid limit 1)) ";
-			$sql .= " order by  p.create_date desc limit 15 ";
+			$sql .= " order by  p.create_date desc limit 15 ";*/
 			$result = $this->mysql->execute($sql);
 //
 			return  $result;
@@ -327,10 +338,10 @@ class ProductManager{
 	function getMenu($lang)	{
 		try{
 
-			$sql = " select a.id,a.parent,a.title_".$lang." as title,a.link ";
-			$sql .= " from product_type a ";
-			$sql .= " where a.active=1 ";
-			$sql .= " order by a.id; ";
+			$sql = " select id,parent,title_".$lang." as title,link,seq ";
+			$sql .= " from product_type ";
+			$sql .= " where active=1 ";
+			$sql .= " order by id,seq; ";
 
 			$result = $this->mysql->execute($sql);
 			return  $result;

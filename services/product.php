@@ -368,7 +368,9 @@ function setMenu($lang){
 			$menu =  array("id"=>$row->id
 						,"parent"=>$row->parent
 						,"title"=>$row->title
-		  				,"link"=>$row->link);
+		  				,"link"=>$row->link
+		  				,"seq"=>$row->seq
+		  				);
 
 			$result[] = $menu;
 		}
