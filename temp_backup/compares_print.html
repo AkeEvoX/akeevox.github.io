@@ -12,20 +12,28 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
 	<link href="css/compare-print.css" rel="stylesheet" type="text/css" />
-
+	
 </head>
 <body>
-	<!--
-	<h4><span class='glyphicon glyphicon-stop'></span><span id='compare.title'></span><span class='pull-right title_control' >
-		<img src='images/logos/btn_print.png' id='btn_print' style='cursor:pointer;'  ></span>
-	</h4>
-	<hr/>-->
-	<span class='pull-right title_control' >
-		<img src='images/logos/btn_print.png' id='btn_print' style='cursor:pointer;'  ></span>
-	<div class='row'>
-		<h4 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='compare.header'></span></h4>
-	</div>
-	<table ><tr id='view_print'></tr></table>
+	<div class='container'>
+		<div class='col-md-12' id='view-content' >
+			<h4><span class='glyphicon glyphicon-stop'></span><span id='compare.title'></span><span class='pull-right title_control' >
+				<img src='images/logos/btn_print.png' id='btn_print' style='cursor:pointer;'  ></span>
+			</h4>
+			<hr/>
+			<div class='row'>
+				<h4 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='compare.header'></span></h4>
+			</div>
+			<div class='row'>
+				<div class="lightslider-main">
+	        		<div class="item" >
+						<ul id="compare-slider" class="content-slider" ></ul>
+	        		</div>
+	        	</div><!--end lightslider-->
+			</div>
+		</div><!--end view content-->
+	</div><!--end conatiner-->
+
 <script src='plugin/jquery/jquery.min.js' ></script>
 <script src='plugin/jquery/jquery-ui.min.js' ></script>
 <script src='plugin/jquery/holder.js' ></script>
@@ -38,7 +46,7 @@
 <script>
 	
 	$(document).ready(function(){
-		load_view_print();
+		loadviewcompare();
 		$('#btn_print').on('click',function(){
 			window.print();
 		});

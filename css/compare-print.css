@@ -1,29 +1,64 @@
 @page  
 { 
-    size: auto;   /* auto is the initial value */ 
+    /*size: auto;*/   /* auto is the initial value */ 
 
     /* this affects the margin in the printer settings */ 
 	/*top right buttom left*/
     /*margin: 5mm 5mm 5mm 5mm;  */
 	margin:0px;
 } 
+@media print{@page {size: landscape}}
 
+html, body, {
+    position:fixed;
+    top:0;
+    bottom:0;
+    left:0;
+    right:0;
+    width:100%;
+}
 body{
 	margin:30px;
 }
+
 .title_control{
-    position:absolute;top:45px;right:0px;
+    position:absolute;top:0px;right:10px;
 }
 
+table {
+    width:100%;
+    border-right:1px solid #a58b5d;
+    border-bottom:1px solid #a58b5d;
+}
+
+/*for print compare*/
+#view_print {
+    vertical-align:top;
+}
+
+#view_print td {
+    border-left:1px solid #a58b5d;
+    width:200px;
+}
+#view_print ul {
+    list-style: none outside none;
+    padding-left: 0;
+    margin: 0;
+    width:100%;
+}
+
+.item-print{
+    width:150px;
+    height:150px;
+}
 
 .comapre-main{
     /*margin:20px;*/
 }
 
 #compare-slider{ 
-
-display:none;
-min-width:100%
+    display:none;
+    min-width:100%
 }
 
 #compare-slider ul{
@@ -74,8 +109,9 @@ min-width:100%
     margin:0 auto;
     text-align:center;
     vertical-align: middle;
-    line-height: 50px;
-    height:50px;
+    /*line-height: 50px;*/
+    height:60px;
+    word-wrap: break-word;
 }
 
 .lightslider-desc {
@@ -89,11 +125,12 @@ min-width:100%
 }
 
 .content-slider li{
-    padding:10px 0px 10px 0px;
+    padding:5px 0px 5px 0px;
     background-color: white;
     text-align: left;
     color: #a58b5d;
 	border-top:1px solid #a58b5d;
+    font-size:10px;
 }
 
 .content-slider li > span{

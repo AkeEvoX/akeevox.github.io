@@ -7,6 +7,92 @@ $(document).ready(function(){
 	
 });
 
+function load_view_print(){
+
+	
+
+	var column = "";
+	var item = "";
+	get_print_title();
+	//get_print_item();
+
+	//column += "<td>"+item+"</td>";
+	//view.append("<table><tr>"+item+"</tr></table>");
+	
+}
+
+function get_print_title(){
+
+	var endpoint = "services/attributes.php";
+	var method='get';
+	var args = {'_':new Date().getHours(),'type':'other','option':'prod'};
+	var view = $('#view_print');
+
+	utility.service(endpoint,method,args,function(resp){
+		
+		var item="<td >";
+		item += "<ul class='content-slider'>";
+		item += "<li style='text-align:center;'>";
+		item += "<img src='images/common/compare.png' onerror=this.src='images/common/unavaliable.jpg' class='item-print' >";
+		item += "<div class='lightslider-title'><label><span class='glyphicon glyphicon-stop'></span><span id='compare.category'></span></label></div>";
+		item += "<ul class='lightslider-desc'>";
+
+		$.each(resp.result,function(id,val){
+			//console.warn(val);
+			item+="<li><span>"+val.value+"<span></li>";
+		});
+
+		item += "</ul></li></ul></td>";
+		view.append(item);
+	},get_print_item);
+
+	
+}
+
+function get_print_item(){
+
+	var endpoint = "services/compare.php";
+	var method='get';
+	var args = {'_':new Date().getHours(),'type':'view'};
+	var view = $('#view_print');
+	utility.service(endpoint,method,args,function(resp){
+
+	if(resp.result==null) return;
+
+	
+	//compare.html("");
+	var item = "";
+	//for(var i =0 ; i < 5;i++){
+		$.each(resp.result,function(id,val){
+
+			item += "<td ><ul class='content-slider'>";
+			item += "<li style='text-align:center;'>";
+			item += "<img src='"+val.info.thumb+"' onerror=this.src='images/common/unavaliable.jpg' class='item-print' >";
+			item += "<div class='lightslider-title'><span class='glyphicon glyphicon-stop'></span>"+val.info.cate+"</div>";
+			item += "<ul class='lightslider-desc'>";
+			
+			$.each(val.attrs,function(i,val_attr){
+
+				var title = "-"
+
+				if(val_attr.title!="")
+					title = val_attr.title;
+
+				item += "<li><span>"+title+"</span></li>";
+
+			});
+			//item += "</ul>";
+			//item += "</li></td>";
+			item += "</ul></li></ul></td>";
+		});
+
+
+		view.append(item);
+	},function(){
+		utility.setpage('compare');
+	});
+}
+
 function loadviewcompare(){
 
 	var endpoint = "services/attributes.php";
@@ -37,6 +123,8 @@ function setviewtemplete(data){
 	
 
 	compare.append(item);
+
+	
 	
 
 }

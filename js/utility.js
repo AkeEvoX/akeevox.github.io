@@ -86,7 +86,7 @@ utility.data = function (endpoint,method,args,success_callback,complete_callback
 		complete:complete_callback,
 		error:function(xhr,status,error){
 
-			var result = {'page':url
+			var result = {'page':endpoint
 									,'args':args
 								 ,'msg':xhr.responseText};
 
