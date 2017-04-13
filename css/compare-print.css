@@ -5,14 +5,14 @@
     /* this affects the margin in the printer settings */ 
 	/*top right buttom left*/
     /*margin: 5mm 5mm 5mm 5mm;  */
-	margin:0px;
+	margin:5mm;
 } 
 @media print{@page {size: landscape}}
 
 html, body, {
     position:fixed;
-    top:0;
-    bottom:0;
+    top:30;
+    bottom:30;
     left:0;
     right:0;
     width:100%;
@@ -27,8 +27,8 @@ body{
 
 table {
     width:100%;
-    border-right:1px solid #a58b5d;
-    border-bottom:1px solid #a58b5d;
+    border-left:0px solid #a58b5d;
+    border-bottom:0px solid #a58b5d;
 }
 
 /*for print compare*/
@@ -37,7 +37,7 @@ table {
 }
 
 #view_print td {
-    border-left:1px solid #a58b5d;
+    border-right:1px solid #a58b5d;
     width:200px;
 }
 #view_print ul {

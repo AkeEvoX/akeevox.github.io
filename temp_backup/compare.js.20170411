@@ -27,36 +27,29 @@ function get_print_title(){
 	var method='get';
 	var args = {'_':new Date().getHours(),'type':'other','option':'prod'};
 	var view = $('#view_print');
-	var item="";
-	var column_header="";
+
 	utility.service(endpoint,method,args,function(resp){
 		
-		
-		column_header="<tr style='border-bottom:1px solid #a58b5d;'><td style='border-left:1px solid #a58b5d;' >";
-		column_header += "<ul class='content-slider'>";
-		column_header += "<li style='text-align:center;'>";
-		column_header += "<img src='images/common/compare.png' onerror=this.src='images/common/unavaliable.jpg' class='item-print' >";
-		column_header += "<div class='lightslider-title'><label><span class='glyphicon glyphicon-stop'></span><span id='compare.category'></span></label></div>";
-		column_header += "<ul class='lightslider-desc'>";
+		var item="<td >";
+		item += "<ul class='content-slider'>";
+		item += "<li style='text-align:center;'>";
+		item += "<img src='images/common/compare.png' onerror=this.src='images/common/unavaliable.jpg' class='item-print' >";
+		item += "<div class='lightslider-title'><label><span class='glyphicon glyphicon-stop'></span><span id='compare.category'></span></label></div>";
+		item += "<ul class='lightslider-desc'>";
 
 		$.each(resp.result,function(id,val){
-			column_header+="<li><span>"+val.value+"<span></li>";
+			//console.warn(val);
+			item+="<li><span>"+val.value+"<span></li>";
 		});
 
-		column_header += "</ul></li></ul></td>";
-		
-		//view.append(item);
-		
-	},function(){ //finally
-		
-		get_print_item(column_header);
-		
-	});
+		item += "</ul></li></ul></td>";
+		view.append(item);
+	},get_print_item);
 
 	
 }
 
-function get_print_item(header){
+function get_print_item(){
 
 	var endpoint = "services/compare.php";
 	var method='get';
@@ -68,25 +61,9 @@ function get_print_item(header){
 
 	
 	//compare.html("");
-	var item = "";//initial column header
+	var item = "";
 	//for(var i =0 ; i < 5;i++){
 		$.each(resp.result,function(id,val){
-			
-			//check item for new page
-			if(id % 4==0){
-				
-				
-				if(id>1){
-					item+= "<tr><td colspan='5' style='border:0px solid #a58b5d;'>&nbsp;</td></tr>";
-					item+="<tr ><td colspan='5' style='border:0px solid #a58b5d;height:100px;'>";
-					item+="<h4 class='text-center'><span class='glyphicon glyphicon-stop'></span><span id='compare.header'></span></h4>";
-					item+="</td></tr>";
-				}
-				
-				item+= "</tr>"+header;// append new columns header
-				
-				
-			}
 
 			item += "<td ><ul class='content-slider'>";
 			item += "<li style='text-align:center;'>";
@@ -104,12 +81,12 @@ function get_print_item(header){
 				item += "<li><span>"+title+"</span></li>";
 
 			});
-			
+			//item += "</ul>";
+			//item += "</li></td>";
 			item += "</ul></li></ul></td>";
-			
 		});
 
-		item+="</tr>";//last page
+
 		view.append(item);
 	},function(){
 		utility.setpage('compare');
