@@ -143,12 +143,18 @@ function set_view_item(data){
 	
 	$('#name_th').val(data.result["name_th"]);
 	$('#position_th').val(data.result["position_th"]);
-	$('#education_th').val(data.result["education_th"]);
-	$('#work_th').val(data.result["work_th"]);
+	$('#education_th').summernote('code',data.result["education_th"]);
+	$('#work_th').summernote('code',data.result["work_th"]);
+	//$('#education_th').val(data.result["education_th"]);
+	//$('#work_th').val(data.result["work_th"]);
+	
+	
 	$('#name_en').val(data.result["name_en"]);
 	$('#position_en').val(data.result["position_en"]);
-	$('#education_en').val(data.result["education_en"]);
-	$('#work_en').val(data.result["work_en"]);
+	$('#education_en').summernote('code',data.result["education_en"]);
+	$('#work_en').summernote('code',data.result["work_en"]);
+	//$('#education_en').val(data.result["education_en"]);
+	//$('#work_en').val(data.result["work_en"]);
 	
 	$('#image').attr('src',data.result["image"]);
 	

@@ -5,7 +5,7 @@ function loadcontact(){
 		type:'get',
 		dataType:'json',
 		success:function(data){
-			//console.log(data);
+			console.log(data);
 			//fillter data to generate item
 			//require utility.js
 			var addrs = data.result.filter( item=> item.type=="address" );
@@ -40,11 +40,13 @@ function setphone(phone)
 	$('#phone').html("");
 	$.each(phone,function(i,val){
 		if(val.title!=''){
-			var phone = val.title;
+			var phone = val.link;
+			/*
 			phone = utility.replace(phone," ","");
 			phone = utility.replace(phone,"(",""); 
 			phone =  utility.replace(phone,")","");
 			phone =  utility.replace(phone,"-","");
+			*/
 			$('#phone').append("<li><a href='tel:+"+phone+"' style='color:#a58b5d;text-decoration:none;'>"+val.title+"</a></li>");
 		}
 			

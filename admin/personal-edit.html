@@ -112,6 +112,13 @@ $(document).ready(function(){
 	var id = utility.querystr("id",$('#parameter').val());
 	personal.loaditem(id);
 	
+	
+	$('#education_th').summernote({ height: 150 });
+	$('#work_th').summernote({ height: 150 });
+	
+	$('#education_en').summernote({ height: 150 });
+	$('#work_en').summernote({ height: 150 });
+	
 	$('#personal_form').on('submit',function(e){
 		e.preventDefault();
 		alert("Save Complete.");

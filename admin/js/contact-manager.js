@@ -153,6 +153,9 @@ function set_view_item(data){
 		$('#file_upload').attr('disabled',false);
 		$('#link').attr('disabled',false);	
 	}
+	if(data.result.type==3){
+		$('#link').attr('disabled',false);	
+	}
 	
 	
 	if(data.result["active"]=="1")

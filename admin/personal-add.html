@@ -102,6 +102,12 @@
 
 $(document).ready(function(){
 
+	//initial control 
+	$('#education_th').summernote({ height: 150 });
+	$('#work_th').summernote({ height: 150 });
+	$('#education_en').summernote({ height: 150 });
+	$('#work_en').summernote({ height: 150 });
+
 	$('#personal_form').on('submit',function(e){
 		e.preventDefault();
 		alert("Save Complete.");

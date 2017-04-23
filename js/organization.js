@@ -55,6 +55,7 @@ function profile_left(val,bg)
 
 		var item = "";
 		item += "<div class='col-md-12'>";
+		item += "<div class='well well-sm "+bg+"'>"+val.name+"</div>";
 		item += "<div class='media'>";
 		item += "<div class='media-body'>";
 		item += "<h4 class='media-heading orange'>Position : </h4>"+val.position+"<br/>";
@@ -64,7 +65,8 @@ function profile_left(val,bg)
 		item += "<div class='media-right' >";
 		item += "<a href='#'><img src='"+val.image+"' class='media-object' ></a>";
 		item += "</div>";
-		item += "</div><div class='well well-sm "+bg+"'>"+val.name+"</div></div>";
+		item += "</div></div>";
+		//item += "</div><div class='well well-sm "+bg+"'>"+val.name+"</div></div>";
 		view.append(item);
 	//});
 
@@ -77,6 +79,7 @@ function profile_right(val,bg){
 
 		var item = "";
 		item += "<div class='col-md-12'>";
+		item += "<div class='well well-sm "+bg+"'>"+val.name+"</div>";
 		item += "<div class='media'>";
 		item += "<div class='media-right' style='padding-left:0px;' >";
 		item += "<a href='#'><img src='"+val.image+"' class='media-object'></a>";
@@ -86,7 +89,8 @@ function profile_right(val,bg){
 		item += "<h4 class='media-heading orange'>Education Qualifications  : </h4>"+val.education+"<br/>";
 		item += "<h4 class='media-heading orange'>Work Experience : </h4>"+val.work+"<br/>";
 		item += "</div>";
-		item += "</div><div class='well well-sm "+bg+"''>"+val.name+"</div></div>";
+		item += "</div></div>";
+		//item += "</div><div class='well well-sm "+bg+"''>"+val.name+"</div></div>";
 		view.append(item);
 	//});
 
