@@ -38,6 +38,7 @@ while($row = $item->fetch_object()){
 	,"province"=>$row->province
 	,"zone"=>$row->zone
 	,"mobile"=>$row->mobile
+	,"link"=>$row->link
 	);
 	$result[] = $data;
 }

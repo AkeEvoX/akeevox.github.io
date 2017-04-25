@@ -47,6 +47,7 @@ function setview(resp)
 					result += "<td class='col-md-2'>"+val.province+"</td>";
 					result += "<td class='col-md-2'>"+val.zone+"</td>";
 					result += "<td class='col-md-2'>"+val.mobile+"</td>";
+					result += "<td class='col-md-2'><a href='"+val.link+"'><span class='glyphicon glyphicon-download-alt'></span></a></td>";
 					result += "</tr>";
 			});
 	 }

@@ -26,7 +26,7 @@ class DealerManager{
 
 		try{
 
-			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ";
+			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
 			$sql .= "from dealer where active=1 order by title_".$lang." asc";
 			$result = $this->mysql->execute($sql);
 
@@ -43,7 +43,7 @@ class DealerManager{
 /*
 			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ";
 			$sql .= "from dealer where active=1 order by title_".$lang." asc";*/
-			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ";
+			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
 			$sql .= " from dealer where active=1 ";
 			//$sql .= " and title_".$lang." like '%".$name."%' ";
 			$sql .= " order by title_".$lang." asc ";
@@ -59,7 +59,7 @@ class DealerManager{
 		function findName($lang,$name) {
 			try{
 
-				$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ";
+				$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
 				$sql .= " from dealer where active=1 ";
 				$sql .= " and title_".$lang." like '%".$name."%' ";
 				$sql .= " order by title_".$lang." asc ";
