@@ -1,0 +1,65 @@
+<div class='col-md-12' >
+	<h3>จัดการเพิ่ม Gallery</h3>
+	<hr/>
+	<form id='gallery_form' action='' method='post' enctype="multipart/form-data">
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="album_type" class='col-md-3'>หมวด / album</label>
+			<div class='col-md-7'>
+				<select class="form-control" id="album_type" name="album_type"  >
+				</select>
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="file_upload" class='col-md-3'>รูปภาพ / Image<br/>(ขนาด 1269 (W) x 864 (H) Pixels) </label>
+			<div class='col-md-7'>
+				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<!--	<form id='uploadimage' action="" method="post" >-->
+			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
+			<div class='col-md-5'>
+				<input type="checkbox" id="active" name="active"  />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="title_th" class='col-md-3'>ชื่อรูปภาพ</label>
+			<div class='col-md-9'>
+				<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อรูปภาพ" value='' />
+			</div>
+		</div>
+		<div class="form-group">
+			<label for="title_en" class='col-md-3'>Picture Name</label>
+			<div class='col-md-9'>
+				<input type="text" class="form-control" id="title_en" name='title_en' placeholder="picture name" value='' />
+			</div>
+		</div>
+		<div class='row text-center'>
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+		</div>
+		<input type='hidden' id='primary_id' />
+
+	</form>
+
+
+</div>
+<script src='js/gallery-manager.js' ></script>
+<script>
+
+
+$(document).ready(function(){
+
+	gallery.album_option();
+	$('#gallery_form').on('submit',function(e){
+		e.preventDefault();
+		alert("Save Complete.");
+		var args = new FormData(this);
+		args.append('type', 'add');
+		gallery.add(args);
+	});
+
+});
+
+</script>
