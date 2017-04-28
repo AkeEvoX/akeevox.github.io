@@ -60,18 +60,26 @@
 			}
 		},
 		{
-			"file": "services/product.php",
+			"file": "catalog.html",
 			"settings":
 			{
-				"buffer_size": 7447,
+				"buffer_size": 10148,
 				"line_ending": "Unix"
 			}
 		},
 		{
-			"file": "js/product.js",
+			"file": "js/gallery.js",
 			"settings":
 			{
-				"buffer_size": 12459,
+				"buffer_size": 2674,
+				"line_ending": "Unix"
+			}
+		},
+		{
+			"file": "gallery.html",
+			"settings":
+			{
+				"buffer_size": 3131,
 				"line_ending": "Unix"
 			}
 		}
@@ -108,6 +116,8 @@
 	},
 	"file_history":
 	[
+		"/Users/iake.air/Sites/starsanitaryware/js/product.js",
+		"/Users/iake.air/Sites/starsanitaryware/services/product.php",
 		"/Users/iake.air/Sites/starsanitaryware/js/utility.js",
 		"/Users/iake.air/Sites/starsanitaryware/lib/database.php",
 		"/Users/iake.air/Sites/starsanitaryware/lib/datasource.ini",
@@ -115,7 +125,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/admin/login.html",
 		"/Users/iake.air/Sites/starsanitaryware/admin/js/authen.js",
 		"/Users/iake.air/Sites/starsanitaryware/services/category.php",
-		"/Users/iake.air/Sites/starsanitaryware/js/product.js",
 		"/Users/iake.air/Sites/starsanitaryware/admin/services/authentication.php",
 		"/Users/iake.air/Sites/starsanitaryware/admin/js/product-manager.js",
 		"/Users/iake.air/Sites/starsanitaryware/controller/SecurityManager.php",
@@ -140,7 +149,6 @@
 		"/Users/iake.air/Sites/starsanitaryware/award.html",
 		"/Users/iake.air/Sites/starsanitaryware/compares.html",
 		"/Users/iake.air/Sites/starsanitaryware/css/compare.css",
-		"/Users/iake.air/Sites/starsanitaryware/services/product.php",
 		"/Users/iake.air/Sites/starsanitaryware/css/product.css",
 		"/Users/iake.air/Sites/starsanitaryware/services/compare.php",
 		"/Users/iake.air/Sites/starsanitaryware/js/compare.js",
@@ -451,63 +459,89 @@
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 37.0,
-						"translation.y": 3447.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 2,
-					"file": "services/product.php",
+					"file": "catalog.html",
 					"settings":
 					{
-						"buffer_size": 7447,
+						"buffer_size": 10148,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								4719,
-								4729
+								0,
+								0
 							]
 						],
 						"settings":
 						{
 							"auto_complete": false,
-							"syntax": "Packages/PHP/PHP.tmLanguage",
+							"syntax": "Packages/HTML/HTML.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3046.0,
+						"translation.y": 0.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
 				},
 				{
 					"buffer": 3,
-					"file": "js/product.js",
+					"file": "js/gallery.js",
 					"settings":
 					{
-						"buffer_size": 12459,
+						"buffer_size": 2674,
 						"regions":
 						{
 						},
 						"selection":
 						[
 							[
-								8329,
-								8329
+								1765,
+								1765
 							]
 						],
 						"settings":
 						{
-							"auto_complete": false,
 							"syntax": "Packages/JavaScript/JavaScript.tmLanguage",
 							"translate_tabs_to_spaces": false
 						},
 						"translation.x": 0.0,
-						"translation.y": 3078.0,
+						"translation.y": 740.0,
+						"zoom_level": 1.0
+					},
+					"type": "text"
+				},
+				{
+					"buffer": 4,
+					"file": "gallery.html",
+					"settings":
+					{
+						"buffer_size": 3131,
+						"regions":
+						{
+						},
+						"selection":
+						[
+							[
+								2430,
+								2399
+							]
+						],
+						"settings":
+						{
+							"syntax": "Packages/HTML/HTML.tmLanguage",
+							"translate_tabs_to_spaces": false
+						},
+						"translation.x": 0.0,
+						"translation.y": 345.0,
 						"zoom_level": 1.0
 					},
 					"type": "text"
