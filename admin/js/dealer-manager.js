@@ -131,9 +131,10 @@ function set_view_list(data){
 		item+="<tr id='row"+val.id+"'>";
 		item+="<td><input type='checkbox' name='mark[]' data-id='"+val.id+"' /></td>";
 		item+="<td>"+val.id+"</td>";
-		item+="<td><img src='../"+val.thumbnail+"' class='img-responsive' /></td>";
-		item+="<td>"+val.album_th+"</td>";
-		item+="<td>"+date+"</td>";
+		item+="<td>"+val.title_th+"</td>";
+		item+="<td>"+val.province_th+"</td>";
+		item+="<td>"+val.zone_th+"</td>";
+		item+="<td>"+val.mobile+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('dealer-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
