@@ -26,7 +26,7 @@ class DealerManager{
 
 		try{
 
-			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
+			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile_".$lang." as mobile , ,link_".$lang." as link ";
 			$sql .= "from dealer where active=1 order by title_".$lang." asc";
 			$result = $this->mysql->execute($sql);
 
@@ -40,12 +40,8 @@ class DealerManager{
 
 	function getListItem($lang){
 			try{
-/*
-			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ";
-			$sql .= "from dealer where active=1 order by title_".$lang." asc";*/
-			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
+			$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile_".$lang." as mobile ,link_".$lang." as link ";
 			$sql .= " from dealer where active=1 ";
-			//$sql .= " and title_".$lang." like '%".$name."%' ";
 			$sql .= " order by title_".$lang." asc ";
 
 			$result = $this->mysql->execute($sql);
@@ -59,11 +55,10 @@ class DealerManager{
 		function findName($lang,$name) {
 			try{
 
-				$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile ,link_".$lang." as link ";
+				$sql = "select id,title_".$lang." as title ,province_".$lang." as province ,zone_".$lang." as zone, mobile_".$lang." as mobile ,link_".$lang." as link ";
 				$sql .= " from dealer where active=1 ";
 				$sql .= " and title_".$lang." like '%".$name."%' ";
 				$sql .= " order by title_".$lang." asc ";
-				//log_debug($sql);
 
 				$result = $this->mysql->execute($sql);
 				return  $result;
@@ -85,8 +80,22 @@ class DealerManager{
 			echo "Cannot Get list dealer  : ".$e->getMessage();
 		}
 	}
+	
+		
+	function get_dealer_info($id){
+		try{
 
+			$sql = "select * ";
+			$sql .= " from dealer where id=$id ";
+			$result = $this->mysql->execute($sql);
 
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Dealer info: ".$e->getMessage();
+		}
+	}
+	
 	function insert_item($items){
 		
 		try{
@@ -98,8 +107,9 @@ class DealerManager{
 			$zone_en  =$items["zone_en"];
 			$link_th  =$items["link_th"];
 			$link_en  =$items["link_en"];
-			$mobile = $items["mobile"];
-
+			$mobile_th = $items["mobile_th"];
+			$mobile_en = $items["mobile_en"];
+			
 			$active='0';
 			
 			if(isset($items["active"]))	$active='1';
@@ -107,8 +117,8 @@ class DealerManager{
 			$create_by='0';
 			$create_date='now()';
 			
-			$sql = "insert into dealer (title_th ,title_en,province_th,province_en,zone_th,zone_en,link_th,link_en,mobile ,active ,create_by ,create_date ) ";
-			$sql .= "values('$title_th' ,'$title_en','$province_th'  ,'$province_en','$zone_th','$zone_en','$link_th','$link_en','$mobile',$active ,$create_by,$create_date); ";
+			$sql = "insert into dealer (title_th ,title_en,province_th,province_en,zone_th,zone_en,link_th,link_en,mobile_th,mobile_en ,active ,create_by ,create_date ) ";
+			$sql .= "values('$title_th' ,'$title_en','$province_th'  ,'$province_en','$zone_th','$zone_en','$link_th','$link_en','$mobile_th','$mobile_en',$active ,$create_by,$create_date); ";
 			$this->mysql->execute($sql);
 			
 			log_debug("dealer > insert  > " .$sql);
@@ -133,7 +143,8 @@ class DealerManager{
 			$province_en  =$items["province_en"];
 			$zone_th  =$items["zone_th"];
 			$zone_en  =$items["zone_en"];
-			$mobile = $items["mobile"];
+			$mobile_th = $items["mobile_th"];
+			$mobile_en = $items["mobile_en"];
 			$link_th  ="";
 			$link_en  ="";
 			
@@ -151,10 +162,9 @@ class DealerManager{
 			
 			$update_by='0';
 			$update_date='now()';
-			//title_th ,title_en  ,location_th ,location_en  ,islocal ,active ,create_by ,create_date
 			
 			$sql = "update dealer set  ";
-			$sql .= "title_th='$title_th' ,title_en='$title_en' ,province_th='$province_en',province_en='$province_en',zone_th='$zone_th',zone_en='$zone_en',mobile='$mobile' ";
+			$sql .= "title_th='$title_th' ,title_en='$title_en' ,province_th='$province_th',province_en='$province_en',zone_th='$zone_th',zone_en='$zone_en',mobile_th='$mobile_th',mobile_en='$mobile_en' ";
 			$sql .= ",active=$active ,update_by=$update_by ,update_date=$update_date  ";
 			$sql .= $link_th ;
 			$sql .= $link_en ;
@@ -175,7 +185,7 @@ class DealerManager{
 	function delete_item($id){
 		
 		try{
-			$sql = "delete from delaer where id=$id ; ";
+			$sql = "delete from dealer where id=$id ; ";
 			log_debug("Delaer > delete > " .$sql);
 			$result = $this->mysql->execute($sql);
 			return $result;

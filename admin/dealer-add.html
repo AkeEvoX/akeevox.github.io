@@ -1,22 +1,7 @@
 <div class='col-md-12' >
-	<h3>จัดการเพิ่ม Gallery</h3>
+	<h3>จัดการเพิ่ม Dealer</h3>
 	<hr/>
-	<form id='gallery_form' action='' method='post' enctype="multipart/form-data">
-		<div class="form-group">
-			<!--	<form id='uploadimage' action="" method="post" >-->
-			<label for="album_type" class='col-md-3'>หมวด / album</label>
-			<div class='col-md-7'>
-				<select class="form-control" id="album_type" name="album_type"  >
-				</select>
-			</div>
-		</div>
-		<div class="form-group">
-			<!--	<form id='uploadimage' action="" method="post" >-->
-			<label for="file_upload" class='col-md-3'>รูปภาพ / Image<br/>(ขนาด 1269 (W) x 864 (H) Pixels) </label>
-			<div class='col-md-7'>
-				<input type="file" class="form-control" id="file_upload" name="file_upload"  />
-			</div>
-		</div>
+	<form id='dealer_form' action='' method='post' enctype="multipart/form-data">
 		<div class="form-group">
 			<!--	<form id='uploadimage' action="" method="post" >-->
 			<label for="active" class='col-md-3'>เปิดใช้งาน / Enable</label>
@@ -24,20 +9,86 @@
 				<input type="checkbox" id="active" name="active"  />
 			</div>
 		</div>
-		<div class="form-group">
-			<label for="title_th" class='col-md-3'>ชื่อรูปภาพ</label>
-			<div class='col-md-9'>
-				<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อรูปภาพ" value='' />
+		<ul id='menutab' class="nav nav-tabs nav-default">
+			<li role="presentation" class='active'>
+				<a class='menutab' href="#th" data-toggle="tab">TH</a>
+			</li>
+			<li role="presentation">
+				<a class='menutab' href="#en" data-toggle="tab">EN</a>
+			</li>
+		</ul>
+		<div class='tab-content' style='margin-top:10px;'>
+			<div id='th' class="tab-pane fade in active">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="title_en" class='col-md-3'>ชื่อตัวแทนจำหน่าย</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="title_th" name='title_th' placeholder="ชื่อตัวแทนจำหน่าย" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>จังหวัด</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="province_th" name="province_th" placeholder="ชื่อจังหวัด" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>ภูมิภาค</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="zone_th" name="zone_th" placeholder="ภูมิภาค" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>เบอร์ติดต่อ</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="mobile_th" name="mobile_th" placeholder="เบอร์โทรศัพท์" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>เอกสารเพิ่มเติม</label>
+						<div class='col-md-9'>
+							<input type="file" class="form-control" id="file_upload_th" name="file_upload_th"  />
+						</div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="form-group">
-			<label for="title_en" class='col-md-3'>Picture Name</label>
-			<div class='col-md-9'>
-				<input type="text" class="form-control" id="title_en" name='title_en' placeholder="picture name" value='' />
+			<div id='en' class="tab-pane fade">
+				<div class='col-md-12'>
+					<div class="form-group">
+						<label for="title_en" class='col-md-3'>Dealer Name</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="title_en" name='title_en' placeholder="Dealer Name" value='' />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>Province Name</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="province_en" name="province_en" placeholder="Province Name" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>Zone Name</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="zone_en" name="zone_en" placeholder="Zone Name" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>Mobile</label>
+						<div class='col-md-9'>
+							<input type="text" class="form-control" id="mobile_en" name="mobile_en" placeholder="Mobile Name" />
+						</div>
+					</div>
+					<div class="form-group">
+						<label for="detail_en" class='col-md-3'>Document Upload</label>
+						<div class='col-md-9'>
+							<input type="file" class="form-control" id="file_upload_en" name="file_upload_en"  />
+						</div>
+					</div>
+				</div>
 			</div>
 		</div>
 		<div class='row text-center'>
-			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />
+			<input type='submit' class='btn btn-warning btn-sm' value='บันทึก' />&nbsp;<input type='reset' class='btn btn-warning btn-sm' value='ล้างข้อมูล' />&nbsp;<input type='button' class='btn btn-warning btn-sm' onclick=control.pagetab('dealer-manager.html'); value='ยกเลิก' />
 		</div>
 		<input type='hidden' id='primary_id' />
 
@@ -45,19 +96,19 @@
 
 
 </div>
-<script src='js/gallery-manager.js' ></script>
+<script src='js/dealer-manager.js' ></script>
 <script>
 
 
 $(document).ready(function(){
 
-	gallery.album_option();
-	$('#gallery_form').on('submit',function(e){
+	//gallery.album_option();
+	$('#dealer_form').on('submit',function(e){
 		e.preventDefault();
 		alert("Save Complete.");
 		var args = new FormData(this);
 		args.append('type', 'add');
-		gallery.add(args);
+		dealer.add(args);
 	});
 
 });

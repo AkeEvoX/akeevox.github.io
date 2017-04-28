@@ -90,20 +90,26 @@ function get_Item_album($id){
 
 function Insert($items){
 	
-	if($_FILES['file_upload']['name']!=""){
-		$filename = "images/gallery/".$_FILES['file_upload']['name'];
+	if($_FILES['file_upload_th']['name']!=""){
+		$filename = "images/dealer/th_". date('Ymd_His')."_".$_FILES['file_upload_th']['name'];
 		$distination =  "../../".$filename;
-		$source = $_FILES['file_upload']['tmp_name'];  
-		$items["image"] = $filename;
-		$items["thumbnail"] = $filename;
+		$source = $_FILES['file_upload_th']['tmp_name'];  
+		$items["link_th"] = $filename;
+		upload_image($source,$distination);
+	}
+	
+	
+	if($_FILES['file_upload_en']['name']!=""){
+		$filename = "images/dealer/en_". date('Ymd_His')."_".$_FILES['file_upload_en']['name'];
+		$distination =  "../../".$filename;
+		$source = $_FILES['file_upload_en']['tmp_name'];  
+		$items["link_en"] = $filename;
+		upload_image($source,$distination);
 	}
 
 	$dealer = new DealerManager();
 	//1)insert data
 	$result = $dealer->insert_item($items);
-	//2)upload image personal
-	if($items["thumbnail"])
-		upload_image($source,$distination);
 	
 	return "INSERT SUCCESS.";
 }
@@ -119,21 +125,21 @@ function Update($items){
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload_th']['tmp_name'];
 		$items["link_th"] = $filename;
+		upload_image($source,$distination);
 	}
 	if($_FILES['file_upload_en']['name']!=""){
 		$filename = "images/dealer/en_". date('Ymd_His') ."_".$_FILES['file_upload_en']['name'];
 		$distination =  "../../".$filename;
 		$source = $_FILES['file_upload_en']['tmp_name'];
 		$items["link_en"] = $filename;
+		upload_image($source,$distination);
 	}
 	
 	$dealer = new DealerManager();
 	//1)update data
 	$result = $dealer->update_item($items);
 	
-	//2)upload image
-	if($items["thumbnail"])
-		upload_image($source,$distination);
+		
 	
 	return "UPDATE SUCCESS.";
 	

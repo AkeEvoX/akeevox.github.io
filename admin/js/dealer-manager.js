@@ -106,8 +106,14 @@ function set_view_item(data){
 	
 	$('#title_th').val(data.result.title_th);
 	$('#title_en').val(data.result.title_en);
-	$('#album_type').val(data.result.album_id);
-	$('#preview').attr('src',"../"+data.result.thumbnail);
+	$('#province_th').val(data.result.province_th);
+	$('#province_en').val(data.result.province_en);
+	$('#zone_th').val(data.result.zone_th);
+	$('#zone_en').val(data.result.zone_en);
+	$('#mobile_th').val(data.result.mobile_th);
+	$('#mobile_en').val(data.result.mobile_en);
+	$('#link_th').attr('href',"../"+data.result.link_th);
+	$('#link_en').attr('href',"../"+data.result.link_en);
 	
 	if(data.result["active"]=="1")
 		$('#active').prop('checked',true);
@@ -119,7 +125,7 @@ function set_view_list(data){
 	var view = $('#data_list');
 	var item = "";
 	if(data.result==undefined || data.result=="") {
-		console.log("dealer-manager > list :: data not found.")
+		console.log("dealer-manager > list :: data not found.");
 		return;
 	}
 	var max_item = $('#counter').val();
@@ -134,7 +140,7 @@ function set_view_list(data){
 		item+="<td>"+val.title_th+"</td>";
 		item+="<td>"+val.province_th+"</td>";
 		item+="<td>"+val.zone_th+"</td>";
-		item+="<td>"+val.mobile+"</td>";
+		item+="<td>"+val.mobile_th+"</td>";
 		item+="<td>"+ active +"</td>";
 		item+="<td><span class='btn btn-warning btn-sm' onclick=control.pagetab('dealer-edit.html','"+param+"') >แก้ไข</span></td>";
 		item+="</tr>";
