@@ -1,9 +1,9 @@
-function loadList()
+function loadList(callback)
 {
 	var endpoint = 'services/press.php' ;
 	var method = 'get';
 	var args = {"_": new Date().getMilliseconds()};
-	utility.service(endpoint,method,args,setview);
+	utility.service(endpoint,method,args,setview,callback);
 }
 
 function LoadItem(id)
@@ -115,7 +115,7 @@ function setview(data)
 		itemview += "</a></div>";//media-body
 		itemview += "</div>";//media
 		itemview += "</div>" ; //column
-		console.log(itemview);
+		//console.log(itemview);
 		$('#list').append(itemview);
 	});
 

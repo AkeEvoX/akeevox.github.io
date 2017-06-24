@@ -11,10 +11,10 @@ $(document).ready(function(){
 	$('#jpg_view').on('click',function(){
 		window.open('product_print.html?id='+utility.querystr('id'), 'sharer', 'toolbar=0, status=0, width=576, height=798');
 	});
-
+/*
 	$('span[id="productdetail.compare.reset"]').on('click',function(){
 		product.compare_reset();
-	});
+	});*/
 	
 });
 

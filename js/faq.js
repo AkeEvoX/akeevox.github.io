@@ -71,7 +71,7 @@ function setview(data)
 		itemview += "<label>"+val.date+"</label>";
 		itemview += "<img src='"+val.thumbnail+"' class='img-responsive' />";
 		itemview += "<span>"+val.detail+"</span>";
-		itemview += "<br/><a class='btn btn-warning' href='faq_detail.html?id="+val.id+"'>VIEW</a>";
+		itemview += "<br/><a class='btn btn-warning' href='faq_detail.html?id="+val.id+"'><span id='faq.btnView'>VIEW<span></a>";
 		itemview += "</div >";
 		$('#list').append(itemview);
 	});

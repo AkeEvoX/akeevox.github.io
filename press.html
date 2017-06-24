@@ -39,8 +39,10 @@
 <script src='js/press.js' ></script>
 <script>
 	$(document).ready(function(){
-		loadList();
-		utility.setpage('press');
+		loadList(function(){
+			utility.setpage('press');
+		});
+		
 	});
 
 </script>
