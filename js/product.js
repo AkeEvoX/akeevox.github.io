@@ -440,7 +440,7 @@ function setviewitem(data)
 	//view info
 	if(data!==undefined){
 	
-		console.log(data);
+		//console.log(data);
 		$('span[id="productname"]').text(data.title);
 
 		$('#plan').attr('src',data.plan);
@@ -450,9 +450,12 @@ function setviewitem(data)
 		$('#dwg_view').attr('href',data.dwg_file);
 		$('#btn_compare').attr('data-id',data.id);//data-thumb
 		$('#btn_compare').attr('data-thumb',data.thumb);
+
+		//assign meta page
+		$("meta[property='og\\:title']").attr("content", data.code);
 		
 		//add meta for share facebook
-		addmeta(data.title,data.thumb);
+		addmeta(data.code,data.title,data.thumb);
 		
 		var colors = $('#productcolor');
 		colors.html("");
@@ -505,14 +508,14 @@ function setviewitem(data)
 	}
 }
 
-function addmeta(title,image){
+function addmeta(code,title,image){
 	
 	var meta = "";
 	var url = document.URL;
 	var thumb =  document.location.origin +"/"+image;
 
 	 product.info =  {
-		 
+		id:code,
 		url:url,
 		image:thumb,
 		title:title,

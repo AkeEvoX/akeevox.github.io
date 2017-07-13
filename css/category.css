@@ -47,7 +47,7 @@
 /*mobile*/
 @media(max-width:600px) {
 
-	.img-fluid{ min-width:50%;  }
+	/* .img-fluid{ min-width:50%;  } */
 	/*#menutree { display:inline; } */
 	
 	#logo-category{ max-height:250px;  }

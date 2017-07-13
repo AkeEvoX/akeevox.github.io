@@ -1,16 +1,16 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<html xmlns="http://www.w3.org/1999/xhtml"><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
+<html xmlns="http://www.w3.org/1999/xhtml" ><!-- InstanceBegin template="/Templates/home.dwt.php" codeOutsideHTMLIsLocked="false" -->
 <head>
 <title>Welcome to Starsanitaryware</title>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<meta http-equiv='X-UA-Compatible' content='IE=edge' />
 	<meta name='viewport' content='width=device-width, initial-scale=1' />
 	<meta property="fb:app_id" content="1918930168326863"/>
-	<meta  property='og:url' content='http://www.baankunnan.com' />
+	<meta  property='og:url' content='http://www.starsanitaryware.com' />
 	 <meta property='og:type' content='url' />
-	 <meta property='og:title' content='thank for share' />
+	 <meta property='og:title' content='Thank for share' />
 	 <meta property='og:description' content='the grest product of sanitary with starsanitaryware' />
-	 <meta property='og:image' content='http://www.starsanitaryware.com/collection/fileuploadimage/collection_1.jpg' />
+	 <meta property='og:image' content='http://www.starsanitaryware.com/images/logos/logo.png' />
 	 
 	<link href="plugin/bootstraps/css/bootstrap.css" rel="stylesheet" type="text/css" />
 	<link href="plugin/jquery/jquery.mThumbnailScroller.css" rel="stylesheet" type="text/css" />
@@ -22,7 +22,6 @@
 	<link href="css/theme.default.css" rel="stylesheet" type="text/css" />
 	<link href="css/treemenu.css" rel="stylesheet" type="text/css" />
 	<link href="css/product.css" rel="stylesheet" type="text/css" />
-	
 </head>
 <body>
 <div id='view-navbar'></div><!--navigator-->
@@ -158,10 +157,13 @@
 <script src='js/product.js' ></script>
 <script>
 
+
 $(document).ready(function(){
 
 
-	
+	//<meta property='og:title' content='thank for share' />
+	$("head").append("<meta property='og:title' content='hallo' />");
+
 	utility.setpage('productdetail');
 	product.compare();
 	product.listmenu();
@@ -180,11 +182,18 @@ function callproduct(id)
 }
 
 function setshare(){
+
 	var page = document.URL;
 
+	
+
+	//
+
 	$('#google').on('click',function(){
+		//console.log(product.info);
+		
 		var data = document.URL;
-		window.open('http://plus.google.com/share?url=' + encodeURIComponent(data) , 'sharer', 'toolbar=0, status=0, width=517, height=511');
+		window.open('http://plus.google.com/share?url=' + encodeURIComponent(data) +"&v="+new Date().getMilliseconds(), 'sharer', 'toolbar=0, status=0, width=517, height=511');
 	});
 	$('#twitter').on('click',function(){
 		var data = document.URL;
@@ -212,7 +221,7 @@ function setshare(){
 				action_properties: JSON.stringify({
 					object : {
 					   'og:url': product.info.url , 
-					   'og:title': product.info.title ,
+					   'og:title': product.info.id ,
 					   'og:description': product.info.description ,
 					   'og:image': product.info.image
 					}
