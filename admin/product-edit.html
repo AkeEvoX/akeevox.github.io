@@ -255,7 +255,7 @@
 									<div class="input-group col-md-8">
 									<input type='text' id='temp_symbol' class='form-control' placeholder='click upload file' readonly />
 									  <span class="input-group-btn">
-										<button class="btn btn-default" id='btn_add_symbol' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button> <br/>160 (W) x 160 (H)
+										<button class="btn btn-default" id='btn_add_symbol' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 										<button id='btn_upload_symbol' class='btn btn-success'>upload</button>
 									  </span>
 									</div><!-- /input-group -->
@@ -289,7 +289,7 @@
 									<div class="input-group col-md-8">
 									<input type='text' id='temp_photo' class='form-control' placeholder='click upload file' readonly />
 									  <span class="input-group-btn">
-										<button class="btn btn-default" id='btn_add_photo' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button> <br/>(ขนาด 960 (W) x 1280 (H) Pixels) 
+										<button class="btn btn-default" id='btn_add_photo' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
 										<button id='btn_upload' class='btn btn-success'>upload</button>
 									  </span>
 									</div><!-- /input-group -->
@@ -335,7 +335,11 @@ $(document).ready(function(){
 	var id = utility.querystr("id",$('#parameter').val());
 	product.loaditem(id);
 	color.loadoptions();
-	
+
+	$("#product_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
+
 	$('#btn_save').click(function(e){
 		
 		$('#product_form').submit(function(e){
@@ -363,11 +367,12 @@ $(document).ready(function(){
 	});
 	
 	$("#symbol_form").submit(function(evt){
-			console.log('symbol form sumbit');
+			console.log('symbol form submit');
 			var args = new FormData(this);
 			args.append('type', 'add_symbol');
 			product.add_symbol(args); 
 			$('#file_symbol').val('');//clear file symbol upload
+			$('#temp_symbol').val('');
 	});
 	
 	//cancel sumbit 
@@ -404,11 +409,7 @@ $(document).ready(function(){
 		e.preventDefault(); 
 	});
 	/****product photo******/
-	$("#product_form").on('submit',function(e){
-		e.preventDefault(); 
-	});
 
-	
 	$('#btn_add_color').on('click',function(e){
 		var color_id = $('#color_list').val();
 		var id = $('#id').val();

@@ -17,12 +17,6 @@
 					</div>
 				</div>
 				<div class="form-group">
-					<label for="file_symbol" class='col-md-3'>สัญลักษณ์ / symbol<br/>(ขนาด 160 (W) x 160 (H) Pixels)</label>
-					<div class='col-md-7'>
-						<input type="file" class="form-control" id="file_symbol" name="file_symbol"  />
-					</div>
-				</div> 
-				<div class="form-group">
 					<label for="file_plan" class='col-md-3'>รูปแปลน / plan<br/>880 (W) x 350 (H)</label>
 					<div class='col-md-7'>
 						<input type="file" class="form-control" id="file_plan" name="file_plan"  />
@@ -58,6 +52,15 @@
 					</li>
 					<li role="presentation">
 						<a class='menutab' href="#en" data-toggle="tab">EN</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#symbol" data-toggle="tab">Symbol</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#color" data-toggle="tab">Color</a>
+					</li>
+					<li role="presentation">
+						<a class='menutab' href="#photo" data-toggle="tab">Photo</a>
 					</li>
 				</ul>
 				<div class='tab-content' style='margin-top:10px;'>
@@ -213,26 +216,169 @@
 							</div>
 						</div>
 					</div>
-				</div>
+					<div id='symbol' class="tab-pane fade">
+						<div class='col-md-12'>
+							<div class="form-group">
+									<div class="input-group col-md-8">
+									<input type='text' id='temp_symbol' class='form-control' placeholder='click upload file' readonly />
+									  <span class="input-group-btn">
+										<button class="btn btn-default" id='btn_add_symbol' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+										<button id='btn_upload_symbol' class='btn btn-success'>upload</button>
+									  </span>
+									</div><!-- /input-group -->
+								</div><!-- /form-group -->
+							<div class="form-group">
+								<ul class="list-group col-md-6" id='product_symbol' ></ul>
+							</div><!-- /form-group -->
+						</div>
+					</div>
+					<div id='color' class="tab-pane fade">
+						<div class='col-md-12'>
+							<div class="form-group">
+								<div class="input-group col-md-6">
+									<select class="form-control" id='color_list'>
+										<option value='white'>white</option>
+										<option value='black'>black</option>
+									</select>
+								  <span class="input-group-btn">
+									<button class="btn btn-default" id='btn_add_color' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+								  </span>
+								</div><!-- /input-group -->
+							</div><!-- /form-group -->
+							<div class="form-group">
+								<ul class="list-group col-md-6" id='product_color' ></ul>
+							</div><!-- /form-group -->
+						</div>
+					</div>
+					<div id='photo' class="tab-pane fade">
+						<div class='col-md-12'>
+								<div class="form-group">
+									<div class="input-group col-md-8">
+									<input type='text' id='temp_photo' class='form-control' placeholder='click upload file' readonly />
+									  <span class="input-group-btn">
+										<button class="btn btn-default" id='btn_add_photo' type="button">&nbsp;<span class="glyphicon glyphicon-plus"></span></button>
+										<button id='btn_upload' class='btn btn-success'>upload</button>
+									  </span>
+									</div><!-- /input-group -->
+								</div>
+							<div class="form-group">
+									<div id='product_photo' ></div>
+								</div>
+						</div>
+					</div>
+				<input type='hidden' id='id' name='id' />
+</div>
 			</div>
 			<div class='row text-center'>
-				<input type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-danger'  onclick=control.pagetab('product-manager.html')  >ยกเลิก</span>
+				<input id='btn_save'  type='submit' class='btn btn-success btn-sm' value='บันทึก' />&nbsp;<span class='btn btn-danger'  onclick=control.pagetab('product-manager.html')  >ยกเลิก</span>
 			</div>
+	</form>
+	<form id='photo_form' name='photo_form' method='post' enctype="multipart/form-data" >
+		<div  style='display:none;' >
+		<input type='file' id='file_photo' name='file_photo' class='form-control' />
+		<input type='hidden' id='proid' name='proid' />
+		<input type='submit' id='photo_submit' />
+		</div>
+	</form>
+	<form id='symbol_form' name='symbol_form' method='post' enctype="multipart/form-data"  >
+		<div  style='display:none;' >
+		<input type='file' id='file_symbol' name='file_symbol' class='form-control' />
+		<input type='hidden' id='proid_symbol' name='proid_symbol' />
+		<input type='submit' id='symbol_submit' />
+		</div>
 	</form>
 </div>
 <script src='js/product-manager.js' />
+<script src='js/color-manager.js' />
+<script src='../plugin/jquery/jquery.form.js' />
 <script>
 
 $(document).ready(function(){
 
-product.loadoptions();
+	
+	product.genid();
+	color.loadoptions();
+	product.loadoptions();
+	/****product insert******/
+	$("#product_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
 
-$('#product_form').on('submit',function(e){
-		e.preventDefault();
-		alert("Save Complete.");
+	$('#btn_save').click(function(e){
+
+		$('#product_form').on('submit',function(e){
+			e.preventDefault();
+			alert("Save Complete.");
+			var args = new FormData(this);
+			args.append('type', 'add');
+			product.add(args);
+		});
+	});
+	/****product insert******/
+	/****product symbol******/
+	//show file name
+	$('#btn_add_symbol').click(function(e){
+		$('#file_symbol').trigger('click');
+	});
+	$('#file_symbol').change(function(e){
+		var filename = $(this).val().split('\\').pop();
+		console.warn("symbol path : " + filename);
+		$('#temp_symbol').val(filename);
+	});
+	//button trigger submit upload 
+	$('#btn_upload_symbol').click(function(){
+		utility.print_log("upload symbol trigger");
+		$('#symbol_submit').trigger('click');
+	});
+	
+	$("#symbol_form").submit(function(evt){
+			utility.print_log("symbol form submit");
+			var args = new FormData(this);
+			args.append('type', 'add_symbol');
+			product.add_symbol(args); 
+			$('#file_symbol').val('');//clear file symbol upload
+			$('#temp_symbol').val('');
+	});
+	
+	//cancel sumbit 
+	$("#symbol_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
+	/****product symbol******/
+	/****product photo******/
+	
+	$('#btn_add_photo').click(function(e){
+		$('#file_photo').trigger('click');
+	});
+	//show file name
+	$('#file_photo').change(function(e){
+		var filename = $(this).val().split('\\').pop();
+		$('#temp_photo').val(filename);
+	});
+	
+	
+	$('#btn_upload').click(function(){
+		$('#photo_submit').trigger('click');
+	});
+	
+	$("#photo_form").submit(function(evt){
+		console.log('photo form sumbit');
+		
 		var args = new FormData(this);
-		args.append('type', 'add');
-		product.add(args);
+		args.append('type', 'add_photo');
+		product.add_photo(args); 
+		$('#file_photo').val('');//clear file photo upload
+		$('#temp_photo').val('');
+	});
+	
+	$("#photo_form").on('submit',function(e){
+		e.preventDefault(); 
+	});
+	/****product photo******/
+	$('#btn_add_color').on('click',function(e){
+		var color_id = $('#color_list').val();
+		var id = $('#id').val();
+		product.add_color(id,color_id);
 	});
 	
 });

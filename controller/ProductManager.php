@@ -22,6 +22,22 @@ class ProductManager{
 		$this->mysql->disconnect();
 	}
 
+	function getNewId(){
+		try{
+
+			$sql = " SELECT `auto_increment` as id FROM INFORMATION_SCHEMA.TABLES ";
+			$sql .= " WHERE table_name = 'products' order by auto_increment desc limit 1 ";
+
+			log_warning("product > getNewId > " . $sql);
+			$result = $this->mysql->execute($sql);
+
+			return  $result;
+		}
+		catch(Exception $e){
+			echo "Cannot Get Product new id : ".$e->getMessage();
+		}
+	}
+
 	function getProduct($lang,$id){
 
 		try{

@@ -1,6 +1,19 @@
 
 var product = {};
 
+ 
+product.genid = function(){
+	var endpoint = "services/product.php";
+	var args = {"_": new Date().getMilliseconds(),"type":"newid"};
+	var method= "get";
+	utility.service(endpoint,method,args,function(resp){
+		$("#id").val(resp.result.id);
+		$('#proid').val(resp.result.id);
+		$('#proid_symbol').val(resp.result.id);
+	}); 
+	
+}
+
 product.add = function(args){
 	var endpoint = "services/product.php";
 	var method = "POST";
@@ -196,7 +209,6 @@ product.load_product_symbol = function(id){
 	utility.service(endpoint,method,args,view_list_symbol);
 }
 
-
 function view_list_product(data){
 	
 	var view = $('#data_list');
@@ -254,6 +266,7 @@ function view_list_color(data){
 	list.append(item);
 
 }
+
 function view_list_symbol(data){
 	
 	var list = $('#product_symbol');
@@ -277,7 +290,6 @@ function view_list_symbol(data){
 	list.append(item);
 
 }
-//
 
 function view_list_photo(data){
 	
@@ -301,8 +313,6 @@ function view_list_photo(data){
 	list.append(item);
 
 }
-
-
 
 function view_product_option(data){
 	
@@ -431,7 +441,6 @@ function opt_viewchildmenu(child,data,directory,lastmenu,select_id){
 	
 	return item;
 }
-
 
 function rewritetext(text){
 	var result = text;

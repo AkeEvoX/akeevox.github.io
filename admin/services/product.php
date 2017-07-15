@@ -79,8 +79,8 @@ switch($type){
 	case "item":
 		$result = call_product($id);
 	break;
-	default:
-	
+	case "newid":
+		$result = getNewID();
 	break;
 }
 
@@ -107,6 +107,18 @@ function get_list_fetch($lang,$search_text,$start_fetch,$max_fetch){
 		$result[] = $row;
 	}
 	return $result;
+}
+
+function getNewID(){
+	
+	$product = new ProductManager();
+	$data = $product->getNewId($lang,$id);
+	if($data){
+		$row = $data->fetch_object();
+		$newid = $row->id;
+	}
+
+	return array("id"=>$newid);
 }
 
 function getOptions($lang){

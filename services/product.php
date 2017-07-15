@@ -60,6 +60,9 @@ switch($type)
 	case "info":
 		$result = setProductType($lang,$id);
 	break;
+	case "new":
+		$result = setTempID();
+	break;
 
 }
 //var_dump($result);
@@ -384,6 +387,7 @@ function setchildmenu($item,$data)
 {
 	//if($data)
 }
+
 
 //move array with key
 function movearray($arrs,$from,$to){

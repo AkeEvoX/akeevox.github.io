@@ -71,7 +71,6 @@ utility.service = function(url,method,args,success_callback,complete_callback){
 
 }
 
-
 //for insert/update/delete data
 utility.data = function (endpoint,method,args,success_callback,complete_callback){
 		$.ajax({
@@ -115,6 +114,24 @@ utility.log = function(type,message){
 
 	var args = {'_':new Date().getMilliseconds(),'msg':message,'type':type} ;
 	this.service("services/logger.php",'POST',args,null,null);
+}
+
+utility.print_log = function(msg){
+	if(!window.console){
+		window.console.log( new Date().toISOString().slice(0,19) + ":" + msg);
+	}
+}
+
+utility.print_error = function(msg){
+	if(!window.console){
+		window.console.error( new Date().toISOString().slice(0,19) + ":" + msg);
+	}
+}
+
+utility.print_warn = function(msg){
+	if(!window.console){
+		window.console.warn( new Date().toISOString().slice(0,19) + ":" + msg);
+	}
 }
 
 utility.loadmenu = function(){
